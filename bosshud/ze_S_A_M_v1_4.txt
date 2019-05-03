@@ -1,0 +1,76 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"lvl4_boss_hp"
+		"HPbar_counter"		"lvl4_boss_hpbar_counter"
+		"HPinit_counter"	"lvl4_boss_hp_init"
+		"CustomText"		"Barlog"
+		"HPbar_min"			""
+		"HPbar_max"			"9"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"lvl2_boss_dark_hp"
+		"CustomText"		"Dark"
+	}
+	"2"
+	{
+		"HP_counter"		"lvl2_boss_fire_hp"
+		"CustomText"		"Fire"
+	}
+	"3"
+	{
+		"HP_counter"		"lvl2_boss_hp"
+	}
+	"4"
+	{
+		"HP_counter"		"lvl2_boss_ice_hp"
+		"CustomText"		"Ice"
+	}
+	"5"
+	{
+		"HP_counter"		"lvl2_boss_light_hp"
+		"CustomText"		"Light"
+	}
+	"6"
+	{
+		"HP_counter"		"lvl3_boss_hp"
+		"HPbar_counter"		"lvl3_boss_hpbar_counter"
+		"HPinit_counter"	"lvl3_boss_hp_init"
+		"CustomText"		"Dragon"
+		"HPbar_min"			""
+		"HPbar_max"			"9"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
+	}
+	"7"
+	{
+		"HP_counter"		"lvl4_boss2_hp"
+		"CustomText"		"Barlog"
+	}
+	"8"
+	{
+		"HP_counter"		"Troll_health"
+		"HPbar_counter"		"Troll_hpbar_counter"
+		"HPinit_counter"	"Troll_hp_init"
+		"CustomText"		"Troll"
+		"HPbar_min"			""
+		"HPbar_max"			"9"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
+	}
+	"9"
+	{
+		"HP_counter"		"lvl5_boss_hp_1"
+		"HPbar_counter"		"lvl5_boss_hpbar_counter_1"
+		"HPinit_counter"	"lvl5_boss_hp_init_1"
+		"CustomText"		"Boss"
+		"HPbar_min"			""
+		"HPbar_max"			"9"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
+	}
+}

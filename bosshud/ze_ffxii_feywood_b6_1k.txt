@@ -1,0 +1,26 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"Boss_HP_2"
+		"HPbar_counter"		"Boss_HPbar_Counter"
+		"HPinit_counter"	"Boss_HP"
+		"CustomText"		""//def: BOSS HP
+		"HPbar_min"			"1"
+		"HPbar_max"			"7"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+	}
+	"1" //math_counter
+	{
+		"HP_counter"		"lvl5_Boss_HP_2"
+		"HPbar_counter"		"lvl5_Boss_HPbar_Counter"
+		"HPinit_counter"	"lvl5_Boss_HP"
+		"CustomText"		""//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+	}
+}
+

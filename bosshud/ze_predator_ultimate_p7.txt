@@ -1,0 +1,31 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"cboss_predatorhealth_counter"
+	}
+	"1"
+	{
+		"HP_counter"		"bosshealth_endboss"
+	}	
+	"2"
+	{
+		"HP_counter"		"mob_grudge_math"
+	}
+	"3"
+	{
+		"HP_counter"		"aztecboss_math_health"
+	}
+	"4"
+	{
+		"HP_counter"		"aztecboss_math_health_2"
+	}
+	"5"
+	{
+		"HP_counter"		"fboss_math_1"
+	}
+	"5"
+	{
+		"HP_counter"		"fboss_math_2"
+	}
+}

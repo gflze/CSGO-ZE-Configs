@@ -1,0 +1,16 @@
+"math_counter"
+{
+	"config"
+	{
+		"IsDynamicHP"	"1"
+	}
+	"0"
+	{
+		"HP_counter"		"counter_st3_boss_vida"
+		"HPbar_counter"		"counter_st3_boss_vida_bar"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+	}
+}

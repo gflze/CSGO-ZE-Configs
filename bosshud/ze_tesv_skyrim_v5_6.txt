@@ -1,0 +1,39 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"counter_1"
+		"HPbar_counter"		"BossHpIterations4"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"1"
+	{
+		"HP_counter"		"counter_2"
+		"HPbar_counter"		"BossHpIterations3"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"2"
+	{
+		"HP_counter"		"dw_hp"
+		"HPbar_counter"		"BossHpIterations2"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"3"
+	{
+		"HP_counter"		"counter_3"
+		"HPbar_counter"		"BossHpIterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+}

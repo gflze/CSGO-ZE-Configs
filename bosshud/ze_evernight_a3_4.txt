@@ -1,0 +1,11 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"imagebasileusis_hp"
+	}
+	"1"
+	{
+		"HP_counter"		"act2_boss_hp"
+	}
+}

@@ -1,0 +1,88 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"crobatcyrushp"
+		"CustomText"		"Crobat"
+	}
+	"1"
+	{
+		"HP_counter"		"crobatfinal2_health"
+		"CustomText"		"Crobat"
+	}
+	"2"
+	{
+		"HP_counter"		"finalkirlia_hp"
+		"CustomText"		"Kirlia"
+	}
+	"3"
+	{
+		"HP_counter"		"giratinahp"
+		"CustomText"		"Giratina"
+	}
+	"4"
+	{
+		"HP_counter"		"groudonhp"
+		"CustomText"		"Groudon"
+	}
+	"5"
+	{
+		"HP_counter"		"honchkrowhp"
+		"CustomText"		"Honchkrow"
+	}
+	"6"
+	{
+		"HP_counter"		"puruglyhealth"
+		"CustomText"		"Purugly"
+	}
+	"7"
+	{
+		"HP_counter"		"regicehealth"
+		"CustomText"		"Regice"
+	}
+	"8"
+	{
+		"HP_counter"		"skuntankhealth"
+		"CustomText"		"Skuntank"
+	}
+	"9"
+	{
+		"HP_counter"		"weavilefinalhp"
+		"CustomText"		"Weavile"
+	}
+	"10"
+	{
+		"HP_counter"		"weavilehp"
+		"CustomText"		"Weavile"
+	}
+	"10"
+	{
+		"HP_counter"		"PrimalGroudonHP"
+		"CustomText"		"Primal Groudon"
+	}
+	"11"
+	{
+		"HP_counter"		"ArceusHP_1"
+		"CustomText"		"Arceus(1/4)"
+	}
+	"11"
+	{
+		"HP_counter"		"ArceusHP_2"
+		"CustomText"		"Arceus(2/4)"
+	}
+	"11"
+	{
+		"HP_counter"		"ArceusHP_3"
+		"CustomText"		"Arceus(3/4)"
+	}
+	"11"
+	{
+		"HP_counter"		"ArceusHP_4"
+		"CustomText"		"Arceus(4/4)"
+	}
+	"10"
+	{
+		"HP_counter"		"Arceus_Judgement_HP"
+		"CustomText"		"Judgement"
+	}
+}
