@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Health"
+		"HPbar_counter"		"Boss_HealthCount"
+		"HPinit_counter"		"Boss_HealthInit"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"	// OnHitMin=1 OnHitMax=2
+	}
+	"1"
+	{
+		"HP_counter"		"Satan_Health"
+		"HPbar_counter"		"Satan_HealthCount"
+		"HPinit_counter"		"Satan_HealthInit"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"	// OnHitMin=1 OnHitMax=2
+	}
+}

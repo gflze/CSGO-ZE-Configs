@@ -1,0 +1,25 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"ds_ornstein_hpcounter"
+		"HPbar_counter"		"ds_ornstein_hpmasscounter"
+		"HPinit_counter"	""
+		"CustomText"		"Ornstein"//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+	"1" //math_counter
+	{
+		"HP_counter"		"ds_smough_hpcounter"
+		"HPbar_counter"		"ds_smough_hpmasscounter"
+		"HPinit_counter"	""
+		"CustomText"		"Smough"//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+}

@@ -1,0 +1,19 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"BossExtHitP"
+	}
+	"1"
+	{
+		"HP_counter"		"BossMassHitP"
+	}
+	"2"
+	{
+		"HP_counter"		"BossRageHitP"
+	}
+	"3"
+	{
+		"HP_counter"		"PanicHPCounter"
+	}
+}

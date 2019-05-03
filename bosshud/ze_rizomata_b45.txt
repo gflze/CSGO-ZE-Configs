@@ -1,0 +1,25 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"4_boss_hpcounter"
+		"HPbar_counter"		"4_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"5_boss_hpcounter"
+		"HPbar_counter"		"5_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"2"
+	{
+		"HP_counter"		"5_boss_enragehpcounter"
+	}
+}

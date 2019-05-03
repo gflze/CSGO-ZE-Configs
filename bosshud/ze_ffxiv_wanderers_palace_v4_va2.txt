@@ -1,0 +1,79 @@
+"math_counter"
+{
+	"2"
+	{
+		"HP_counter"		"true_bahamut_hp_100"
+		"CustomText"		"Bahamut(1/4)"
+	}
+	"2"
+	{
+		"HP_counter"		"true_bahamut_hp_75"
+		"CustomText"		"Bahamut(2/4)"
+	}
+	"2"
+	{
+		"HP_counter"		"true_bahamut_hp_50"
+		"CustomText"		"Bahamut(3/4)"
+	}
+	"2"
+	{
+		"HP_counter"		"true_bahamut_hp_25"
+		"CustomText"		"Bahamut(4/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"bahamut_hp_100"
+		"CustomText"		"Bahamut(1/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"bahamut_hp_75"
+		"CustomText"		"Bahamut(2/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"bahamut_hp_50"
+		"CustomText"		"Bahamut(3/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"bahamut_hp_25"
+		"CustomText"		"Bahamut(4/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"dalamud_hp_100"
+		"CustomText"		"Dalamud(1/2)"
+	}
+	"4"
+	{
+		"HP_counter"		"dalamud_hp_50"
+		"CustomText"		"Dalamud(2/2)"
+	}
+	"5"
+	{
+		"HP_counter"		"ads_hp"
+		"CustomText"		"ADS"
+	}
+	"6"
+	{
+		"HP_counter"		"behemoth_king_hp1_counter"
+		"CustomText"		"Behemoth"
+	}
+	"7"
+	{
+		"HP_counter"		"ads_atack2_hp"
+		"CustomText"		"ADS(Left)"
+	}
+	"8"
+	{
+		"HP_counter"		"ads_atack1_hp"
+		"CustomText"		"ADS(Right)"
+	}
+	"7"
+	{
+		"HP_counter"		"lv3_nael_hp"
+		"CustomText"		""
+	}
+	
+}

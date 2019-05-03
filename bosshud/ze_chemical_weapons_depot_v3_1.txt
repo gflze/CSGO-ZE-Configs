@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"HPCounter"
+		"HPbar_counter"		"HPCounterIterator"
+		"HPinit_counter"	"HPCounterBackUp"
+		"HPbar_min"			""
+		"HPbar_max"			"40"
+		"HPbar_default"		"40"
+		"HPbar_mode"		"1"
+	}
+}

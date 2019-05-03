@@ -1,0 +1,57 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"delo_counter"
+		"HPbar_counter"		"boss_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"1"
+	{
+		"HP_counter"		"pirate_counter"
+		"HPbar_counter"		"pirate_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"2"
+	{
+		"HP_counter"		"barbossa_counter"
+		"HPbar_counter"		"barbossa_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"3"
+	{
+		"HP_counter"		"kraken_counter"
+		"HPbar_counter"		"kraken_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"4"
+	{
+		"HP_counter"		"final_barbossa_counter2"
+		"HPbar_counter"		""
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		""	// OnHitMin=1 OnHitMax=2
+	}
+	"5"
+	{
+		"HP_counter"		"final_barbossa_counter"
+		"HPbar_counter"		""
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		""	// OnHitMin=1 OnHitMax=2
+	}
+}

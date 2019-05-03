@@ -1,0 +1,43 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bouncer_Health_BarHP"
+		"HPbar_counter"		"bouncer_Health_HP"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"cohen_Health_BarHP"
+		"HPbar_counter"		"cohen_Health_HP"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"2"
+	{
+		"HP_counter"		"fontaine_Health_BarHP"
+		"HPbar_counter"		"fontaine_Health_HP"
+		"HPbar_min"			""
+		"HPbar_max"			"6"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"3"
+	{
+		"HP_counter"		"songbird_finale_health"
+	}
+	"4"
+	{
+		"HP_counter"		"songbird_Health_BarHP"
+		"HPbar_counter"		"songbird_Health_HP"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+}

@@ -1,0 +1,36 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"L1_BlueEyes_HP"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"CustomText"		"BlueEye OMEGALUL"//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+	"1" //math_counter
+	{
+		"HP_counter"		"L2_GreenEyes_HP"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"CustomText"		"GreenEye OMEGALUL"//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+	"2" //math_counter
+	{
+		"HP_counter"		"L3_RedEyes_HP"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"CustomText"		"RedEye OMEGALUL"//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+}

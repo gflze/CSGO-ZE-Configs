@@ -1,0 +1,12 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bahamut_vida"
+		"HPbar_counter"		""
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		""	// OnHitMin=1 OnHitMax=2
+	}
+}

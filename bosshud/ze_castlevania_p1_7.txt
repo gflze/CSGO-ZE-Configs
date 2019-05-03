@@ -1,0 +1,12 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss_counter"
+		"HPbar_counter"		"boss_hpbar_overlaycounter"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+}

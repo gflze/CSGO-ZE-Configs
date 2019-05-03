@@ -1,0 +1,43 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"ADS_HP"
+		"CustomText"		"ADS"
+	}
+	"1"
+	{
+		"HP_counter"		"bahamut_hp_100"
+		"CustomText"		"Bahamut(1/4)"
+	}
+	"2"
+	{
+		"HP_counter"		"bahamut_hp_75"
+		"CustomText"		"Bahamut(2/4)"
+	}
+	"3"
+	{
+		"HP_counter"		"bahamut_hp_50"
+		"CustomText"		"Bahamut(3/4)"
+	}
+	"4"
+	{
+		"HP_counter"		"bahamut_hp_25"
+		"CustomText"		"Bahamut(4/4)"
+	}
+	"5"
+	{
+		"HP_counter"		"nael_hp"
+		"CustomText"		"Nael Van Darnus"
+	}
+	"6"
+	{
+		"HP_counter"		"ads_atack1_hp"
+		"CustomText"		"ADS(Right)"
+	}
+	"7"
+	{
+		"HP_counter"		"ads_atack2_hp"
+		"CustomText"		"ADS(Left)"
+	}
+}
