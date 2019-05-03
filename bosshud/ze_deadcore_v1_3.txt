@@ -1,0 +1,12 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"radiation_hpcounter"
+		"HPbar_counter"		"radiation_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+}

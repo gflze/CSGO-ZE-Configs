@@ -1,0 +1,48 @@
+"math_counter"
+{	
+	"0"
+	{
+		"HP_counter"		"mutant_counter1"
+		"HPbar_counter"		"mutant_hp_iterations1"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"1"
+	{
+		"HP_counter"		"grg_counter"
+		"HPbar_counter"		"grg_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"2"
+	{
+		"HP_counter"		"mutant_counter"
+		"HPbar_counter"		"mutant_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"3"
+	{
+		"HP_counter"		"garg_counter"
+		"HPbar_counter"		"garg_hp_iterations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+	"4"
+	{
+		"HP_counter"		"sss5_l_laser_counter"
+		"HPbar_counter"		"sss5_l_laser_hp_interations"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+	}
+}

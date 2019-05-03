@@ -1,0 +1,17 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"b_handhpcounter"
+		"HPinit_counter"	"b_handhpbackup"
+		"CustomText"		"Hand"
+	}
+	"1"
+	{
+		"HP_counter"		"b_hpcounter"
+	}
+	"2"
+	{
+		"HP_counter"		"garo_hpcounter"
+	}
+}

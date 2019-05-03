@@ -1,0 +1,15 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Mini_HP1"
+	}
+	"1"
+	{
+		"HP_counter"		"Boss_Mini_HP2"
+	}
+	"2"
+	{
+		"HP_counter"		"EyesHP"
+	}
+}

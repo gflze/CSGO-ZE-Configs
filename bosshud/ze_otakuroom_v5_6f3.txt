@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"ts_hp"
+		"CustomText"		"Tenshi"
+	}
+	"1"
+	{
+		"HP_counter"		"lv3_ts_hp"
+		"CustomText"		"Tenshi"
+	}
+}

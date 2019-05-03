@@ -1,0 +1,30 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"healbar_counter_extreme"
+		"HPbar_counter"		"healbar_count_total2"
+		"HPbar_min"			""
+		"HPbar_max"			"12"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"healbar_counter_god"
+		"HPbar_counter"		"healbar_count_total2"
+		"HPbar_min"			""
+		"HPbar_max"			"12"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"2"
+	{
+		"HP_counter"		"healbar_counter_impossible"
+		"HPbar_counter"		"healbar_count_total2"
+		"HPbar_min"			""
+		"HPbar_max"			"12"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+}

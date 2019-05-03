@@ -1,10 +1,41 @@
 # ZE-Configs
 
-A collection of entWatch, stripper and bosshud configs for GFL CS:GO ZE, please be aware that the entWatch and stripper configs are not an extensive list of everything used on our server.
+A collection of entWatch, stripper and BossHud configs for GFL CS:GO ZE, please be aware that the entWatch and stripper configs are not an extensive list of everything used on our server.
 
 # How to Contribute
 
 For making any of these configs, you'll want a tool like [VIDE](http://www.riintouge.com/VIDE/)'s entity lump editor, or [entSpy](http://www.bagthorpe.org/bob/cofrdrbob/entspy.html) to navigate the entities in a map. You can also compare maps with current configs in this repository and see how it has already been done if you're looking for functional examples of things.
+
+**_IMPORTANT:_** Make sure the filename of the config matches the map name on the server.
+
+## BossHud
+
+Search for **math_counter**, **func_breakable**, **func_physbox** or **func_physbox_multiplayer** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
+
+```
+"math_counter"
+{
+	"0"
+	{
+		//math_counter example
+		"HP_counter"		""//targetname of the hp math_counter
+		"HPbar_counter"		""//targetname of the math_counter that handles a hp bar (if applicable)
+		"HPinit_counter"	""//targetname of the math_counter that inits the hp math_counter (if applicable)
+		"CustomText"		""//custom name to show in the hud
+		"HPbar_min"			""//min value of the math_counter that handles a hp bar (if applicable)
+		"HPbar_max"			""//max value of the math_counter that handles a hp bar (if applicable)
+		"HPbar_default"		""//startvalue of the hpbar math_counter (if applicable)
+		"HPbar_mode"		""//which mode the hpbar math_counter runs on, 1=OnHitMin outputs 2=OnHitMax outputs (if applicable)
+	}
+	"1"
+	{
+		//func_breakable, func_physbox or func_physbox_multiplayer example
+		"Type"				"breakable"
+		"BreakableName"		""//targetname of the func_breakable, func_physbox or func_physbox_multiplayer
+		"CustomText"		""//custom name to show in the hud
+	}
+}
+```
 
 ## Stripper
 
@@ -56,33 +87,4 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
 {purple}
 {darkorange}
 {orange}
-```
-
-## BossHud
-
-Search for math_counter, func_breakable and func_physbox entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
-
-```
-"math_counter"
-{
-	"0"
-	{
-		//math_counter example
-		"HP_counter"		""//targetname of the hp math_counter
-		"HPbar_counter"		""//targetname of the math_counter that handles a hp bar (if applicable)
-		"HPinit_counter"	""//targetname of the math_counter that inits the hp math_counter (if applicable)
-		"CustomText"		""//custom name to show in the hud
-		"HPbar_min"			""//min value of the math_counter that handles a hp bar (if applicable)
-		"HPbar_max"			""//max value of the math_counter that handles a hp bar (if applicable)
-		"HPbar_default"		""//startvalue of the hpbar math_counter (if applicable)
-		"HPbar_mode"		""//which mode the hpbar math_counter runs on, 1=OnHitMin outputs 2=OnHitMax outputs (if applicable)
-	}
-	"1"
-	{
-		//func_breakable or func_physbox example
-		"Type"				"breakable"
-		"BreakableName"		""//targetname of the func_breakable or func_physbox
-		"CustomText"		""//custom name to show in the hud
-	}
-}
 ```

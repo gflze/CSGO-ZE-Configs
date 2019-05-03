@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"boss_math"
+		"HPbar_counter"		"boss_hpbar_overlaycounter"
+		"HPinit_counter"	"boss_hpbar_counter_2"
+		"CustomText"		""//def: BOSS HP
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+}

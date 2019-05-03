@@ -1,0 +1,9 @@
+"math_counter"
+{
+	"0" //func_breakable or func_physbox
+	{
+		"Type"		"breakable"
+		"BreakableName"		"babyboss_hp"
+		"CustomText"		"Baby Kim"//def: BOSS HP
+	}
+}
