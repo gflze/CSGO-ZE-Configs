@@ -1,0 +1,10 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"Special_Health"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"CustomText"		"Nemesis"//def: BOSS HP
+	}
+}

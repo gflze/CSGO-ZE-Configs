@@ -1,0 +1,16 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"blade_hp"
+	}
+	"1"
+	{
+		"HP_counter"		"HPCounter2"
+		"HPbar_counter"		"HPCounterIterator2"
+		"HPbar_min"			""
+		"HPbar_max"			"8"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+}

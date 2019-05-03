@@ -1,0 +1,46 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Health"
+		"HPbar_counter"		"Boss_HealthCount"
+		"HPinit_counter"	"Boss_HealthInit"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"Skeleton_Boss_Health1"
+		"HPbar_counter"		"Skeleton_Boss_HealthCount1"
+		"HPinit_counter"	"Skeleton_Boss_HealthInit1"
+		"CustomText"		"Skeleton 1"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"2"
+	{
+		"HP_counter"		"Skeleton_Boss_Health2"
+		"HPbar_counter"		"Skeleton_Boss_HealthCount2"
+		"HPinit_counter"	"Skeleton_Boss_HealthInit2"
+		"CustomText"		"Skeleton 2"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"3"
+	{
+		"HP_counter"		"Skeleton_Boss_Health3"
+		"HPbar_counter"		"Skeleton_Boss_HealthCount3"
+		"HPinit_counter"	"Skeleton_Boss_HealthInit3"
+		"CustomText"		"Skeleton 3"
+		"HPbar_min"			""
+		"HPbar_max"			"5"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+}

@@ -1,0 +1,33 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"npc_bahamut_counter"
+		"CustomText"		"Bahamut"
+	}
+	"1"
+	{
+		"HP_counter"		"trigger_pyramid_counter"
+		"CustomText"		"Pyramid Head"
+	}
+	"2"
+	{
+		"HP_counter"		"space_counter1"
+		"CustomText"		"Space"
+	}
+	"3"
+	{
+		"HP_counter"		"space_counter2"
+		"CustomText"		"Space"
+	}
+	"4"
+	{
+		"HP_counter"		"Boss_Health"
+		"CustomText"		"Meshlem"
+	}
+	"5"
+	{
+		"HP_counter"		"roshi_counter"
+		"CustomText"		"Roshi"
+	}
+}

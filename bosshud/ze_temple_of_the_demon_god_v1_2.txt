@@ -1,0 +1,25 @@
+"math_counter"
+{
+	"0" //math_counter
+	{
+		"HP_counter"		"nrk2_thorn_counter"
+		"HPbar_counter"		"nrk2_thorn_hp_iterations"
+		"HPinit_counter"	"nrk2_thorn_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		""//def: BOSS HP
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+	"1" //math_counter
+	{
+		"HP_counter"		"nrk3_counter1"
+		"HPbar_counter"		"nrk3_hp_iterations1"
+		"HPinit_counter"	"nrk3_hp_backup1"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		""//def: BOSS HP
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+}

@@ -1,0 +1,28 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Health"
+		"HPbar_counter"		"Boss_Overlay_Counter"
+		"HPinit_counter"	"Boss_Health_Init"
+		"HPbar_min"			"0"
+		"HPbar_max"			"7"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"Espers_Mateus_Counter"
+		"CustomText"		"Mateus"
+	}
+	"2"
+	{
+		"HP_counter"		"Espers_Belias_Counter"
+		"CustomText"		"Belias"
+	}
+	"3"
+	{
+		"HP_counter"		"Espers_Chaos_Counter"
+		"CustomText"		"Chaos"
+	}
+}

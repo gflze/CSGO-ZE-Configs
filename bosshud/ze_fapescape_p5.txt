@@ -1,0 +1,61 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss_hp"
+		"HPbar_counter"		"boss_hp_iterations"
+		"HPinit_counter"	"boss_hp_backup"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_hp2"
+		"HPbar_counter"		"boss_hp_iterations2"
+		"HPinit_counter"	"boss_hp2_backup"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_hp3"
+		"HPbar_counter"		"boss_hp_iterations3"
+		"HPinit_counter"	"boss_hp3_backup"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"3"
+	{
+		"HP_counter"		"boss_hp4"
+		"HPbar_counter"		"mouth_counter"
+		"HPinit_counter"	"boss_hp4_backup"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"4"
+	{
+		"HP_counter"		"boss_hp5"
+		"HPbar_counter"		"boss_hp_iterations5"
+		"HPinit_counter"	"boss_hp5_backup"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"5"
+	{
+		"HP_counter"		"lastboss_moving"
+	}
+	"6"
+	{
+		"HP_counter"		"lastboss_static"
+	}
+}

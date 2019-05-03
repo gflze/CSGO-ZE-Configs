@@ -1,0 +1,7 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Counter"
+	}
+}

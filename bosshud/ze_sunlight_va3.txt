@@ -1,0 +1,12 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"counter_boss_health"
+	}
+	"1"
+	{
+		"HP_counter"		"counter_dragonhealth"
+		"CustomText"		"Dragon"
+	}
+}
