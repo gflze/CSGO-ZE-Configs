@@ -3,11 +3,11 @@
 	"0"
 	{
 		"HP_counter"		"Boss_Health"
-		"HPbar_counter"		"Boss_Overlay_Counter"
+		"HPbar_counter"		"Boss_Hpbar_Counter"
 		"HPinit_counter"	"Boss_Health_Init"
-		"HPbar_min"			"0"
+		"HPbar_min"			"1"
 		"HPbar_max"			"7"
-		"HPbar_default"		"0"
+		"HPbar_default"		"1"
 		"HPbar_mode"		"2"
 	}
 	"1"
