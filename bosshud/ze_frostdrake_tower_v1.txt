@@ -4,6 +4,6 @@
 	{
 		"Type"		"breakable"
 		"BreakableName"		"drake_hp"
-		"CustomText"		"Anchelion The Frostdrake"//def: BOSS HP
+		"CustomText"		"Anchelion"//def: BOSS HP
 	}
 }
