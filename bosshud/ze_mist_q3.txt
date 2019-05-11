@@ -5,7 +5,7 @@
 		"HP_counter"		"counter_eschp"
 		"HPbar_counter"		""
 		"HPinit_counter"	""
-		"CustomText"		"What name?"//def: BOSS HP
+		"CustomText"		"Undead Dragon"//def: BOSS HP
 		"HPbar_min"			""
 		"HPbar_max"			""
 		"HPbar_default"		""
