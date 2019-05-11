@@ -9,6 +9,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Crazy Pencil"
 	}
 	"1"
 	{
@@ -19,6 +20,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Cyborg Astley"
 	}
 	"2"
 	{
@@ -29,6 +31,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Evil Robot MkII"
 	}
 	"3"
 	{
@@ -39,6 +42,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Laser Kappa"
 	}
 	"4"
 	{
@@ -49,21 +53,26 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Pilot Pingu"
 	}
 	"5"
 	{
 		"HP_counter"		"boss_hp4_phase1"
+		"CustomText"		"The Eye - Giant"
 	}
 	"6"
 	{
 		"HP_counter"		"boss_hp4_phase2"
+		"CustomText"		"The Eye - Beserk"
 	}
 	"7"
 	{
 		"HP_counter"		"boss_hp4_phase3"
+		"CustomText"		"The Eye - Electro"
 	}
 	"8"
 	{
 		"HP_counter"		"stage_2_ex_boss_37"
+		"CustomText"		"Evil Robot MkII (Rage)"
 	}
 }
