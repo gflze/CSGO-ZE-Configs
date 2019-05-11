@@ -5,7 +5,7 @@
 		"HP_counter"		"Boss_Health"
 		"HPbar_counter"		""
 		"HPinit_counter"	""
-		"CustomText"		""//def: BOSS HP
+		"CustomText"		"Slayer"//def: BOSS HP
 		"HPbar_min"			""
 		"HPbar_max"			""
 		"HPbar_default"		""
