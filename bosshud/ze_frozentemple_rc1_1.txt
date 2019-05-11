@@ -2,8 +2,8 @@
 {
 	"0" //math_counter
 	{
-		"Type"		"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"bt_hitbox"
-		"CustomText"		""//def: BOSS HP
+		"CustomText"		"Ice Crystal"//def: BOSS HP
 	}
 }
