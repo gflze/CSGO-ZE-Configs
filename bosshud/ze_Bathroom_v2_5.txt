@@ -9,6 +9,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
+		"CustomText"		"Rubber Duck"
 	}
 	"1"
 	{
@@ -19,5 +20,6 @@
 		"HPbar_max"			"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Sponge"
 	}
 }
