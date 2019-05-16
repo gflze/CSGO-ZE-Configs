@@ -3,29 +3,42 @@
 	"0"
 	{
 		"HP_counter"		"cboss_predatorhealth_counter"
+		"CustomName"		"Ruins Predator"
 	}
 	"1"
 	{
 		"HP_counter"		"bosshealth_endboss"
+		"CustomName"		"Ruins Predator"
 	}	
 	"2"
 	{
 		"HP_counter"		"mob_grudge_math"
+		"CustomText"		"Aztec Predator"
 	}
 	"3"
 	{
 		"HP_counter"		"aztecboss_math_health"
+		"CustomText"		"Aztec Predator"
 	}
 	"4"
 	{
 		"HP_counter"		"aztecboss_math_health_2"
+		"CustomText"		"Aztec Predator"
 	}
 	"5"
 	{
 		"HP_counter"		"fboss_math_1"
+		"CustomText"		"Ultimate Predator (Rage)"
 	}
 	"5"
 	{
 		"HP_counter"		"fboss_math_2"
+		"CustomText"		"Ultimate Predator"
+	}
+	
+	"6"
+	{
+		"HP_counter"		"fboss_ee_math"
+		"CustomText"		"Alien"
 	}
 }
