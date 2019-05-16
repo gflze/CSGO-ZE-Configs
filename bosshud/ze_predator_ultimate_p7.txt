@@ -3,7 +3,7 @@
 	"0"
 	{
 		"HP_counter"		"cboss_predatorhealth_counter"
-		"CustomName"		"Ruins Predator"
+		"CustomName"		"Hyper Predator"
 	}
 	"1"
 	{
@@ -13,7 +13,7 @@
 	"2"
 	{
 		"HP_counter"		"mob_grudge_math"
-		"CustomText"		"Aztec Predator"
+		"CustomText"		"Ruins Predator"
 	}
 	"3"
 	{
