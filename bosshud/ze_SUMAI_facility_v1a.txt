@@ -1,0 +1,9 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"physbox"
+		"BreakableName"		"boss1_hpbox"
+		"CustomText"		"Giant Mutant"
+	}
+}
