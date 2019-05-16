@@ -9,6 +9,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
+		"CustomText"		"Crucified"
 	}
 	"1"
 	{
@@ -19,6 +20,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
+		"CustomText"		"Naraka"
 	}
 	"2"
 	{
@@ -29,5 +31,6 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
+		"CustomText"		"Giant Crucified"
 	}
 }

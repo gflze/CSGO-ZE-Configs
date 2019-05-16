@@ -4,5 +4,6 @@
 	{
 		"Type"		"breakable"
 		"BreakableName"		"i_minotaurgod_hp"
+		"CustomText"	"Minotaur God"
 	}
 }

@@ -9,6 +9,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Rick Astley"
 	}
 	"1"
 	{
@@ -19,6 +20,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Spin Right Round"
 	}
 	"2"
 	{
@@ -29,6 +31,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Spaceship"
 	}
 	"3"
 	{
@@ -39,6 +42,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Angry Robot"
 	}
 	"4"
 	{
@@ -49,13 +53,16 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"Angry Mouth"
 	}
 	"5"
 	{
 		"HP_counter"		"lastboss_moving"
+		"CustomText"		"The Eye (Moving)"
 	}
 	"6"
 	{
 		"HP_counter"		"lastboss_static"
+		"CustomText"		"The Eye (Static)"
 	}
 }

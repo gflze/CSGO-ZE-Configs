@@ -25,6 +25,6 @@
 	"2"
 	{
 		"HP_counter"		"stronghold_final_boss_hp"
-		"CustomText"		"HIM"
+		"CustomText"		"Herobrine"
 	}
 }
