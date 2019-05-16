@@ -19,7 +19,7 @@
 	
 	"2"
 	{
-		"Type"			"physbox"
+		"Type"			"breakable"
 		"BreakableName		"st2_hitbox"
 		"CustomText"		"Puny Light"
 	}
