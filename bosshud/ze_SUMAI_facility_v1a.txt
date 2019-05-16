@@ -2,7 +2,7 @@
 {
 	"0"
 	{
-		"Type"				"physbox"
+		"Type"			"breakable"
 		"BreakableName"		"boss1_hpbox"
 		"CustomText"		"Giant Mutant"
 	}
