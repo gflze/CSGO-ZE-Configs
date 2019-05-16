@@ -8,6 +8,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+		"CustomText"		"Dragon"
 	}
 	"1"
 	{
@@ -17,6 +18,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+		"CustomText"		"Dragon"
 	}
 	"2"
 	{
@@ -26,6 +28,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+		"CustomText"		"Dwarven Centurion"
 	}
 	"3"
 	{
@@ -35,5 +38,6 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
+		"CustomText"		"Alduin"
 	}
 }

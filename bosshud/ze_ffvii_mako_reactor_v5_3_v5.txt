@@ -8,5 +8,13 @@
 		"HPbar_max"			""
 		"HPbar_default"		""
 		"HPbar_mode"		""	// OnHitMin=1 OnHitMax=2
+		"CustomText"		"Bahamut"
+	}
+	
+	"1"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"bahamutend1"
+		"CustomText"	"Sephiroth"
 	}
 }
