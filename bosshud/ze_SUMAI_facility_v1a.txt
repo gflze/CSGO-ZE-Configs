@@ -2,7 +2,7 @@
 {
 	"config"
 	{
-		HitMarkerOnly		"1"
+		"HitMarkerOnly"		"1"
 	}
 	"0"
 	{
