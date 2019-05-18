@@ -21,7 +21,6 @@
 	{
 		"Type"			"breakable"
 		"BreakableName		"st2_hitbox"
-		"HitMarkerOnly"		"1"
 		"CustomText"		"Puny Light"
 	}
 	
