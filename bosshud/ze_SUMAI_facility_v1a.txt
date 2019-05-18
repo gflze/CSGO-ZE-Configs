@@ -1,0 +1,19 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss1_hpbox"
+		"CustomText"		"Giant Mutant"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"stage2_fan_breakable"
+		"CustomText"		"A Vent"	
+	}
+}
