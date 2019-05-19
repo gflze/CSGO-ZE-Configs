@@ -1,0 +1,49 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"				"1"
+	}
+	
+	"0"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Asylum_Demon_Hitbox"
+	}
+	
+	"1"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Broadhead_Body"
+	}
+	
+	"2"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Golem_Phys_Body"
+	}
+	
+	"3"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Gwyndolin_Phys_Body"
+	}
+	
+	"4"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Ornstein_Phys_Body"
+	}
+	
+	"5"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Gargoyle_Phys"
+	}
+	
+	"6"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"Gwyn_Phys_Body"
+	}
+}
