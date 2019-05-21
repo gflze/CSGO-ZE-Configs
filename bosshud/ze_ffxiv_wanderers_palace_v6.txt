@@ -2,8 +2,32 @@
 {
 	"0"
 	{
-		"Type"		"breakable"
-		"BreakableName"		"Ultimate_Breakable"
-		"CustomText"		""//def: BOSS HP
+		"Type"				"breakable"
+		"BreakableName"		"Aqua_Breakable"
+		"CustomText"		"Aqua"
+	}
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Kain_Highwind_Hitbox"
+		"CustomText"		"Kain Highwind"
+	}
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Odin_Hitbox"
+		"CustomText"		"Odin"
+	}
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"KOH_Hitbox"
+		"CustomText"		""
+	}
+	"4"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Garland_Hitbox"
+		"CustomText"		"Garland"
 	}
 }
