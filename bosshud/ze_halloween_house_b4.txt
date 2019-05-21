@@ -2,8 +2,15 @@
 {
 	"0"
 	{
-		"Type"				"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"CounterBreakable"
 		"CustomText"		"Gas Meter"
+	}
+	
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Rat_Breakable"
+		"CustomText"		"Ms. Whiskas"
 	}
 }
