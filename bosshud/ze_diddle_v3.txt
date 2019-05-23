@@ -1,0 +1,61 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"			"1"
+	}
+	
+	"0"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"X69XTurtleBossHP1"
+	}
+	
+	"1"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"X69XTurtleBosshp2"
+	}
+	
+	"2"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"Ord_lvl_02_boss_break"
+	}
+	
+	"3"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"Ord_lvl_01_boss_break"
+	}
+	
+	"4"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"X69XOrd_main_large_diglett_break"
+	}
+	
+	"5"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"X69XOrd_main_mid_diglett_break"	
+	}
+	
+	"6"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"X69Xluff_npc_phys2gg"	
+	}
+	
+	"7"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"dd_hp"	
+	}
+
+	"8"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"i_npc_hp_1"	
+	}	
+}
