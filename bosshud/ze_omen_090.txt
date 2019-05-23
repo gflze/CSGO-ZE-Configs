@@ -1,0 +1,32 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_Counter"	"l1_plant_hitbox"
+		"CustomText"	"Plant"
+	}
+	
+	"1"
+	{
+		"HP_Counter"	"l2_boss_hitbox"
+		"CustomText"	"Crystal"
+	}
+
+	"2"
+	{
+		"HP_Counter"	"l2_end_hitbox"
+		"CustomText"	"Light"
+	}
+	
+	"3"
+	{
+		"HP_Counter"	"l2_boss_hitbox"
+		"CustomText"	"Eternal Crystal"
+	}
+	
+	"4"
+	{
+		"HP_Counter"	"l3_boss_end_hitbox"
+		"CustomText"	"Eternal Light"
+	}
+}
