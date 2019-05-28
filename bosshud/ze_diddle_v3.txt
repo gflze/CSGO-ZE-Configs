@@ -44,16 +44,10 @@
 	"6"
 	{
 		"Type"					"breakable"
-		"BreakableName"			"X69Xluff_npc_phys2gg"	
-	}
-	
-	"7"
-	{
-		"Type"					"breakable"
 		"BreakableName"			"dd_hp"	
 	}
 
-	"8"
+	"7"
 	{
 		"Type"					"breakable"
 		"BreakableName"			"i_npc_hp_1"	
