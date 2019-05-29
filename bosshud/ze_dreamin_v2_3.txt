@@ -20,7 +20,7 @@
 	"2"
 	{
 		"Type"			"breakable"
-		"BreakableName		"st2_hitbox"
+		"BreakableName"		"st2_hitbox"
 		"CustomText"		"Puny Light"
 	}
 	
