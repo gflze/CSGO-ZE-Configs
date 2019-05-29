@@ -31,4 +31,11 @@
 		"BreakableName"	"bahamutend1"
 		"CustomText"	"Sephiroth"
 	}
+	
+	"4"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"Monstruo_Breakable"
+		"CustomText"	"Guard Scorpion"
+	}
 }
