@@ -22,6 +22,7 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Giant Crucified"
 	}
+	
 	"2"
 	{
 		"HP_counter"		"naraka_ultimate_counter"
@@ -31,6 +32,13 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Crucified"
+		"CustomText"		"A Creature"
+	}
+	
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"BossCage"
+		"CustomName"		"Crucified"
 	}
 }
