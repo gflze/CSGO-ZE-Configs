@@ -8,7 +8,6 @@
 	"0"
 	{
 		"HP_counter"		"hp_counter100"
-		"
 	}
 	
 	"1"
