@@ -1,0 +1,38 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"nrk2_boss_counter"
+		"HPbar_counter"		"nrk2_boss_hp_iterations"
+		"HPinit_counter"	"nrk2_boss_hp_backup"
+		"CustomText"		"Naraka"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+	
+	"1"
+	{
+		"HP_counter"		"nrk3_counter"
+		"HPbar_counter"		"nrk3_hp_iterations"
+		"HPinit_counter"	"nrk3_hp_backup"
+		"CustomText"		"Naraka"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}
+
+	"2"
+	{
+		"HP_counter"		"nrk5_boss_counter"
+		"HPbar_counter"		"nrk5_boss_hp_iterations"
+		"HPinit_counter"	"nrk5_boss_hp_backup"
+		"CustomText"		"Naraka"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+	}	
+}
