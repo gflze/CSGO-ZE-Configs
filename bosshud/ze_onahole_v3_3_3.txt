@@ -3,49 +3,49 @@
 	
 	"0"
 	{
-		"HP_Counter"	"Onabox"
+		"HP_counter"	"Onabox"
 		"CustomText"	"Onahole Box"
 	}
 	
 	"1"
 	{
-		"HP_Counter"	"boss_health2"
+		"HP_counter"	"boss_health2"
 		"CustomText"	"Pingas"
 	}
 	
 	"2"
 	{
-		"HP_Counter"	"Hank_hitbox"
+		"HP_counter"	"Hank_hitbox"
 		"CustomText"	"Cosmo Hank Hill"
 	}
 
 	"3"
 	{
-		"HP_Counter"	"ex2_boss2_health"
+		"HP_counter"	"ex2_boss2_health"
 		"CustomText"	"Gris Kazoo"
 	}
 	
 	"4"
 	{
-		"HP_Counter"	"boss_health2_ex"
+		"HP_counter"	"boss_health2_ex"
 		"CustomText"	"Kazoo Pingas"
 	}
 
 	"5"
 	{
-		"HP_Counter"	"boss3_hitbox_health"
+		"HP_counter"	"boss3_hitbox_health"
 		"CustomText"	"Vagene"
 	}
 
 	"6"
 	{
-		"HP_Counter"	"hank_bahamut_hp"
+		"HP_counter"	"hank_bahamut_hp"
 		"CustomText"	"Bahamut Hank"
 	}
 
 	"7"
 	{
-		"HP_Counter"	"barry_final_health"
+		"HP_counter"	"barry_final_health"
 		"CustomText"	"Sephiroth Berry"
 	}	
 }
