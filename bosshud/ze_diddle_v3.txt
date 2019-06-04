@@ -1,55 +1,66 @@
 "math_counter"
 {
-	"config"
-	{
-		"HitMarkerOnly"			"1"
-	}
 	
 	"0"
 	{
-		"Type"					"breakable"
+		"Type"				"breakable"
 		"BreakableName"			"X69XTurtleBossHP1"
+		"CustomText"			"Angry Demon Turtle"
 	}
 	
 	"1"
 	{
-		"Type"					"breakable"
+		"Type"				"breakable"
 		"BreakableName"			"X69XTurtleBosshp2"
+		"CustomText"			"Angrier Demon Turtle"
 	}
 	
 	"2"
 	{
-		"Type"					"breakable"
+		"Type"				"breakable"
 		"BreakableName"			"Ord_lvl_02_boss_break"
+		"CustomText"			"The Digletts"
 	}
 	
 	"3"
 	{
-		"Type"					"breakable"
+		"Type"				"breakable"
 		"BreakableName"			"Ord_lvl_01_boss_break"
+		"CustomText"			"Diglett Dick"
 	}
 	
 	"4"
 	{
-		"Type"					"breakable"
+		"Type"				"breakable"
 		"BreakableName"			"X69XOrd_main_large_diglett_break"
+		"CustomText"			"Even Larger Diglett"
 	}
 	
 	"5"
 	{
-		"Type"					"breakable"
-		"BreakableName"			"X69XOrd_main_mid_diglett_break"	
+		"Type"				"breakable"
+		"BreakableName"			"X69XOrd_main_mid_diglett_break"
+		"CustomText"			"Large Diglett"
 	}
 	
 	"6"
 	{
-		"Type"					"breakable"
-		"BreakableName"			"dd_hp"	
+		"Type"				"breakable"
+		"BreakableName"			"X69XOrd_main_little_diglett_break"
+		"CustomText"			"Little Diglett"
 	}
-
+	
 	"7"
 	{
-		"Type"					"breakable"
-		"BreakableName"			"i_npc_hp_1"	
+		"Type"				"breakable"
+		"BreakableName"			"dd_hp"
+		"CustomText"			"The Diddler"
+	}
+
+	"8"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"i_npc_hp_1"
+		"CustomText"			"The Fetus"
 	}	
 }
