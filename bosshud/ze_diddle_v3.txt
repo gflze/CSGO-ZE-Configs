@@ -54,7 +54,7 @@
 	{
 		"Type"				"breakable"
 		"BreakableName"			"dd_hp"
-		"CustomText"			"The Diddler"
+		"CustomText"			"The Diddle Dick"
 	}
 
 	"8"
