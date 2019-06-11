@@ -2,31 +2,36 @@
 {
 	"0"
 	{
-		"HP_counter"	"l1_plant_hitbox"
-		"CustomText"	"Plant"
+		"Type"		"breakable"
+		"BreakableName"	"l1_plant_hitbox"
+		"CustomText"	"Crazy Plant"
 	}
 	
 	"1"
 	{
-		"HP_counter"	"l2_boss_hitbox"
+		"Type"		"breakable"		
+		"BreakableName"	"l2_boss_hitbox"
 		"CustomText"	"Crystal"
 	}
 
 	"2"
 	{
-		"HP_counter"	"l2_end_hitbox"
+		"Type"		"breakable"		
+		"BreakableName"	"l2_end_hitbox"
 		"CustomText"	"Light"
 	}
 	
 	"3"
 	{
-		"HP_counter"	"l2_boss_hitbox"
+		"Type"		"breakable"	
+		"BreakableName"	"l2_boss_hitbox"
 		"CustomText"	"Eternal Crystal"
 	}
 	
 	"4"
 	{
-		"HP_counter"	"l3_boss_end_hitbox"
+		"Type"		"breakable"	
+		"BreakableName"	"l3_boss_end_hitbox"
 		"CustomText"	"Eternal Light"
 	}
 }
