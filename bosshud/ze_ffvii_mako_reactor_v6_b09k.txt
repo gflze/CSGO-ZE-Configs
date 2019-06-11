@@ -1,0 +1,35 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"HPCounter"
+		"HPbar_counter"		"HPCounterIterator"
+		"HPinit_counter"	"HPCounterBackUp"
+		"HPbar_min"			"0"
+		"HPbar_max"			"40"
+		"HPbar_default"		"40"
+		"HPbar_mode"		"1"
+		"CustomText"		"Boss"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Sephiroth_Final_Breakable"
+		"CustomText"		"Sephiroth"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Final_Fulgor_Breakable"
+		"CustomText"		"Bahamut"
+	}
+
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Sephiroth_Bridge_Breakable"
+		"CustomText"		"Sephiroth"
+	}
+}
