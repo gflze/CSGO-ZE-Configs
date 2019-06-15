@@ -3,22 +3,22 @@
 	"0"
 	{
 		"HP_counter"		"npc_bahamut_counter"
-		"CustomText"		"Bahamut"
+		"CustomText"		"Bahatard"
 	}
 	"1"
 	{
 		"HP_counter"		"trigger_pyramid_counter"
-		"CustomText"		"Pyramid Head"
+		"CustomText"		"Pyramigay"
 	}
 	"2"
 	{
 		"HP_counter"		"space_counter1"
-		"CustomText"		"Space"
+		"CustomText"		"Eye - Phase 1/2"
 	}
 	"3"
 	{
 		"HP_counter"		"space_counter2"
-		"CustomText"		"Space"
+		"CustomText"		"Eye - Phase 2/2"
 	}
 	"4"
 	{
