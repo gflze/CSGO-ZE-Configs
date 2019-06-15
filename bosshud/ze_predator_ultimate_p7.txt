@@ -3,12 +3,12 @@
 	"0"
 	{
 		"HP_counter"		"cboss_predatorhealth_counter"
-		"CustomName"		"Hyper Predator"
+		"CustomText"		"Hyper Predator"
 	}
 	"1"
 	{
 		"HP_counter"		"bosshealth_endboss"
-		"CustomName"		"Ruins Predator"
+		"CustomText"		"Ruins Predator"
 	}	
 	"2"
 	{
