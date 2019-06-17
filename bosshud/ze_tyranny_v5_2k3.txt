@@ -1,0 +1,122 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bosslvl1_counter1"
+		"HPbar_counter"		"bosslvl1_counter3"
+		"HPinit_counter"	"bosslvl1_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Spider"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"bosslvl2_counter1"
+		"HPbar_counter"		"bosslvl2_counter3"
+		"HPinit_counter"	"bosslvl2_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Troll"
+	}
+	
+	"2"
+	{
+		"HP_counter"		"bosslvl2_end_counter1"
+		"HPbar_counter"		"bosslvl2_end_counter3"
+		"HPinit_counter"	"bosslvl2_end_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Dragon"
+	}
+	
+	"3"
+	{
+		"HP_counter"		"bosslvl3_counter1"
+		"HPbar_counter"		"bosslvl3_counter3"
+		"HPinit_counter"	"bosslvl3_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Dragon"
+	}
+	
+	"4"
+	{
+		"HP_counter"		"bosslvl3_end_counter1"
+		"HPbar_counter"		"bosslvl3_end_counter3"
+		"HPinit_counter"	"bosslvl3_end_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Dragon"
+	}
+	
+	"5"
+	{
+		"HP_counter"		"bosslvl4_counter1"
+		"HPbar_counter"		"bosslvl4_counter3"
+		"HPinit_counter"	"bosslvl4_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Gargantua"
+	}
+	
+	"6"
+	{
+		"HP_counter"		"bosslvl5_counter1"
+		"HPbar_counter"		"bosslvl5_counter3"
+		"HPinit_counter"	"bosslvl5_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Balrog"
+	}
+	
+	"7"
+	{
+		"HP_counter"		"bosslvl5_end_counter3"
+		"HPbar_counter"		"bosslvl5_end_counter3"
+		"HPinit_counter"	"bosslvl5_end_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Dragon"
+	}
+	
+	"8"
+	{
+		"HP_counter"		"bosslvl5_garg_counter1"
+		"HPbar_counter"		"bosslvl5_garg_counter3"
+		"HPinit_counter"	"bosslvl5_garg_counter2"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Gargantua"
+	}
+	
+	"9"
+	{
+		"HP_counter"		"bosslvl5_laser_counter"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		""
+		"CustomText"		"Balrog"
+	}
+}
