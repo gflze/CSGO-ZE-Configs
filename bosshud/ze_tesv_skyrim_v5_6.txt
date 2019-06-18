@@ -1,5 +1,10 @@
 "math_counter"
 {
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+
 	"0"
 	{
 		"HP_counter"		"counter_1"
@@ -8,7 +13,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
-		"CustomText"		"Dragon"
+		"CustomText"		"Alduin"
 	}
 	"1"
 	{
@@ -18,7 +23,7 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
-		"CustomText"		"Dragon"
+		"CustomText"		"Alduin"
 	}
 	"2"
 	{
@@ -39,5 +44,26 @@
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
 		"CustomText"		"Alduin"
+	}
+	
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"smalldwboss_physbox2"
+		"CustomText"		"Dwarven Sphere"
+	}
+	
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"dr_phbox"
+		"CustomText"		"Dragonpriest (Player)"
+	}
+	
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"phbox"
+		"CustomText"		"Dragonpriest (Boss)"
 	}
 }
