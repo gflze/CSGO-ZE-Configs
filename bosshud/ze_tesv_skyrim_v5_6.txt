@@ -35,6 +35,7 @@
 		"HPbar_mode"		"1"	// OnHitMin=1 OnHitMax=2
 		"CustomText"		"Dwarven Centurion"
 	}
+	
 	"3"
 	{
 		"HP_counter"		"counter_3"
@@ -53,17 +54,10 @@
 		"CustomText"		"Dwarven Sphere"
 	}
 	
-	"5"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"dr_phbox"
-		"CustomText"		"Dragonpriest (Player)"
-	}
-	
 	"6"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"phbox"
-		"CustomText"		"Dragonpriest (Boss)"
+		"CustomText"		"Dragonpriest"
 	}
 }
