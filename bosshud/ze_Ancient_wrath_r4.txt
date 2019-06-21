@@ -1,7 +1,31 @@
 "math_counter"
 {
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+
 	"0"
 	{
 		"HP_counter"		"boss_3_knockback_1_counter"
+		"CustomText"		"Quadralex"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"boss_2_knockback_1_counter"
+		"CustomText"		"Quadralex"		
+	}
+	
+	"2"
+	{
+		"HP_counter"		"boss_2_knockback_2_counter"
+		"CustomText"		"Quadralex"		
+	}
+	
+	"3"
+	{
+		"HP_counter"		"boss_2_knockback_3_counter"
+		"CustomText"		"Quadralex"		
 	}
 }
