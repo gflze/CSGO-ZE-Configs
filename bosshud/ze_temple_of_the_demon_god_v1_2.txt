@@ -1,5 +1,10 @@
 "math_counter"
 {
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+
 	"0"
 	{
 		"HP_counter"		"nrk2_thorn_counter"
@@ -8,7 +13,7 @@
 		"HPbar_min"			"0"
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
-		"CustomText"		"Thorn of Death"
+		"CustomText"		"Thorn Of Death"
 		"HPbar_mode"		"1"
 	}
 	"1"
@@ -54,5 +59,50 @@
 		"HPbar_default"		"4"
 		"CustomText"		"Evil Maker"
 		"HPbar_mode"		"1"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk2_hellseeker_break"
+		"CustomText"		"Hell Seeker"
+	}
+	"6"
+	{
+		"HP_counter"		"nrk3_thorn_meteor_counter"
+		"HPbar_counter"		"nrk3_thorn_meteor_iterations"
+		"HPinit_counter"	"nrk3_thorn_meteor_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		"Thorn Of Fire Pillars"
+		"HPbar_mode"		"1"
+	}
+	"7"
+	{
+		"HP_counter"		"nrk3_thorn_protection_counter"
+		"HPbar_counter"		"nrk3_thorn_protection_iterations"
+		"HPinit_counter"	"nrk3_thorn_protection_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		"Thorn Of Protection"
+		"HPbar_mode"		"1"
+	}
+	"8"
+	{
+		"HP_counter"		"nrk3_thorn_recovery_counter"
+		"HPbar_counter"		"nrk3_thorn_recovery_iterations"
+		"HPinit_counter"	"nrk3_thorn_recovery_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		"Thorn Of Recovery"
+		"HPbar_mode"		"1"
+	}
+	"9"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk3_soulscollecter_break"
+		"CustomText"		"Soul Collector"
 	}
 }
