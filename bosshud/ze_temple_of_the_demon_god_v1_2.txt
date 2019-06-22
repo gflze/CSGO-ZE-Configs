@@ -1,6 +1,6 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"nrk2_thorn_counter"
 		"HPbar_counter"		"nrk2_thorn_hp_iterations"
@@ -8,10 +8,10 @@
 		"HPbar_min"			"0"
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
-		"CustomText"		""//def: BOSS HP
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"CustomText"		"Thorn of Death"
+		"HPbar_mode"		"1"
 	}
-	"1" //math_counter
+	"1"
 	{
 		"HP_counter"		"nrk3_counter1"
 		"HPbar_counter"		"nrk3_hp_iterations1"
@@ -19,7 +19,40 @@
 		"HPbar_min"			"0"
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
-		"CustomText"		""//def: BOSS HP
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"CustomText"		"Hell Dragon"
+		"HPbar_mode"		"1"
+	}
+	"2"
+	{
+		"HP_counter"		"nrk3_skyhell_counter"
+		"HPbar_counter"		"nrk3_skyhell_iterations"
+		"HPinit_counter"	"nrk3_skyhell_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		"Evil Believer"
+		"HPbar_mode"		"1"
+	}
+	"3"
+	{
+		"HP_counter"		"nrk2_hp_counter"
+		"HPbar_counter"		"nrk2_hp_iterations"
+		"HPinit_counter"	"nrk2_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"CustomText"		"Doom Bringer"
+		"HPbar_mode"		"1"
+	}
+	"4"
+	{
+		"HP_counter"		"nrk3_hp_counter"
+		"HPbar_counter"		"nrk3_hp_iterations"
+		"HPinit_counter"	"nrk3_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"4"
+		"HPbar_default"		"4"
+		"CustomText"		"Evil Maker"
+		"HPbar_mode"		"1"
 	}
 }
