@@ -9,6 +9,7 @@
 	{
 		"HP_counter"		"counter_1"
 		"HPbar_counter"		"BossHpIterations4"
+		"HPinit_counter		"counter_1_backup"
 		"HPbar_min"			"0"
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
@@ -19,6 +20,7 @@
 	{
 		"HP_counter"		"counter_2"
 		"HPbar_counter"		"BossHpIterations3"
+		"HPinit_counter		"counter_2_backup"
 		"HPbar_min"			"0"
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
@@ -29,6 +31,7 @@
 	{
 		"HP_counter"		"dw_hp"
 		"HPbar_counter"		"BossHpIterations2"
+		"HPinit_counter		"dw_hp_backup"
 		"HPbar_min"			"0"
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
@@ -40,6 +43,7 @@
 	{
 		"HP_counter"		"counter_3"
 		"HPbar_counter"		"BossHpIterations"
+		"HPinit_counter		"bosshpbackup"
 		"HPbar_min"			"0"
 		"HPbar_max"			"10"
 		"HPbar_default"		"10"
