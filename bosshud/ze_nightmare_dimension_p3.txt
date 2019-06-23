@@ -1,0 +1,30 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"boss_life1"
+		"CustomText"		"Eye - Life Crystal 1"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"boss_life2"
+		"CustomText"		"Eye - Life Crystal 2"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"boss_life3"
+		"CustomText"		"Eye - Life Crystal 3"
+	}
+	
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"boss_life4"
+		"CustomText"		"Eye - Life Crystal 4"
+	}
+}

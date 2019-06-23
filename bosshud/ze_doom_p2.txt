@@ -1,0 +1,30 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Bossheadbegin"
+		"CustomText"		"Icon Of Sin"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Bossheadfirst"
+		"CustomText"		"Icon Of Sin"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Bossheadsecond"
+		"CustomText"		"Icon Of Sin"
+	}
+	
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"BossHeadfinal"
+		"CustomText"		"Icon Of Sin"
+	}
+}
