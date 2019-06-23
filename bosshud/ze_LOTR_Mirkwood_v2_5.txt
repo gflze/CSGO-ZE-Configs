@@ -1,0 +1,9 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"FinalBoss_hitbox"
+		"CustomName"		"Spider"
+	}
+}
