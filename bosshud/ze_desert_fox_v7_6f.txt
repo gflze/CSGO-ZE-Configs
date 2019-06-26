@@ -1,0 +1,9 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"boss_head"
+		"CustomText"		"Demon Burger"
+	}
+}
