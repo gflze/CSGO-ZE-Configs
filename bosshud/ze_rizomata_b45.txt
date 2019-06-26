@@ -8,7 +8,9 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Slyph"
 	}
+	
 	"1"
 	{
 		"HP_counter"		"5_boss_hpcounter"
@@ -17,9 +19,12 @@
 		"HPbar_max"			"10"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Salamander"
 	}
+	
 	"2"
 	{
 		"HP_counter"		"5_boss_enragehpcounter"
+		"CustomText"		"Salamander - Enrage"
 	}
 }

@@ -1,0 +1,20 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"dragonlaserMATHcounter"
+		"CustomText"		"Boss"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"Donat_boss_hpsum"
+		"CustomText"		"Donut"
+	}
+	
+	"2"
+	{
+		"HP_counter"		"rtvbossmath2"
+		"CustomText"		"RTV Boss"
+	}
+}
