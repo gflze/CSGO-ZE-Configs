@@ -11,4 +11,11 @@
 		"HPbar_default"		""
 		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
 	}
+	
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"core_break_blocker"
+		"CustomText"		"Metal Piece"
+	}
 }
