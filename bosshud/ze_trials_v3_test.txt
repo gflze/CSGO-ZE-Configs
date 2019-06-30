@@ -1,0 +1,49 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"			"1"
+	}
+
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_1_Boss_Breakable"
+		"CustomText"		"Light Beam - 1"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_1_Boss_Breakable_2"
+		"CustomText"		"Light Beam - 2"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_1_Boss_Breakable_3"
+		"CustomText"		"Light Beam - 3"
+	}
+	
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_3_Boss_Breakable"
+		"CustomText"		"Particle - 1"
+	}
+	
+	"4"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_3_Boss_Breakable_2"
+		"CustomText"		"Particle - 2"
+	}
+	
+	"5"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Level_3_Boss_Breakable_3"
+		"CustomText"		"Particle - 3"
+	}
+}
