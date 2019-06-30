@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bosshpscale"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"CustomText"		"Gopnik"
+		"HPbar_min"			""
+		"HPbar_max"			""
+		"HPbar_default"		""
+		"HPbar_mode"		""
+	}
+}
