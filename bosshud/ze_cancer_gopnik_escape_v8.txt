@@ -1,8 +1,0 @@
-"math_counter"
-{
-	"0"
-	{
-		"HP_counter"		"bosshpscale"
-		"CustomText"		"Gopnik"
-	}
-}
