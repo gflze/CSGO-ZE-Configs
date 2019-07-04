@@ -1,7 +1,19 @@
 "math_counter"
 {
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+
 	"0"
 	{
 		"HP_counter"		"boss_counter2"
+		"CustomText"		"Dreadnought Engine/Driver - 2"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"boss_counter1"
+		"CustomText"		"Dreadnought Engine/Driver - 1"
 	}
 }
