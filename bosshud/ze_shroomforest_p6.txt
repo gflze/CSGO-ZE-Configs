@@ -1,5 +1,10 @@
 "math_counter"
 {
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+
 	"0"
 	{
 		"HP_counter"		"dynamic_HP"
