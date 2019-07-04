@@ -3,5 +3,6 @@
 	"0"
 	{
 		"HP_counter"		"BossHPCounter"
+		"CustomText"		"Reaper Splitter"
 	}
 }
