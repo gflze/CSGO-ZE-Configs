@@ -4,10 +4,12 @@
 	{
 		"Type"		"breakable"
 		"BreakableName"		"boss_ep_hp"
+		"CustomText"		"Evil Pizza"
 	}
 	"1"
 	{
 		"Type"		"breakable"
 		"BreakableName"		"boss_jar_hp"
+		"CustomText"		"Darth Jar Jar"
 	}
 }
