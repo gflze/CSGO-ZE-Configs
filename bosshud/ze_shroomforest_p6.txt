@@ -1,9 +1,13 @@
 "math_counter"
 {
-	"0" //func_breakable or func_physbox
+	"config"
 	{
-		"Type"		"breakable"
-		"BreakableName"		"Satan_Boss_Phys"
-		"CustomText"		""//def: BOSS HP
+		"HitMarkerOnly"		"1"
+	}
+
+	"0"
+	{
+		"HP_counter"		"dynamic_HP"
+		"CustomText"		"Shroomforest Boss"
 	}
 }

@@ -3,12 +3,11 @@
 	"0" //math_counter
 	{
 		"HP_counter"		"counter_bosshp"
-		"HPbar_counter"		""
-		"HPinit_counter"	""
-		"CustomText"		""//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+		"HPbar_counter"		"boss_hpcounter"
+		"CustomText"		"Rock Head"
+		"HPbar_min"		"-1"
+		"HPbar_max"		"10"
+		"HPbar_default"		"4"
+		"HPbar_mode"		"1"
 	}
 }
