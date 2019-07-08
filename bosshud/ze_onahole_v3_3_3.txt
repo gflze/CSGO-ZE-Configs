@@ -4,7 +4,7 @@
 	"0"
 	{
 		"Type"		"breakable"
-		"HP_counter"	"Onabox"
+		"BreakableName"	"Onabox"
 		"CustomText"	"Onahole Box"
 	}
 	
