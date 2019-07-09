@@ -103,6 +103,19 @@
 	{
 		"Type"			"breakable"
 		"BreakableName"		"nrk3_soulscollecter_break"
-		"CustomText"		"Soul Collector"
+		"CustomText"		"Souls Collector"
+	}
+	"10"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk3_hellguardian_break"
+		"CustomText"		"Hell Guardian"
+	}
+	"11"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk3_crystal_breakable"
+		"CustomText"		"Crystal"
+		
 	}
 }
