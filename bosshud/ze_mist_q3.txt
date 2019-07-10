@@ -1,26 +1,14 @@
 "math_counter"
 {
-	"config"
-	{
-		"MultBoss"	"1"
-	}
-
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"counter_eschp"
 		"CustomText"		"Revived Dragon"
 	}
 	
-	"1"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"pbox_dragon"
-		"CustomText"		"Dragon"
-	}
-	
 	"2"
 	{
 		"HP_counter"		"counter_dragon"
-		"CustomText"		"Segments"
+		"CustomText"		"Dragon - HP Segments"
 	}
 }
