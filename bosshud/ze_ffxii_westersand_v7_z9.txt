@@ -9,6 +9,7 @@
 		"HPbar_max"			"6"
 		"HPbar_default"		"6"
 		"HPbar_mode"		"1"	// 1=降序 =2升序
+		"CustomText"		"Guardian"
 	}
 	"2"
 	{
@@ -18,6 +19,7 @@
 		"HPbar_max"			""
 		"HPbar_default"		""
 		"HPbar_mode"		""	// 1=降序 =2升序
+		"CustomText"		"Chaos"
 	}
 	"3"
 	{
@@ -27,6 +29,7 @@
 		"HPbar_max"			""
 		"HPbar_default"		""
 		"HPbar_mode"		""	// 1=降序 =2升序
+		"CustomText"		"Dragon"
 	}
 	"4"
 	{
@@ -36,5 +39,6 @@
 		"HPbar_max"			""
 		"HPbar_default"		""
 		"HPbar_mode"		""	// 1=降序 =2升序
+		"CustomText"		"Guardian"
 	}
 }
