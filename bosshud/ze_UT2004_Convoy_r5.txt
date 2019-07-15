@@ -8,12 +8,12 @@
 	"0"
 	{
 		"HP_counter"		"boss_counter2"
-		"CustomText"		"Dreadnought Engine/Driver - 2"
+		"CustomText"		"Dreadnought - 2"
 	}
 	
 	"1"
 	{
 		"HP_counter"		"boss_counter1"
-		"CustomText"		"Dreadnought Engine/Driver - 1"
+		"CustomText"		"Dreadnought - 1"
 	}
 }
