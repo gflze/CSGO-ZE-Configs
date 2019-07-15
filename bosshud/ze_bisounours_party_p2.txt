@@ -1,0 +1,16 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Pedobear_lvl1"
+		"CustomText"		"Pedobear"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Pedobear_lvl2"
+		"CustomText"		"Pedobear"
+	}
+}
