@@ -8,6 +8,6 @@
 	"1"
 	{
 		"HP_counter"		"boss_hp"
-		"CustomText"		"Bear"
+		"CustomText"		"Pedobear"
 	}
 }
