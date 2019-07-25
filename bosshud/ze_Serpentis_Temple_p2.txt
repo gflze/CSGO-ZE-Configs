@@ -1,0 +1,55 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"			"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"Room4_Boss_Hp"
+		"HPbar_counter"		"Room4_Boss_HpCounter"
+		"HPinit_counter"	"Room4_Boss_HpBackup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"40"
+		"HPbar_default"		"40"
+		"HPbar_mode"		"1"
+		"CustomText"		"Snake"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"Room5_Phys_HpCounter1"
+		"CustomText"		"Lightball"
+	}
+	
+	"2"
+	{
+		"HP_counter"		"Room5_Phys_HpCounter2"
+		"CustomText"		"Lightball"
+	}
+	
+	"3"
+	{
+		"HP_counter"		"Room8_Boss_Hp"
+		"HPbar_counter"		"Room8_Boss_HpCounter"
+		"HPinit_counter"	"Room8_Boss_HpBackup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"40"
+		"HPbar_default"		"40"
+		"HPbar_mode"		"1"
+		"CustomText"		"Snake"
+	}
+	
+	"4"
+	{
+		"HP_counter"		"HPCounter"
+		"HPbar_counter"		"HPCounterIterator"
+		"HPinit_counter"	"HPCounterBackUp"
+		"HPbar_min"			"0"
+		"HPbar_max"			"30"
+		"HPbar_default"		"30"
+		"HPbar_mode"		"1"
+		"CustomText"		"Medusa"
+	}
+}
