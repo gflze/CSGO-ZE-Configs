@@ -1,0 +1,32 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss_counter_1_1"
+		"CustomText"		"Cave Monster"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"boss_counter_1_2"
+		"CustomText"		"Cave Monster"
+	}
+	
+	"2"
+	{
+		"HP_counter"		"boss_counter_1_3"
+		"CustomText"		"Cave Monster"
+	}
+	
+	"3"
+	{
+		"HP_counter"		"boss_counter_1_4"
+		"CustomText"		"Cave Monster"
+	}
+	
+	"4"
+	{
+		"HP_counter"		"boss_counter_1_5"
+		"CustomText"		"Cave Monster"
+	}
+}
