@@ -29,4 +29,10 @@
 		"HP_counter"		"st3_hp"
 		"CustomText"		"Giant Light"
 	}
+	
+	"4"
+	{
+		"HP_counter"		"final_hp"
+		"CustomText"		"Final Light"
+	}
 }

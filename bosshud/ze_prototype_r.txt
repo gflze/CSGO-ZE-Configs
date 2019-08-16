@@ -1,0 +1,20 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"	"Helicopter_health"
+		"CustomText"	"Enemy Helicopter"
+	}
+	
+	"1"
+	{
+		"HP_counter"	"math_counter"
+		"CustomText"	"Power Core"
+	}
+	
+	"2"
+	{
+		"HP_counter"	"Prototype_health"
+		"CustomText"	"The Prototype"
+	}
+}
