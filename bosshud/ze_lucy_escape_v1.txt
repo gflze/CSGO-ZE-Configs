@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter" "boss2_counter"
+		"CustomText" "Elder Samurai"
+	}
+	
+	"1"
+	{
+		"HP_counter" "boss1_counter"
+		"CustomText" "Cruel Rider"
+	}
+}
