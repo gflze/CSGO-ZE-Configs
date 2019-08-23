@@ -1,3 +1,5 @@
+//used to patch the no-knockback spin exploit on some maps
+//install as csgo/scripts/vscripts/PushBack.nut
 enemy <- null;
 const PUSH_SCALE = 48.0;
 
