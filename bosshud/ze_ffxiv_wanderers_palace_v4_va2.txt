@@ -85,4 +85,10 @@
 		"HP_counter"		"lv3_nael_hp"
 		"CustomText"		"Nael"
 	}
+	"12"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"dark_bahamut_wall"
+		"CustomText"		"Dark Bahamut"
+	}
 }
