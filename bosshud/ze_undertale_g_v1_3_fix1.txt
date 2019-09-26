@@ -1,0 +1,19 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"undyne_hpcounter"
+		"HPbar_counter"		"undyne_hpmasscounter"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Undyne"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"kid_hpcounter"
+		"CustomText"		"Monster Kid"
+	}
+}
