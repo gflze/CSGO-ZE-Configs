@@ -1,0 +1,11 @@
+"math_counter"
+{
+	"0" 
+	{
+		"HP_counter"		"Boss_1_HP_Math1"
+	}
+	"1"
+	{
+		"HP_counter"		"Boss_2_HP_Math1"
+	}
+}
