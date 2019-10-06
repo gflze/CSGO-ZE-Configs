@@ -5,8 +5,8 @@
 		"HP_counter"		"counter1"
 		"HPbar_counter"		"counter3"
 		"HPinit_counter"	"counter2"
-		"HPbar_min"			""
-		"HPbar_max"			"16"
+		"HPbar_min"		""
+		"HPbar_max"		""
 		"HPbar_default"		"16"
 		"HPbar_mode"		"1"
 		"CustomText"		"Alien"
@@ -15,6 +15,6 @@
 	"1"
 	{
 		"HP_counter"		"roshi_counter"
-		"CustomText"		"Alien (Lasers)"
+		"CustomText"		"Alien"
 	}
 }
