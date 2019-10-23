@@ -1,0 +1,43 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly" 		"1"
+	}
+	
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl1_hit"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl4_hit"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl2_5_hit"
+	}
+	
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl3_hit"
+	}
+	
+	"4"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl6_hit"
+	}
+	
+	"5"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"bosslvl3_2_hit"
+	}
+}

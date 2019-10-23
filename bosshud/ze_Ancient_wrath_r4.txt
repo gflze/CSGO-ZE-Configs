@@ -28,4 +28,25 @@
 		"HP_counter"		"boss_2_knockback_3_counter"
 		"CustomText"		"Quadralex"		
 	}
+	
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_energy_1"
+		"CustomText"		"Energy Tube 1"
+	}
+	
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_energy_2"
+		"CustomText"		"Energy Tube 2"
+	}
+	
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_container"
+		"CustomText"		"Quadralex Container"
+	}
 }
