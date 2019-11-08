@@ -17,4 +17,11 @@
 		"HP_counter"	"Prototype_health"
 		"CustomText"	"The Prototype"
 	}
+	
+	"3"
+	{
+		"Type" 		"breakable"
+		"BreakableName" "stop_if_zombies_make_it"
+		"CustomText"	"The Prototype"
+	}
 }
