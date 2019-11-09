@@ -1,0 +1,82 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter" 	"KOH_Breakable"
+		"CustomText"	"Keeper of Halidon"
+	}
+	
+	"1"
+	{
+		"HP_counter" 	"Odin_HP_Counter"
+		"CustomText"	"Odin"
+	}
+	
+	"2"
+	{
+		"HP_counter"	"Ultima_Weapon_HP_Counter"
+		"CustomText"	"Ultima Weapon"
+	}
+	
+	"3"
+	{
+		"HP_counter"	"Knight_HP_Counter"
+		"CustomText"	"Knight"
+	}
+	
+	"4"
+	{
+		"HP_counter"	"Behemoth_HP_Counter"
+		"CustomText"	"Behemoth"
+	}
+	
+	"5"
+	{
+		"HP_counter"	"Mortibody_HP_Counter"
+		"CustomText"	"Mortibody"
+	}
+	
+	"6"
+	{
+		"HP_counter"	"Garland_HP_Counter"
+		"CustomText"	"Garland"
+	}
+	
+	"7"
+	{
+		"HP_counter"	"Seymour_Natus_HP_Counter"
+		"CustomText"	"Seymour Natus"
+	}
+	
+	"8"
+	{
+		"HP_counter"	"Sanctuary_Keeper_HP_Counter"
+		"CustomText"	"Sanctuary Keeper"
+	}
+	
+	"9"
+	{
+		"HP_counter"	"Castle_Bahamut_HP_Counter"
+		"CustomText"	"Castle Bahamut"
+	}
+	
+	"10"
+	{
+		"HP_counter"	"Final_Bahamut_HP_Counter"
+		"CustomText"	"Final Bahamut"
+	}
+	
+	"11"
+	{
+		"Type"			"breakable"
+		"BreakableName"	"Serpent_Breakable"
+		"CustomText"	"Serpent"
+	}
+	
+	"12"
+	{
+		"Type"			"breakable"
+		"BreakableName"	"Iron_Giant_Breakable"
+		"CustomText"	"Iron Giant"
+	}
+}
