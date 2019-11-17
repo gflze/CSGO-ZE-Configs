@@ -2,7 +2,7 @@
 {
 	"0"
 	{
-		"HP_counter" 	"KOH_Breakable"
+		"HP_counter" 	"KOH_HP_Counter"
 		"CustomText"	"Keeper of Halidon"
 	}
 	
