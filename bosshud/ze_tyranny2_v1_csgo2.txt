@@ -1,0 +1,49 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly" 			"1"
+	}
+
+	"0"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s1boss_hit"
+	}
+	
+	"1"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s2boss_hit"
+	}
+	
+	"2"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s3boss_hit"
+	}
+	
+	"3"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s4boss_hit"
+	}
+	
+	"4"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s5boss_hit"
+	}
+	
+	"5"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s5boss_angra_hit"
+	}
+	
+	"6"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"s5boss_diablo_hit"
+	}
+}
