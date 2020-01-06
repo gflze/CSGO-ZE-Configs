@@ -1,0 +1,52 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"2_boss_hpcounter"
+		"HPbar_counter"		"2_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+		"CustomText"		"Gnome"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"3_boss_hpcounter"
+		"HPbar_counter"		"3_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+		"CustomText"		"Undine"
+	}
+
+	"2"
+	{
+		"HP_counter"		"4_boss_hpcounter"
+		"HPbar_counter"		"4_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+		"CustomText"		"Slyph"
+	}
+	
+	"3"
+	{
+		"HP_counter"		"5_boss_hpcounter"
+		"HPbar_counter"		"5_boss_hpmasscounter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+		"CustomText"		"Salamander"
+	}
+	
+	"4"
+	{
+		"HP_counter"		"5_boss_enragehpcounter"
+		"CustomText"		"Salamander - Enrage"
+	}
+}
