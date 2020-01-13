@@ -1,0 +1,21 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss1_math_counter"
+		"CustomText"		"Vampire Lord"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"titan_core"
+		"CustomText"		"Titan Core"
+	}
+	
+	"2"
+	{
+		"HP_counter"		"boss2_counter"
+		"CustomText"		"God's Paladin"
+	}
+}
