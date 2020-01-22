@@ -1,0 +1,56 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"				"1"
+	}
+	
+	"0"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"boss_break_head"
+		"CustomText"				"Spider"
+	}
+	
+	"1"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"box_nazgryl"
+		"CustomText"				"Nazgul"
+	}
+	
+	"2"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"boss1_break"
+		"CustomText"				"Uruk-Hai"
+	}
+
+	"3"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"beam_1"
+		"CustomText"				"Stanchion 1"
+	}
+	
+	"4"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"beam_2"
+		"CustomText"				"Stanchion 2"
+	}
+
+	"5"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"box_grima_helth"
+		"CustomText"				"Grima Wormtongue"
+	}
+
+	"6"
+	{
+		"Type"						"breakable"
+		"BreakableName"				"boss3_break"
+		"CustomText"				"Saruman"
+	}
+}
