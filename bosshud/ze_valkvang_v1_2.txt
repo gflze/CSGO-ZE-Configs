@@ -1,5 +1,10 @@
 "math_counter"
 {
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
 	"0" //math_counter
 	{
 		"HP_counter"		"ds_ornstein_hpcounter"
