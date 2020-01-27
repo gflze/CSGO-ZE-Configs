@@ -1,0 +1,58 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Govno_box"
+		"CustomText"		"Grumpy Shitter"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Ponch_box_1"
+		"CustomText"		"Grumpy Shitter (Shield)"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Pidaras_Boss6"
+		"CustomText"		"Poncher Monkey Trap"
+	}
+	
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Boss6_1"
+		"CustomText"		"Poncher Monkey"
+	}
+	
+	"4"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Boss_box_2"
+		"CustomText"		"Asian Meshlem"		
+	}
+	
+	"5"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Boss_box_4"
+		"CustomText"		"Some Weird Boss"
+	}
+	
+	"6"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Boss_box_5"
+		"CustomText"		"Sans"
+	}
+	
+	"7"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Boss_box_1"
+		"CustomText"		"Smiley Face"	
+	}
+}

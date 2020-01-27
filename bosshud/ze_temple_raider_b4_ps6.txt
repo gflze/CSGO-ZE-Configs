@@ -1,0 +1,16 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Health"
+		"HPbar_counter"		"Boss_Health_Overlay_Counter"
+		"HPbar_min"			""
+		"HPbar_max"			"10"
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"End_Boss_Health"
+	}
+}
