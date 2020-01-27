@@ -17,29 +17,30 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 ```
 "math_counter"
 {
-	"config" <- OPTIONAL
+	"config" //OPTIONAL
 	{
 		"MultBoss"		"" //Does the map have two breakables/bosses at once? Useful to track 2 bosshp at once. 1 for enable.
 		"HitMarkerOnly"		"" //Only shows HitMarkers + BossDamage Ranking. Useful for maps with built-in BossHud. 1 for enable.
+		"BossBeatenShowTopDamage"	"1" //Whether to show the top damagers of boss after it dies
 	}
 	"0"
 	{
 		//math_counter example
-		"HP_counter"		""//targetname of the hp math_counter
-		"HPbar_counter"		""//targetname of the math_counter that handles a hp bar (if applicable)
-		"HPinit_counter"	""//targetname of the math_counter that inits the hp math_counter (if applicable)
-		"CustomText"		""//custom name to show in the hud
-		"HPbar_min"			""//min value of the math_counter that handles a hp bar (if applicable)
-		"HPbar_max"			""//max value of the math_counter that handles a hp bar (if applicable)
-		"HPbar_default"		""//startvalue of the hpbar math_counter (if applicable)
-		"HPbar_mode"		""//which mode the hpbar math_counter runs on, 1=OnHitMin outputs 2=OnHitMax outputs (if applicable)
+		"HP_counter"		"" //targetname of the hp math_counter
+		"HPbar_counter"		"" //targetname of the math_counter that handles a hp bar (if applicable)
+		"HPinit_counter"	"" //targetname of the math_counter that inits the hp math_counter (if applicable)
+		"CustomText"		"" //custom name to show in the hud
+		"HPbar_min"			"" //min value of the math_counter that handles a hp bar (if applicable)
+		"HPbar_max"			"" //max value of the math_counter that handles a hp bar (if applicable)
+		"HPbar_default"		"" //startvalue of the hpbar math_counter (if applicable)
+		"HPbar_mode"		"" //which mode the hpbar math_counter runs on, 1=OnHitMin outputs 2=OnHitMax outputs (if applicable)
 	}
 	"1"
 	{
 		//func_breakable, func_physbox or func_physbox_multiplayer example
 		"Type"				"breakable"
-		"BreakableName"		""//targetname of the func_breakable, func_physbox or func_physbox_multiplayer
-		"CustomText"		""//custom name to show in the hud
+		"BreakableName"		"" //targetname of the func_breakable, func_physbox or func_physbox_multiplayer
+		"CustomText"		"" //custom name to show in the hud
 	}
 }
 ```
