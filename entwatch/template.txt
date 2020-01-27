@@ -8,11 +8,11 @@
         "buttonclass"       "" //what classname the button entity uses, usually just func_button
         "filtername"        "" //filtername that the items filter entity uses (if applicable, see below)
         "hasfiltername"     "" //true if the item uses a filter entity to check the user, false otherwise
-        "blockpickup"       "false" //always false
+        "blockpickup"       "" //always false
         "allowtransfer"     "" //true for human items, false for zm items
         "forcedrop"         "" //true for human items, false for zm items
-        "chat"              "true" //always true
-        "hud"               "true" //always true
+        "chat"              "" //always true
+        "hud"               "" //always true
         "hammerid"          "" //hammerid of the weapon_ entity for the item
         "mode"              "" //0 = nothing 1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used
         "maxuses"           "" //max uses of the item (if applicable)
