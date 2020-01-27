@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss_star_hitcounter1"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_star_hitcounter2"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_star_hitcounter3"
+	}
+	"3"
+	{
+		"HP_counter"		"boss_star_hitcounter4"
+	}
+	"4"
+	{
+		"HP_counter"		"boss_star_hitcounter5"
+	}
+}

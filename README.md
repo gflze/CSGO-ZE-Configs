@@ -12,7 +12,7 @@ For making any of these configs, you'll want a tool like [VIDE](http://www.riint
 
 Search for **math_counter**, **func_breakable**, **func_physbox** or **func_physbox_multiplayer** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
 
-**__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use this [plugin](https://github.com/gflclan-cs-go-ze/ZE-Configs/raw/master/bosshud/bhuddebugger.smx) with a test server to find out.
+**__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use this [plugin](https://github.com/gflclan-cs-go-ze/bhud-debugger) with a test server to find out.
 
 ```
 "math_counter"
