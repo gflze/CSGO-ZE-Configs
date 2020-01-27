@@ -1,6 +1,6 @@
 # GFLClan CS:GO ZE Configs
 
-A collection of entWatch, stripper and BossHud configs for GFL CS:GO ZE, please be aware that the entWatch and stripper configs are not an extensive list of everything used on our server.
+A collection of entWatch, stripper and BossHud configs for GFL CS:GO ZE, please be aware that the stripper configs are not an extensive list of everything used on our server.
 
 # How to Contribute
 
@@ -58,22 +58,22 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
 {
     "0"
     {
-        "name"              ""//name of the item to show in chat
-        "shortname"         ""//name of the item to show in scoreboard
-        "color"             ""//colour to use in chat (refer to the colour list below)
-        "buttonclass"       "func_button"//leave as is
-        "filtername"        ""//targetname of the filter (if applicable, see below)
-        "hasfiltername"     ""//true if the item uses a filter entity to check the user, false otherwise
-        "blockpickup"       "false"//always false
-        "allowtransfer"     ""//true for human items, false for zm items
-        "forcedrop"         ""//true for human items, false for zm items
-        "chat"              "true"//always true
-        "hud"               "true"//always true
-        "hammerid"          ""//hammerid of the weapon_ entity for the item
-        "mode"              ""//1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used
-        "maxuses"           ""//max uses of the item (if applicable)
-        "cooldown"          ""//cooldown of the item (if applicable)
-        "maxamount"         ""//how many instances of this item can exist
+        "name"              "" //name of the item to show in chat
+        "shortname"         "" //name of the item to show in scoreboard
+        "color"             "" //colour to use in chat (refer to the colour list below)
+        "buttonclass"       "" //what classname the button entity uses, usually just func_button
+        "filtername"        "" //filtername that the items filter entity uses (if applicable, see below)
+        "hasfiltername"     "" //true if the item uses a filter entity to check the user, false otherwise
+        "blockpickup"       "false" //always false
+        "allowtransfer"     "" //true for human items, false for zm items
+        "forcedrop"         "" //true for human items, false for zm items
+        "chat"              "true" //always true
+        "hud"               "true" //always true
+        "hammerid"          "" //hammerid of the weapon_ entity for the item
+        "mode"              "" //0 = nothing 1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used
+        "maxuses"           "" //max uses of the item (if applicable)
+        "cooldown"          "" //cooldown of the item (if applicable)
+        "maxamount"         "" //how many instances of this item can exist
     }
 }
 ```
