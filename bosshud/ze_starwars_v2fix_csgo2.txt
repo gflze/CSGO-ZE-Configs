@@ -1,0 +1,63 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_heal_tank"
+	}
+	"1"
+	{
+		"HP_counter"		"Math_conter_station"
+	}
+	"2"
+	{
+		"HP_counter"		"darth_vader_1"
+		"HPbar_counter"		"darth_vader_3"
+		"HPinit_counter"	"darth_vader_2"
+		"HPbar_min"			""
+		"HPbar_max"			"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"
+	}
+	"3"
+	{
+		"HP_counter"		"darth_sid_1"
+		"HPbar_counter"		"darth_sid_3"
+		"HPinit_counter"	"darth_sid_2"
+		"HPbar_min"			""
+		"HPbar_max"			"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"
+	}
+	"4"
+	{
+		"HP_counter"		"darth_mol_1"
+		"HPbar_counter"		"darth_mol_3"
+		"HPinit_counter"	"darth_mol_2"
+		"HPbar_min"			""
+		"HPbar_max"			"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"
+	}
+	"5"
+	{
+		"HP_counter"		"darth_sphere_1"
+		"HPbar_counter"		"darth_sphere_3"
+		"HPinit_counter"	"darth_sphere_2"
+		"HPbar_min"			""
+		"HPbar_max"			"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"
+	}
+	"6"
+	{
+		"HP_counter"		"Boss_heal_dart_maul"
+	}
+	"7"
+	{
+		"HP_counter"		"Lvl_hard_heal"
+	}
+	"8"
+	{
+		"HP_counter"		"Boss_heal_dart_vader"
+	}
+}

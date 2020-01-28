@@ -1,0 +1,22 @@
+"entities"
+{
+    "0"
+    {
+        "name"              "" //name of the item to show in chat
+        "shortname"         "" //name of the item to show in scoreboard
+        "color"             "" //colour to use in chat (refer to the colour list below)
+        "buttonclass"       "" //what classname the button entity uses, usually just func_button
+        "filtername"        "" //filtername that the items filter entity uses (if applicable, see below)
+        "hasfiltername"     "" //true if the item uses a filter entity to check the user, false otherwise
+        "blockpickup"       "" //always false
+        "allowtransfer"     "" //true for human items, false for zm items
+        "forcedrop"         "" //true for human items, false for zm items
+        "chat"              "" //always true
+        "hud"               "" //always true
+        "hammerid"          "" //hammerid of the weapon_ entity for the item
+        "mode"              "" //0 = nothing 1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used
+        "maxuses"           "" //max uses of the item (if applicable)
+        "cooldown"          "" //cooldown of the item (if applicable)
+        "maxamount"         "" //how many instances of this item can exist
+    }
+}

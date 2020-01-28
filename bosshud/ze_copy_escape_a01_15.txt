@@ -1,0 +1,31 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss2_hp_add"
+		"HPbar_counter"		"boss2_hp"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"cube_hp"
+		"CustomText"		"Cube"
+	}
+	"1"
+	{
+		"HP_counter"		"cube_hp_"
+		"CustomText"		"Cube"
+	}
+	"1"
+	{
+		"HP_counter"		"hp_counter"
+		"HPbar_counter"		"hp"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+}

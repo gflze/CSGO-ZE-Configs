@@ -1,5 +1,5 @@
 //Patched version intended for use with GFL ze_lotr_isengard_csgo1 stripper
-//Removes broken map bhud using HTML formatting
+//Removes broken HTML formatting from the bhud
 //install as csgo/scripts/vscripts/isengard/bosshp_hud_patched.nut
 BossHpBar <- 10;
 
@@ -7,7 +7,7 @@ ticking <- false;
 
 TickRate <- 0.05;
 
-HPHUD <- "<font color='#0000FF'>▰▰▰▰▰▰▰▰▰▰</font>";
+HPHUD <- "◼◼◼◼◼◼◼◼◼◼";
 
 BossHealth <- 0.00;
 
@@ -42,24 +42,24 @@ function HpBar()
 {
 	for(local i = BossHpBar; i >= 0; i--)
 	{
-	    if(BossHpBar == 10){HPHUD = "<font color='#0000FF'>▰▰▰▰▰▰▰▰▰</font><font color='#000000'>▰</font>";}
-	    if(BossHpBar == 9){HPHUD = "<font color='#008000'>▰▰▰▰▰▰▰▰</font><font color='#000000'>▰▰</font>";}
-	    if(BossHpBar == 8){HPHUD = "<font color='#008000'>▰▰▰▰▰▰▰</font><font color='#000000'>▰▰▰</font>";}
-	    if(BossHpBar == 7){HPHUD = "<font color='#e5e500'>▰▰▰▰▰▰</font><font color='#000000'>▰▰▰▰</font>";}
-	    if(BossHpBar == 6){HPHUD = "<font color='#e5e500'>▰▰▰▰▰</font><font color='#000000'>▰▰▰▰▰</font>";}
-	    if(BossHpBar == 5){HPHUD = "<font color='#ff1919'>▰▰▰▰</font><font color='#000000'>▰▰▰▰▰▰</font>";}
-	    if(BossHpBar == 4){HPHUD = "<font color='#ff1919'>▰▰▰</font><font color='#000000'>▰▰▰▰▰▰▰</font>";}
-	    if(BossHpBar == 3){HPHUD = "<font color='#ff0000'>▰▰</font><font color='#000000'>▰▰▰▰▰▰▰▰</font>";}
-	    if(BossHpBar == 2){HPHUD = "<font color='#ff0000'>▰</font><font color='#000000'>▰▰▰▰▰▰▰▰▰</font>";}
-		if(BossHpBar == 1){HPHUD = "</font><font color='#000000'>▰▰▰▰▰▰▰▰▰▰</font>";}
+	    if(BossHpBar == 10){HPHUD = "◼◼◼◼◼◼◼◼◼◻";}
+	    if(BossHpBar == 9){HPHUD = "◼◼◼◼◼◼◼◼◻◻";}
+	    if(BossHpBar == 8){HPHUD = "◼◼◼◼◼◼◼◻◻◻";}
+	    if(BossHpBar == 7){HPHUD = "◼◼◼◼◼◼◻◻◻◻";}
+	    if(BossHpBar == 6){HPHUD = "◼◼◼◼◼◻◻◻◻◻";}
+	    if(BossHpBar == 5){HPHUD = "◼◼◼◼◻◻◻◻◻◻";}
+	    if(BossHpBar == 4){HPHUD = "◼◼◼◻◻◻◻◻◻◻";}
+	    if(BossHpBar == 3){HPHUD = "◼◼◻◻◻◻◻◻◻◻";}
+	    if(BossHpBar == 2){HPHUD = "◼◻◻◻◻◻◻◻◻◻";}
+		if(BossHpBar == 1){HPHUD = "◻◻◻◻◻◻◻◻◻◻";}
 		return;
 	}
 }
 
-function CheckHpHud(){ScriptPrintMessageCenterAll("<font color='#ff0000'>[BOSS: </font>"+
-"<font color='#ff0000'>"+HudHealth+"</font>"+
-"<font color='#ff0000'>]</font>"+
-"\n"+HPHUD);}
+function CheckHpHud()
+{
+	ScriptPrintMessageCenterAll("[BOSS: " + HudHealth + "]" + "\n" + HPHUD);
+}
 
 function Start(){ticking = true;Tick();}
 
@@ -69,7 +69,7 @@ function Tick()
 	{
 		EntFireByHandle(self, "RunScriptCode", "Tick()", TickRate, null, null);
 		EntFireByHandle(self, "RunScriptCode", "ChangeHp()", 0.00, null, null);
-		//EntFireByHandle(self, "RunScriptCode", "CheckHpHud()", 0.00, null, null);
+		EntFireByHandle(self, "RunScriptCode", "CheckHpHud()", 0.00, null, null);
 	}
 }
 
