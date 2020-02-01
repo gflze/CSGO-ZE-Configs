@@ -1,0 +1,16 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Final_boss"
+		"CustomText"		"Beyblade"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"patrick"
+		"CustomText"		"Patrick Star"
+	}
+}

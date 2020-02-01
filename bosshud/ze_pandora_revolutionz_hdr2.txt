@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Daddy_Phys_L2"
+		"CustomText"		"Chicken"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Daddy_Phys"
+		"CustomText"		"Chicken"
+	}
+	
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Warm_Up_boss"
+		"CustomText"		"Something"
+	}
+}
