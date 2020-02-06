@@ -1,0 +1,42 @@
+"math_counter"
+{
+	"config"
+	{
+		"BossBeatenShowTopDamage"					"0"
+	}
+	
+	"0"
+	{
+		"Type"										"breakable"
+		"BreakableName"								"Boss1"
+		"CustomText"								"Meme Lord 1"
+	}
+	
+	"1"
+	{
+		"Type"										"breakable"
+		"BreakableName"								"Boss2"
+		"CustomText"								"Meme Lord 2"
+	}
+	
+	"2"
+	{
+		"Type"										"breakable"
+		"BreakableName"								"Boss3"
+		"CustomText"								"Meme Lord 3"
+	}
+	
+	"3"
+	{
+		"Type"										"breakable"
+		"BreakableName"								"Boss4"
+		"CustomText"								"Meme Lord 4"
+	}
+	
+	"4"
+	{
+		"Type"										"breakable"
+		"BreakableName"								"Boss5"
+		"CustomText"								"Meme Lord 5"
+	}
+}
