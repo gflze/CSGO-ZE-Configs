@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"					"1"
+	}
+	
+	"0"
+	{
+		"Type"							"breakable"
+		"BreakableName"					"danyo_score"
+		"CustomText"					"Alien"
+	}
+}
