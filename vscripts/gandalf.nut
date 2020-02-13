@@ -1,3 +1,7 @@
+//intended for use with the ze_lotr_isengard_csgo1 GFL stripper
+//changes gandalf skill random to switch
+//install as csgo/scripts/vscripts/isengard/gandalf.nut
+
 //original idea/implementation by hestia
 //script implementation by vauff
 
