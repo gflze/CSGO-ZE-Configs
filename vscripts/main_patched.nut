@@ -1,5 +1,5 @@
 //#####################################################################
-//Patched version intended for use with GFL ze_mojos_minigames_v1_4_1
+//Patched version intended for use with GFL ze_mojos_minigames_v1_4_1 stripper
 //Removes HTML formatting broken after Shattered Web Update.
 //Install as csgo/scripts/vscripts/mojomulti/main_patched.nut
 //#####################################################################
