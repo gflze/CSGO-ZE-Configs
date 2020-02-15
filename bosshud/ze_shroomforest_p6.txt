@@ -7,7 +7,78 @@
 
 	"0"
 	{
-		"HP_counter"		"dynamic_HP"
-		"CustomText"		"Shroomforest Boss"
+		"Type"			"breakable"
+		"BreakableName"		"Lvl1_B1_Phys1"
+		"CustomText"		"Evil Butterfly"
+	}
+	
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Lvl1_B1_Phys2"
+		"CustomText"		"Evil Butterfly"
+	}
+	
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Lvl2_Boss_Phys"
+		"CustomText"		"Pikachu"
+	}
+	
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Satan_Boss_Phys"
+		"CustomText"		"Satan"
+	}
+	
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Bulba_Phys"
+		"CustomText"		"Bulbasaur"
+	}
+	
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Charmander_Phys"
+		"CustomText"		"Charmander"
+	}
+	
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Ditto_Phys"
+		"CustomText"		"Ditto"
+	}
+	
+	"7"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Pikachu_Phys"
+		"CustomText"		"Pikachu"
+	}
+	
+	"8"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Ghastly_Phys"
+		"CustomText"		"Pikachu (Extreme 2)"
+	}
+	
+	"9"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Ext3_D_Phys"
+		"CustomText"		"Evil Dragon"
+	}
+	
+	"10"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Lvl7_Boss_Phys"
+		"CustomText"		"Pikachu (New Beginning)"
 	}
 }
