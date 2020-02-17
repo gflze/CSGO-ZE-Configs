@@ -1,5 +1,5 @@
 //#####################################################################
-//Patched version intended for use with GFL ze_dark_souls_ptd_v0_4_csgo7
+//Patched version intended for use with GFL ze_dark_souls_ptd_v0_4_csgo7 stripper
 //Removes HTML formatting broken after Shattered Web Update.
 //Install as csgo/scripts/vscripts/dark/boss_c_patched.nut
 //#####################################################################
