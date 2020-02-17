@@ -1,3 +1,7 @@
+//intended for use with the ze_ffvii_mako_reactor_v6_b09k2 GFL stripper
+//fixes raw HTML formatting showing in hint text
+//install as csgo/scripts/vscripts/makov6/hud_ultima_patched.nut
+
 Tick <- true;
 i <- 0;
 a <- 0;
