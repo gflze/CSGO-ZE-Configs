@@ -10,7 +10,7 @@ ticking <- false;
 
 TickRate <- 0.05;
 
-HPHUD <- "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣";
+HPHUD <- "◼◼◼◼◼◼◼◼◼◼";
 
 BossHealth <- 0.00;
 
