@@ -1,5 +1,5 @@
 //#####################################################################
-//Patched version intended for use with GFL ze_v0u0v_a6_csgo1
+//Patched version intended for use with GFL ze_v0u0v_a6_csgo1 stripper
 //Removes HTML formatting broken/non-functional after Shattered Web Update.
 //Install as csgo/scripts/vscripts/vouov/vouov_boss_patched.nut
 //#####################################################################
@@ -10,7 +10,7 @@ ticking <- false;
 
 TickRate <- 0.05;
 
-HPHUD <- "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣";
+HPHUD <- "◼◼◼◼◼◼◼◼◼◼";
 
 BossHealth <- 0.00;
 
@@ -45,16 +45,16 @@ function HpBar()
 {
 	for(local i = BossHpBar; i >= 0; i--)
 	{
-	    if(BossHpBar == 10){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣";}
-	    if(BossHpBar == 9){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢";}
-	    if(BossHpBar == 8){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢";}
-	    if(BossHpBar == 7){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢";}
-	    if(BossHpBar == 6){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢";}
-	    if(BossHpBar == 5){HPHUD = "▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢";}
-	    if(BossHpBar == 4){HPHUD = "▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢";}
-	    if(BossHpBar == 3){HPHUD = "▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
-	    if(BossHpBar == 2){HPHUD = "▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
-		if(BossHpBar == 1){HPHUD = "▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
+	    if(BossHpBar == 10){HPHUD = "◼◼◼◼◼◼◼◼◼◻";}
+	    if(BossHpBar == 9){HPHUD = "◼◼◼◼◼◼◼◼◻◻";}
+	    if(BossHpBar == 8){HPHUD = "◼◼◼◼◼◼◼◻◻◻";}
+	    if(BossHpBar == 7){HPHUD = "◼◼◼◼◼◼◻◻◻◻";}
+	    if(BossHpBar == 6){HPHUD = "◼◼◼◼◼◻◻◻◻◻";}
+	    if(BossHpBar == 5){HPHUD = "◼◼◼◼◻◻◻◻◻◻";}
+	    if(BossHpBar == 4){HPHUD = "◼◼◼◻◻◻◻◻◻◻";}
+	    if(BossHpBar == 3){HPHUD = "◼◼◻◻◻◻◻◻◻◻";}
+	    if(BossHpBar == 2){HPHUD = "◼◻◻◻◻◻◻◻◻◻";}
+		if(BossHpBar == 1){HPHUD = "◻◻◻◻◻◻◻◻◻◻";}
 		return;
 	}
 }
