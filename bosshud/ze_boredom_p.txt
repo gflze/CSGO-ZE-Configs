@@ -2,26 +2,31 @@
 {
 	"0"
 	{
-		"HP_counter"		"CacoDemonHP"
+		"HP_counter"	"CacoDemonHP"
+		"CustomText"	"Caco Demon"
 	}
+
 	"1"
 	{
-		"HP_counter"		"LostSoulHP"
+		"HP_counter"	"LostSoulHP"
+		"CustomText"	"Lost Soul"
 	}
+
 	"2"
 	{
-		"HP_counter"		"DemonHP"
+		"HP_counter"	"DemonHP"
+		"CustomText"	"Demon"
 	}
+
 	"3"
 	{
-		"HP_counter"		"ImpHP"
+		"HP_counter"	"ImpHP"
+		"CustomText"	"Imp"
 	}
+
 	"4"
 	{
-		"HP_counter"		"PaperCounter"
-	}
-	"5"
-	{
-		"HP_counter"		"AssaHP"
+		"HP_counter"	"PaperCounter"
+		"CustomText"	"Paper"
 	}
 }
