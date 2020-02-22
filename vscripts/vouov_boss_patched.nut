@@ -130,17 +130,17 @@ VisualHP <- 1;
 function VisyalAddHp()
 {
 	CheckHpHud();
-	if(VisualHP == 11){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣";}
-    if(VisualHP == 10){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢";}
-	if(VisualHP == 9){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢";}
-	if(VisualHP == 8){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢";}
-	if(VisualHP == 7){HPHUD = "▣ ▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 6){HPHUD = "▣ ▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 5){HPHUD = "▣ ▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 4){HPHUD = "▣ ▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 3){HPHUD = "▣ ▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 2){HPHUD = "▣ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
-	if(VisualHP == 1){HPHUD = "▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢";}
+	if(VisualHP == 11){HPHUD = "◼◼◼◼◼◼◼◼◼◼";}
+	if(VisualHP == 10){HPHUD = "◼◼◼◼◼◼◼◼◼◻";}
+	if(VisualHP == 9){HPHUD = "◼◼◼◼◼◼◼◼◻◻";}
+	if(VisualHP == 8){HPHUD = "◼◼◼◼◼◼◼◻◻◻";}
+	if(VisualHP == 7){HPHUD = "◼◼◼◼◼◼◻◻◻◻";}
+	if(VisualHP == 6){HPHUD = "◼◼◼◼◼◻◻◻◻◻";}
+	if(VisualHP == 5){HPHUD = "◼◼◼◼◻◻◻◻◻◻";}
+	if(VisualHP == 4){HPHUD = "◼◼◼◻◻◻◻◻◻◻";}
+	if(VisualHP == 3){HPHUD = "◼◼◻◻◻◻◻◻◻◻";}
+	if(VisualHP == 2){HPHUD = "◼◻◻◻◻◻◻◻◻◻";}
+	if(VisualHP == 1){HPHUD = "◻◻◻◻◻◻◻◻◻◻";}
 	VisualHP++;
 }
 
