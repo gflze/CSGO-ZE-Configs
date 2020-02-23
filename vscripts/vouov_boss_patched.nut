@@ -60,7 +60,7 @@ function HpBar()
 }
 
 function CheckHpHud(){
-	ScriptPrintMessageCenterAll("[BOSS: " + "" + HudHealth + "" + "]" + "\n" + HPHUD);
+	ScriptPrintMessageCenterAll("[BOSS: " + HudHealth + "]" + "\n" + HPHUD);
 }
 
 function Start(){ticking = true;Tick();}
