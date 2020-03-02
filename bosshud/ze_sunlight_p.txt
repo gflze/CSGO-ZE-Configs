@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"counter_boss_health"
+		"CustomText"		"Undead Giant"
+	}
+	"1"
+	{
+		"HP_counter"		"counter_dragonhealth"
+		"CustomText"		"Dragon"
+	}
+}
