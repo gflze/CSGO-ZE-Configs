@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"oracle_hp"
+		"CustomText"		"Oracle"
+	}
+
+	"1"
+	{
+		"HP_counter"		"counter"
+		"CustomText"		"Prophet"
+	}
+}
