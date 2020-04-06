@@ -1,0 +1,93 @@
+"math_counter"
+{
+	"config" 
+	{
+		"MultBoss"			"1"
+		"BossBeatenShowTopDamage	"0"
+	}
+
+	"0"
+	{
+		"HP_counter"		"stage1_gigant1" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Pseudogiant"
+
+	}
+	"1"
+	{
+		"HP_counter"		"stage_1_countermonolit1" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Helicopter"
+	}
+	"2"
+	{
+		"HP_counter"		"stage_1_block1" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Generator 1"
+	}
+	"3"
+	{
+		"HP_counter"		"stage_1_block2" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Generator 2"
+	}
+	"4"
+	{
+		"HP_counter"		"stage_1_block3" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Generator 3"
+	}
+	"5"
+	{
+		"HP_counter"		"stage_1_block4" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Generator 4"
+	}
+	"6"
+	{
+		"HP_counter"		"stage_1_block5" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Controller"
+	}	
+	"7"
+	{
+		"HP_counter"		"stage_2_burrercounter" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Burer"
+	}	
+	"8"
+	{
+		"HP_counter"		"stage_2_burrercounter2" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Burer"
+	}
+	"9"
+	{
+		"HP_counter"		"stage_3_countercontroler1" 
+		"HPbar_mode"		"1" 
+		"CustomText"		"Controller"
+	}
+	"10"
+	{
+		"HP_counter"		"pirate_counter"
+		"HPbar_counter"		"pirate_hp_ierations" 
+		"HPinit_counter"	"pirate_hp_backup" 
+		"CustomText"		"Pseudogiant" 
+		"HPbar_min"		"0" 
+		"HPbar_max"		"20"
+		"HPbar_default"		"16" 
+		"HPbar_mode"		"1" 
+	}
+	"11"
+	{
+		"HP_counter"		"psevdocounter1"
+		"HPbar_mode"		"1"
+		"CustomText"		"Pseudogiant"
+	}
+	"12"
+	{
+		"HP_counter"		"counterlaser3"
+		"HPbar_mode"		"1"
+		"CustomText"		"Monolith"
+	}
+}
