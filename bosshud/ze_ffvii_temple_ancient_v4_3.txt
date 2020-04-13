@@ -8,13 +8,13 @@
      "0"                   
      {                   
                           "HP_Counter"              "counter_dragon_1"
-                          "HPbar_Counter            "counter_dragon_3"
-                          "HPinit_Counter           "counter_dragon_2"
+                          "HPbar_Counter"           "counter_dragon_3"
+                          "HPinit_Counter"          "counter_dragon_2"
                           "CustomText"              "Dragon"
                           "HPbar_min"               "0"
                           "HPbar_max"               "16"
                           "HPbar_default"           "16"
-                          "HPbar_mode               "1"
+                          "HPbar_mode"              "1"
      }
      
      "1"
@@ -40,14 +40,14 @@
                           "HPbar_min"               "0"
                           "HPbar_max"               "20"
                           "HPbar_default"           "16"
-                          "HPbar_mode               "1"
+                          "HPbar_mode"              "1"
      }
      
      "4"
      {
                           "HP_Counter"              "counter_edge_1"
                           "HPbar_Counter"           "Edge_Health"
-                          "HPinit_Counter           "counter_edge_2"
+                          "HPinit_Counter"          "counter_edge_2"
                           "CustomText"              "Sephiroth"
                           "HPbar_min"               "0"
                           "HPbar_max"               "16"
