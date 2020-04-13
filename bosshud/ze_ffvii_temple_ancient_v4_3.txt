@@ -1,0 +1,78 @@
+"math_counter"
+{
+     "config"
+     {
+              "MultBoss"                "1"
+     }
+     
+     "0"                   
+     {                   
+                          "HP_Counter"              "counter_dragon_1"
+                          "HPbar_Counter            "counter_dragon_3"
+                          "HPinit_Counter           "counter_dragon_2"
+                          "CustomText"              "Dragon"
+                          "HPbar_min"               "0"
+                          "HPbar_max"               "16"
+                          "HPbar_default"           "16"
+                          "HPbar_mode               "1"
+     }
+     
+     "1"
+     {
+                          "HP_Counter"              "counter_meteor"
+                          "HPbar_mode"              "1"
+                          "CustomText"              "Meteor"
+     }
+     
+     "2"
+     {
+                          "HP_Counter"              "counter_golem_3"
+                          "HPbar_mode"              "1"
+                          "CustomText"              "Gaulle"
+     }
+     
+     "3"
+     {
+                          "HP_Counter"              "counter_triface_1"
+                          "HPbar_Counter"           "counter_triface_3"
+                          "HPinit_Counter"          "counter_triface_2"
+                          "CustomText"              "Triface"
+                          "HPbar_min"               "0"
+                          "HPbar_max"               "20"
+                          "HPbar_default"           "16"
+                          "HPbar_mode               "1"
+     }
+     
+     "4"
+     {
+                          "HP_Counter"              "counter_edge_1"
+                          "HPbar_Counter"           "Edge_Health"
+                          "HPinit_Counter           "counter_edge_2"
+                          "CustomText"              "Sephiroth"
+                          "HPbar_min"               "0"
+                          "HPbar_max"               "16"
+                          "HPbar_default"           "16"
+                          "HPbar_mode"              "1"
+     }
+     
+     "5"
+     {
+                          "HP_Counter"              "bomb_1_counter"
+                          "HPbar_mode"              "1"
+                          "CustomText"              "Bomb"
+     }
+     
+     "6"
+     { 
+                          "HP_Counter"              "bomb_3_counter"
+                          "HPbar_mode"              "1"
+                          "CustomText"              "Bomb"
+     }
+     
+     "7"
+     {
+                          "HP_Counter"              "counter_seph"
+                          "HPbar_mode"              "1"
+                          "CustomText"              "Sephiroth"
+     }
+}
