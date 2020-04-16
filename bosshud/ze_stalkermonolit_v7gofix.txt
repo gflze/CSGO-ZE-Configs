@@ -3,12 +3,12 @@
 	"config" 
 	{
 		"MultBoss"			"1"
-		"BossBeatenShowTopDamage	"0"
+		"BossBeatenShowTopDamage"	"0"
 	}
 
 	"0"
 	{
-		"HP_counter"		"stage1_gigant1" 
+		"HP_counter"		"stage_1_gigant1" 
 		"HPbar_mode"		"1" 
 		"CustomText"		"Pseudogiant"
 
@@ -70,7 +70,7 @@
 	"10"
 	{
 		"HP_counter"		"pirate_counter"
-		"HPbar_counter"		"pirate_hp_ierations" 
+		"HPbar_counter"		"pirate_hp_iterations" 
 		"HPinit_counter"	"pirate_hp_backup" 
 		"CustomText"		"Pseudogiant" 
 		"HPbar_min"		"0" 
