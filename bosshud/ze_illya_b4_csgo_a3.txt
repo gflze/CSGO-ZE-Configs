@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"depth_titan_Health_BarHP"
+		"HPbar_counter"		"depth_titan_Health_HP"
+		"HPinit_counter"	"depth_titan_Health_Init"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Depth Titan"
+	}
+}
