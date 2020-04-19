@@ -19,7 +19,7 @@
      
      "1"
      {
-                          "HP_Counter"              "counter_meteor"
+                          "HP_Counter"              "meteor_counter"
                           "HPbar_mode"              "1"
                           "CustomText"              "Meteor"
      }
