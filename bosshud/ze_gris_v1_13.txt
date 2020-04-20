@@ -29,7 +29,6 @@
 	}
 	"3"
 	{
-	{
 		"HP_counter"		"white_boss_vida"
 		"HPbar_counter"		"white_boss_life_counter"
 		"HPbar_min"			""
