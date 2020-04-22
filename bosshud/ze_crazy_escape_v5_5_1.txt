@@ -32,13 +32,13 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"A Creature"
+		"CustomText"		"3 Narakas"
 	}
 	
 	"3"
 	{
-		"Type"			"breakable"
+		"Type"				"breakable"
 		"BreakableName"		"BossCage"
-		"CustomName"		"Crucified"
+		"CustomText"		"Crucified"
 	}
 }
