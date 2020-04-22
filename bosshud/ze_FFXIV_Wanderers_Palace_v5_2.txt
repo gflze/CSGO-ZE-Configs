@@ -26,8 +26,14 @@
 	
 	"4"
 	{
-		"HP_counter"	"Behemoth_HP_Counter"
-		"CustomText"	"Behemoth"
+		"HP_counter"		"Behemoth_HP_Counter"
+		"HPbar_counter"		"Behemoth_HP_Breakable_Counter"
+		"HPinit_counter"	"Behemoth_HP_Initial"
+		"HPbar_min"			"0"
+		"HPbar_max"			"4"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Behemoth"
 	}
 	
 	"5"
