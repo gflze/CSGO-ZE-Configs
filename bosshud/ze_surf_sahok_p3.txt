@@ -1,14 +1,15 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"Boss_Health"
-		"HPbar_counter"		""
-		"HPinit_counter"	""
-		"CustomText"		"Guardian"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		""//1=OnHitMin 2=OnHitMax
+		"CustomText"		"Guardian"
+	}
+	
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"physbox"
+		"CustomText"		"Red Guardian"
 	}
 }
