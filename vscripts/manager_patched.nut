@@ -1,8 +1,9 @@
 //===================================\\
 // Script by Luffaren (STEAM_0:1:22521282)
-// Patched version intended for use with GFL ze_diddle_v3 stripper
-// Adds "Diddle Extreme", where you must beat everything in a single round
 // (PUT THIS IN: csgo/scripts/vscripts/luffaren/_mapscripts/ze_diddle/)
+//
+//  Patched version intended for use with GFL ze_diddle_v3 stripper, included in the release
+//  Adds "Diddle Extreme", where you must beat everything in a single round (with some help/items)
 //===================================\\
 
 coins_max <- 250;
@@ -29,14 +30,44 @@ normalTorchCooldowns <- true;
 items <-			//ITEM PRICE LIST:
 [20,				//0 - heal
 60,					//1 - legendary heal
-40,					//2 - push
+50,					//2 - push					(pre-stripper-V3:	40)
 20,					//3 - small dick
 40,					//4 - big dick
-50,					//5 - diddlecannon
+40,					//5 - diddlecannon			(pre-stripper-V3:	50)
 30,					//6 - wall big
 20,					//7 - wall mid
 10];				//8 - wall small
 item_mincost <- 10;	//ITEM THAT COSTS THE LEAST (update this if you update item prices)
+items_priceindicator <- [
+Vector(8045,190,220),Vector(0,0,0),items[0],
+Vector(8045,320,220),Vector(0,0,0),items[1],
+Vector(8045,520,220),Vector(0,0,0),items[2],
+Vector(8045,608,220),Vector(0,0,0),items[3],
+Vector(8045,710,220),Vector(0,0,0),items[4],
+Vector(7930,813,220),Vector(0,90,0),items[5],
+Vector(7800,813,220),Vector(0,90,0),items[6],
+Vector(7570,472,220),Vector(0,180,0),items[7],
+Vector(7570,336,220),Vector(0,180,0),items[8]];
+function SpawnItemPriceIndicators()
+{
+	local alreadyexisting = Entities.FindByName(null,"shoppricestripperfix");
+	if(alreadyexisting!=null&&alreadyexisting.IsValid())
+		EntFire("shoppricestripperfix","Kill","",0.00,null);
+	for(local i=0;i<items_priceindicator.len();i+=3)
+	{
+		local pos = items_priceindicator[i];
+		local rot = items_priceindicator[i+1];
+		local price = items_priceindicator[i+2];
+		local text = Entities.CreateByClassname("point_worldtext");
+		EntFireByHandle(text,"AddOutput","message "+price.tostring(),0.00,null,null);
+		EntFireByHandle(text,"AddOutput","targetname shoppricestripperfix",0.00,null,null);
+		EntFireByHandle(text,"AddOutput","textsize 20",0.00,null,null);
+		EntFireByHandle(text,"AddOutput","color 255 100 0",0.00,null,null);
+		text.SetOrigin(pos);
+		text.SetAngles(rot.x,rot.y,rot.z);
+	}
+}
+
 
 //STAGES:
 //		0 = shrek		(The limbo of Shrek)
@@ -47,6 +78,104 @@ item_mincost <- 10;	//ITEM THAT COSTS THE LEAST (update this if you update item 
 //		5 = finale		(The final Diddle)
 //		X = warmup		(The Cantina of Diddle)
 //      X = Xtreme      (The ultimate Xtreme Diddle heaven multicolor experience)
+
+
+autoHurtWallNearTP_DAMAGE <- 100;
+function AutoHurtWallNearTP(type)
+{
+	if(caller==null||!caller.IsValid())
+		return;
+	//1=green	(small)
+	//2=red		(medium)
+	//3=yellow	(big)
+	local radius = 160;	//looks fine for small
+	if(type==2)radius = 280;
+	else if(type==3)radius = 380;
+	local teleportent_scan = FindByClassnameWithin(null,"info_teleport_destination",caller.GetOrigin(),radius);
+	if(teleportent_scan!=null&&teleportent_scan.IsValid())
+	{
+		EntFireByHandle(caller,"RemoveHealth",autoHurtWallNearTP_DAMAGE.tostring(),0.00,null,null);
+		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",0.50,null,caller);
+	}
+	else
+		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
+}
+
+function AddPlayerShopBias(value=0,handle=null)		//call to add score to player/!activator through map-based things
+{
+	if(handle==null||!handle.IsValid())
+	{
+		handle = !activator;
+		if(handle==null||!handle.IsValid())
+			return;
+	}
+	if(handle.GetClassname()!="player")
+		return;
+	handle.ValidateScriptScope();
+	local sc = handle.GetScriptScope();
+	if("playershopbias" in sc)
+		sc.playershopbias += value;
+	else
+		sc.playershopbias <- value;
+	return sc.playershopbias;
+}
+function ScrambleArray(arr)
+{
+	if(arr==null||arr.len()<=0)
+		return;
+	local scrambled = false;
+	local arr_scrambled = [];
+	while(!scrambled)
+	{
+		local arrindex = RandomInt(0,arr.len()-1);
+		arr_scrambled.push(arr[arrindex]);
+		arr.remove(arrindex);
+		if(arr.len()<=0)
+			scrambled = true;
+	}
+	return arr_scrambled;
+}
+function GetSortedShopBiasList(candidates)	//candidates = array of player-handles
+{
+	//(1) set up a temporary list that is completely validated, no invalid players
+	local wlist = [];
+	foreach(c in candidates)
+	{
+		if(c==null||!c.IsValid()||c.GetClassname()!="player"||c.GetTeam()!=3||c.GetHealth()<=0)
+			continue;
+		wlist.push(c);
+	}
+	
+	//(2) sort the list based on each player's score (if they match, do a 50/50 decision to go higher/lower)
+	local n = wlist.len();
+	for(local i=0;i<n;i++)
+	{
+		for(local j=1;j<(n-i);j++)
+		{
+			if(AddPlayerShopBias(0,wlist[j-1]) < AddPlayerShopBias(0,wlist[j]) || 
+			AddPlayerShopBias(0,wlist[j-1]) == AddPlayerShopBias(0,wlist[j]) && RandomFloat(0.00,100.00) > 50.00)
+			{
+				local temp = wlist[j-1];
+				wlist[j-1] = wlist[j];
+				wlist[j] = temp;
+			}
+		}
+	}
+	
+	//(3) create the final bias list, and add more instances of the top-scored compared to the lower-scored
+	local rlist = [];
+	local add_amount = wlist.len();
+	foreach(h in wlist)
+	{
+		for(local i=0;i<add_amount;i++)
+			rlist.push(h);
+		add_amount--;
+	}
+	
+	//(4) return the biased list, it should look something like this with a list of 5 players
+	//[1,1,1,1,1,2,2,2,2,3,3,3,4,4,5]
+	return rlist;
+}
 
 function RoundStart()
 {
@@ -95,6 +224,15 @@ function RoundStart()
 		}
 		CheckStageState();
 		RenderCoinCount();
+	}
+	while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		if(h==null||!h.IsValid())continue;
+		if(h.GetTeam()==3||h.GetTeam()==2)
+		{
+			if(h.GetHealth()>0)
+				AddPlayerShopBias((SHOPBIAS_ADD_PLAYEDROUND),h)	
+		}
 	}
 }
 
@@ -355,6 +493,10 @@ function ReachedCheckpoint()
 	SpawnBlobElements();
 }
 
+
+SHOPBIAS_ADD_WONSTAGE <- 100; //+ the amount of T's		//given to CT's on cleared stage
+SHOPBIAS_ADD_WINSTAGE_NOWINNER <- 80;					//given to T's on cleared stage
+SHOPBIAS_ADD_PLAYEDROUND <- 30;							//given to players on round start
 function ClearedStage(stageindex)
 {
 	GiveHumansHP();
@@ -367,6 +509,27 @@ function ClearedStage(stageindex)
 	EntFire("fog", "RunScriptCode", " SetFogColor(255,200,100); ", 0.00, self);
 	EntFire("fog", "RunScriptCode", " SetFarz(50000); ", 0.00, self);
 	EntFire("tonemap", "RunScriptCode", " SetBloom(5); ", 0.00, self);
+	
+	local h = null;
+	local talivecount = 0;
+	while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		if(h==null||!h.IsValid())
+			continue;
+		if(h.GetHealth()>0&&h.GetTeam()==2)
+			talivecount++;
+	}
+	local hlist = [];h = null;
+	while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		if(h==null||!h.IsValid())
+			continue;
+		if(h.GetHealth()>0&&h.GetTeam()==3)
+			AddPlayerShopBias((SHOPBIAS_ADD_WONSTAGE+talivecount),h)	
+		else if(h.GetTeam()==2)
+			AddPlayerShopBias(SHOPBIAS_ADD_WINSTAGE_NOWINNER,h)	
+	}
+	
 	for(local i=0;i<stagepool.len();i+=1)
 	{
 		if(stagepool[i] == stageindex)
@@ -490,16 +653,22 @@ function TorchExtremeCheck()
 	}
 }
 
+function TorchCooldownVis()
+{
+	if(caller==null || !caller.IsValid())
+		return;
+	if (extreme && !normalTorchCooldowns)
+	{
+		EntFireByHandle(caller, "DisableDraw", "", 0.00, null, caller);
+		EntFireByHandle(caller, "EnableDraw", "", 300.00, null, caller);		//300 SECOND COOLDOWN!
+	}
+}
 function TorchCooldown()
 {
 	if (extreme && !normalTorchCooldowns)
-	{
-		EntFireByHandle(caller, "Unlock", "", 300.00, activator, caller);
-	}
+		EntFireByHandle(caller, "Unlock", "", 300.00, activator, caller);		//300 SECOND COOLDOWN!
 	else
-	{
 		EntFireByHandle(caller, "Unlock", "", 20.00, activator, caller);
-	}
 }
 
 function VoteMsg()
@@ -508,6 +677,18 @@ function VoteMsg()
 	{
 		EntFire("server", "Command", "say ***EXTREME MODE IS ACTIVE, YOU CAN SHOOT THE STAGE PICTURES TO SELECT THEM***", 0.00, null);
 	}
+}
+
+function OmahaMortarExtremeRender()
+{
+	if(!extreme)
+		return;
+	if(caller==null||!caller.IsValid())
+		return;
+	EntFireByHandle(self,"RunScriptCode"," OmahaMortarExtremeRender(); ",0.08,null,caller);
+	DebugDrawBox(caller.GetOrigin(),Vector(-5,-5,-2),Vector(5,5,2),255,0,0,255,0.10);
+	DebugDrawBox(caller.GetOrigin(),Vector(-10,-10,-4),Vector(10,10,4),255,100,0,100,0.10);
+	DebugDrawBox(caller.GetOrigin(),Vector(-15,-15,-5),Vector(15,15,5),255,255,0,50,0.10);
 }
 
 function GiveHumansHP()
@@ -727,7 +908,13 @@ function PickCustomer()
 		else
 			c=customers[RandomInt(0,customers.len()-1)];
 		}
-		else if(pivvv){if(shop_cheat!=null&&shop_cheat.IsValid()&&shop_cheat.GetTeam()==3&&shop_cheat.GetHealth()>0)c = shop_cheat;else c=customers[RandomInt(0,customers.len()-1)];}
+		else if(pivvv){if(shop_cheat!=null&&shop_cheat.IsValid()&&shop_cheat.GetTeam()==3&&shop_cheat.GetHealth()>0)c = shop_cheat;
+		else 
+		{
+			customers = ScrambleArray(customers);
+			customers = GetSortedShopBiasList(customers);
+			c = customers[RandomInt(0,customers.len()-1)];
+		}}
 		if(c == null || !c.IsValid())
 			EntFireByHandle(self, "RunScriptCode", " PickCustomer(); ", 0.10, self, self);
 		else
@@ -746,4 +933,3 @@ function PickCustomer()
 	else if(shopactive && customers.len()==0)
 		EntFireByHandle(self, "RunScriptCode", " PickCustomer(); ", 0.10, self, self);
 }
-
