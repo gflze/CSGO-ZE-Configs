@@ -1,11 +1,56 @@
 "math_counter"
-{
+{	
 	"0"
 	{
-		"HP_counter"		"imagebasileusis_hp"
+		"HP_counter"		"Boss_1_Hp"
+		"HPbar_counter"		"Boss_1_Hp_Overlay"
+		"HPinit_counter"	"Boss_1_Hp_Init"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Boss"
 	}
 	"1"
 	{
-		"HP_counter"		"act2_boss_hp"
+		"HP_counter"		"Boss_2_Hp"
+		"HPbar_counter"		"Boss_2_Hp_Overlay"
+		"HPinit_counter"	"Boss_2_Hp_Init"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"The Watcher"
+	}
+	"2"
+	{
+		"HP_counter"		"Boss_3_Hp"
+		"HPbar_counter"		"Boss_3_Hp_Overlay"
+		"HPinit_counter"	"Boss_3_Hp_Init"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Basil"
+	}
+	"3"
+	{
+		"HP_counter"		"Boss_2_Hp_Lava"
+		"CustomText"		"Fire Orb"
+	}
+	"4"
+	{
+		"HP_counter"		"Boss_2_Hp_Blizzard"
+		"CustomText"		"Ice Orb"
+	}
+	"5"
+	{
+		"HP_counter"		"Boss_2_Hp_Arc"
+		"CustomText"		"Thunder Orb"
+	}
+	"6"
+	{
+		"HP_counter"		"Boss_2_Hp_Hurricane"
+		"CustomText"		"Wind Orb"
 	}
 }
