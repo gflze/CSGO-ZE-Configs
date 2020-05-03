@@ -1,0 +1,13 @@
+"math_counter"
+{
+        "0"
+        {
+                  "HP_counter"              "stg2_boss_counter"
+                  "CustomText"              "Crystal"
+        }
+        "1"
+        {
+                  "HP_counter"              "boss_the_world"
+                  "CustomText"              "Boss"
+        }
+}
