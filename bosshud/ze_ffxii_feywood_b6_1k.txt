@@ -22,5 +22,16 @@
 		"HPbar_default"		""
 		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
 	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Glass_Ball_Break"
+		"CustomText"		"Ball"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Boss_Cactus_Break"
+		"CustomText"		"Cactuar"
+	}
 }
-
