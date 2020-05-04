@@ -28,21 +28,21 @@
 	"4"
 	{
 		"HP_counter"		"Fat_Nigger_Counter"
-		"CustomText"		"Cuchulainn"
+		"CustomText"		"Zalera"
 	}
 	"5"
 	{
 		"HP_counter"		"Stage_4_End_Guard_Counter"
-		"CustomText"		"Guardian"
+		"CustomText"		"Gabranth"
 	}
 	"6"
 	{
 		"HP_counter"		"Famfrit_Holy_Summon_Counter"
-		"CustomText"		"Guardian(Holy)"
+		"CustomText"		"Zargabaath"
 	}
 	"7"
 	{
 		"HP_counter"		"Famfrit_Fire_Summon_Counter"
-		"CustomText"		"Guardian(Fire)"
+		"CustomText"		"Bergan"
 	}
 }
