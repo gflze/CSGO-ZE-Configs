@@ -23,4 +23,37 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Naraka"
 	}
+	"2"
+	{
+		"HP_counter"		"nrk3_counter"
+		"HPbar_counter"		"nrk3_hp_iterations"
+		"HPinit_counter"	"nrk3_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Naraka"
+	}
+	"3"
+	{
+		"HP_counter"		"nrk4_counter"
+		"HPbar_coutner"		"nrk4_hp_iterations"
+		"HPinit_counter"	"nrk4_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Naraka"
+	}
+	"4"
+	{
+		"HP_counter"		"nrk5_counter"
+		"HPbar_counter"		"nrk5_hp_iterations"
+		"HPinit_counter"	"nrk5_hp_backup"
+		"HPbar_min"			"0"
+		"HPbar_max"			"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Boss"
+	}
 }
