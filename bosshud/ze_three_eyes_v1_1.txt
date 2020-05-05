@@ -82,3 +82,5 @@
 		"HP_counter"		"L4_WhiteEyes_HP"
 		"HPbar_mode"		"1"
 		"CustomText"		"Final WhiteEye"
+	}
+}
