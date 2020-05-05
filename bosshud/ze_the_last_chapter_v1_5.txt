@@ -61,3 +61,5 @@
 		"Type"			"breakable"
 		"BreakableName"		"nrk5_minisatan_cross"
 		"CustomText"		"Satan Pyramid Head"
+	}
+}
