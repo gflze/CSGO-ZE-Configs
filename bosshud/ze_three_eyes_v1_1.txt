@@ -1,36 +1,84 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"L1_BlueEyes_HP"
 		"HPbar_counter"		""
 		"HPinit_counter"	""
-		"CustomText"		"BlueEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
+		"HPbar_min"		""
+		"HPbar_max"		""
 		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_mode"		"1"
+		"CustomText"		"BlueEye"
 	}
-	"1" //math_counter
+	"1"
 	{
 		"HP_counter"		"L2_GreenEyes_HP"
 		"HPbar_counter"		""
 		"HPinit_counter"	""
-		"CustomText"		"GreenEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
+		"HPbar_min"		""
+		"HPbar_max"		""
 		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_mode"		"1"
+		"CustomText"		"GreenEye"
 	}
-	"2" //math_counter
+	"2"
 	{
 		"HP_counter"		"L3_RedEyes_HP"
 		"HPbar_counter"		""
 		"HPinit_counter"	""
-		"CustomText"		"RedEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
+		"HPbar_min"		""
+		"HPbar_max"		""
 		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_mode"		"1"
+		"CustomText"		"RedEye"
 	}
-}
+	"3"
+	{
+		"HP_counter"		"L4_BossPhase_1"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"WhiteEye Phase 1"
+	}
+	"4"
+	{
+		"HP_counter"		"L4_BossPhase_2"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"WhiteEye Phase 2"
+	}
+	"5"
+	{
+		"HP_counter"		"L4_BossPhase_3"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"WhiteEye Phase 3"
+	}
+	"6"
+	{
+		"HP_counter"		"L4_BossPhase_4"
+		"HPbar_counter"		""
+		"HPinit_counter"	""
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"WhiteEye Phase 4"
+	}
+	"7"
+	{
+		"HP_counter"		"L4_WhiteEyes_HP"
+		"HPbar_mode"		"1"
+		"CustomText"		"Final WhiteEye"
