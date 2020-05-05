@@ -9,7 +9,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Mini Demon"
 	}
 	
 	"1"
@@ -21,7 +21,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Mini Demon"
 	}
 	"2"
 	{
@@ -32,7 +32,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Hell Seeker"
 	}
 	"3"
 	{
@@ -43,7 +43,7 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Pyramid Head"
 	}
 	"4"
 	{
@@ -54,6 +54,10 @@
 		"HPbar_max"			"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Boss"
+		"CustomText"		"Pyramid Head"
 	}
-}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk5_minisatan_cross"
+		"CustomText"		"Satan Pyramid Head"
