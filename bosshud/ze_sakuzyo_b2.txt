@@ -3,9 +3,17 @@
 	"0" 
 	{
 		"HP_counter"		"Boss_1_HP_Math1"
+		"CustomText"		"Fire Element Code"
 	}
 	"1"
 	{
 		"HP_counter"		"Boss_2_HP_Math1"
+		"CustomText"		"Spike Element Code"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Boss_3_Attacks_AbsoluteZero_breakable"
+		"CustomText"		"Ice Element Code"
 	}
 }
