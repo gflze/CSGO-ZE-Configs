@@ -3,5 +3,6 @@
 	"0"
 	{
 		"HP_counter"		"ColorCounter"
+		"CustomText"		"Colored Man-God"
 	}
 }
