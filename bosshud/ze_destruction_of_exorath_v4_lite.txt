@@ -4,27 +4,33 @@
 	{
 		"HP_counter"		"healbar_counter_extreme"
 		"HPbar_counter"		"healbar_count_total2"
-		"HPbar_min"			""
-		"HPbar_max"			"12"
+		"HPinit_counter"	"healbar_count_annihilation"
+		"HPbar_min"		""
+		"HPbar_max"		"12"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Exorath (Extreme Mode)"
 	}
 	"1"
 	{
 		"HP_counter"		"healbar_counter_god"
 		"HPbar_counter"		"healbar_count_total2"
-		"HPbar_min"			""
-		"HPbar_max"			"12"
+		"HPinit_counter"	"healbar_count_annihilation"
+		"HPbar_min"		""
+		"HPbar_max"		"12"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Exorath (God Mode)"
 	}
 	"2"
 	{
 		"HP_counter"		"healbar_counter_impossible"
 		"HPbar_counter"		"healbar_count_total2"
-		"HPbar_min"			""
-		"HPbar_max"			"12"
+		"HPinit_counter"	"healbar_count_annihilation"
+		"HPbar_min"		""
+		"HPbar_max"		"12"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Exorath (Impossible Mode)"
 	}
 }
