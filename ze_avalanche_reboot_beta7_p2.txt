@@ -1,0 +1,42 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bosslvl1_4_counter1"
+		"HPbar_counter"		"bosslvl1_4_counter3"
+		"HPinit_counter"	"bosslvl1_4_counter2"
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Gargantua"
+	}
+	"1"
+	{
+		"HP_counter"		"bosslvl2_5_counter1"
+		"HPbar_counter"		"bosslvl2_5_counter3"
+		"HPinit_counter"	"bosslvl2_5_counter2"
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Spider"
+	}
+	"2"
+	{
+		"HP_counter"		"bosslvl3_counter1"
+		"HPbar_counter"		"bosslvl3_counter3"
+		"HPinit_counter"	"bosslvl3_counter2"
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"1"
+		"CustomText"		"Electric Machine"
+	}
+	"3"
+	{
+		"HP_counter"		"bosslvl5_end_counter"
+		"HPbar_mode"		"1"
+		"CustomText"		"Helicopter Minigun"
+	}
+}
