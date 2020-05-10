@@ -10,4 +10,9 @@
 		"Type"			"breakable"
 		"BreakableName"		"scene3_boss_box"
 	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"scene4_sea_witch_box"
+	}
 }
