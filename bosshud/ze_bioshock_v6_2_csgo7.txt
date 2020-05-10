@@ -4,40 +4,49 @@
 	{
 		"HP_counter"		"bouncer_Health_BarHP"
 		"HPbar_counter"		"bouncer_Health_HP"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPinit_counter"	"bouncer_Health_Init"
+		"HPbar_min"		""
+		"HPbar_max"		"5"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Big Daddy Bouncer"
 	}
 	"1"
 	{
 		"HP_counter"		"cohen_Health_BarHP"
 		"HPbar_counter"		"cohen_Health_HP"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPinit_counter"	"cohen_Health_Init"
+		"HPbar_min"		""
+		"HPbar_max"		"5"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Sander Cohen"
 	}
 	"2"
 	{
 		"HP_counter"		"fontaine_Health_BarHP"
 		"HPbar_counter"		"fontaine_Health_HP"
-		"HPbar_min"			""
-		"HPbar_max"			"6"
+		"HPinit_counter"	"fontaine_Health_Init"
+		"HPbar_min"		""
+		"HPbar_max"		"6"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Frank Fontaine"
 	}
 	"3"
 	{
 		"HP_counter"		"songbird_finale_health"
+		"CustomText"		"Final Songbird"
 	}
 	"4"
 	{
 		"HP_counter"		"songbird_Health_BarHP"
 		"HPbar_counter"		"songbird_Health_HP"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPinit_counter"	"songbird_Health_Init"
+		"HPbar_min"		""
+		"HPbar_max"		"5"
 		"HPbar_default"		""
 		"HPbar_mode"		"2"
+		"CustomText"		"Songbird"
 	}
 }

@@ -5,11 +5,11 @@
 		"HP_counter"		"nrk1_counter"
 		"HPbar_counter"		"nrk1_hp_iterations"
 		"HPinit_counter"	"nrk1_hp_backup"
-		"HPbar_min"			"0"
-		"HPbar_max"			"5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Mini Demon"
 	}
 	
 	"1"
@@ -17,10 +17,49 @@
 		"HP_counter"		"nrk2_counter"
 		"HPbar_counter"		"nrk2_hp_iterations"
 		"HPinit_counter"	"nrk2_hp_backup"
-		"HPbar_min"			"0"
-		"HPbar_max"			"5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Mini Demon"
+	}
+	"2"
+	{
+		"HP_counter"		"nrk3_counter"
+		"HPbar_counter"		"nrk3_hp_iterations"
+		"HPinit_counter"	"nrk3_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Hell Seeker"
+	}
+	"3"
+	{
+		"HP_counter"		"nrk4_counter"
+		"HPbar_counter"		"nrk4_hp_iterations"
+		"HPinit_counter"	"nrk4_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Pyramid Head"
+	}
+	"4"
+	{
+		"HP_counter"		"nrk5_counter"
+		"HPbar_counter"		"nrk5_hp_iterations"
+		"HPinit_counter"	"nrk5_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Pyramid Head"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk5_minisatan_cross"
+		"CustomText"		"Satan Pyramid Head"
 	}
 }

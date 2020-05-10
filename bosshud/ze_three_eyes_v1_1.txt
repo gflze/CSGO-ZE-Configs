@@ -1,36 +1,43 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"L1_BlueEyes_HP"
-		"HPbar_counter"		""
-		"HPinit_counter"	""
-		"CustomText"		"BlueEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"CustomText"		"BlueEye"
 	}
-	"1" //math_counter
+	"1"
 	{
 		"HP_counter"		"L2_GreenEyes_HP"
-		"HPbar_counter"		""
-		"HPinit_counter"	""
-		"CustomText"		"GreenEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"CustomText"		"GreenEye"
 	}
-	"2" //math_counter
+	"2"
 	{
 		"HP_counter"		"L3_RedEyes_HP"
-		"HPbar_counter"		""
-		"HPinit_counter"	""
-		"CustomText"		"RedEye OMEGALUL"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"CustomText"		"RedEye"
+	}
+	"3"
+	{
+		"HP_counter"		"L4_BossPhase_1"
+		"CustomText"		"WhiteEye 1/4"
+	}
+	"4"
+	{
+		"HP_counter"		"L4_BossPhase_2"
+		"CustomText"		"WhiteEye 2/4"
+	}
+	"5"
+	{
+		"HP_counter"		"L4_BossPhase_3"
+		"CustomText"		"WhiteEye 3/4"
+	}
+	"6"
+	{
+		"HP_counter"		"L4_BossPhase_4"
+		"CustomText"		"WhiteEye 4/4"
+	}
+	"7"
+	{
+		"HP_counter"		"L4_WhiteEye_HP"
+		"CustomText"		"Final WhiteEye"
 	}
 }
