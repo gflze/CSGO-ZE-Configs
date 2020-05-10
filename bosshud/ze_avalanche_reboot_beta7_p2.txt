@@ -38,3 +38,5 @@
 		"HP_counter"		"bosslvl5_end_counter"
 		"HPbar_mode"		"1"
 		"CustomText"		"Helicopter Minigun"
+	}
+}
