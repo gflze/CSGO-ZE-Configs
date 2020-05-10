@@ -4,50 +4,60 @@
 	{
 		"HP_counter"		"betray_him_hp_count_now"
 		"HPbar_counter"		"betray_him_hp_count"
-		"HPbar_min"			""
-		"HPbar_max"			"8"
+		"HPbar_min"		""
+		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Final Father Cloud"
 	}
 	"1"
 	{
 		"HP_counter"		"crasher hp"
+		"CustomText"		"Crasher"
 	}
 	"2"
 	{
 		"HP_counter"		"cute cloud hp"
+		"CustomText"		"Boy Cloud"
 	}
 	"3"
 	{
 		"HP_counter"		"ex1_girl_cloud_hp1"
+		"CustomText"		"Girl Cloud"
 	}
 	"4"
 	{
 		"HP_counter"		"ex1_girl_cloud_hp2"
+		"CustomText"		"Girl Cloud Tank"
 	}
 	"5"
 	{
 		"HP_counter"		"ex2_boss_real_hp"
+		"CustomText"		"Father Cloud"
 	}
 	"6"
 	{
 		"HP_counter"		"final_boss_ittanstop_counter"
+		"CustomText"		"Crasher Phase 2"
 	}
 	"7"
 	{
 		"HP_counter"		"final_boss_truehp_counter"
+		"CustomText"		"Crasher Phase 1"
 	}
 	"8"
 	{
 		"HP_counter"		"final_crasher_finale_final_hp_counter"
+		"CustomText"		"Final Crasher"
 	}
 	"9"
 	{
 		"HP_counter"		"final_crasher_hp_counter_total"
 		"HPbar_counter"		"final_crasher_hp_counter_10"
-		"HPbar_min"			""
-		"HPbar_max"			"10"
+		"HPbar_min"		""
+		"HPbar_max"		"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
+		"CustomText"		"True Crasher"
 	}
 }
