@@ -2,7 +2,8 @@
 {
 	"0"
 	{
-		"HP_counter"		"oracle_hp"
+		"Type"			"breakable"
+		"BreakableName"		"oracle_hp"
 		"CustomText"		"Oracle"
 	}
 
