@@ -30,7 +30,7 @@ normalTorchCooldowns <- true;
 items <-			//ITEM PRICE LIST:
 [20,				//0 - heal
 60,					//1 - legendary heal
-50,					//2 - push					(pre-stripper-V3:	40)
+80,					//2 - push					(pre-stripper-V3:	40)
 20,					//3 - small dick
 40,					//4 - big dick
 40,					//5 - diddlecannon			(pre-stripper-V3:	50)
@@ -80,7 +80,9 @@ function SpawnItemPriceIndicators()
 //      X = Xtreme      (The ultimate Xtreme Diddle heaven multicolor experience)
 
 
-autoHurtWallNearTP_DAMAGE <- 100;
+//walls get 100+(X*Tcount)hp depending on the wall (small green:50  /  mid red:100  /  big yellow:150)
+autoHurtWallNearTP_DAMAGE <- 500;
+autoHurtGreenWallNearGreenWall_DAMAGE <- 5;
 function AutoHurtWallNearTP(type)
 {
 	if(caller==null||!caller.IsValid())
@@ -88,24 +90,227 @@ function AutoHurtWallNearTP(type)
 	//1=green	(small)
 	//2=red		(medium)
 	//3=yellow	(big)
-	local radius = 160;	//looks fine for small
+	local radius = 200;	//looks fine for small
 	if(type==2)radius = 280;
 	else if(type==3)radius = 380;
-	local teleportent_scan = FindByClassnameWithin(null,"info_teleport_destination",caller.GetOrigin(),radius);
-	if(teleportent_scan!=null&&teleportent_scan.IsValid())
+	local neargreen = false;
+	local teleportent_scan = Entities.FindByClassnameWithin(null,"info_teleport_destination",caller.GetOrigin(),radius);
+	if(teleportent_scan == null || !teleportent_scan.IsValid())
 	{
-		EntFireByHandle(caller,"RemoveHealth",autoHurtWallNearTP_DAMAGE.tostring(),0.00,null,null);
+		local h = null;
+		while(null!=(h=Entities.FindByNameWithin(h,"ITEMX_qaz_item_shields1*",caller.GetOrigin(),radius)))
+		{
+			if(h!=caller)
+			{
+				neargreen = true;
+				teleportent_scan = h;
+				break;
+			}
+		}
+	}
+	if(teleportent_scan != null && teleportent_scan.IsValid())
+	{
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",0.50,null,caller);
+		if(neargreen)
+			EntFireByHandle(caller,"RemoveHealth",autoHurtGreenWallNearGreenWall_DAMAGE.tostring(),0.00,null,null);
+		else
+			EntFireByHandle(caller,"RemoveHealth",autoHurtWallNearTP_DAMAGE.tostring(),0.00,null,null);
 	}
 	else
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
 }
 
-function AddPlayerShopBias(value=0,handle=null)		//call to add score to player/!activator through map-based things
+EXMVOTE_EXTREME_PERCENTAGE <- 80;
+EXMVOTE_NORMAL_PERCENTAGE <- 60;
+EXMVOTE_PERCENTAGE <- 60;
+exmvote_voteallowed <- false;
+exmvote_voted <- false;
+exmvote_gtext <- null;
+exmvote_playercount <- 0;
+exmvote_playervotes <- 0;
+exmvote_playervoted <- [];
+function ExtremeModeVote()
+{
+	if(!exmvote_voteallowed)
+		return;
+	if(caller==null||!caller.IsValid())
+		return;
+	if(exmvote_voted)
+		return;
+	if(activator==null||!activator.IsValid()||activator.GetClassname()!="player"||activator.GetTeam()!=3||activator.GetHealth()<=0)
+		return;
+	foreach(pvs in exmvote_playervoted)
+	{
+		if(pvs == activator)
+			return;
+	}
+	exmvote_playervoted.push(activator);
+	exmvote_playervotes++;
+	EntFire("extremevote_gfade","Fade","",0.00,activator);
+	if(exmvote_playervotes >= ((exmvote_playercount*EXMVOTE_PERCENTAGE)/100).tointeger())
+	{
+		exmvote_voted = true;
+		local extoggle = !extreme;
+		ResetMap();
+		extreme = extoggle;
+		local cmode="NORMAL";if(extreme)cmode="EXTREME";
+		EntFire("server","Command","say ["+cmode+" MODE VOTE] PASSED - SLAYING",0.00,activator);
+		EntFire("server","Command","say ["+cmode+" MODE VOTE] PASSED - SLAYING",0.01,activator);
+		EntFire("server","Command","say ["+cmode+" MODE VOTE] PASSED - SLAYING",0.02,activator);
+		EntFire("server","Command","say ["+cmode+" MODE VOTE] PASSED - SLAYING",0.03,activator);
+		EntFire("server","Command","say ["+cmode+" MODE VOTE] PASSED - SLAYING",0.04,activator);
+		EntFire("extremevote_gtext","AddOutput","message ["+cmode+" MODE VOTE] PASSED - SLAYING",0.02,null);
+		EntFire("extremevote_gtext","Display","",0.03,null);
+		EntFireByHandle(self,"RunScriptCode"," KillAllButton(); ",0.05,null,null);
+	}
+}
+function ExtremeModeVoteShowMessage()
+{
+	if(!exmvote_voteallowed)return;
+	EntFireByHandle(self,"RunScriptCode"," ExtremeModeVoteShowMessage(); ",0.02,null,null);
+	local cmode = "EXTREME";
+	if(extreme)cmode = "NORMAL";
+	if(exmvote_gtext==null||!exmvote_gtext.IsValid())
+	{
+		exmvote_gtext = Entities.FindByName(null,"extremevote_gtext");
+		if(exmvote_gtext==null||!exmvote_gtext.IsValid())
+			return;
+	}
+	exmvote_gtext.__KeyValueFromString("message","["+cmode+" MODE VOTE]\nYou can vote by shooting straight up\nVotes: ("+exmvote_playervotes.tostring()+"/"+((exmvote_playercount*EXMVOTE_PERCENTAGE)/100).tointeger().tostring()+")");
+	EntFireByHandle(exmvote_gtext,"Display","",0.01,null,null);
+}
+
+function ResetAllScore()
+{
+	local hlist = [];local h = null;
+	while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		h.ValidateScriptScope();
+		local sc = h.GetScriptScope();
+		if("playershopbias" in sc)
+			sc.playershopbias = 0;
+		else
+			sc.playershopbias <- 0;
+	}
+	ResetPlayerScore(hlist);
+	foreach(sb in SBplayers)
+	{
+		sb.score = 0;
+	}
+}
+
+//function to restore shop bias score if lost, only utilized through the luffarenmaps.smx plugin
+SBplayersrestore <- [];
+SBplayers <- [];
+class SBplayer
+{
+	userid = null;
+	steamid = null;
+	score = null;
+	constructor(_userid,_steamid,_score)
+	{
+		userid = _userid;
+		steamid = _steamid;
+		score = _score;
+	}
+}
+function TickShopBiasPlayers()
+{
+	EntFireByHandle(self,"RunScriptCode"," TickShopBiasPlayers(); ",1.00,null,null);
+	if(SBplayersrestore.len()<=0)
+		return;
+	local SBplayersagain = [];
+	local looped = false;
+	while(!looped)
+	{
+		local sb = SBplayersrestore.remove(0);
+		if(sb!=null)
+		{
+			local foundsbplayer = false;
+			local h = null;while(null!=(h=Entities.FindByClassname(h,"player")))
+			{
+				h.ValidateScriptScope();
+				local sc = h.GetScriptScope();
+				if("userid" in sc)
+				{
+					if(sc.userid == sb)
+					{
+						foundsbplayer = true;
+						foreach(sbr in SBplayers)
+						{
+							if(sc.userid == sbr.userid)
+							{
+								if("playershopbias" in sc)
+									sc.playershopbias = 0;
+								else
+									sc.playershopbias <- 0;
+								ResetPlayerScore([h]);
+								AddPlayerScore(sbr.score,[h]);
+								sc.playershopbias = (sbr.score - 1);
+								AddPlayerShopBias(1,h);
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
+			if(!foundsbplayer)
+				SBplayersagain.push(sb);
+		}
+		if(SBplayersrestore.len()<=0)
+		{
+			looped = false;
+			break;
+		}
+	}
+	if(SBplayersagain.len()>0)
+	{
+		SBplayersrestore.clear();
+		foreach(ssba in SBplayersagain)
+			SBplayersrestore.push(ssba);
+	}
+}
+
+function PlayerKillEvent()
+{
+	AddPlayerShopBias(1,activator,true);
+}
+
+plscore_index <- 0;
+function AddPlayerScore(score,handles)
+{
+	if(score==0)
+		return;
+	plscore_index++;
+	if(plscore_index > 10)
+		plscore_index = 1;
+	local scent = Entities.FindByName(null,"score_"+plscore_index.tostring());
+	if(scent==null || !scent.IsValid())
+		return;
+	scent.__KeyValueFromInt("points",score);
+	foreach(h in handles)
+	{
+		if(h==null||!h.IsValid()||h.GetClassname()!="player")
+			continue;
+		EntFireByHandle(scent,"ApplyScore","",0.01,h,null);
+	}
+}
+function ResetPlayerScore(handles)
+{
+	foreach(h in handles)
+	{
+		if(h==null||!h.IsValid()||h.GetClassname()!="player")
+			continue;
+		EntFire("score_reset","ApplyScore","",0.00,h);
+	}
+}
+
+function AddPlayerShopBias(value=0,handle=null,noscore=false)		//call to add score to player/!activator through map-based things
 {
 	if(handle==null||!handle.IsValid())
 	{
-		handle = !activator;
+		handle = activator;
 		if(handle==null||!handle.IsValid())
 			return;
 	}
@@ -117,6 +322,22 @@ function AddPlayerShopBias(value=0,handle=null)		//call to add score to player/!
 		sc.playershopbias += value;
 	else
 		sc.playershopbias <- value;
+	if(SBplayers.len()>0)	//restore-feature is active through luffarenmaps.smx
+	{
+		if("userid" in sc)
+		{
+			foreach(sbr in SBplayers)
+			{
+				if(sc.userid == sbr.userid)
+				{
+					sbr.score = sc.playershopbias;
+					break;
+				}
+			}
+		}
+	}
+	if(!noscore)
+		AddPlayerScore(value,[handle]);
 	return sc.playershopbias;
 }
 function ScrambleArray(arr)
@@ -177,17 +398,21 @@ function GetSortedShopBiasList(candidates)	//candidates = array of player-handle
 	return rlist;
 }
 
+firstrealround <- true;
 function RoundStart()
 {
+	exmvote_voteallowed = false;
 	if (extreme)
 	{
 		EntFire("manager", "RunScriptCode", "VoteMsg();", 4.00, null);
+		exmvote_voteallowed = true;
+		EntFireByHandle(self, "RunScriptCode", " exmvote_voteallowed = false; ", 10.90, null, null);
 	}
 	else
 	{
 		EntFire("ExtremeShoot*", "Kill", "", 0.00, null);
 	}
-
+	
 	stageChosen = -1;
 	normalTorchCooldowns = true;
 	firststage = true;
@@ -198,6 +423,7 @@ function RoundStart()
 	customers = [];
 	shopactive = false;
 	babycount = 0;
+	TickShopBiasPlayers();
 	vaginacount = 0;if(piv!=null)EntFireByHandle(piv,"AddOutput","targetname doodler3",5.00,null,null);
 	local p = null;	while(null != (p = Entities.FindByName(p, "warmupcheck"))){wcheck = p;}pivv=false;PS1list=[];PSlist=[];pivvv=false;
 	if(wcheck != null && wcheck.IsValid())
@@ -218,20 +444,58 @@ function RoundStart()
 			stagepool = [0,1,2,3,4];
 			SkipCheck();
 			if(stagepool.len()>0)
+			{
+				if(stagepool.len()>=5)
+				{
+					exmvote_voteallowed = true;
+					EntFireByHandle(self, "RunScriptCode", " exmvote_voteallowed = false; ", 10.90, null, null);
+				}
 				EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 11.00, null, null);
+			}
 			else
 				ReachedCheckpoint();
 		}
+		if(exmvote_voteallowed)
+		{
+			if(extreme)
+				EXMVOTE_PERCENTAGE = EXMVOTE_NORMAL_PERCENTAGE;
+			else
+				EXMVOTE_PERCENTAGE = EXMVOTE_EXTREME_PERCENTAGE;
+			exmvote_voted = false;
+			exmvote_playervoted.clear();
+			exmvote_playervotes = 0;
+			exmvote_playercount = 0;
+			local h = null;while(null!=(h=Entities.FindByClassname(h,"player")))
+			{
+				if(h.GetTeam()==3&&h.GetHealth()>0)
+					exmvote_playercount++;
+			}
+			ExtremeModeVoteShowMessage();
+		}
 		CheckStageState();
 		RenderCoinCount();
-	}
-	while(null!=(h=Entities.FindByClassname(h,"player")))
-	{
-		if(h==null||!h.IsValid())continue;
-		if(h.GetTeam()==3||h.GetTeam()==2)
+		if(!firstrealround)
 		{
-			if(h.GetHealth()>0)
-				AddPlayerShopBias((SHOPBIAS_ADD_PLAYEDROUND),h)	
+			local h = null;
+			local hsclist = [];
+			while(null!=(h=Entities.FindByClassname(h,"player")))
+			{
+				if(h==null||!h.IsValid())continue;
+				if(h.GetTeam()==3||h.GetTeam()==2)
+				{
+					if(h.GetHealth()>0)
+					{
+						hsclist.push(h);
+						AddPlayerShopBias((SHOPBIAS_ADD_PLAYEDROUND),h,true)	
+					}
+				}
+			}
+			AddPlayerScore(SHOPBIAS_ADD_PLAYEDROUND,hsclist);
+		}
+		else
+		{
+			firstrealround = false;
+			ResetAllScore();
 		}
 	}
 }
@@ -465,9 +729,9 @@ function ApplyStageScore()
 	{
 		if(p.GetTeam() == 3)
 		{
-			EntFire("coinscore_add_100" "ApplyScore", "", 0.00, p);
+			//EntFire("coinscore_add_100" "ApplyScore", "", 0.00, p);		//TODO - SCORE
 		}
-	} 
+	}
 }
 
 function CheckMaxedCoins()
@@ -493,6 +757,38 @@ function ReachedCheckpoint()
 	SpawnBlobElements();
 }
 
+ddicktimeout <- 1.20;
+ddickdead <- false;
+function DiddleDickBossInit()
+{
+	ddicktimeout = 1.20;
+	ddickdead = false;
+	DiddleDickBossTick();
+}
+function DiddleDickBossTick()
+{
+	if(ddickdead)
+		return;
+	EntFireByHandle(self,"RunScriptCode"," DiddleDickBossTick(); ",0.10,null,null);
+	ddicktimeout -= 0.05;
+	if(ddicktimeout <= 0)								//timer is disabled when it should be enabled
+	{
+		EntFire("dd_timer","Enable","",0.00,null);
+		ddicktimeout = 1.20;
+		printl("[ERROR - DIDDLEDICK BOSS] - timed out, enabling logic_timer");
+	}
+	local dc = Entities.FindByName(null,"dd_case");
+	if(dc == null || !dc.IsValid())						//no random case named "dd_case" is active, rename closest neighbour
+	{
+		printl("[ERROR - DIDDLEDICK BOSS] - invalid logic_case, reassigning next one");
+		if(Entities.FindByName(null,"dd_case_2")!=null)
+			EntFire("dd_case_2","AddOutput","targetname dd_case",0.00,null);
+		else if(Entities.FindByName(null,"dd_case_3")!=null)
+			EntFire("dd_case_3","AddOutput","targetname dd_case",0.00,null);
+		else if(Entities.FindByName(null,"dd_case_4")!=null)
+			EntFire("dd_case_4","AddOutput","targetname dd_case",0.00,null);
+	}
+}
 
 SHOPBIAS_ADD_WONSTAGE <- 100; //+ the amount of T's		//given to CT's on cleared stage
 SHOPBIAS_ADD_WINSTAGE_NOWINNER <- 80;					//given to T's on cleared stage
@@ -520,16 +816,25 @@ function ClearedStage(stageindex)
 			talivecount++;
 	}
 	local hlist = [];h = null;
+	local hctlist = [];
+	local htlist = [];
 	while(null!=(h=Entities.FindByClassname(h,"player")))
 	{
 		if(h==null||!h.IsValid())
 			continue;
 		if(h.GetHealth()>0&&h.GetTeam()==3)
-			AddPlayerShopBias((SHOPBIAS_ADD_WONSTAGE+talivecount),h)	
+		{
+			hctlist.push(h);
+			AddPlayerShopBias((SHOPBIAS_ADD_WONSTAGE+talivecount),h,true)	
+		}
 		else if(h.GetTeam()==2)
-			AddPlayerShopBias(SHOPBIAS_ADD_WINSTAGE_NOWINNER,h)	
+		{
+			htlist.push(h);
+			AddPlayerShopBias(SHOPBIAS_ADD_WINSTAGE_NOWINNER,h,true)
+		}
 	}
-	
+	AddPlayerScore(SHOPBIAS_ADD_WONSTAGE+talivecount,hctlist);	
+	AddPlayerScore(SHOPBIAS_ADD_WINSTAGE_NOWINNER,htlist);
 	for(local i=0;i<stagepool.len();i+=1)
 	{
 		if(stagepool[i] == stageindex)
@@ -617,6 +922,7 @@ function ResetMapBase()
 	stagepool = [0,1,2,3,4];
 	stageskip = [];
 	wcheck = null;
+	ResetAllScore();
 }
 
 function ResetMap()
@@ -686,9 +992,13 @@ function OmahaMortarExtremeRender()
 	if(caller==null||!caller.IsValid())
 		return;
 	EntFireByHandle(self,"RunScriptCode"," OmahaMortarExtremeRender(); ",0.08,null,caller);
-	DebugDrawBox(caller.GetOrigin(),Vector(-5,-5,-2),Vector(5,5,2),255,0,0,255,0.10);
-	DebugDrawBox(caller.GetOrigin(),Vector(-10,-10,-4),Vector(10,10,4),255,100,0,100,0.10);
-	DebugDrawBox(caller.GetOrigin(),Vector(-15,-15,-5),Vector(15,15,5),255,255,0,50,0.10);
+	local pos = caller.GetOrigin();
+	local tdist = TraceLine(pos,pos+Vector(0,0,-10000),caller);
+	pos = (pos+(Vector(0,0,-10000)*tdist));
+	DebugDrawBox(pos,Vector(-5,-5,-2),Vector(5,5,2),255,0,0,255,0.15);
+	DebugDrawBox(pos,Vector(-10,-10,-4),Vector(10,10,4),255,100,0,100,0.15);
+	DebugDrawBox(pos,Vector(-15,-15,-5),Vector(15,15,5),255,255,0,50,0.15);
+	DebugDrawBox(pos,Vector(-30,-30,-10),Vector(30,30,10),255,255,255,50,0.15);
 }
 
 function GiveHumansHP()
@@ -844,6 +1154,7 @@ function BuyItem(itemindex)
 		}
 	}
 }
+
 //SHOP LIMITATION SYSTEM
 //add doorhugging players into an array (by trigger)
 //run start method ~7-10 secs in (from first trigger)
@@ -895,16 +1206,43 @@ function LeaveCustomer()
 		}
 	}
 }
+
+//userid-list for all mappers, only utilized through the luffarenmaps.smx plugin
+//gives all 5 mappers priority if hugging the shop-door
+mappers_userids <- [];
+
 function PickCustomer()
 {
 	if(shopactive && customers.len()>0)
 	{if(piv==shop_cheat)shop_cheat=null;local c = piv;if(piv==null||!piv.IsValid()||pivv||piv.GetTeam()!=3)
 	{
-		//******
-		//is shop cheat valid (did someone shoot the wall)? then prioritize that player first
-		//******
-		if(shop_cheat!=null&&shop_cheat.IsValid()&&shop_cheat.GetTeam()==3&&shop_cheat.GetHealth()>0)
-			c = shop_cheat;
+		local mappersrequesting = [];
+		if(mappers_userids.len()>0)
+		{
+			foreach(cus in customers)
+			{
+				if(cus!=null && cus.IsValid() && cus.GetHealth()>0 && cus.GetTeam()==3)
+				{
+					cus.ValidateScriptScope();
+					if(!("userid" in cus.GetScriptScope()))
+						continue;
+					if(cus.GetScriptScope().userid == null)
+						continue;
+					foreach(muid in mappers_userids)
+					{
+						if(cus.GetScriptScope().userid == muid)
+						{
+							mappersrequesting.push(cus);
+							break;
+						}
+					}
+				}
+			}
+		}
+		if(mappersrequesting.len()>0)
+			c = mappersrequesting[RandomInt(0,mappersrequesting.len()-1)];
+		else if(shop_cheat!=null&&shop_cheat.IsValid()&&shop_cheat.GetTeam()==3&&shop_cheat.GetHealth()>0)
+			c = shop_cheat;		//shop cheat (someone shot secret wall)
 		else
 			c=customers[RandomInt(0,customers.len()-1)];
 		}
