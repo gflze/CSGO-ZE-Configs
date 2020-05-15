@@ -1,33 +1,25 @@
 "math_counter"
-{
+{	
 	"0"
 	{
-		"Type"				"breakable"
-		"BreakableName"		"Aqua_Breakable"
-		"CustomText"		"Aqua"
+		"HP_counter"		"Boss_HP_Counter"
+		"CustomText"		"Boss"
 	}
 	"1"
 	{
-		"Type"				"breakable"
-		"BreakableName"		"Kain_Highwind_Hitbox"
-		"CustomText"		"Kain Highwind"
+		"HP_counter"		"Ultima_Weapon_HP_Counter"
+		"CustomText"		"Ultima Weapon"
 	}
 	"2"
 	{
-		"Type"				"breakable"
-		"BreakableName"		"Odin_Hitbox"
-		"CustomText"		"Odin"
+		"Type"			"breakable"
+		"BreakableName"		"Final_Kain_Highwind_Hitbox"
+		"CustomText"		"Kain Highwind"
 	}
 	"3"
 	{
-		"Type"				"breakable"
-		"BreakableName"		"KOH_Hitbox"
-		"CustomText"		""
+		"Type"			"breakable"
+		"BreakableName"		"Aqua_Breakable"
+		"CustomText"		"Aqua"
 	}
-	"4"
-	{
-		"Type"				"breakable"
-		"BreakableName"		"Garland_Hitbox"
-		"CustomText"		"Garland"
-	}
-}
+}	
