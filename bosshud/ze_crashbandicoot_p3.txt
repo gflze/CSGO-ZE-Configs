@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"dynamic_HP"
+		"HPbar_counter"		"dynamic_HP_output"
+		"HPbar_min"		"1"
+		"HPbar_max"		"6"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"1"
+		"CustomText"		"Dr. Neo Cortex"
+	}
+	"1"
+	{
+		"HP_counter"		"dynamic_HP1"
+		"HPbar_counter"		"dynamic_HP1_output1"
+		"HPbar_min"		"1"
+		"HPbar_max"		"6"
+		"HPbar_default"		"1"
+		"HPbar_mode"		"1"
+		"CustomText"		"Uka Uka"
+	}
+}

@@ -1,0 +1,64 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	
+	
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_crepgirl_pb2"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_mb_dog_phbox_s"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_mb_death_phbox_s"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_mb_taros_phbox_s"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_bloodstone_phbox"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvls_true_bossarena_catgirl_break_phbox"
+	}
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_charon_phb2"
+	}
+	"7"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_errorgirl_pb2"
+	}
+	"8"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_catgirl_pb2"
+	}
+	"9"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_queen_phbox"
+	}
+	"10"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvls_castle_final_boss_phbox"
+	}
+}
