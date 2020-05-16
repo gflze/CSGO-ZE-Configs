@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"counter_boss_hp"
+		"CustomText"		"Airship"
+	}
+	"1"
+	{
+		"HP_counter"		"counter_l2_boss_hp"
+		"CustomText"		"Crazy Circle"
+	}
+}

@@ -3,17 +3,21 @@
 	"0"
 	{
 		"HP_counter"		"BossExtHitP"
+		"CustomText"		"Robot"
 	}
 	"1"
 	{
 		"HP_counter"		"BossMassHitP"
+		"CustomText"		"Boss"
 	}
 	"2"
 	{
 		"HP_counter"		"BossRageHitP"
+		"CustomText"		"Robot (Rage Mode)"
 	}
 	"3"
 	{
 		"HP_counter"		"PanicHPCounter"
+		"CustomText"		"Train Robot"
 	}
 }

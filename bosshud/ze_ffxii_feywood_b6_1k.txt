@@ -7,8 +7,8 @@
 		"HPinit_counter"	"Boss_HP"
 		"HPbar_min"		"1"
 		"HPbar_max"		"7"
-		"HPbar_default"		""
-		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
 		"CustomText"		"BOSS HP"
 	}
 	"1"
@@ -18,8 +18,8 @@
 		"HPinit_counter"	"lvl5_Boss_HP"
 		"HPbar_min"		"1"
 		"HPbar_max"		"7"
-		"HPbar_default"		""
-		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+		"HPbar_default"		"1"
+		"HPbar_mode"		"2"
 		"CustomText"		"Zodiark"
 	}
 	"2"
