@@ -1,24 +1,24 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"Boss_Health"
 		"HPbar_counter"		"Boss_Overlay_Counter"
 		"HPinit_counter"	"Boss_Health_Init"
-		"CustomText"		"Boss"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			"7"
-		"HPbar_default"		""
-		"HPbar_mode"		"2"//1=OnHitMin 2=OnHitMax
+		"HPbar_min"		"0"
+		"HPbar_max"		"7"
+		"HPbar_default"		"7"
+		"HPbar_mode"		"2"
+		"CustomText"		"Mateus"
 	}
 	"1"
 	{
 		"HP_counter"		"Chaos_Health"
 		"HPbar_counter"		"Chaos_Overlay_Counter"
 		"HPinit_counter"	"Chaos_Health_Init"
-		"HPbar_min"			""
-		"HPbar_max"			"7"
-		"HPbar_default"		""
+		"HPbar_min"		"0"
+		"HPbar_max"		"7"
+		"HPbar_default"		"7"
 		"HPbar_mode"		"2"
 		"CustomText"		"Chaos"
 	}
