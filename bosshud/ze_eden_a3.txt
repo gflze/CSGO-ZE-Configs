@@ -10,3 +10,4 @@
 		"Type"			"breakable"
 		"BreakableName"		"boss_physbox"
 	}
+}
