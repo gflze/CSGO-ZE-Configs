@@ -4,36 +4,40 @@
 	{
 		"HP_counter"		"counter_rtv_boss_vida"
 		"HPbar_counter"		"counter_rtv_hp_bar"
-		"HPbar_min"			""
-		"HPbar_max"			"15"
+		"HPbar_min"		"0"
+		"HPbar_max"		"15"
 		"HPbar_default"		"15"
 		"HPbar_mode"		"1"
+		"CustomText"		"RTV Cube"
 	}
 	"1"
 	{
 		"HP_counter"		"counter_st4_boss_vida"
 		"HPbar_counter"		"counter_st4_boss_vida_bar"
-		"HPbar_min"			""
-		"HPbar_max"			"11"
+		"HPbar_min"		"0"
+		"HPbar_max"		"11"
 		"HPbar_default"		"4"
 		"HPbar_mode"		"1"
+		"CustomText"		"Cube"
 	}
 	"2"
 	{
 		"HP_counter"		"l4_boss_vida"
 		"HPbar_counter"		"l4_boss_life_counter"
-		"HPbar_min"			""
-		"HPbar_max"			"8"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Sphere Object"
 	}
 	"3"
 	{
 		"HP_counter"		"white_boss_vida"
 		"HPbar_counter"		"white_boss_life_counter"
-		"HPbar_min"			""
-		"HPbar_max"			"8"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Cube"
 	}
 }
