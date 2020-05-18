@@ -4,19 +4,21 @@
 	{
 		"HP_counter"		"white_boss_vida"
 		"HPbar_counter"		"white_boss_life_counter"
-		"HPbar_min"			"0"
-		"HPbar_max"			"8"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Cube"
 	}
 
 	"1"
 	{
 		"HP_counter"		"l4_boss_vida"
 		"HPbar_counter"		"l4_boss_life_counter"
-		"HPbar_min"			"0"
-		"HPbar_max"			"8"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"Sphere Object"
 	}
 }
