@@ -1,0 +1,33 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"sphere_counter"
+		"CustomText"		"Electric Sphere"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_break"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss3_break"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_break2"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"phys2"
+	}
+}
