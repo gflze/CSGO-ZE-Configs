@@ -5,7 +5,6 @@
 		"HitMarkerOnly"		"1"
 	}
 	
-	
 	"0"
 	{
 		"Type"			"breakable"
@@ -45,5 +44,10 @@
 	{
 		"Type"			"breakable"
 		"BreakableName"		"lvls_castle_final_boss_phbox"
+	}
+	"8"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl4_finalboss_pb"
 	}
 }
