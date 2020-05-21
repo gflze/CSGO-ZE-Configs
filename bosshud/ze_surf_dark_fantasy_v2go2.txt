@@ -14,49 +14,34 @@
 	"1"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"boss_mb_dog_phbox_s"
+		"BreakableName"		"boss_bloodstone_phbox"
 	}
 	"2"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"boss_mb_death_phbox_s"
+		"BreakableName"		"lvls_true_bossarena_catgirl_break_phbox"
 	}
 	"3"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"boss_mb_taros_phbox_s"
+		"BreakableName"		"boss_charon_phb2"
 	}
 	"4"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"boss_bloodstone_phbox"
+		"BreakableName"		"boss_errorgirl_pb2"
 	}
 	"5"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"lvls_true_bossarena_catgirl_break_phbox"
+		"BreakableName"		"boss_catgirl_pb2"
 	}
 	"6"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"boss_charon_phb2"
-	}
-	"7"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"boss_errorgirl_pb2"
-	}
-	"8"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"boss_catgirl_pb2"
-	}
-	"9"
-	{
-		"Type"			"breakable"
 		"BreakableName"		"boss_queen_phbox"
 	}
-	"10"
+	"7"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"lvls_castle_final_boss_phbox"
