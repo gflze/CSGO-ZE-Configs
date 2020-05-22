@@ -9,7 +9,7 @@
 		"HP_counter"		"Boss_Health"
 		"HPbar_counter"		"Boss_HealthCount"
 		"HPinit_counter"	"Boss_HealthInit"
-		"HPbar_min"		"0
+		"HPbar_min"		"0"
 		"HPbar_max"		"5"
 		"HPbar_default"		"0
 		"HPbar_mode"		"2"
