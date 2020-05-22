@@ -11,7 +11,7 @@
 		"HPinit_counter"	"Boss_HealthInit"
 		"HPbar_min"		"0"
 		"HPbar_max"		"5"
-		"HPbar_default"		"0
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Boss"
 	}
