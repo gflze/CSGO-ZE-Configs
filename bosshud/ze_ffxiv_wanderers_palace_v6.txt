@@ -20,6 +20,6 @@
 	{
 		"Type"			"breakable"
 		"BreakableName"		"Aqua_Breakable"
-		"CustomText"		"Aqua"
+		"CustomText"		"Ice Wall"
 	}
 }	
