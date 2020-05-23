@@ -9,7 +9,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Boss"
+		"CustomText"		"Naraka"
 	}
 	
 	"1"
@@ -21,7 +21,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Boss"
+		"CustomText"		"Naraka"
 	}
 
 	"2"
@@ -33,7 +33,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Boss"
+		"CustomText"		"Naraka"
 	}	
 	"3"
 	{
@@ -44,6 +44,6 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Boss"
+		"CustomText"		"Naraka"
 	}
 }
