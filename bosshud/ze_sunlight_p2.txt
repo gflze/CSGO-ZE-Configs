@@ -3,7 +3,7 @@
 	"0"
 	{
 		"HP_counter"		"counter_boss_health"
-		"CustomText"		"Undead Giant"
+		"CustomText"		"Scorched Demon"
 	}
 	"1"
 	{

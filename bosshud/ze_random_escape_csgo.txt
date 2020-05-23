@@ -3,14 +3,14 @@
 	"0"
 	{
 		"Type" 			"breakable"
-		"BreakableName" "Fixed_Zeal_Boss_Break"
-		"CustomText" 	"Droneship"
+		"BreakableName" 	"Fixed_Zeal_Boss_Break"
+		"CustomText" 		"Droneship"
 	}
 	
 	"1"
 	{
 		"Type" 			"breakable"
-		"BreakableName" "ZombieMurder_Boss_Break"
-		"CustomText" 	"Zombie Murderer"
+		"BreakableName" 	"ZombieMurder_Boss_Break"
+		"CustomText" 		"Droneship (Push)"
 	}
 }

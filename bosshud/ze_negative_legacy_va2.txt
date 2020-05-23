@@ -1,0 +1,58 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"heavy_a_100"
+		"CustomText"		"Boss A 5/5"
+	}
+	"1"
+	{
+		"HP_counter"		"heavy_a_80"
+		"CustomText"		"Boss A 4/5"
+	}
+	"2"
+	{
+		"HP_counter"		"heavy_a_60"
+		"CustomText"		"Boss A 3/5"
+	}
+	"3"
+	{
+		"HP_counter"		"heavy_a_40"
+		"CustomText"		"Boss A 2/5"
+	}
+	"4"
+	{
+		"HP_counter"		"heavy_a_20"
+		"CustomText"		"Boss A 1/5"
+	}
+	"5"
+	{
+		"HP_counter"		"heavy_b_100"
+		"CustomText"		"Boss B 5/5"
+	}
+	"6"
+	{
+		"HP_counter"		"heavy_b_80"
+		"CustomText"		"Boss B 4/5"
+	}
+	"7"
+	{
+		"HP_counter"		"heavy_b_60"
+		"CustomText"		"Boss B 3/5"
+	}
+	"8"
+	{
+		"HP_counter"		"heavy_b_40"
+		"CustomText"		"Boss B 2/5"
+	}
+	"9"
+	{
+		"HP_counter"		"heavy_b_20"
+		"CustomText"		"Boss B 1/5"
+	}
+}

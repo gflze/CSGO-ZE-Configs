@@ -1,0 +1,34 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+
+	}
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_break"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss3_break"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_break2"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"phys2"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"phys1_1"
+	}
+}

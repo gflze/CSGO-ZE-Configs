@@ -7,7 +7,7 @@
 		"HPbar_min"		"1"
 		"HPbar_max"		"6"
 		"HPbar_default"		"1"
-		"HPbar_mode"		"1"
+		"HPbar_mode"		"2"
 		"CustomText"		"Dr. Neo Cortex"
 	}
 	"1"
@@ -17,7 +17,7 @@
 		"HPbar_min"		"1"
 		"HPbar_max"		"6"
 		"HPbar_default"		"1"
-		"HPbar_mode"		"1"
+		"HPbar_mode"		"2"
 		"CustomText"		"Uka Uka"
 	}
 }

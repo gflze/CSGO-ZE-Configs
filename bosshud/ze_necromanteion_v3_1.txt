@@ -1,27 +1,24 @@
 "math_counter"
 {
-	"config"
-	{
-		"HitMarkerOnly"		"1"
-	}
-	
 	"0"
 	{
 		"HP_counter"		"hp_counter100"
+		"CustomText"		"Hades 1/4"
 	}
-	
 	"1"
 	{
 		"HP_counter"		"hp_counter75"
+		"CustomText"		"Hades 2/4"
 	}
-	
 	"2"
 	{
 		"HP_counter"		"hp_counter50"
+		"CustomText"		"Hades 3/4"
 	}
 	
 	"3"
 	{
 		"HP_counter"		"hp_counter25"
+		"CustomText"		"Hades 4/4"
 	}
 }

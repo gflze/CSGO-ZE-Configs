@@ -162,5 +162,9 @@
 		"HP_counter"		"finalkirlia_hp"
 		"CustomText"		"Kirlia"
 	}
-
+	"26"
+	{
+		"HP_counter"		"Arceus_Judgement_HP"
+		"CustomText"		"Judgement Sphere"
+	}
 }
