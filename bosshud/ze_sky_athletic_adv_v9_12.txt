@@ -60,4 +60,9 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"True Crasher"
 	}
+	"10"
+	{
+		"HP_counter"		"ex2_boss_angry_hp"
+		"CustomText"		"Angry Father Cloud"
+	}
 }
