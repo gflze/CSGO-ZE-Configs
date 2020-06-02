@@ -9,7 +9,7 @@
 		"HPbar_max"		"9"
 		"HPbar_default"		"9"
 		"HPbar_mode"		"2"
-		"CustomText"		"Barlog"
+		"CustomText"		"Balrog"
 	}
 	"1"
 	{
