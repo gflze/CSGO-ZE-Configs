@@ -33,17 +33,17 @@
 	"5"
 	{
 		"HP_counter"		"ex2_boss_real_hp"
-		"CustomText"		"Father Cloud"
+		"CustomText"		"Father Cloud (Rage)"
 	}
 	"6"
 	{
 		"HP_counter"		"final_boss_ittanstop_counter"
-		"CustomText"		"Crasher Phase 2"
+		"CustomText"		"Crasher Phase 1"
 	}
 	"7"
 	{
 		"HP_counter"		"final_boss_truehp_counter"
-		"CustomText"		"Crasher Phase 1"
+		"CustomText"		"Crasher Phase 2"
 	}
 	"8"
 	{
@@ -59,5 +59,10 @@
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
 		"CustomText"		"True Crasher"
+	}
+	"10"
+	{
+		"HP_counter"		"ex2_boss_angry_hp"
+		"CustomText"		"Father Cloud"
 	}
 }

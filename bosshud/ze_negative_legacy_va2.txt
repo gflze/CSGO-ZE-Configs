@@ -55,4 +55,9 @@
 		"HP_counter"		"heavy_b_20"
 		"CustomText"		"Boss B 1/5"
 	}
+	"10"
+	{
+		"HP_counter"		"agony_counter_a"
+		"CustomText"		"Agony"
+	}
 }
