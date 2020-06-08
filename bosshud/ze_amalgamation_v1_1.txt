@@ -3,7 +3,6 @@
 	"0"
 	{
 		"HP_counter"		"level_1_mb_hp_counter"
-		"CustomText"		"Crystal"
 	}
 	"1"
 	{
