@@ -1,0 +1,20 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"level_1_mb_hp_counter"
+		"CustomText"		"Crystal"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_hp_p1"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_hp_p2"
+	}
+	"3"
+	{
+		"HP_counter"		"final_boss_hp_counter"
+	}
+}
