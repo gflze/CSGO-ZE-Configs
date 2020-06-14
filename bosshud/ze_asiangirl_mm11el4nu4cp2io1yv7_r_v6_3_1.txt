@@ -1,0 +1,33 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"Counter_RedCube1"
+		"CustomText"		"Cube 1"
+	}
+	"1"
+	{
+		"HP_counter"		"Counter_RedCube2"
+		"CustomText"		"Cube 2"
+	}
+	"2"
+	{
+		"HP_counter"		"Counter_RedCube3"
+		"CustomText"		"Cube 3"
+	}
+	"3"
+	{
+		"HP_counter"		"Counter_RedCube4"
+		"CustomText"		"Cube 4"
+	}
+	"4"
+	{
+		"HP_counter"		"Counter_BossObject"
+		"CustomText"		"Boss"
+	}
+}

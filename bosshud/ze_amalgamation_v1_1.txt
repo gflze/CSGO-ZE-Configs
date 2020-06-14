@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"level_1_mb_hp_counter"
+		"CustomText"		"Mini Boss"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_hp_p1"
+		"CustomText"		"Boss Phase 1"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_hp_p2"
+		"CustomText"		"Boss Phase 2"
+	}
+	"3"
+	{
+		"HP_counter"		"final_boss_hp_counter"
+		"CustomText"		"Boss"
+	}
+}

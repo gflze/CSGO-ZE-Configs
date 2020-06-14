@@ -1,0 +1,26 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"hpforboss"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nekohealth1"
+		"CustomText"		"Boss 1/3"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nekohealth2"
+		"CustomText"		"Boss 2/3"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nekolasthealth"
+		"CustomText"		"Boss 3/3"
+	}
+}
