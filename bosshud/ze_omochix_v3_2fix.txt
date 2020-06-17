@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"normal_boss_counter"
+		"CustomText"		"Cube"
+	}
+	"1"
+	{
+		"HP_counter"		"level2_crystal_counter"
+		"CustomText"		"Blue Crystal"
+	}
+	"2"
+	{
+		"HP_counter"		"level2_blue_counter"
+		"CustomText"		"Laser Cube"
+	}
+}
