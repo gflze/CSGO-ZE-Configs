@@ -1,0 +1,34 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"SandMonster_HP_Counter"
+		"CustomText"		"Sand Monster"
+	}
+	"1"
+	{
+		"HP_counter"		"Zeromus_HP_Counter"
+		"CustomText"		"Zeromus"
+	}
+	"2"
+	{
+		"HP_counter"		"Boss_HP"
+		"HPbar_counter"		"Boss_HP_Counter"
+		"HPinit_counter"	"Boss_HP_Init"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Boss"
+	}
+	"3"
+	{
+		"HP_counter"		"Judgebergan_HP_Counter"
+		"CustomText"		"Bergan"
+	}
+	"4"
+	{
+		"HP_counter"		"Guardian_HP_Counter"
+		"CustomText"		"Guardian"
+	}
+}

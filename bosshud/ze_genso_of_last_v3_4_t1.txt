@@ -1,0 +1,28 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"level3_boss_counter"
+		"CustomText"		"The Soul"
+	}
+	"1"
+	{
+		"HP_counter"		"level3_golem_counter"
+		"CustomText"		"Golem Ahglan"
+	}
+	"2"
+	{
+		"HP_counter"		"Ancient_Elculous_Health_Counter"
+		"CustomText"		"Ancient Elculous"
+	}
+	"3"
+	{
+		"HP_counter"		"level4_boss_counter"
+		"CustomText"		"Golem Ahglan"
+	}
+	"4"
+	{
+		"HP_counter"		"Reaper_Counter"
+		"CustomText"		"Reaper"
+	}
+}
