@@ -1,6 +1,6 @@
 "math_counter"
 {
-	"config" 
+	"config"
 	{
 		"MultBoss"			"1"
 	}
