@@ -9,7 +9,6 @@
 	{
 		"HP_counter"		"stage_1_gigant1"
 		"CustomText"		"Pseudogiant"
-
 	}
 	"1"
 	{
