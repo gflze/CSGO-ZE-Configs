@@ -1,6 +1,6 @@
 "math_counter"
 {
-	"config" 
+	"config"
 	{
 		"MultBoss"			"1"
 	}
@@ -9,7 +9,6 @@
 	{
 		"HP_counter"		"stage_1_gigant1"
 		"CustomText"		"Pseudogiant"
-
 	}
 	"1"
 	{
@@ -40,12 +39,12 @@
 	{
 		"HP_counter"		"stage_1_block5"
 		"CustomText"		"Controller"
-	}	
+	}
 	"7"
 	{
 		"HP_counter"		"stage_2_burrercounter"
 		"CustomText"		"Burer"
-	}	
+	}
 	"8"
 	{
 		"HP_counter"		"stage_2_burrercounter2"
@@ -59,13 +58,13 @@
 	"10"
 	{
 		"HP_counter"		"pirate_counter"
-		"HPbar_counter"		"pirate_hp_iterations" 
-		"HPinit_counter"	"pirate_hp_backup" 
-		"CustomText"		"Pseudogiant" 
-		"HPbar_min"		"0" 
+		"HPbar_counter"		"pirate_hp_iterations"
+		"HPinit_counter"	"pirate_hp_backup"
+		"CustomText"		"Pseudogiant"
+		"HPbar_min"		"0"
 		"HPbar_max"		"20"
-		"HPbar_default"		"16" 
-		"HPbar_mode"		"1" 
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
 	}
 	"11"
 	{

@@ -9,7 +9,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Mini Demon"
+		"CustomText"		"Tomb Demon"
 	}
 	
 	"1"
@@ -21,7 +21,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Mini Demon"
+		"CustomText"		"Sinner Demon"
 	}
 	"2"
 	{
@@ -32,7 +32,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Hell Seeker"
+		"CustomText"		"Naraka"
 	}
 	"3"
 	{
