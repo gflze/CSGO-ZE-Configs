@@ -2,7 +2,7 @@
 {
 	"config"
 	{
-		"HitMarkerOnly"		"1"
+		"MultBoss"		"1"
 	}
 
 	"0"
@@ -39,30 +39,35 @@
 	{
 		"Type"				"breakable"
 		"BreakableName"		"bosslvl4_minigun_hit"
+		"CustomText"		"Minigun"
 	}	
 
 	"6"
 	{
 		"Type"				"breakable"
 		"BreakableName"		"bosslvl4_launcher_hit"
+		"CustomText"		"Giant Launcher"
 	}	
 
 	"7"
 	{
 		"Type"				"breakable"
 		"BreakableName"		"bosslvl4_beam_hit"
+		"CustomText"		"Beam"
 	}	
 
 	"8"
 	{
 		"Type"				"breakable"
 		"BreakableName"		"bosslvl4_tank_hit"
+		"CustomText"		"Tank"
 	}
 
 	"9"
 	{
 		"Type"				"breakable"
 		"BreakableName"		"bosslvl4_hit"
+		"CustomText"		"Queen"
 	}	
 
 	"10"
