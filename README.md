@@ -74,7 +74,8 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
         "maxuses"           "" //max uses of the item (if applicable)
         "cooldown"          "" //cooldown of the item (if applicable)
         "maxamount"         "" //how many instances of this item can exist
-	"physbox"           "" //OPTIONAL: "true" if this item is a physbox so it would allow bullets/knife to shoot/knife through. If it's false, dont bother adding this line.
+        "physbox"           "" //OPTIONAL: "true" if this item is a physbox so it would allow bullets/knife to shoot/knife through. If it's false, dont bother adding this line.
+        "trigger"           "" //OPTIONAL: hammerid of the trigger that gives a player the item if one exists
     }
 }
 ```
