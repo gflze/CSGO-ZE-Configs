@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"counter_st3_boss_vida"
+		"HPbar_counter"		"counter_st3_boss_vida_bar"
+		"HPinit_counter"	"counter_st3_boss_oko"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"BOSS HP"
+	}
+}
