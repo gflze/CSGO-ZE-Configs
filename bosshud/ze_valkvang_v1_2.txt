@@ -5,26 +5,24 @@
 		"MultBoss"		"1"
 	}
 	
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"ds_ornstein_hpcounter"
 		"HPbar_counter"		"ds_ornstein_hpmasscounter"
-		"HPinit_counter"	""
-		"CustomText"		"Ornstein"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Ornstein"
 	}
-	"1" //math_counter
+	"1"
 	{
 		"HP_counter"		"ds_smough_hpcounter"
 		"HPbar_counter"		"ds_smough_hpmasscounter"
-		"HPinit_counter"	""
-		"CustomText"		"Smough"//def: BOSS HP
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Smough"
 	}
 }
