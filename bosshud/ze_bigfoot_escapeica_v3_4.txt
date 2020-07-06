@@ -2,7 +2,7 @@
 {
 	"0"
 	{
-                "Type"			"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"Boss_Bigfoot"
 		"CustomText"		"Bigfoot"
 	}
