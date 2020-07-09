@@ -7,7 +7,7 @@
 	
 	"0"
 	{
-		"HP_counter"		"stage_1_gigant"
+		"HP_counter"		"stage_1_gigant1"
 		"CustomText"		"Pseudogiant"
 	}
 	"1"
@@ -63,7 +63,7 @@
 	}
 	"10"
 	{
-		"HP_counter"		"stage_3_countercontroler"
+		"HP_counter"		"stage_3_countercontroler1"
 		"CustomText"		"Controller"
 	}
 	"11"
