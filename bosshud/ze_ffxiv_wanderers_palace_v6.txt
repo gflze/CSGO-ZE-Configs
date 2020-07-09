@@ -8,6 +8,12 @@
 	"1"
 	{
 		"HP_counter"		"Ultima_Weapon_HP_Counter"
+		"HPbar_counter"		"Ultima_Weapon_HP_Phase_Counter"
+		"HPinit_counter"	"Ultima_Weapon_HP_Initial"
+		"HPbar_min"		""
+		"HPbar_max"		""
+		"HPbar_default"		""
+		"HPbar_mode"		"2"
 		"CustomText"		"Ultima Weapon"
 	}
 	"2"

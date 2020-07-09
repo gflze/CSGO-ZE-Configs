@@ -38,6 +38,6 @@
 	"6"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"bosslvl6_end_golem_hit"
+		"BreakableName"		"lvl6_end_golem_hit"
 	}
 }

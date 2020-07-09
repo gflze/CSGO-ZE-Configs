@@ -1,9 +1,0 @@
-"math_counter"
-{
-	"0"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"Boss_Phys"
-		"CustomText"		"Orcs"
-	}
-}
