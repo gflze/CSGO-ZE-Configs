@@ -11,7 +11,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Spider"
 	}
-	
 	"1"
 	{
 		"HP_counter"		"bosslvl2_counter1"
@@ -23,7 +22,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Troll"
 	}
-	
 	"2"
 	{
 		"HP_counter"		"bosslvl2_end_counter1"
@@ -35,7 +33,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Dragon"
 	}
-	
 	"3"
 	{
 		"HP_counter"		"bosslvl3_counter1"
@@ -47,7 +44,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Dragon"
 	}
-	
 	"4"
 	{
 		"HP_counter"		"bosslvl3_end_counter1"
@@ -59,7 +55,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Dragon"
 	}
-	
 	"5"
 	{
 		"HP_counter"		"bosslvl4_counter1"
@@ -71,7 +66,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Gargantua"
 	}
-	
 	"6"
 	{
 		"HP_counter"		"bosslvl5_counter1"
@@ -83,20 +77,7 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Balrog"
 	}
-	
 	"7"
-	{
-		"HP_counter"		"bosslvl5_end_counter3"
-		"HPbar_counter"		"bosslvl5_end_counter3"
-		"HPinit_counter"	"bosslvl5_end_counter2"
-		"HPbar_min"		"0"
-		"HPbar_max"		"999999"
-		"HPbar_default"		"10"
-		"HPbar_mode"		"1"
-		"CustomText"		"Dragon"
-	}
-	
-	"8"
 	{
 		"HP_counter"		"bosslvl5_garg_counter1"
 		"HPbar_counter"		"bosslvl5_garg_counter3"
@@ -107,8 +88,7 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Gargantua"
 	}
-	
-	"9"
+	"8"
 	{
 		"HP_counter"		"bosslvl5_laser_counter"
 		"CustomText"		"Balrog"

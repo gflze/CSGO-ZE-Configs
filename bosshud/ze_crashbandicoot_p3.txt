@@ -7,7 +7,7 @@
 	
 	"0"
 	{
-		"Type			"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"green_phys"
 		"CustomText"		"Green Ball"
 	}
