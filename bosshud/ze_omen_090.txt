@@ -24,7 +24,7 @@
 	"3"
 	{
 		"Type"		"breakable"	
-		"BreakableName"	"l2_boss_hitbox"
+		"BreakableName"	"l3_boss_hitbox"
 		"CustomText"	"Eternal Crystal"
 	}
 	
