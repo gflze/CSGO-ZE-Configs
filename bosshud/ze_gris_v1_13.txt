@@ -18,7 +18,7 @@
 		"HPbar_max"		"11"
 		"HPbar_default"		"4"
 		"HPbar_mode"		"1"
-		"CustomText"		"Cube"
+		"CustomText"		"Phase Cube"
 	}
 	"2"
 	{
@@ -28,6 +28,7 @@
 		"HPbar_max"		"8"
 		"HPbar_default"		"8"
 		"HPbar_mode"		"1"
+		"CustomText"		"White Ball"
 	}
 	"3"
 	{
