@@ -1,0 +1,58 @@
+"math_counter"
+{	
+	"0"
+	{
+		"HP_counter"		"mutant_counter1"
+		"HPbar_counter"		"mutant_hp_iterations1"
+		"HPinit_counter"	"mutant_hp_backup1"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"UFO"
+	}
+	"1"
+	{
+		"HP_counter"		"grg_counter"
+		"HPbar_counter"		"grg_hp_iterations"
+		"HPinit_counter"	"grg_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Nihilanth"
+	}
+	"2"
+	{
+		"HP_counter"		"mutant_counter"
+		"HPbar_counter"		"mutant_hp_iterations"
+		"HPinit_counter"	"mutant_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Antlion"
+	}
+	"3"
+	{
+		"HP_counter"		"garg_counter"
+		"HPbar_counter"		"garg_hp_iterations"
+		"HPinit_counter"	"garg_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Gargantua"
+	}
+	"4"
+	{
+		"HP_counter"		"sss5_l_laser_counter"
+		"HPbar_counter"		"sss5_l_laser_hp_interations"
+		"HPinit_counter"	"sss5_l_laser_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Nihilanth"
+	}
+}
