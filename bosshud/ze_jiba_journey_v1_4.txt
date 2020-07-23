@@ -7,11 +7,11 @@
 	"1"
 	{
 		"HP_counter"		"boss_hp_counter_static"
-		"CustomText"		"BOSS (Static)"
+		"CustomText"		"Revenant"
 	}
 	"2"
 	{
 		"HP_counter"		"boss_hp_counter"
-		"CustomText"		"BOSS"
+		"CustomText"		"Revenant"
 	}
 }
