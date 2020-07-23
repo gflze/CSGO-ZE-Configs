@@ -1,0 +1,24 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"level3_mini_boss_hp"
+		"CustomText"		"Thor"
+	}
+	"1"
+	{
+		"HP_counter"		"level3_boss_hp_1"
+		"CustomText"		"Grado"
+	}
+	"2"
+	{
+		"HP_counter"		"formortiis_hp"
+		"CustomText"		"Diabolo"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"level2_boss_break"
+		"CustomText"		"Boss"
+	}
+}
