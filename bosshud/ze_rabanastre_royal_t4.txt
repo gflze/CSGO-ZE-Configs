@@ -19,7 +19,7 @@
 		"HPbar_max"		"8"
 		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
-		"CustomText"		"Boss"
+		"CustomText"		"Gabranth"
 	}
 	"3"
 	{
@@ -29,6 +29,6 @@
 	"4"
 	{
 		"HP_counter"		"Guardian_HP_Counter"
-		"CustomText"		"Guardian"
+		"CustomText"		"Gabranth"
 	}
 }
