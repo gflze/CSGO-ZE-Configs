@@ -3,22 +3,22 @@
 	"2"
 	{
 		"HP_counter"		"true_bahamut_hp_100"
-		"CustomText"		"Bahamut (1/4)"
+		"CustomText"		"True Bahamut (1/4)"
 	}
 	"2"
 	{
 		"HP_counter"		"true_bahamut_hp_75"
-		"CustomText"		"Bahamut (2/4)"
+		"CustomText"		"True Bahamut (2/4)"
 	}
 	"2"
 	{
 		"HP_counter"		"true_bahamut_hp_50"
-		"CustomText"		"Bahamut (3/4)"
+		"CustomText"		"True Bahamut (3/4)"
 	}
 	"2"
 	{
 		"HP_counter"		"true_bahamut_hp_25"
-		"CustomText"		"Bahamut (4/4)"
+		"CustomText"		"True Bahamut (4/4)"
 	}
 	"4"
 	{
@@ -83,12 +83,18 @@
 	"11"
 	{
 		"HP_counter"		"lv3_nael_hp"
-		"CustomText"		"Nael"
+		"CustomText"		"Boss"
 	}
 	"12"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"dark_bahamut_wall"
 		"CustomText"		"Dark Bahamut"
+	}
+	"13"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"enkidu_hitbox"
+		"CustomText"		"Enkidu"
 	}
 }

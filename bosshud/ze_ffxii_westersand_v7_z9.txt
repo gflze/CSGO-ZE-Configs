@@ -5,40 +5,25 @@
 		"HP_counter"		"Boss_Health"
 		"HPbar_counter"		"Boss_Overlay_Counter"
 		"HPinit_counter"	"Boss_Health_Init"
-		"HPbar_min"			"0"
-		"HPbar_max"			"6"
+		"HPbar_min"		"0"
+		"HPbar_max"		"6"
 		"HPbar_default"		"6"
-		"HPbar_mode"		"1"	// 1=降序 =2升序
-		"CustomText"		"Guardian"
+		"HPbar_mode"		"1"
+		"CustomText"		"Boss"
 	}
 	"2"
 	{
 		"HP_counter"		"Airship_Ending_Boss_Health"
-		"HPbar_counter"		""
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		""	// 1=降序 =2升序
 		"CustomText"		"Chaos"
 	}
 	"3"
 	{
 		"HP_counter"		"Ehe_Dragon_HP"
-		"HPbar_counter"		""
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		""	// 1=降序 =2升序
 		"CustomText"		"Dragon"
 	}
 	"4"
 	{
 		"HP_counter"		"Ehe_Guardian_HP"
-		"HPbar_counter"		""
-		"HPbar_min"			""
-		"HPbar_max"			""
-		"HPbar_default"		""
-		"HPbar_mode"		""	// 1=降序 =2升序
-		"CustomText"		"Guardian"
+		"CustomText"		"Gabranth"
 	}
 }
