@@ -37,7 +37,7 @@
 	}
 	"7"
 	{
-		"HP_counter"		"L4_WhiteEye_HP"
+		"HP_counter"		"L4_WhiteEyes_HP"
 		"CustomText"		"Final WhiteEye"
 	}
 }
