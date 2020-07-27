@@ -1,0 +1,38 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"s2_boss_breakable"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"ball_boss_physbox"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"s4_miniboss_physbox"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"s4_smallboss2_physbox"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"s4_finalboss_physbox"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"s4_finalboss_return_physbox"
+	}
+}
