@@ -5,11 +5,11 @@
 		"HP_counter"		"boss_math"
 		"HPbar_counter"		"boss_hpbar_overlaycounter"
 		"HPinit_counter"	"boss_hpbar_counter_2"
-		"CustomText"		"Ermahgerd Terst"
 		"HPbar_min"		"0"
 		"HPbar_max"		"10"
-		"HPbar_default"		""
-		"HPbar_mode"		"1"//1=OnHitMin 2=OnHitMax
+		"HPbar_default"		"0"
+		"HPbar_mode"		"1"
+		"CustomText"		"Ermahgerd Terst"
 	}
 	
 	"1"
