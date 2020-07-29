@@ -1,21 +1,21 @@
 "math_counter"
 {
-	"0" //func_breakable or func_physbox
+	"0"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"bosss_hp"
-		"CustomText"		"Santa"//def: BOSS HP
+		"CustomText"		"Santa"
 	}
-	"1" //func_breakable or func_physbox
+	"1"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"bosss_hp1"
-		"CustomText"		"Fat Santa"//def: BOSS HP
+		"CustomText"		"Fat Santa"
 	}
-	"2" //func_breakable or func_physbox
+	"2"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"bosss_hp2"
-		"CustomText"		"Socrates"//def: BOSS HP
+		"CustomText"		"Socrates"
 	}
 }
