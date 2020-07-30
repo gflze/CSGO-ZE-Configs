@@ -2,8 +2,8 @@
 {
 	"0"
 	{
-		"Type"				"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"FinalBoss_hitbox"
-		"CustomName"		"Spider"
+		"CustomText"		"Spider"
 	}
 }
