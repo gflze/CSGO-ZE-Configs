@@ -20,7 +20,7 @@
 		"HPbar_max"		"999999"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
-		"CustomText"		"Spider"
+		"CustomText"		"Synthetic Spider"
 	}
 	"2"
 	{
