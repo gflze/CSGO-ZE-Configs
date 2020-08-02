@@ -1,0 +1,46 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"mutant_counter"
+		"HPbar_counter"		"mutant_hp_iterations"
+		"HPinit_counter"	"mutant_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Glas Gavelen"
+	}
+	"1"
+	{
+		"HP_counter"		"mutant2_counter"
+		"HPbar_counter"		"mutant2_hp_iterations"
+		"HPinit_counter"	"mutant2_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Crom Cruach"
+	}
+	"2"
+	{
+		"HP_counter"		"mutant_counter5"
+		"HPbar_counter"		"mutant_hp_iterations5"
+		"HPinit_counter"	"mutant_hp_backup5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Braha"
+	}
+	"3"
+	{
+		"HP_counter"		"mutant_counter5"
+		"HPbar_counter"		"mutant_hp_iterations5_2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Braha"
+	}
+}
