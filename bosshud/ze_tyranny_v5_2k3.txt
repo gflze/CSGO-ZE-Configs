@@ -99,7 +99,7 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Gargantua"
 	}
-	"8"
+	"9"
 	{
 		"HP_counter"		"bosslvl5_laser_counter"
 		"CustomText"		"Balrog"
