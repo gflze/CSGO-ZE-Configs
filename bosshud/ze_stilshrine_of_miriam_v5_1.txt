@@ -62,7 +62,7 @@
 	{
 		"HP_counter"		"Vyraal_HP"
 		"HPbar_counter"		"Vyraal_endHP"
-		"HPinit_counter"	"HP1CounterBackUP"
+		"HPinit_counter"	"HP1CounterBackUp"
 		"HPbar_min"		"0"
 		"HPbar_max"		"19"
 		"HPbar_default"		"19"
