@@ -1,9 +1,9 @@
 "math_counter"
 {
-	"0" //func_breakable or func_physbox
+	"0"
 	{
-		"Type"		"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"drake_hp"
-		"CustomText"		"Anchelion"//def: BOSS HP
+		"CustomText"		"Anchelion"
 	}
 }

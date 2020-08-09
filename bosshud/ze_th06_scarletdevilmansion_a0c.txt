@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"meirin_hp_1st_counter"
+		"CustomText"		"Hong Meirin 1/3"
+	}
+	"1"
+	{
+		"HP_counter"		"meirin_hp_2nd_counter"
+		"CustomText"		"Hong Meirin 2/3"
+	}
+	"2"
+	{
+		"HP_counter"		"meirin_hp_3rd_counter"
+		"CustomText"		"Hong Meirin 3/3"
+	}
+}

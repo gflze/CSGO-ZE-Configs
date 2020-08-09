@@ -8,22 +8,22 @@
 	"1"
 	{
 		"HP_counter"		"bahamut_hp_100"
-		"CustomText"		"Bahamut(1/4)"
+		"CustomText"		"Bahamut (1/4)"
 	}
 	"2"
 	{
 		"HP_counter"		"bahamut_hp_75"
-		"CustomText"		"Bahamut(2/4)"
+		"CustomText"		"Bahamut (2/4)"
 	}
 	"3"
 	{
 		"HP_counter"		"bahamut_hp_50"
-		"CustomText"		"Bahamut(3/4)"
+		"CustomText"		"Bahamut (3/4)"
 	}
 	"4"
 	{
 		"HP_counter"		"bahamut_hp_25"
-		"CustomText"		"Bahamut(4/4)"
+		"CustomText"		"Bahamut (4/4)"
 	}
 	"5"
 	{
@@ -33,11 +33,17 @@
 	"6"
 	{
 		"HP_counter"		"ads_atack1_hp"
-		"CustomText"		"ADS(Right)"
+		"CustomText"		"ADS (Right)"
 	}
 	"7"
 	{
 		"HP_counter"		"ads_atack2_hp"
-		"CustomText"		"ADS(Left)"
+		"CustomText"		"ADS (Left)"
+	}
+	"8"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss"
+		"CustomText"		"Enkidu"
 	}
 }

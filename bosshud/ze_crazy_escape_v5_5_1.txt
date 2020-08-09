@@ -5,8 +5,8 @@
 		"HP_counter"		"naraka_counter"
 		"HPbar_counter"		"naraka_hp_iterations"
 		"HPinit_counter"	"naraka_hp_backup"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
 		"CustomText"		"Naraka"
@@ -16,29 +16,27 @@
 		"HP_counter"		"naraka_counter2"
 		"HPbar_counter"		"naraka_hp_iterations2"
 		"HPinit_counter"	"naraka_hp_backup2"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
 		"CustomText"		"Giant Crucified"
 	}
-	
 	"2"
 	{
 		"HP_counter"		"naraka_ultimate_counter"
 		"HPbar_counter"		"naraka_ultimate_hp_iterations"
 		"HPinit_counter"	"naraka_ultimate_hp_backup"
-		"HPbar_min"			""
-		"HPbar_max"			"5"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
 		"CustomText"		"3 Narakas"
 	}
-	
 	"3"
 	{
-		"Type"				"breakable"
+		"Type"			"breakable"
 		"BreakableName"		"BossCage"
-		"CustomText"		"Crucified"
+		"CustomText"		"Sinner"
 	}
 }
