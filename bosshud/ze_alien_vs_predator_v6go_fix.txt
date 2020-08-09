@@ -1,0 +1,72 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"matpred"
+		"CustomText"		"Predalien"
+	}
+	"1"
+	{
+		"HP_counter"		"matpred1"
+		"CustomText"		"Predalien"
+	}
+	"2"
+	{
+		"HP_counter"		"matpred2"
+		"CustomText"		"Predalien"
+	}
+	"3"
+	{
+		"HP_counter"		"lm12"
+		"CustomText"		"Predator"
+	}
+	"4"
+	{
+		"HP_counter"		"HealthFractionbat1"
+	}
+	"5"
+	{
+		"HP_counter"		"HealthFractionbat2"
+	}
+	"6"
+	{
+		"HP_counter"		"HealthFractionbat3"
+	}
+	"7"
+	{
+		"HP_counter"		"HealthFractionbat4"
+	}
+	"8"
+	{
+		"HP_counter"		"pirate_counter"
+		"HPbar_counter"		"pirate_hp_iterations"
+		"HPinit_counter"	"pirate_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"20"
+		"HPbar_default"		"16"
+		"HPbar_min"		"1"
+		"CustomText"		"Predalien"
+	}
+	"9"
+	{
+		"HP_counter"		"pirate_counter2b"
+		"HPbar_counter"		"pirate_hp_iterations2b"
+		"HPinit_counter"	"pirate_hp_backup2b"
+		"HPbar_min"		"0"
+		"HPbar_max"		"20"
+		"HPbar_default"		"16"
+		"HPbar_min"		"1"
+		"CustomText"		"Alien"
+	}
+	"10"
+	{
+		"HP_counter"		"pirate_counter3b"
+		"HPbar_counter"		"pirate_hp_iterations3b"
+		"HPinit_counter"	"pirate_hp_backup3b"
+		"HPbar_min"		"0"
+		"HPbar_max"		"20"
+		"HPbar_default"		"16"
+		"HPbar_min"		"1"
+		"CustomText"		"Predator"
+	}
+}

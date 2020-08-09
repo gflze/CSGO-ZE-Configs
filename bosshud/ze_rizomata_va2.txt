@@ -4,9 +4,9 @@
 	{
 		"HP_counter"		"2_boss_hpcounter"
 		"HPbar_counter"		"2_boss_hpmasscounter"
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Gnome"
 	}
@@ -15,9 +15,9 @@
 	{
 		"HP_counter"		"3_boss_hpcounter"
 		"HPbar_counter"		"3_boss_hpmasscounter"
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Undine"
 	}
@@ -26,9 +26,9 @@
 	{
 		"HP_counter"		"4_boss_hpcounter"
 		"HPbar_counter"		"4_boss_hpmasscounter"
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Slyph"
 	}
@@ -37,9 +37,9 @@
 	{
 		"HP_counter"		"5_boss_hpcounter"
 		"HPbar_counter"		"5_boss_hpmasscounter"
-		"HPbar_min"			""
-		"HPbar_max"			"10"
-		"HPbar_default"		""
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Salamander"
 	}
