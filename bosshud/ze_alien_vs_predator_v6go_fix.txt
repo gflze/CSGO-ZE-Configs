@@ -18,23 +18,27 @@
 	"3"
 	{
 		"HP_counter"		"lm12"
-		"CustomText"		"Predator"
+		"CustomText"		"Predalien"
 	}
 	"4"
 	{
 		"HP_counter"		"HealthFractionbat1"
+		"CustomText"		"Predalien"
 	}
 	"5"
 	{
 		"HP_counter"		"HealthFractionbat2"
+		"CustomText"		"Predalien"
 	}
 	"6"
 	{
 		"HP_counter"		"HealthFractionbat3"
+		"CustomText"		"Predalien"
 	}
 	"7"
 	{
 		"HP_counter"		"HealthFractionbat4"
+		"CustomText"		"Predalien"
 	}
 	"8"
 	{
