@@ -4,6 +4,7 @@
 	{
 		"HP_counter"		"healbar_counter_extreme"
 		"HPbar_counter"		"healbar_count_total2"
+		"HPinit_counter"	"healbar_count_total"
 		"HPbar_min"		"0"
 		"HPbar_max"		"12"
 		"HPbar_default"		"0"
@@ -14,6 +15,7 @@
 	{
 		"HP_counter"		"healbar_counter_god"
 		"HPbar_counter"		"healbar_count_total2"
+		"HPinit_counter"	"healbar_count_total"
 		"HPbar_min"		"0"
 		"HPbar_max"		"12"
 		"HPbar_default"		"0"
@@ -24,6 +26,7 @@
 	{
 		"HP_counter"		"healbar_counter_impossible"
 		"HPbar_counter"		"healbar_count_total2"
+		"HPinit_counter"	"healbar_count_total"
 		"HPbar_min"		"0"
 		"HPbar_max"		"12"
 		"HPbar_default"		"0"
