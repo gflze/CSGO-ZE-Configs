@@ -1,0 +1,32 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"math_boss_s1"
+	}
+	"1"
+	{
+		"HP_counter"		"math_boss_s1_end"
+		"CustomText"		"The Watcher"
+	}
+	"2"
+	{
+		"HP_counter"		"s2_boss_mini_counter"
+		"CustomText"		"Delta"
+	}
+	"3"
+	{
+		"HP_counter"		"s2_boss_counter_1"
+		"CustomText"		"Angel 1/3"
+	}
+	"4"
+	{
+		"HP_counter"		"s2_boss_counter_2"
+		"CustomText"		"Angel 2/3"
+	}
+	"5"
+	{
+		"HP_counter"		"s2_boss_counter_3"
+		"CustomText"		"Angel 3/3"
+	}
+}
