@@ -62,4 +62,10 @@
 		"BreakableName"		"nrk5_minisatan_cross"
 		"CustomText"		"Satan Pyramid Head"
 	}
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nrk5_finaldeath_break"
+		"CustomText"		"Final Death"
+	}
 }

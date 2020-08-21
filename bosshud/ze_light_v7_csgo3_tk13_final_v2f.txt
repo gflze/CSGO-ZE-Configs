@@ -2,7 +2,8 @@
 {
 	"0"
 	{
-		"HP_counter"		"mathcounter"
+		"Type"			"breakable"
+		"BreakableName"		"crystal"
 		"CustomText"		"Crystal"
 	}
 }
