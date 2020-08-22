@@ -30,7 +30,7 @@ normalTorchCooldowns <- true;
 items <-			//ITEM PRICE LIST:
 [20,				//0 - heal
 60,					//1 - legendary heal
-80,					//2 - push					(pre-stripper-V3:	40)
+70,					//2 - push					(pre-stripper-V3:	40)
 20,					//3 - small dick
 40,					//4 - big dick
 40,					//5 - diddlecannon			(pre-stripper-V3:	50)
@@ -80,7 +80,7 @@ function SpawnItemPriceIndicators()
 //      X = Xtreme      (The ultimate Xtreme Diddle heaven multicolor experience)
 
 
-//walls get 100+(X*Tcount)hp depending on the wall (small green:50  /  mid red:100  /  big yellow:150)
+//walls get 100+(X*Tcount)hp depending on the wall (small green:80  /  mid red:150  /  big yellow:350)
 autoHurtWallNearTP_DAMAGE <- 500;
 autoHurtGreenWallNearGreenWall_DAMAGE <- 5;
 function AutoHurtWallNearTP(type)
@@ -120,7 +120,7 @@ function AutoHurtWallNearTP(type)
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
 }
 
-EXMVOTE_EXTREME_PERCENTAGE <- 80;
+EXMVOTE_EXTREME_PERCENTAGE <- 70;
 EXMVOTE_NORMAL_PERCENTAGE <- 60;
 EXMVOTE_PERCENTAGE <- 60;
 exmvote_voteallowed <- false;
@@ -164,6 +164,20 @@ function ExtremeModeVote()
 		EntFireByHandle(self,"RunScriptCode"," KillAllButton(); ",0.05,null,null);
 	}
 }
+
+function WarnVoteShowMessage()
+{
+	EntFireByHandle(self,"RunScriptCode"," WarnVoteShowMessage(); ",0.02,null,null);
+	if(exmvote_gtext==null||!exmvote_gtext.IsValid())
+	{
+		exmvote_gtext = Entities.FindByName(null,"extremevote_gtext");
+		if(exmvote_gtext==null||!exmvote_gtext.IsValid())
+			return;
+	}
+	exmvote_gtext.__KeyValueFromString("message","[EXTREME MODE VOTE]\nGet ready to vote at the start of the next round\nYou can do this by shooting straight up in the spawn-area\nYou will only have ~10 seconds to vote\nIt's your vote, do just as you wish!");
+	EntFireByHandle(exmvote_gtext,"Display","",0.01,null,null);
+}
+
 function ExtremeModeVoteShowMessage()
 {
 	if(!exmvote_voteallowed)return;
@@ -207,11 +221,13 @@ class SBplayer
 	userid = null;
 	steamid = null;
 	score = null;
-	constructor(_userid,_steamid,_score)
+	name = null;
+	constructor(_userid,_steamid,_score,_name)
 	{
 		userid = _userid;
 		steamid = _steamid;
 		score = _score;
+		name = _name;
 	}
 }
 function TickShopBiasPlayers()
@@ -275,6 +291,17 @@ function TickShopBiasPlayers()
 function PlayerKillEvent()
 {
 	AddPlayerShopBias(1,activator,true);
+}
+
+function ShowPlayerScoreNewRound()
+{
+	if(activator==null||!activator.IsValid())
+		return;
+	activator.ValidateScriptScope();
+	local sc = activator.GetScriptScope();
+	if(!("playershopbias" in sc))
+		sc.playershopbias <- 0;
+	AddPlayerScore(sc.playershopbias,[activator]);
 }
 
 plscore_index <- 0;
@@ -437,6 +464,20 @@ function RoundStart()
 			stagepool = [];
 			CheckMaxedCoinsCheckpoint();
 			SpawnBlobElements();
+			local shopcheatrng = RandomInt(0,100);
+			if(shopcheatrng > 50)
+			{
+				EntFire("stripstrop_shopcheat","AddOutput","origin 4488 880 600",0.00,null);
+				EntFire("stripstrop_diddlefriend","AddOutput","origin 4488 1168 600",0.00,null);
+			}
+			else
+			{
+				EntFire("stripstrop_diddlefriend","AddOutput","origin 4488 880 600",0.00,null);
+				EntFire("stripstrop_shopcheat","AddOutput","origin 4488 1168 600",0.00,null);
+			}
+			shopangels.clear();
+			tickingsinners = true;
+			TickInflatingSinners();
 		}
 		else
 		{
@@ -476,6 +517,7 @@ function RoundStart()
 		RenderCoinCount();
 		if(!firstrealround)
 		{
+			local scoreadd_time = 0.00;
 			local h = null;
 			local hsclist = [];
 			while(null!=(h=Entities.FindByClassname(h,"player")))
@@ -486,11 +528,13 @@ function RoundStart()
 					if(h.GetHealth()>0)
 					{
 						hsclist.push(h);
-						AddPlayerShopBias((SHOPBIAS_ADD_PLAYEDROUND),h,true)	
+						AddPlayerShopBias((SHOPBIAS_ADD_PLAYEDROUND),h,true);
+						EntFireByHandle(self,"RunScriptCode","ShowPlayerScoreNewRound();",scoreadd_time,h,null);
+						scoreadd_time += 0.01;
 					}
 				}
 			}
-			AddPlayerScore(SHOPBIAS_ADD_PLAYEDROUND,hsclist);
+			//AddPlayerScore(SHOPBIAS_ADD_PLAYEDROUND,hsclist); <- removed because broken
 		}
 		else
 		{
@@ -898,7 +942,8 @@ function SkipStage(stageindex)
 function Initialize()
 {
 	EntFire("stage_manager", "InValue", "warmup", 0.00, self);
-	ResetMap();
+	ResetMap(true);		//warmup, reset all shop bias score
+	WarnVoteShowMessage();
 }
 
 function SkipToFinale()
@@ -914,7 +959,7 @@ function GetAllCoins()
 	CheckMaxedCoinsCheckpoint();
 }
 
-function ResetMapBase()
+function ResetMapBase(haha_boobies = true)
 {
 	coins = 0;
 	coins_lastround = 0;
@@ -922,13 +967,14 @@ function ResetMapBase()
 	stagepool = [0,1,2,3,4];
 	stageskip = [];
 	wcheck = null;
-	ResetAllScore();
 }
 
-function ResetMap()
+function ResetMap(button=false)
 {
 	ResetMapBase();
 	extreme = false;
+	if(button)		//admin button pressed, reset all shop bias score
+		ResetAllScore();
 }
 
 function ExtremeCheck()
@@ -959,22 +1005,34 @@ function TorchExtremeCheck()
 	}
 }
 
+//added variables for these in stripper #2
+torchcooldown <- 300.0;
+torchcooldown_normal <- 20.0;
 function TorchCooldownVis()
 {
 	if(caller==null || !caller.IsValid())
 		return;
 	if (extreme && !normalTorchCooldowns)
 	{
-		EntFireByHandle(caller, "DisableDraw", "", 0.00, null, caller);
-		EntFireByHandle(caller, "EnableDraw", "", 300.00, null, caller);		//300 SECOND COOLDOWN!
+		local trfx=5;for(local i=0; i < (torchcooldown - 5);i++)
+		{trfx--;if(trfx<=0){trfx=5;EntFireByHandle(caller, "AddOutput", "renderfx 17", i, null, caller);}}
+		EntFireByHandle(caller, "AddOutput", "renderfx 17", 0.00, null, caller);
+		EntFireByHandle(caller, "AddOutput", "renderfx 0", torchcooldown, null, caller);
+	}
+	else
+	{
+		local trfx=5;for(local i=0; i < (torchcooldown_normal - 5);i++)
+		{trfx--;if(trfx<=0){trfx=5;EntFireByHandle(caller, "AddOutput", "renderfx 17", i, null, caller);}}
+		EntFireByHandle(caller, "AddOutput", "renderfx 17", 0.00, null, caller);
+		EntFireByHandle(caller, "AddOutput", "renderfx 0", torchcooldown_normal, null, caller);
 	}
 }
 function TorchCooldown()
 {
 	if (extreme && !normalTorchCooldowns)
-		EntFireByHandle(caller, "Unlock", "", 300.00, activator, caller);		//300 SECOND COOLDOWN!
+		EntFireByHandle(caller, "Unlock", "", torchcooldown, activator, caller);
 	else
-		EntFireByHandle(caller, "Unlock", "", 20.00, activator, caller);
+		EntFireByHandle(caller, "Unlock", "", torchcooldown_normal, activator, caller);
 }
 
 function VoteMsg()
@@ -985,20 +1043,270 @@ function VoteMsg()
 	}
 }
 
-function OmahaMortarExtremeRender()
+function WonBasicBitch()
+{
+	if(!extreme)
+	{
+		EntFireByHandle(self,"RunScriptCode"," ResetMap(); ",0.00,null,null);
+		EntFireByHandle(self,"RunScriptCode"," SkipToFinale(); ",0.05,null,null);
+		EntFireByHandle(self,"RunScriptCode"," GetAllCoins(); ",0.04,null,null);
+		EntFireByHandle(self,"RunScriptCode"," GiveScoreToMapWinners(100); ",0.00,null,null);
+	}
+	else
+	{
+		EntFire("server","Command","say ***YOU WENT THROUGH ALL OF EXTREME WITHOUT GETTING ALL COINS!?***",3.01,null);
+		EntFire("server","Command","say ***YOU WENT THROUGH ALL OF EXTREME WITHOUT GETTING ALL COINS!?***",3.02,null);
+		EntFire("server","Command","say ***YOU WENT THROUGH ALL OF EXTREME WITHOUT GETTING ALL COINS!?***",3.03,null);
+		EntFire("server","Command","say ***WHAT A SHAMEFUL DISPLAY, DO IT AGAIN AND DO IT RIGHT!!!***",4.01,null);
+		EntFire("server","Command","say ***WHAT A SHAMEFUL DISPLAY, DO IT AGAIN AND DO IT RIGHT!!!***",4.02,null);
+		EntFire("server","Command","say ***WHAT A SHAMEFUL DISPLAY, DO IT AGAIN AND DO IT RIGHT!!!***",4.03,null);
+		EntFireByHandle(self,"RunScriptCode"," GiveScoreToMapWinners(100); ",0.00,null,null);
+	}
+}
+
+omahacount <- 0;
+omahavis <- 0;
+omahapos <- [];
+omahavis_tick <- false;
+function OmahaMortarExtremeStart()
 {
 	if(!extreme)
 		return;
-	if(caller==null||!caller.IsValid())
+	omahacount = 0;
+	omahavis = 0;
+	omahapos.clear();
+	local p = null;
+	while(null != (p = Entities.FindByName(p, "stripstrop_mortar_visible_*")))
+	{
+		omahacount++;
+	}
+	if(omahacount > 0)
+	{
+		omahavis_tick = true;
+		OmahaMortarExtremeTick();
+	}
+}
+function OmahaMortarExtremeTick()
+{
+	if(omahavis_tick)
+		EntFireByHandle(self,"RunScriptCode"," OmahaMortarExtremeTick(); ",0.01,null,null);
+	else
+	{
+		EntFire("stripstrop_mortar*","AddOutput","modelscale 0.05",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","renderfx 11",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","renderamt 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","effects 16384",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowstyle 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowenabled 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowcolor 0 0 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowdist 0",0.00,null);
 		return;
-	EntFireByHandle(self,"RunScriptCode"," OmahaMortarExtremeRender(); ",0.08,null,caller);
-	local pos = caller.GetOrigin();
-	local tdist = TraceLine(pos,pos+Vector(0,0,-10000),caller);
-	pos = (pos+(Vector(0,0,-10000)*tdist));
-	DebugDrawBox(pos,Vector(-5,-5,-2),Vector(5,5,2),255,0,0,255,0.15);
-	DebugDrawBox(pos,Vector(-10,-10,-4),Vector(10,10,4),255,100,0,100,0.15);
-	DebugDrawBox(pos,Vector(-15,-15,-5),Vector(15,15,5),255,255,0,50,0.15);
-	DebugDrawBox(pos,Vector(-30,-30,-10),Vector(30,30,10),255,255,255,50,0.15);
+	}
+	if(omahapos.len() > 0)
+	{
+		local pp = omahapos[0];
+		omahapos.remove(0);
+		omahavis++;
+		if(omahavis > omahacount)
+			omahavis = 1;
+		local v = Entities.FindByName(null,"stripstrop_mortar_visible_"+omahavis.tostring());
+		if(v==null||!v.IsValid())
+			return;
+		v.SetOrigin(pp);
+		if(TraceLine(pp,pp+Vector(0,0,-100),null) < 1.00)
+			EntFire("stripstrop_mortar*","AddOutput","modelscale 2.5",0.00,null);
+		else
+			EntFire("stripstrop_mortar*","AddOutput","modelscale 0.0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","renderfx 11",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","renderamt 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","effects 16384",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowstyle 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowenabled 1",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowcolor 255 0 0",0.00,null);
+		EntFire("stripstrop_mortar*","AddOutput","glowdist 3000",0.00,null);
+	}
+	else
+	{
+		local p = null;
+		while(null != (p = Entities.FindByName(p, "i_mortar_phys*")))
+		{
+			omahapos.push(p.GetOrigin());
+		}
+		if(omahapos.len()<=0)
+		{
+			EntFire("stripstrop_mortar*","AddOutput","modelscale 0.05",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","renderfx 11",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","renderamt 0",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","effects 16384",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","glowstyle 0",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","glowenabled 0",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","glowcolor 0 0 0",0.00,null);
+			EntFire("stripstrop_mortar*","AddOutput","glowdist 0",0.00,null);
+		}
+	}
+}
+
+function OmahaTrimDelayers(interval=0.50, steprange=64)
+{
+	local stime = 0.00;
+	local spos = -11216;
+	while(spos > -13872)
+	{
+		EntFire("s_mortar","AddOutput","origin "+spos.tostring()+" 6120 14124",stime,null);
+		EntFire("s_mortar","ForceSpawn","",stime+0.01,null);
+		stime += interval;
+		spos -= steprange;
+	}
+}
+
+function DisplayServerWinChat()
+{
+	if(!extreme)
+	{
+		EntFire("server","Command","say ***YOU SHALL NOW ENTER A NEW CHALLENGE...***",0.00,null);
+		EntFire("server","Command","say ***ENABLING EXTREME MODE...***",1.00,null);
+		EntFire("server","Command","say ***ENABLING EXTREME MODE...***",1.01,null);
+		EntFire("server","Command","say ***ENABLING EXTREME MODE...***",1.02,null);
+	}
+	else
+	{
+		EntFire("server","Command","say ***YOU HAVE WON EXTREME MODE!***",0.00,null);
+		EntFire("server","Command","say ***YOU HAVE WON EXTREME MODE!***",0.01,null);
+		EntFire("server","Command","say ***YOU HAVE WON EXTREME MODE!***",0.02,null);
+		EntFire("server","Command","say ***YOU ARE EXTREMELY LEGENDARY!***",1.00,null);
+		EntFire("server","Command","say ***YOU ARE EXTREMELY LEGENDARY!***",1.01,null);
+		EntFire("server","Command","say ***YOU ARE EXTREMELY LEGENDARY!***",1.02,null);
+		EntFire("server","Command","say ***MAP IS OVER - RTV***",16.05,null);
+	}
+}
+
+function GiveScoreToMapWinners(scoreamount)
+{
+	local p = null;
+	while(null != (p = Entities.FindByClassname(p, "player")))
+	{
+		if(p != null && p.IsValid() && p.GetTeam() == 3 && p.GetHealth()>0)
+			AddPlayerShopBias(scoreamount,p);
+	} 
+}
+
+turtlefalldown_damage <- 70;
+turtlefalldown_platformgone <- false;
+function TurtleFallDownBoss()
+{
+	if(activator==null||!activator.IsValid())
+		return;
+	if(activator.GetTeam() != 3)
+		return;
+	if(!extreme)
+	{
+		EntFire("X69XTurtleBossHP1","RemoveHealth","3000",0.00,activator);
+		EntFire("X69XTurtleBossHP2","RemoveHealth","3000",0.00,activator);
+	}
+	else
+	{
+		EntFire("X69XTurtleBossHP1","RemoveHealth","500",0.00,activator);
+		EntFire("X69XTurtleBossHP2","RemoveHealth","500",0.00,activator);
+		local pnewhealth = (activator.GetHealth() - turtlefalldown_damage);
+		if(pnewhealth > 0)
+		{
+			activator.SetVelocity(Vector(0,0,0));
+			local x = activator.GetOrigin().x;
+			//middle / left / right
+			if(!turtlefalldown_platformgone)
+			{
+				if(x > 10464 && x < 11488)activator.SetOrigin(Vector(10944,-9984,-15072));
+				else if(x < 10944)activator.SetOrigin(Vector(9728,-10544,-15072));
+				else activator.SetOrigin(Vector(12272,-10544,-15072));
+			}
+			else
+			{
+				if(x > 10464 && x < 11488)activator.SetOrigin(Vector(10944,-9592,-15072));
+				else if(x < 10944)activator.SetOrigin(Vector(9728,-10136,-15072));
+				else activator.SetOrigin(Vector(12272,-10144,-15072));
+			}
+			EntFireByHandle(activator,"SetHealth",pnewhealth.tostring(),0.00,null,null);
+		}
+	}
+}
+
+function KillShrekFinalRun()
+{
+	if(extreme)
+		EntFire("X69Xluff_npc_phys2gg*","Break","",0.10,null);
+	else
+		EntFire("X69Xluff_npc_phys2gg*","Break","",1.50,null);
+}
+
+
+function DiddleFriendShopCheck()
+{
+	local p = null;
+	while(null != (p = Entities.FindByClassnameWithin(p, "player",Vector(7960,92,444),1250)))
+	{
+		if(p != null && p.IsValid() && p.GetTeam() == 2 && p.GetHealth() > 0)
+		{
+			local isangel = false;
+			foreach(df in shopangels)
+			{
+				if(p == df)
+				{
+					isangel = true;
+					break;
+				}
+			}
+			if(!isangel)
+			{
+				p.SetVelocity(Vector(0,0,0))
+				p.SetOrigin(Vector(3229,1023,180));
+				p.ValidateScriptScope();
+				local sc = p.GetScriptScope();
+				if("userid" in sc)
+				{
+					foreach(sbb in SBplayers)
+					{
+						if(sc.userid == sbb.userid)
+							EntFire("server","Command","say ["+sbb.name.tostring()+" may have tried inflating for an item]",0.00,null);
+					}
+				}
+			}
+		}
+	} 
+}
+function DiddleFriendPostCheck()
+{
+	if(activator==null||!activator.IsValid())
+		return;
+	if(activator.GetHealth() > 0 && activator.GetTeam() == 3)
+		EntFire("diddlefriend_relay","Trigger","",0.00,activator);
+}
+shopangels <- [];
+tickingsinners <- false;
+function TickInflatingSinners()
+{
+	if(!tickingsinners)
+		return;
+	EntFireByHandle(self,"RunScriptCode"," TickInflatingSinners(); ",0.10,null,null);
+	local p = null;
+	local zfound = false;
+	while(null != (p = Entities.FindByClassname(p, "player")))
+	{
+		if(p != null && p.IsValid() && p.GetTeam() == 2 && p.GetHealth() > 1009) //zombie just detected
+		{
+			zfound = true;
+			break;
+		}
+	}
+	if(zfound)
+	{
+		tickingsinners = false;
+		p = null;
+		while(null != (p = Entities.FindByClassname(p, "player")))
+		{
+			if(p != null && p.IsValid() && p.GetTeam() == 2)
+				shopangels.push(p); //mother zombies
+		}
+	}
 }
 
 function GiveHumansHP()
