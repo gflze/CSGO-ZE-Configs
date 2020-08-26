@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Madara_boss_Health"
+		"CustomText"		"Madara"
+	}
+	"1"
+	{
+		"HP_counter"		"madara_HP_Counter"
+		"CustomText"		"Madara"
+	}
+}
