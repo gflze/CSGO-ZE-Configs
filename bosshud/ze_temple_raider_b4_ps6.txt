@@ -5,9 +5,9 @@
 		"HP_counter"		"Boss_Health"
 		"HPbar_counter"		"Boss_Health_Overlay_Counter"
 		"HPinit_counter"	"Boss_Health_Init"
-		"HPbar_min"		""
+		"HPbar_min"		"0"
 		"HPbar_max"		"10"
-		"HPbar_default"		""
+		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 		"CustomText"		"Dragon"
 	}
