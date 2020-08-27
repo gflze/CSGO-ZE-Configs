@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"boss_3_knockback_1_counter"
+		"CustomText"		"Quadralex"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_worm_01_counter"
+		"CustomText"		"Worm"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_quad_encounter_01_counter"
+		"CustomText"		"Quadralex"
+	}
+}
