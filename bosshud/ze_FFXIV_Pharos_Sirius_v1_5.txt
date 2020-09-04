@@ -3,7 +3,6 @@
 	"0"
 	{
 		"HP_counter"		"boss_hp_counter"
-		"CustomText"		"Boss"
 	}
 	"1"
 	{
