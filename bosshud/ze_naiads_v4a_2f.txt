@@ -48,10 +48,10 @@
 	"5"
 	{
 		"HP_counter"		"fnlhpc"
-		"HPbar_counter"		"fnlhpc2"
-		"HPinit_counter"	"fnlhpc3"
+		"HPbar_counter"		"fnlhpc3"
+		"HPinit_counter"	"fnlhpc2"
 		"HPbar_min"		"0"
-		"HPbar_max"		"2"
+		"HPbar_max"		"1"
 		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
 	}
