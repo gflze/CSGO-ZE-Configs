@@ -1,0 +1,43 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"blade_hp"
+		"CustomText"		"Final Crystal"
+	}
+	
+	"1"
+	{
+		"HP_counter"		"HPCounter2"
+		"HPbar_counter"		"HPCounterIterator2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"8"
+		"HPbar_default"		"8"
+		"HPbar_mode"		"1"
+		"CustomText"		"Crystal"
+	}
+	
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"st2_hitbox"
+		"CustomText"		"Puny Light"
+	}
+	
+	"3"
+	{
+		"HP_counter"		"st3_hp"
+		"CustomText"		"Giant Light"
+	}
+	
+	"4"
+	{
+		"HP_counter"		"final_hp"
+		"CustomText"		"Final Light"
+	}
+	"5"
+	{
+		"HP_counter"		"rtv_linelaser_count"
+		"CustomText"		"Boss"
+	}
+}
