@@ -1,0 +1,20 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lv3_boss_collision"
+		"CustomText"		"Rock Monster"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lv3_boss_collision_bounce"
+		"CustomText"		"Rock Monster"
+	}
+}

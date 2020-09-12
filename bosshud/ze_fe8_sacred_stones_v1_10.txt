@@ -15,10 +15,4 @@
 		"HP_counter"		"formortiis_hp"
 		"CustomText"		"Diabolo"
 	}
-	"3"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"level2_boss_break"
-		"CustomText"		"Boss"
-	}
 }
