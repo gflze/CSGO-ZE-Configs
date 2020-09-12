@@ -18,6 +18,5 @@
 	"3"
 	{
 		"HP_counter"		"final_boss_hp_counter"
-		"CustomText"		"BOSS"
 	}
 }
