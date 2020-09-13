@@ -3,7 +3,7 @@
 	"0"
 	{
 		"Type"			"breakable"
-		"BreakableName"		"lvl1_boss_hpbox"
+		"BreakableName"		"lvl1_boss1_hpbox"
 		"CustomText"		"Darth Maul"
 	}
 	"1"
