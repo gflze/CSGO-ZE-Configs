@@ -32,6 +32,6 @@
 	{
 		"Type"			"breakable"
 		"BreakableName"		"b4"
-		"CustomText"		"Light Pillar 4
+		"CustomText"		"Light Pillar 4"
 	}
 }
