@@ -1,0 +1,37 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
+	"0"
+	{
+		"HP_counter"		"boss_health_counter"
+		"CustomText"		"White Light"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"b1"
+		"CustomText"		"Light Pillar 1"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"b2"
+		"CustomText"		"Light Pillar 2"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"b3"
+		"CustomText"		"Light Pillar 3"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"b4"
+		"CustomText"		"Light Pillar 4"
+	}
+}
