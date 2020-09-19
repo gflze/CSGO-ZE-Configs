@@ -1,0 +1,33 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss1_hp"
+		"CustomText"		"Fallen Titan"
+	}
+	"1"
+	{
+		"HP_counter"		"boss2_hp"
+		"CustomText"		"Fallen Titan"
+	}
+	"2"
+	{
+		"HP_counter"		"boss3_hp"
+		"CustomText"		"Rex"
+	}
+	"3"
+	{
+		"HP_counter"		"boss4_hp"
+		"CustomText"		"Rex"
+	}
+	"4"
+	{
+		"HP_counter"		"boss5_hp"
+		"CustomText"		"Fallen Titan - Enraged"
+	}
+	"5"
+	{
+		"HP_counter"		"boss6_hp"
+		"CustomText"		"Temple Guardian"
+	}
+}
