@@ -7,12 +7,13 @@
 	"0"
 	{
 		"HP_counter"		"b_hpcounter"
+		"CustomText"		"Bongo Eye"
 	}
 	"1"
 	{
 		"HP_counter"		"b_handhpcounter"
 		"HPinit_counter"	"b_handhpbackup"
-		"CustomText"		"Hand"
+		"CustomText"		"Bongo Hands"
 	}
 	"2"
 	{
