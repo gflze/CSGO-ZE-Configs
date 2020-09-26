@@ -10,4 +10,10 @@
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
 	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_door_final"
+		"CustomText"		"Wall"
+	}
 }
