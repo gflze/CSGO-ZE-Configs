@@ -6,6 +6,7 @@
 //  Adds "Diddle Extreme", where you must beat everything in a single round (with some help/items)
 //===================================\\
 
+stagepickdelay <- 10.00;	//how many extra seconds to delay the stage-picking (allowing players to vote + give breathing room)
 coins_max_normalmode <- 250;
 coins_max_extrememode <- 300;
 coins_max <- 250;
@@ -176,7 +177,7 @@ function WarnVoteShowMessage()
 		if(exmvote_gtext==null||!exmvote_gtext.IsValid())
 			return;
 	}
-	exmvote_gtext.__KeyValueFromString("message","[EXTREME MODE VOTE]\nGet ready to vote at the start of the next round\nYou can do this by shooting straight up in the spawn-area\nYou will only have ~10 seconds to vote\nIt's your vote, do just as you wish!");
+	exmvote_gtext.__KeyValueFromString("message","[EXTREME MODE VOTE]\nGet ready to vote at the start of the next round\nYou can do this by shooting straight up in the spawn-area\nYou have ~"+(10+stagepickdelay.tointeger()).tostring()+" seconds to vote\nIt's your vote, do just as you wish!");
 	EntFireByHandle(exmvote_gtext,"Display","",0.01,null,null);
 }
 
@@ -438,13 +439,14 @@ function RoundStart()
 		exmvote_voteallowed = true;
 		EntFireByHandle(self, "RunScriptCode", " exmvote_voteallowed = false; ", 10.90, null, null);
 		ExevRoundStart();
+		ShrekDiddleCannonTick();
 	}
 	else
 	{
 		coins_max = coins_max_normalmode;
 		EntFire("ExtremeShoot*", "Kill", "", 0.00, null);
 	}
-	
+	humanitems_firstround = true;
 	stageChosen = -1;
 	normalTorchCooldowns = true;
 	firststage = true;
@@ -497,7 +499,7 @@ function RoundStart()
 					exmvote_voteallowed = true;
 					EntFireByHandle(self, "RunScriptCode", " exmvote_voteallowed = false; ", 10.90, null, null);
 				}
-				EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 11.00, null, null);
+				EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 11.00 + stagepickdelay, null, null);
 			}
 			else
 				ReachedCheckpoint();
@@ -901,7 +903,7 @@ function ClearedStage(stageindex)
 		CheckAutoSlay(5);
 	}
 	else 
-		EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 5.00, null, null);
+		EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 5.00 + stagepickdelay, null, null);
 	CheckStageState();
 	ApplyStageScore();
 }
@@ -1014,7 +1016,7 @@ function TorchExtremeCheck()
 }
 
 //added variables for these in stripper #2
-torchcooldown <- 300.0;
+torchcooldown <- 100.0;							//300s in #1-3
 torchcooldown_normal <- 20.0;
 function TorchCooldownVis()
 {
@@ -1118,27 +1120,20 @@ function OmahaMortarExtremeRender()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fetus_spawn_zombie_extra <- 4;		//+1 that always spawns originally
+function FetusSpawnZombieExtra()
+{
+	if(!extreme)
+		return;
+	if(caller==null||!caller.IsValid())
+		return;
+	local zztim = 0.10;
+	for(local i=0;i<fetus_spawn_zombie_extra;i++)
+	{
+		EntFireByHandle(caller,"FireUser3","",zztim,null,null);
+		zztim += 0.10;
+	}
+}
 
 
 function OmahaTrimDelayers(interval=0.50, steprange=64)
@@ -1234,6 +1229,28 @@ function KillShrekFinalRun()
 }
 
 
+function ShrekDiddleCannonTick()
+{
+	local hh=null;local hlist=[];
+	while(null!=(hh=Entities.FindByName(hh,"X69Xluff_npc_phys2gg*")))
+	{hlist.push(hh);}
+	if(hlist.len()>0)
+	{
+		EntFireByHandle(self,"RunScriptCode"," ShrekDiddleCannonTick(); ",0.01,null,null);
+		foreach(h in hlist)
+		{
+			local p=null;while(null!=(p=Entities.FindByNameWithin(p,"projectile_hurt*",h.GetOrigin(),100)))
+			{
+				EntFireByHandle(p,"FireUser1","",0.00,null,null);
+				EntFireByHandle(h,"RemoveHealth","300",0.00,null,null);
+			}
+		}
+	}
+	else
+		EntFireByHandle(self,"RunScriptCode"," ShrekDiddleCannonTick(); ",5.00,null,null);
+}
+
+
 function DiddleFriendShopCheck()
 {
 	local p = null;
@@ -1323,6 +1340,26 @@ function TickInflatingSinners()
 	}
 }
 
+weebhousedoor <- null;
+
+yellowlaserspawn_warningindicator_distance <- 600;
+yellowlaserspawn_warningindicator_onlyextreme <- true;
+function YellowLaserSpawned()
+{
+	if(yellowlaserspawn_warningindicator_onlyextreme && !extreme)
+		return;
+	if(caller==null||!caller.IsValid())
+		return;
+	local p = null;
+	while(null != (p = Entities.FindByClassnameWithin(p,"player",caller.GetOrigin(),yellowlaserspawn_warningindicator_distance)))
+	{
+		if(p != null && p.IsValid() && p.GetTeam() == 3 && p.GetHealth()>0)
+		{
+			EntFire("extreme_yellowlaser_gtext","Display","",0.00,p);
+		}
+	} 
+}
+
 function GiveHumansHP()
 {
 	local p = null;
@@ -1341,11 +1378,54 @@ function AddVagina()
 	if(vaginacount>4)
 		EntFireByHandle(activator, "FireUser2", "", 0.00, self, self);
 }
-
 function RemoveVagina()
 {
 	vaginacount--;
 }
+
+function OverrideVaginaFaceHP()
+{
+	if(!extreme)
+		return;
+	local base_hp = 100;				//OG: 500
+	local foreachplayer_hpadd = 10;		//OG: 100
+	local hp = caller;
+	if(hp != null && hp.IsValid())
+	{
+		local hpadd = 0;
+		local p = null;
+		while(null != (p = Entities.FindByClassname(p,"player")))
+		{
+			if(p.GetTeam() == 3)
+				hpadd += foreachplayer_hpadd;
+		}
+		EntFireByHandle(hp, "SetHealth", "" + (base_hp+hpadd), 0.00, null, null);
+	}
+}
+
+function OverrideBabyFaceHP()
+{
+	if(!extreme)
+		return;
+	//base: 100		(will always be this)
+	//each: 25		(Z:50, will always be this)
+	local hp = caller;
+	if(hp != null && hp.IsValid())
+		EntFireByHandle(hp, "RunScriptCode","HP_ADD = 5;", 0.00, null, null);
+}
+
+cakeheal_extreme <- 200;
+cakeheal_normal <- 150;
+function CakeHealTouch()
+{
+	if(activator == null || !activator.IsValid())
+		return;
+	if(extreme)
+		EntFireByHandle(activator,"AddOutput","health "+cakeheal_extreme.tostring(),0.00,null,null);
+	else
+		EntFireByHandle(activator,"AddOutput","health "+cakeheal_normal.tostring(),0.00,null,null);
+}
+
 
 babylist <- [];
 function SpawnBaby()
@@ -1594,11 +1674,12 @@ function PickCustomer()
 		EntFireByHandle(self, "RunScriptCode", " PickCustomer(); ", 0.10, self, self);
 }
 
+
+humanitems_firstround <- true;
 function SpawnExtremeZombieItem(stage)	//TODO - spawn in zombie items based on the stages (only runs if it's extreme-mode)
 {
 	KillZombieItems();
-	zombe_item_users.clear();
-	zombe_item_users = [];
+	local humanitem_pos = Vector(0,0,0);
 	//											ITEMX_tem_luffaren_baby
 	//											ITEMX_tem_luffaren_airjump
 	//											ITEMX_tem_luffaren_curse
@@ -1606,33 +1687,65 @@ function SpawnExtremeZombieItem(stage)	//TODO - spawn in zombie items based on t
 	//											ITEMX_tem_hich_zombiespeed
 	if(stage==0)		//shrek
 	{
+		humanitem_pos = Vector(-14144,-14332,13316);
 		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-14456,-14072,13320));
-		ExevSpawn("ITEMX_tem_luffaren_curse",Vector(-14456,-13976,13320));
+		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-14456,-13976,13320));	//was curse in #3, is now airjump since #4
 	}
 	else if(stage==1)	//turtle
 	{
+		humanitem_pos = Vector(6144,-12608,-15294);
 		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(4872,-12672,-15288));
 		ExevSpawn("ITEMX_tem_luffaren_curse",Vector(4872,-12544,-15288));
 		ExevSpawn("ITEMX_tem_hich_zombiespeed",Vector(4872,-12416,-15288));
 	}
 	else if(stage==2)	//omaha
 	{
+		humanitem_pos = Vector(-12288,-1296,13786);
 		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-12472,-1240,13776));
 		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-12472,-1112,13776));
-		ExevSpawn("ITEMX_tem_luffaren_curse",Vector(-12472,-984,13776));
+		ExevSpawn("ITEMX_tem_hich_zombiespeed",Vector(-12472,-984,13776));		//was curse in #3, is now zombiespeed since #4
 	}
 	else if(stage==3)	//dicklett
 	{
-		ExevSpawn("ITEMX_tem_luffaren_curse",Vector(-10232,11944,15448));
+		humanitem_pos = Vector(-12392,13882,15400);
+		ExevSpawn("ITEMX_tem_hich_zombiespeed",Vector(-10232,11944,15448));		//was curse in #3, is now zombiespeed since #4
 		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-10360,11944,15448));
 		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-10488,11944,15448));
 	}
 	else if(stage==4)	//weaboo
 	{
+		humanitem_pos = Vector(-4111,1088,-3662);
 		ExevSpawn("ITEMX_tem_luffaren_jihad",Vector(-4464,1024,-3656));
 		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-4336,1024,-3656));
 		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-4208,1024,-3656));
 		ExevSpawn("ITEMX_tem_luffaren_curse",Vector(-4080,1024,-3656));
+	}
+	if(humanitems_firstround)		//HUMAN ITEM SPAWNS ON EXTREME
+	{
+		humanitems_firstround = false;
+		//--------------------------------
+		//green wall:		ITEMX_tem_qaz_small
+		//red wall:			ITEMX_tem_qaz_mid
+		//yellow wall:		ITEMX_tem_qaz_big
+		//small dick:		ITEMX_tem_ord_dick
+		//big dick:			ITEMX_tem_ord_bigdick
+		//push:				ITEMX_tem_Turtle_push
+		//diddlecannon:		ITEMX_tem_luffaren_diddlecannon
+		//red heal:			ITEMX_tem_hich_heal
+		//yellow heal:		ITEMX_tem_hich_legendaryheal
+		//--------------------------------
+		ExevSpawn("ITEMX_tem_hich_heal",humanitem_pos+Vector(-64,96,4));
+		ExevSpawn("ITEMX_tem_qaz_small",humanitem_pos+Vector(-64,32,4));
+		ExevSpawn("ITEMX_tem_qaz_small",humanitem_pos+Vector(-64,-32,4));
+		ExevSpawn("ITEMX_tem_qaz_mid",humanitem_pos+Vector(-64,-96,4));
+		ExevSpawn("ITEMX_tem_ord_dick",humanitem_pos+Vector(64,96,4));
+		ExevSpawn("ITEMX_tem_Turtle_push",humanitem_pos+Vector(64,32,4));
+		ExevSpawn("ITEMX_tem_luffaren_diddlecannon",humanitem_pos+Vector(64,-32,4));
+		//ExevSpawn("XXXXXXXXXXXXXXX",humanitem_pos+Vector(64,-96,4));
+		//ExevSpawn("XXXXXXXXXXXXXXX",humanitem_pos+Vector(0,96,4));
+		//ExevSpawn("XXXXXXXXXXXXXXX",humanitem_pos+Vector(0,32,4));
+		//ExevSpawn("XXXXXXXXXXXXXXX",humanitem_pos+Vector(0,-32,4));
+		//ExevSpawn("XXXXXXXXXXXXXXX",humanitem_pos+Vector(0,-96,4));
 	}
 }
 
@@ -1697,7 +1810,7 @@ modify:
 //	mortarstrike template:	s_mortar				(centered template)
 //
 //================================================================\\
-extreme_extracakes_in_weeb <- 3;
+extreme_extracakes_in_weeb <- 2;  //3 in #3
 function ExtremeEvent(index)
 {
 	if(!extreme)
@@ -1748,6 +1861,8 @@ function ExtremeEvent(index)
 				exev_spawnrate = 2.00;
 				EntFireByHandle(self,"RunScriptCode"," if(!exev_spawnticking){ExevSpawnTick();} ",20.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); ",47.00,null,null);//STOP
+				//kill zombie items:
+					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",50.00,null,null);
 			break;
 		}
 		case 6:		//shrek - spawn logic for layer #2 (luff_layer > OnCase02)
@@ -1775,12 +1890,12 @@ function ExtremeEvent(index)
 				ExevSpawn("s_vaginaface",Vector(5376,-9632,-15200));
 			//spawn upslash-lasers at yaw:180 and X-range: (4352,6400)  at Y/Z pos (-12296 -14928)
 			//spawn slash-lasers at yaw:180 and X-range: (4352,6400)  at Y/Z pos (-12296 -15288)
-				exev_spawnbounds.push(ExSpawnBounds("slash_spawner",4352,6400,-12296,-12296,-15288,Vector(0,180,0)));
+				//exev_spawnbounds.push(ExSpawnBounds("slash_spawner",4352,6400,-12296,-12296,-15288,Vector(0,180,0)));	//commented out in #4
 				exev_spawnbounds.push(ExSpawnBounds("upslash_spawner",4352,6400,-12296,-12296,-14928,Vector(0,180,0)));
 				exev_spawnbounds.push(ExSpawnBounds("upslash_spawner",4352,6400,-12296,-12296,-14928,Vector(0,180,0)));
 				exev_spawnbounds.push(ExSpawnBounds("upslash_spawner",4352,6400,-12296,-12296,-14928,Vector(0,180,0)));
 				exev_spawnbounds.push(ExSpawnBounds("upslash_spawner",4352,6400,-12296,-12296,-14928,Vector(0,180,0)));
-				exev_spawnrate = 0.60;
+				exev_spawnrate = 1.00;	//was 0.60 in #3
 				if(!exev_spawnticking)ExevSpawnTick();
 				EntFireByHandle(self,"RunScriptCode"," exev_spawnbounds.clear(); ",8.00,null,null);//STOP
 			break;
@@ -1888,7 +2003,7 @@ function ExtremeEvent(index)
 				exev_spawns.push(ExSpawn("slash_spawner",Vector(13500,-13376,-14776),Vector(0,90,0)));
 				exev_spawns.push(ExSpawn("slash_spawner",Vector(13500,-13856,-14832),Vector(0,90,0)));
 				exev_spawns.push(ExSpawn("slash_spawner",Vector(13500,-13856,-14776),Vector(0,90,0)));
-				exev_spawnrate = 0.70;
+				exev_spawnrate = 2.00;		//was 0.70 in #3
 				EntFireByHandle(self,"RunScriptCode"," if(!exev_spawnticking)ExevSpawnTick(); ",10.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); exev_spawnbounds.clear(); ",25.00,null,null);//STOP
 			break;
@@ -1913,6 +2028,8 @@ function ExtremeEvent(index)
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",14.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",17.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",21.00,null,null);
+			//kill zombie items:
+					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",15.00,null,null);
 			//LASERS:
 			//(move it further back by increasing the Y value, less-negative)
 			//yaw:			180
@@ -2035,9 +2152,13 @@ function ExtremeEvent(index)
 		}
 		case 26:	//weeb - just when players enter the stage
 		{
+			//allow players to climb up the middle house rooftop:
+				weebhousedoor = Entities.FindByNameNearest("finale_doorhold_2",Vector(10608,6272,-2176),128);
+				EntFireByHandle(weebhousedoor,"AddOutput","origin -4570 1420 -3590",0.00,null,null);
+				EntFireByHandle(weebhousedoor,"AddOutput","angles 0 0 -120",0.00,null,null);
 			//start tick to spawn mortars, babies and vaginafaces above players randomly
 				exev_weebticking = true;
-				EntFireByHandle(self,"RunScriptCode"," ExevWeebTick(); ",RandomFloat(5.0,20.0),null,null);
+				EntFireByHandle(self,"RunScriptCode"," ExevWeebTick(); ",RandomFloat(15.0,30.0),null,null);	//5.0-20.0 in #3
 			//spawn 1-2 yellow lasers in the torch-house, kill horny players, at pos:(-4222,932,-3642),(-4222,729,-3642)
 				ExevSpawn("blobblaser_tem1",Vector(-4222,932,-3642),null,0.20);
 				ExevSpawn("blobblaser_tem1",Vector(-4222,729,-3642),null,0.50);
@@ -2060,6 +2181,9 @@ function ExtremeEvent(index)
 					rayhit.z += 48;
 					if(rayhit.z > -3400)
 						continue;
+					local justgetahouse = Entities.FindByNameNearest("X69Xhichhouse",rayhit,1000);
+					if(justgetahouse != null && justgetahouse.IsValid())
+						continue;
 					if(!weebcoin_spawned)
 					{
 						ExevSpawn("s_coin_3",rayhit);
@@ -2069,15 +2193,28 @@ function ExtremeEvent(index)
 					weebcakes_spawned++;
 					ExevSpawn("itemturtleTemplateHeal2",rayhit);
 				}
+				EntFire("aX69XTurtleCake*","AddOutput","glowenabled 1",1.00,null);
+				EntFire("aX69XTurtleCake*","AddOutput","glowdist 10000",1.00,null);
+				EntFire("aX69XTurtleCake*","AddOutput","glowstyle 3",1.00,null);
+				EntFire("aX69XTurtleCake*","AddOutput","modelscale 5.0",1.00,null);
+				EntFire("aX69XTurtleCake*","AddOutput","glowcolor 255 255 0",1.00,null);
 			break;
 		}
 		case 27:	//weeb - when triggering the end relay (where TP-out enables 'in 10 secs')
 		{
+			//restore the rooftop climber
+				if(weebhousedoor != null && weebhousedoor.IsValid())
+				{
+					EntFireByHandle(weebhousedoor,"AddOutput","origin 10608 6272 -2176",15.00,null,null);
+					EntFireByHandle(weebhousedoor,"AddOutput","angles 0 0 0",15.00,null,null);
+				}
 			//end tick to spawn mortars, babies and vaginafaces above players randomly
 				exev_weebticking = false;
 			//kill off babies and vaginafaces after 9.5s, if any (i_diddlebaby_phys* break), (i_vaginaface_hp* break)
 				EntFire("i_diddlebaby_phys*","Break","",0.00,null);
 				EntFire("i_vaginaface_hp*","Break","",0.00,null);
+			//kill zombie items:
+					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",9.00,null,null);
 			break;
 		}
 		case 28:	//dicklett - just when entering the stage
@@ -2089,7 +2226,7 @@ function ExtremeEvent(index)
 		case 29:	//dicklett - when triggering the start-relay for boss#1 (it spawns after 4.0s, the small hurt enables at 5.0s)
 		{
 			//spawn a yellow laser after ~3.5s at pos:(-13322,13294,15272), just under the rocks that breaks when you kill the 1st boss
-				ExevSpawn("blobblaser_tem1",Vector(-13322,13294,15272),null,3.50);
+				ExevSpawn("blobblaser_tem1",Vector(-13322,13294,15272),null,2.00);	//was 3.5s in #3
 			break;
 		}
 		case 30:	//dicklett - just when you enter the cave after defeating boss #1 (sidewalls break at 25+30s, final wall breaks at 45s)
@@ -2381,6 +2518,8 @@ function ExtremeEvent(index)
 				ExevSpawn("s_vaginaface",Vector(-12178,14485,16094),null,5.0);
 			//spawn a yellow laser at ~4.5s at pos:(-13322,13294,15272), just under the rocks that breaks when you kill the 5th boss
 				ExevSpawn("blobblaser_tem1",Vector(-13322,13294,15272),null,4.5);
+			//kill zombie items:
+					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",5.00,null,null);
 			break;
 		}
 		case 54:	//omaha - when entering the stage
@@ -2400,6 +2539,9 @@ function ExtremeEvent(index)
 				EntFire("X69Xluff_npc_phys2gg*","RunScriptCode"," AddHP(10,5); ",0.55,null);
 			//teleport x% of the zombies in front of the humans with 500hp at pos:(-13760/-11328,3072,14208), prevent going above Y:4310
 				EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZ(); ",1.00,null,null);
+				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.00,null);
+				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.01,null);
+				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.02,null);
 			break;
 		}
 		case 55:	//omaha - when triggering the explosive wall (explodes at 29.5s)
@@ -2408,7 +2550,7 @@ function ExtremeEvent(index)
 				ExevSpawn("s_coin_3",Vector(-12774,5759,13615));
 			//start a heavy mortar barrage at ~20.0s until 30.0s (minX:-13824,minY:3392,maxX:-11264,maxY:4096,Z:15360)
 				exev_spawnbounds.clear();
-				exev_spawnbounds.push(ExSpawnBounds("s_mortar",-13824,-11264,3400,4300,15360,Vector(0,0,0)));
+				exev_spawnbounds.push(ExSpawnBounds("s_mortar",-13824,-11264,3870,4300,14400,Vector(0,0,0)));	//minY was 3400, Z was 15360 in #3
 				exev_spawnrate = 0.50;
 				EntFireByHandle(self,"RunScriptCode"," if(!exev_spawnticking)ExevSpawnTick(); ",12.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawnbounds.clear(); ",22.00,null,null);//STOP
@@ -2450,6 +2592,8 @@ function ExtremeEvent(index)
 				ExevSpawn("blobblaser_tem1",Vector(-13031,8882,14737));
 				ExevSpawn("blobblaser_tem1",Vector(-13031,8882,14737),null,6.00);
 				ExevSpawn("blobblaser_tem1",Vector(-13031,8882,14737),null,12.00);
+			//kill zombie items:
+					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",78.00,null,null);
 			break;
 		}
 		case 58:	//finale - when the spawn doors start opening at the very start
@@ -2836,7 +2980,14 @@ function ExevWeebTick()
 	spawnlist.push("s_mortar");
 	spawnlist.push("s_mortar");
 	spawnlist.push("s_mortar");
-	spawnlist.push("blobblaser_tem1");
+	//more since #3 (OG #3 mortars above^):
+		spawnlist.push("s_mortar");
+		spawnlist.push("s_mortar");
+		spawnlist.push("s_mortar");
+		spawnlist.push("s_mortar");
+		spawnlist.push("s_mortar");
+		spawnlist.push("s_mortar");
+	//spawnlist.push("blobblaser_tem1");	//commented out in #4
 	spawnlist.push("blobblaser_tem1");
 	local spawnitem = spawnlist[RandomInt(0,spawnlist.len()-1)];
 	if(spawnitem == "blobblaser_tem1")
@@ -2860,8 +3011,8 @@ exev_omaha_zchecktries <- 10;
 exev_omaha_zpercentage <- 30.00;
 exev_omaha_zhealthcap <- 500;
 exev_omaha_zombies <- [];
-exev_weebtick_min <- 0.1;
-exev_weebtick_max <- 5.0;
+exev_weebtick_min <- 0.5;	//0.1 in #3
+exev_weebtick_max <- 20.0;	//5.0 in #3
 exev_weebticking <- false;
 exev_spawnmakers <- [];		//ExSpawnMaker(name,handle);
 exev_spawnbounds <- [];		//ExSpawnBounds(template,minX,maxX,minY,maxY,Z,rot)
@@ -3077,10 +3228,11 @@ function ExtremeOmahaTPZTick()
 	}
 }
 
-CAKE_NADEREFILL_RANGE <- 512;
+CAKE_NADEREFILL_RANGE <- 768; //512 in #3
+CAKE_NADEREFILL_EXTREMEONLY <- true;
 function GrenadeRefillCake()
 {
-	if(!extreme)
+	if(CAKE_NADEREFILL_EXTREMEONLY && !extreme)
 		return;
 	if(caller!=null&&caller.IsValid()) //should be cake button handle 
 	{
@@ -3122,6 +3274,8 @@ function KillZombieItems()
 			continue;
 		EntFireByHandle(h,"SetHealth","-69",0.00,null,null);
 	}
+	zombe_item_users.clear();
+	zombe_item_users = [];
 }
 
 function FetusFaceBoobie()
