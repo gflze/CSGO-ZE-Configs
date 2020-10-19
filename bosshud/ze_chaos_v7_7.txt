@@ -1,0 +1,32 @@
+"math_counter"
+{
+	"config"
+	{
+		"BossBeatenShowTopDamage"	"0"
+	}
+	"0"
+	{
+		"HP_counter"		"counter_2"
+		"CustomText"		"Boss (1/5)"
+	}
+	"1"
+	{
+		"HP_counter"		"counter_2_1"
+		"CustomText"		"Boss (2/5)"
+	}
+	"2"
+	{
+		"HP_counter"		"counter_2_2"
+		"CustomText"		"Boss (3/5)"
+	}
+	"3"
+	{
+		"HP_counter"		"counter_2_3"
+		"CustomText"		"Boss (4/5)"
+	}
+	"4"
+	{
+		"HP_counter"		"counter_2_4"
+		"CustomText"		"Boss (5/5)"
+	}
+}
