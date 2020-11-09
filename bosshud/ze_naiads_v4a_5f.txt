@@ -8,7 +8,6 @@
 	"1"
 	{
 		"HP_counter"		"hpc1"
-		"CustomText"		"Boss"
 	}
 	"2"
 	{
@@ -28,7 +27,7 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"0"
 		"HPbar_mode"		"2"
-		"CustomText"		"Salamander"
+		"CustomText"		"Naiads"
 	}
 	"4"
 	{
@@ -58,7 +57,6 @@
 	"7"
 	{
 		"HP_counter"		"hpc2"
-		"CustomText"		"Boss"
 	}
 	"8"
 	{
