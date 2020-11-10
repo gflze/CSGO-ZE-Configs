@@ -1,0 +1,71 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"exhpc"
+		"CustomText"		"Crystal"
+	}
+	"1"
+	{
+		"HP_counter"		"hpc1"
+	}
+	"2"
+	{
+		"HP_counter"		"boss2hpc"
+		"HPbar_counter"		"boss2hpc2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Naiads"
+	}
+	"3"
+	{
+		"HP_counter"		"bosshpc"
+		"HPbar_counter"		"bosshpc2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Naiads"
+	}
+	"4"
+	{
+		"HP_counter"		"twin1hpc"
+		"HPbar_counter"		"twin1hpc2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Naiads"
+	}
+	"5"
+	{
+		"HP_counter"		"twin2hpc"
+		"HPbar_counter"		"twin2hpc2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Naiads's Twin"
+	}
+	"6"
+	{
+		"HP_counter"		"fnlhpc"
+		"CustomText"		"Naiads"
+	}
+	"7"
+	{
+		"HP_counter"		"hpc2"
+	}
+	"8"
+	{
+		"HP_counter"		"rtv1hpc2"
+		"HPbar_counter"		"rtv1hpc"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+		"CustomText"		"Naiads"
+	}
+}
