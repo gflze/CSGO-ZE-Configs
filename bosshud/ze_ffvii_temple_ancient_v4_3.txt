@@ -4,7 +4,6 @@
 	{
 		"MultBoss"                "1"
 	}
-	
 	"0"                   
 	{                   
 		"HP_counter"		"counter_dragon_1"
