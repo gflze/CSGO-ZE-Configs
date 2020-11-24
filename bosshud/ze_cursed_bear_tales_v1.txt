@@ -1,0 +1,27 @@
+math_counter
+{
+    "0"
+    {
+        "Type"          "breakable"
+        "CustomText"    "Guy"
+        "BreakableName" "lvl1_boss_health"
+    }
+    "1"
+    {
+        "Type"          "breakable"
+        "CustomText"    "Halloween Monster"
+        "BreakableName" "lvl2_boss_health"
+    }
+    "2"
+    {
+        "Type"          "breakable"
+        "CustomText"    "Bear"
+        "BreakableName" "lvl3_boss_health"
+    }
+    "3"
+    {
+        "Type"          "breakable"
+        "CustomText"    "Bear"
+        "BreakableName" "lvl3_boss_health02"
+    }
+}
