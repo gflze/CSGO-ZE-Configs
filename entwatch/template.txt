@@ -9,8 +9,8 @@
         "filtername"        "" //filtername that the items filter entity uses (if applicable, see below)
         "hasfiltername"     "" //true if the item uses a filter entity to check the user, false otherwise
         "blockpickup"       "" //always false
-        "allowtransfer"     "" //true for human items, false for zm items
-        "forcedrop"         "" //true for human items, false for zm items
+        "allowtransfer"     "" //true for pistol items, false for knife items
+        "forcedrop"         "" //true for pistol items, false for knife items
         "chat"              "" //always true
         "hud"               "" //always true
         "hammerid"          "" //hammerid of the weapon_ entity for the item
