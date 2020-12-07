@@ -1,0 +1,65 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	"0"
+	{
+		"HP_counter"		"DragonGetHP"
+		"HPbar_counter"		"Dragon_DieHP"
+		"HPinit_counter"	"DragonBackHP"
+		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Ruby Dragon"
+	}
+	"1"
+	{
+		"HP_counter"		"golem_hp"
+		"CustomText"		"Gaulle"
+	}
+	"2"
+	{
+		"HP_counter"		"meteor_counter"
+		"CustomText"		"Meteor"
+	}
+	"3"
+	{
+		"HP_counter"		"Tri_FaceGetHP"
+		"HPbar_counter"		"Tri_Face_DieHP"
+		"HPinit_counter"	"Tri_FaceBackHP"
+		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Triface"
+	}
+	"4"
+	{
+		"HP_counter"		"SephirothGetHP"
+		"HPbar_counter"		"Sephiroth_DieHP"
+		"HPinit_counter"	"SephirothBackHP"
+		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Sephiroth"
+	}
+	"5"
+	{
+		"HP_counter"		"bomb_1_counter"
+		"CustomText"		"Bomb"
+	}
+	"6"
+	{
+		"HP_counter"		"bomb_3_counter"
+		"CustomText"		"Bomb"
+	}
+	"7"
+	{
+		"HP_counter"		"Sephiroth_HP"
+		"CustomText"		"Sephiroth"
+	}
+}

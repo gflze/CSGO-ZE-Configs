@@ -4,11 +4,11 @@
 	{
 		"MultBoss"                "1"
 	}
-	
 	"0"                   
 	{                   
 		"HP_counter"		"counter_dragon_1"
 		"HPbar_counter"		"counter_dragon_3"
+		"HPinit_counter"	"counter_dragon_2"
   		"HPbar_min"		"0"
 		"HPbar_max"		"16"
 		"HPbar_default"		"16"
@@ -64,8 +64,9 @@
 	}
 	"8"
 	{
-		"HP_counter"		"counter_dragon_1"
+		"HP_counter"		"counter_dragon_1_3"
 		"HPbar_counter"		"counter_dragon_3_1"
+		"HPinit_counter"	"counter_dragon_2"
 		"HPbar_min"		"0"
 		"HPbar_max"		"16"
 		"HPbar_default"		"16"
