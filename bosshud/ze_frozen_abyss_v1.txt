@@ -1,0 +1,27 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"spider_boss_phys_break"
+		"CustomText"		"Spider"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"dragon_phys"
+		"CustomText"		"Dragon"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"abyss_guardian_phys_break"
+		"CustomText"		"Abyss Guardian"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"dragon_ending_physbreak"
+		"CustomText"		"Dragon"
+	}
+}
