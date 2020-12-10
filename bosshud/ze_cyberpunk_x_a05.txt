@@ -1,0 +1,8 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"lvl2_boss_hp"
+		"CustomText"		"Chopper"
+	}
+}
