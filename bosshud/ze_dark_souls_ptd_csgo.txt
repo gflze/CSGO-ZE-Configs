@@ -1,0 +1,49 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly"		"1"
+	}
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Asylum_Demon_Hitbox"
+		"CustomText"		"Asylum Demon"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Broadhead_Body"
+		"CustomText"		"Broadhead"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Golem_Phys_Body"
+		"CustomText"		"Golem"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Gwyndolin_Phys_Body"
+		"CustomText"		"Gwyndolin"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Ornstein_Phys_Body"
+		"CustomText"		"Ornstein"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Gargoyle_Phys"
+		"CustomText"		"Gargoyle"
+	}
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Gwyn_Phys_Body"
+		"CustomText"		"Gwyn"
+	}
+}
