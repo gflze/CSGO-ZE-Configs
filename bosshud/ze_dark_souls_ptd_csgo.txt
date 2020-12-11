@@ -16,7 +16,6 @@
 		"BreakableName"		"Broadhead_Body"
 		"CustomText"		"Broadhead"
 	}
-	
 	"2"
 	{
 		"Type"			"breakable"
