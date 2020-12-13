@@ -1,6 +1,6 @@
 # GFLClan CS:GO ZE Configs
 
-A collection of entWatch, stripper and BossHud configs for GFL CS:GO ZE, please be aware that the stripper configs are not an extensive list of everything used on our server.
+A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that a handful of private stripper configs are not included in this repository.
 
 # How to Contribute
 
@@ -44,10 +44,6 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 	}
 }
 ```
-
-## Stripper
-
-Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
 
 ## entWatch
 
@@ -98,3 +94,11 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
 {darkorange}
 {orange}
 ```
+
+## SaveLevel
+
+TODO
+
+## Stripper
+
+Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
