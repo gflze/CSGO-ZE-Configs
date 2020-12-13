@@ -1,0 +1,15 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"drake_hp"
+		"CustomText"			"Magmadrake"
+	}
+	"1"
+	{
+		"Type"					"breakable"
+		"BreakableName"			"boss"
+		"CustomText"			"mogmedroke"
+	}
+}
