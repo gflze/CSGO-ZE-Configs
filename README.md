@@ -98,6 +98,7 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
 ## SaveLevel
 
 The SaveLevel plugin is unlike the other configs in this repository in that it uses datamaps. A full list of datamaps can be found by using "sm_dump_datamaps datamaps.txt" in your own server with SourceMod installed or you can view [Mapeadores's datamap dump](https://github.com/Mapeadores/CSGO-Dumps/blob/master/datamaps.txt) (This may or may not be up to date depending on when you access their dump).
+
 The datamaps most commonly used for SaveLevel will generally be the following:
 ```
 m_iFrags     - The number of kills a player has
@@ -106,6 +107,7 @@ m_OnUser#    - An OnUser# output attached to a player. Ranges from m_OnUser1 to 
 ```
 
 The general template of a SaveLevel config will be as follows:
+
 ze_map_name.cfg
 ```
 "levels"
