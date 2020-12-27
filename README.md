@@ -103,7 +103,7 @@ The datamaps most commonly used for SaveLevel will generally be the following:
 ```
 m_iFrags     - The number of kills a player has
 m_iName      - The targetname of an entity
-m_OnUser#    - An OnUser# output attached to a player. Ranges from m_OnUser1 to m_OnUser4.
+m_OnUser#    - An OnUser# output attached to an entity. Ranges from m_OnUser1 to m_OnUser4.
 ```
 
 The general template of a SaveLevel config will be as follows:
