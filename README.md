@@ -115,7 +115,7 @@ ze_map_name.cfg
 		"name" "" 	//The name of the level to be used with the sm_level command. Typically Level 0, Level 1, Level 2, etc.
 		"match" 	//Block used to detect which level a player is. If this is the default/unset level, this block is unneeded.
 		{
-			//Use only 1 of outputs, math, or props in a match block. Determines which way the match checks.
+			//Use only 1 of outputs, math, or props in a match block. The set one determines which method is used to check entities for the level.
 			"math" 		//Matches an output's number parameter on an add or subtract input.
 			{
 				"" ""	//Datamap to check. Typically used with m_OnUser# (ie. "m_OnUser1" "leveling_counter,Add,1" would check against a 1 there).
