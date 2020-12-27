@@ -1,0 +1,24 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"map_boss_counter2"
+		"HPbar_counter"		"map_boss_counter3"
+		"HPinit_counter"	"map_boss_counter1"
+		"HPbar_min"		"0"
+		"HPbar_max"		"6"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"0"
+	}
+	"1"
+	{
+		"HP_counter"		"stage4_miniboss_counter2"
+		"HPbar_counter"		"stage4_miniboss_counter3"
+		"HPinit_counter"	"stage4_miniboss_counter1"
+		"HPbar_min"		"0"
+		"HPbar_max"		"6"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"0"
+		"CustomText"		"Mini Spider"
+	}
+}
