@@ -135,7 +135,7 @@ ze_map_name.cfg
         {
             "AddOutput" ""       //Used to add an output on an entity. Works in roughly the same way AddOutput works in hammer. Have the second parameter in the format of "Output target,input,input parameter,delay,max refires" (input parameter may be blank, but keep its comma if it is)
             "DeleteOutput" ""    //Used to remove an output from an entity. Typically only use for the default/unset level of the map. Have the second parameter in the format of "Output_datamap target,input,input parameter". The target, input, and input parameter may be unset from right to left (ie. if input parameter is set, input must be set as well, but not vice versa) (if they are unset, do not include the comma right before them). If not all of them are set, it will delete ALL outputs that match what is set (ie. "m_OnUser4 score10,ApplyScore" would delete ALL OnUser4 outputs that target score10 with the ApplyScore input) (ie. "m_OnUser1 leveling_counter" would delete ALL OnUser1 outputs that target leveling_counter entity)
-            "" ""                //Datamap to set. First parameter is the datamap, second is the value for it. Do not use this method for output datamaps as they can have multiples under the same datamap.
+            "" ""                //Datamap to set. First parameter is the datamap, second is the value for it (ie. "m_iName" "1" or "m_iFrags" "100"). Do not use this method for output datamaps as they can have multiples under the same datamap.
         }
     }
 }
