@@ -97,7 +97,49 @@ Find entity classnames that start with "weapon_" as a starting point for creatin
 
 ## SaveLevel
 
-TODO
+The SaveLevel plugin is unlike the other configs in this repository in that it uses datamaps. A full list of datamaps can be found by using "sm_dump_datamaps datamaps.txt" in your own server with SourceMod installed or you can view [Mapeadores's datamap dump](https://github.com/Mapeadores/CSGO-Dumps/blob/master/datamaps.txt) (This may or may not be up to date depending on when you access their dump).
+
+The datamaps most commonly used for SaveLevel will generally be the following:
+```
+m_iFrags     - The number of kills a player has
+m_iName      - The targetname of an entity
+m_OnUser#    - An OnUser# output attached to an entity. Ranges from m_OnUser1 to m_OnUser4.
+```
+
+The general template of a SaveLevel config will be as follows:
+
+ze_map_name.cfg
+```
+"levels"
+{
+    "0" //Number of the level, starting at 0 and increasing by 1 per level. In general level 0 should be set to as if it were a newly joined player with no levels.
+    {
+        "name" ""     //The name of the level to be used with the sm_level command. Typically Level 0, Level 1, Level 2, etc.
+        "match"       //Block used to detect which level a player is. If this is the default/unset level, this block is unneeded.
+        {
+            //Use only 1 of outputs, math, or props in a match block. The set one determines which method is used to check entities for the level.
+            "math"       //Matches an output's number parameter on an add or subtract input.
+            {
+                "" ""    //Datamap to check. Typically used with m_OnUser# (ie. "m_OnUser1" "leveling_counter,Add,1" would check against a 1 there).
+            }
+            "props"      //Matches a networked property of an entity.
+            {
+                "" ""    //Datamap to check. Typically used with m_iName. (ie. "m_iName" "1" checks for a targetname of 1)
+            }
+            "outputs"    //Matches an output. Typically use math or props instead of outputs if possible.
+            {
+                "" ""    //Datamap to check. May use any output datamap.
+            }
+        }
+        "restore"     //Block used to set datamaps, add outputs, and/or delete outputs upon level restoration (client reconnect or sm_level usage). Only use 1 restore block per level, but you may use multiple output additions, deletions, or datamap changes in the block.
+        {
+            "AddOutput" ""       //Used to add an output on an entity. Works in roughly the same way AddOutput works in hammer. Have the second parameter in the format of "Output target,input,input parameter,delay,max refires" (input parameter may be blank, but keep its comma if it is)
+            "DeleteOutput" ""    //Used to remove an output from an entity. Typically only use for the default/unset level of the map. Have the second parameter in the format of "Output_datamap target,input,input parameter". The target, input, and input parameter may be unset from right to left (ie. if input parameter is set, input must be set as well, but not vice versa) (if they are unset, do not include the comma right before them). If not all of them are set, it will delete ALL outputs that match what is set (ie. "m_OnUser4 score10,ApplyScore" would delete ALL OnUser4 outputs that target score10 with the ApplyScore input) (ie. "m_OnUser1 leveling_counter" would delete ALL OnUser1 outputs that target leveling_counter entity)
+            "" ""                //Datamap to set. First parameter is the datamap, second is the value for it (ie. "m_iName" "1" or "m_iFrags" "100"). Do not use this method for output datamaps as they can have multiples under the same datamap.
+        }
+    }
+}
+```
 
 ## Stripper
 
