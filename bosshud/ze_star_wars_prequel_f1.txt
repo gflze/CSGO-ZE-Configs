@@ -1,0 +1,33 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl1_boss1_hpbox"
+		"CustomText"		"Darth Maul"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl2_boss_health"
+		"CustomText"		"Dooku"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl3_boss_health"
+		"CustomText"		"Anakin"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl3_boss_healthB"
+		"CustomText"		"Anakin"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"lvl3_final_health"
+		"CustomText"		"Anakin"
+	}
+}
