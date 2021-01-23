@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Edge_Health"
+		"CustomText"		"SCP-106"
+	}
+	"1"
+	{
+		"HP_counter"		"1048_counter"
+		"CustomText"		"SCP-1048-A"
+	}
+	"2"
+	{
+		"HP_counter"		"end_scp106_counter"
+		"CustomText"		"SCP-106"
+	}
+}
