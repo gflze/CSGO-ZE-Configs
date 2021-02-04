@@ -62,7 +62,7 @@ function UseToxic()
     if(PlayerValidationT(activator, Toxic_Owner))
     {
         Toxic_Used++;
-		EntFireByHandle(Toxic_Counter, "SetValue", "" + "" + Toxic_Used, 0.00, null, null);
+        EntFireByHandle(Toxic_Counter, "SetValue", "" + "" + Toxic_Used, 0.00, null, null);
         local Toxic_Text_B = "TOXIC MIST("+Toxic_Used+"/"+Toxic_Max_Use+")";
         if(Toxic_Used >= Toxic_Max_Use)
         {
@@ -99,7 +99,7 @@ function PickUpWithin()
     Within_Owner = activator;
     Within_Text = Entities.FindByName(null, "Item_PW_Gametext");
     Within_Button = Entities.FindByName(null, "Item_PW_Button");
-	Within_Counter = Entities.FindByName(null, "Within_Counter");
+    Within_Counter = Entities.FindByName(null, "Within_Counter");
     ScriptPrintMessageChatAll(" \x07 **A player has picked up Power Within**");
     Within_Text.__KeyValueFromString("message", "Item: Power Within\nEffect: Zombies become really stronger for a few seconds\nDuration: 3 seconds");
     EntFireByHandle(Within_Text, "Display", "", 0.00, activator, null);
@@ -110,7 +110,7 @@ function UseWithin()
     if(PlayerValidationT(activator, Within_Owner))
     {
         Within_Used++;
-		EntFireByHandle(Within_Counter, "SetValue", "" + Within_Used, 0.00, null, null);
+        EntFireByHandle(Within_Counter, "SetValue", "" + Within_Used, 0.00, null, null);
         local Within_Text_B = "POWER WITHIN("+Within_Used+"/"+Within_Max_Use+")";
         if(Within_Used >= Within_Max_Use)
         {
@@ -322,19 +322,19 @@ function AddUseItems()
     if(ItemValidation(ChaosStorm_Owner, ChaosStorm_Weapon, ChaosStorm_Button))
     {
         ChaosStorm_Max_Use++;
-		EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
+        EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
         EntFireByHandle(ChaosStorm_Text, "Display", "", 0.00, ChaosStorm_Owner, null);
     }
     if(ItemValidation(Darkstorm_Owner, Darkstorm_Weapon, Darkstorm_Button))
     {
         Darkstorm_Max_Use++;
-		EntFireByHandle(Darkstorm_Counter, "AddOutput", "max " + Darkstorm_Max_Use, 0.00, null, null);
+        EntFireByHandle(Darkstorm_Counter, "AddOutput", "max " + Darkstorm_Max_Use, 0.00, null, null);
         EntFireByHandle(Darkstorm_Text, "Display", "", 0.00, Darkstorm_Owner, null);
     }
     if(ItemValidation(DarkOrb_Owner, DarkOrb_Weapon, DarkOrb_Button))
     {
         DarkOrb_Max_Use++;
-		EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
+        EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
         EntFireByHandle(DarkOrb_Text, "Display", "", 0.00, DarkOrb_Owner, null);
     }
     if(ItemValidation(EstusFlask_Owner, EstusFlask_Weapon, EstusFlask_Button))
@@ -345,19 +345,19 @@ function AddUseItems()
     if(ItemValidation(GHSA_Owner, GHSA_Weapon, GHSA_Button))
     {
         GHSA_Max_Use++;
-		EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
+        EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
         EntFireByHandle(GHSA_Text, "Display", "", 0.00, GHSA_Owner, null);
     }
     if(ItemValidation(HiBo_Owner, HiBo_Weapon, HiBo_Button))
     {
         HiBo_Max_Use++;
-		EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
+        EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
         EntFireByHandle(HiBo_Text, "Display", "", 0.00, HiBo_Owner, null);
     }
     if(ItemValidation(LS_Owner, LS_Weapon, LS_Button))
     {
         LS_Max_Use++;
-		EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
+        EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
         EntFireByHandle(LS_Text, "Display", "", 0.00, LS_Owner, null);
     }
     if(ItemValidation(GreenBlossom_Owner, GreenBlossom_Weapon, GreenBlossom_Button))
@@ -368,19 +368,19 @@ function AddUseItems()
     if(ItemValidation(SS_Owner, SS_Weapon, SS_Button))
     {
         SS_Max_Use++;
-		EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
+        EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
         EntFireByHandle(SS_Text, "Display", "", 0.00, SS_Owner, null);
     }
     if(ItemValidation(WDB_Owner, WDB_Weapon, WDB_Button))
     {
         WDB_Max_Use++;
-		EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
+        EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
         EntFireByHandle(WDB_Text, "Display", "", 0.00, WDB_Owner, null);
     }
     if(ItemValidation(WOTG_Owner, WOTG_Weapon, WOTG_Button))
     {
         WOTG_Max_Use++;
-		EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
+        EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
         EntFireByHandle(WOTG_Text, "Display", "", 0.00, WOTG_Owner, null);
     }
 }
@@ -415,7 +415,7 @@ function UseChaosStorm()
     if(PlayerValidationCT(activator, ChaosStorm_Owner))
     {
         ChaosStorm_Used++;
-		EntFireByHandle(ChaosStorm_Counter, "SetValue", "" + ChaosStorm_Used, 0.00, null, null);
+        EntFireByHandle(ChaosStorm_Counter, "SetValue", "" + ChaosStorm_Used, 0.00, null, null);
         local ChaosStorm_Text_B = "CHAOS STORM("+ChaosStorm_Used+"/"+ChaosStorm_Max_Use+")";
         if(IsBossFight())
         {
@@ -515,7 +515,7 @@ function UseDarkstorm()
     if(PlayerValidationCT(activator, Darkstorm_Owner))
     {
         Darkstorm_Used++;
-		EntFireByHandle(Darkstorm_Counter, "SetValue", "" + Darkstorm_Used, 0.00, null, null);
+        EntFireByHandle(Darkstorm_Counter, "SetValue", "" + Darkstorm_Used, 0.00, null, null);
         local Darkstorm_Text_B = "DARK STORM("+Darkstorm_Used+"/"+Darkstorm_Max_Use+")";
         if(Darkstorm_Used >= Darkstorm_Max_Use)
         {
@@ -563,7 +563,7 @@ function UseDarkOrb()
     if(PlayerValidationCT(activator, DarkOrb_Owner))
     {
         DarkOrb_Used++;
-		EntFireByHandle(DarkOrb_Counter, "SetValue", "" + DarkOrb_Used, 0.00, null, null);
+        EntFireByHandle(DarkOrb_Counter, "SetValue", "" + DarkOrb_Used, 0.00, null, null);
         local DarkOrb_Text_B = "DARK ORB("+DarkOrb_Used+"/"+DarkOrb_Max_Use+")";
         if(IsBossFight())
         {
@@ -685,7 +685,7 @@ function UseGHSA()
     if(PlayerValidationCT(activator, GHSA_Owner))
     {
         GHSA_Used++;
-		EntFireByHandle(GHSA_Counter, "SetValue", "" + GHSA_Used, 0.00, null, null);
+        EntFireByHandle(GHSA_Counter, "SetValue", "" + GHSA_Used, 0.00, null, null);
         local GHSA_Text_B = "GHSA("+GHSA_Used+"/"+GHSA_Max_Use+")";
         if(IsBossFight())
         {
@@ -751,7 +751,7 @@ function UseHiBo()
     if(PlayerValidationCT(activator, HiBo_Owner))
     {
         HiBo_Used++;
-		EntFireByHandle(HiBo_Counter, "SetValue", "" + HiBo_Used, 0.00, null, null);
+        EntFireByHandle(HiBo_Counter, "SetValue", "" + HiBo_Used, 0.00, null, null);
         local HiBo_Text_B = "HIDDEN BODY("+HiBo_Used+"/"+HiBo_Max_Use+")";
         if(HiBo_Used >= HiBo_Max_Use)
         {
@@ -805,7 +805,7 @@ function UseLS()
     if(PlayerValidationCT(activator, LS_Owner))
     {
         LS_Used++;
-		EntFireByHandle(LS_Counter, "SetValue", "" + LS_Used, 0.00, null, null);
+        EntFireByHandle(LS_Counter, "SetValue", "" + LS_Used, 0.00, null, null);
         local LS_TEXT_B = "LIGHTNING SPEAR("+LS_Used+"/"+LS_Max_Use+")";
         if(IsBossFight())
         {
@@ -921,7 +921,7 @@ function UseSS()
     if(PlayerValidationCT(activator, SS_Owner))
     {
         SS_Used++;
-		EntFireByHandle(SS_Counter, "SetValue", "" + SS_Used, 0.00, null, null);
+        EntFireByHandle(SS_Counter, "SetValue", "" + SS_Used, 0.00, null, null);
         local SS_Text_B = "SOOTHING SUNLIGHT("+SS_Used+"/"+SS_Max_Use+")";
         if(SS_Used >= SS_Max_Use)
         {
@@ -956,7 +956,7 @@ function PickUpWDB()
     WDB_Owner = activator;
     if(WDB_Button == null){WDB_Button = Entities.FindByName(null, "Item_WDB_Button");}
     if(WDB_Text == null){WDB_Text = Entities.FindByName(null, "Item_WDB_Gametext");}
-	if(WDB_Counter == null){WDB_Counter = Entities.FindByName(null, "WDB_Counter");}
+    if(WDB_Counter == null){WDB_Counter = Entities.FindByName(null, "WDB_Counter");}
     if(WDB_Weapon == null){WDB_Weapon = caller;}
     if(!WDB_Button.IsValid())return;
     ScriptPrintMessageChatAll(" \x0A **A player has picked up White Dragon Breath**");
@@ -969,7 +969,7 @@ function UseWDB()
     if(PlayerValidationCT(activator, WDB_Owner))
     {
         WDB_Used++;
-		EntFireByHandle(WDB_Counter, "SetValue", "" + WDB_Used, 0.00, null, null);
+        EntFireByHandle(WDB_Counter, "SetValue", "" + WDB_Used, 0.00, null, null);
         local WDB_Text_B = "WHITE DRAGON BREATH("+WDB_Used+"/"+WDB_Max_Use+")";
         if(IsBossFight())
         {
@@ -1034,7 +1034,7 @@ function UseWOTG()
     if(PlayerValidationCT(activator, WOTG_Owner))
     {
         WOTG_Used++;
-		EntFireByHandle(WOTG_Counter, "SetValue", "" + WOTG_Used, 0.00, null, null);
+        EntFireByHandle(WOTG_Counter, "SetValue", "" + WOTG_Used, 0.00, null, null);
         local WOTG_Text_B = "WRATH OF THE GODS("+WOTG_Used+"/"+WOTG_Max_Use+")";
         if(WOTG_Used >= WOTG_Max_Use)
         {
@@ -1163,69 +1163,69 @@ function UpdateItemText()
 }
 
 function AddMaxUseDarkItem(n){
-	DarkOrb_Max_Use += n;
-	EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
+    DarkOrb_Max_Use += n;
+    EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
 }
 
 function AddMaxUseDivineItem(n)
 {
     WOTG_Max_Use += n;
-	EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
+    EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
     SS_Max_Use += n;
-	EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
+    EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
     LS_Max_Use += n;
-	EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
+    EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
 }
 
 function AddMaxUseMagicItem(n)
 {
     WDB_Max_Use += n;
-	EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
+    EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
     HiBo_Max_Use += n;
-	EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
+    EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
     GHSA_Max_Use += n;
-	EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
+    EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
 }
 
 function AddMaxUseFlameItem(n)
 {
     Within_Max_Use += n;
-	EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
+    EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
     Toxic_Max_Use += n;
-	EntFireByHandle(Toxic_Counter, "AddOutput", "max " + Toxic_Max_Use, 0.00, null, null);
+    EntFireByHandle(Toxic_Counter, "AddOutput", "max " + Toxic_Max_Use, 0.00, null, null);
     ChaosStorm_Max_Use += n;
-	EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
+    EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
 }
 
 function SetItemLevel(n)
 {
     Toxic_Max_Use = n;
-	EntFireByHandle(Toxic_Counter, "AddOutput", "max " + Toxic_Max_Use, 0.00, null, null);
+    EntFireByHandle(Toxic_Counter, "AddOutput", "max " + Toxic_Max_Use, 0.00, null, null);
     Within_Max_Use = n;
-	EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
+    EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
     Poison_Max_Use = n;
     BlackFlame_Max_Use = n;
     AEF_MAX_USE = n;
     ChaosStorm_Max_Use = n;
-	EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
+    EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
     Darkstorm_Max_Use = n;
-	EntFireByHandle(Darkstorm_Counter, "AddOutput", "max " + Darkstorm_Max_Use, 0.00, null, null);
+    EntFireByHandle(Darkstorm_Counter, "AddOutput", "max " + Darkstorm_Max_Use, 0.00, null, null);
     DarkOrb_Max_Use = n;
-	EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
+    EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
     EstusFlask_Max_Use = n;
     GHSA_Max_Use = n;
-	EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
+    EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
     HiBo_Max_Use = n;
-	EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
+    EntFireByHandle(HiBo_Counter, "AddOutput", "max " + HiBo_Max_Use, 0.00, null, null);
     LS_Max_Use = n;
-	EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
+    EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
     GreenBlossom_Max_Use = n;
     SS_Max_Use = n;
-	EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
+    EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
     WDB_Max_Use = n;
-	EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
+    EntFireByHandle(WDB_Counter, "AddOutput", "max " + WDB_Max_Use, 0.00, null, null);
     WOTG_Max_Use = n;
-	EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
+    EntFireByHandle(WOTG_Counter, "AddOutput", "max " + WOTG_Max_Use, 0.00, null, null);
 }
 
 function IsBossFight()
@@ -1318,11 +1318,11 @@ function DamageBoss(item_b, d, ang_lim, boss_ns=null)
 
 function GetTargetYaw(start,target)
 {
-	local yaw = 0.00;
-	local v = Vector(start.x - target.x, start.y - target.y, start.z - start.z);
-	local vl = sqrt(v.x * v.x + v.y * v.y);
-	yaw = 180 * acos(v.x / vl) / 3.14159;
-	yaw -= 180;
+    local yaw = 0.00;
+    local v = Vector(start.x - target.x, start.y - target.y, start.z - start.z);
+    local vl = sqrt(v.x * v.x + v.y * v.y);
+    yaw = 180 * acos(v.x / vl) / 3.14159;
+    yaw -= 180;
     if(v.y < 0)
     {
         yaw =- yaw;
