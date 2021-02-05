@@ -144,6 +144,7 @@ Poisoned_Humans <- [];
 
 Poison_Owner <- null;
 Poison_Button <- null;
+Poison_Counter <- null;
 Poison_Text <- null;
 Poison_Max_Use <- 10; //10 Default
 Poison_Used <- 0;
@@ -153,6 +154,7 @@ function PickUpPoison()
     ZM_ITEM_OWNERS.push(activator);
     Poison_Owner = activator;
     Poison_Text = Entities.FindByName(null, "Item_ZMPoison_Gametext");
+    Poison_Counter = Entities.FindByName(null, "Poison_Counter");
     Poison_Button = Entities.FindByName(null, "Item_ZMPoison_Button");
     ScriptPrintMessageChatAll(" \x04 **A player has picked up Poison Mist**");
     Poison_Text.__KeyValueFromString("message", "Item: Poison\nEffect: Gets nearby humans poisoned\nDuration: 7 seconds");
@@ -164,6 +166,7 @@ function UsePoison()
     if(PlayerValidationT(activator, Poison_Owner))
     {
         Poison_Used++;
+          EntFireByHandle(Poison_Counter, "SetValue", "" + Poison_Used, 0.00, null, null);
         local Poison_Text_B = "POISON MIST("+Poison_Used+"/"+Poison_Max_Use+")";
         if(Poison_Used >= Poison_Max_Use)
         {
@@ -230,6 +233,7 @@ function CheckPArr(act_p)
 
 BlackFlame_Owner <- null;
 BlackFlame_Button <- null;
+BlackFlame_Counter <- null;
 BlackFlame_Text <- null;
 BlackFlame_Max_Use <- 10; //10 Default
 BlackFlame_Used <- 0;
@@ -239,6 +243,7 @@ function PickUpBlackFlame()
     ZM_ITEM_OWNERS.push(activator);
     BlackFlame_Owner = activator;
     BlackFlame_Text = Entities.FindByName(null, "Item_BF_Gametext");
+    BlackFlame_Counter = Entities.FindByName(null, "BlackFlame_Counter");
     BlackFlame_Button = Entities.FindByName(null, "Item_BF_Button");
     ScriptPrintMessageChatAll(" \x09 **A player has picked up Black Flame**");
     BlackFlame_Text.__KeyValueFromString("message", "Item: Black Flame\nEffect: Making the fire orb that damages humans\nDuration: 1 second");
@@ -250,6 +255,7 @@ function UseBlackFlame()
     if(PlayerValidationT(activator, BlackFlame_Owner))
     {
         BlackFlame_Used++;
+          EntFireByHandle(BlackFlame_Counter, "SetValue", "" + BlackFlame_Used, 0.00, null, null);
         local BlackFlame_Text_B = "BLACK FLAME("+BlackFlame_Used+"/"+BlackFlame_Max_Use+")";
         if(BlackFlame_Used >= BlackFlame_Max_Use)
         {
@@ -277,6 +283,7 @@ function UseBlackFlame()
 
 AEF_OWNER <- null;
 AEF_BUTTON <- null;
+AEF_Counter <- null;
 AEF_WEAPON <- null;
 AEF_TEXT <- null;
 AEF_MAX_USE <- 3;
@@ -287,6 +294,7 @@ function PickUpAef()
     AEF_OWNER = activator;
     if(AEF_BUTTON == null){AEF_BUTTON = Entities.FindByName(null, "Item_AEF_Button");}
     if(AEF_TEXT == null){AEF_TEXT = Entities.FindByName(null, "Item_AEF_Gametext");}
+     if(AEF_Counter == null){AEF_Counter = Entities.FindByName(null, "AEF_Counter");}
     if(AEF_WEAPON == null){AEF_WEAPON = caller;}
     if(!AEF_BUTTON.IsValid())return;
     ScriptPrintMessageChatAll(" \x0A **A player has picked up Ashen Estus Flask**");
@@ -299,6 +307,7 @@ function UseAef()
     if(PlayerValidationCT(activator, AEF_OWNER))
     {
         AEF_USED++;
+          EntFireByHandle(AEF_Counter, "SetValue", "" + AEF_USED, 0.00, null, null);
         local AEF_TEXT_B = "ASHEN ESTUS("+AEF_USED+"/"+AEF_MAX_USE+")";
         if(AEF_USED >= AEF_MAX_USE)
         {
@@ -340,6 +349,7 @@ function AddUseItems()
     if(ItemValidation(EstusFlask_Owner, EstusFlask_Weapon, EstusFlask_Button))
     {
         EstusFlask_Max_Use++;
+          EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
         EntFireByHandle(EstusFlask_Text, "Display", "", 0.00, EstusFlask_Owner, null);
     }
     if(ItemValidation(GHSA_Owner, GHSA_Weapon, GHSA_Button))
@@ -363,6 +373,7 @@ function AddUseItems()
     if(ItemValidation(GreenBlossom_Owner, GreenBlossom_Weapon, GreenBlossom_Button))
     {
         GreenBlossom_Max_Use++;
+          EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
         EntFireByHandle(GreenBlossom_Text, "Display", "", 0.00, GreenBlossom_Owner, null);
     }
     if(ItemValidation(SS_Owner, SS_Weapon, SS_Button))
@@ -616,6 +627,7 @@ function UseDarkOrb()
 
 EstusFlask_Owner <- null;
 EstusFlask_Button <- null;
+EstusFlask_Counter <- null;
 EstusFlask_Weapon <- null;
 EstusFlask_Text <- null;
 EstusFlask_Max_Use <- 5;
@@ -626,6 +638,7 @@ function PickUpEstusFlask()
     EstusFlask_Owner = activator;
     if(EstusFlask_Button == null){EstusFlask_Button = Entities.FindByName(null, "Item_EF_Button");}
     if(EstusFlask_Text == null){EstusFlask_Text = Entities.FindByName(null, "Item_EF_Gametext");}
+    if(EstusFlask_Counter == null){EstusFlask_Counter = Entities.FindByName(null, "EstusFlask_Counter");}
     if(EstusFlask_Weapon == null){EstusFlask_Weapon = caller;}
     if(!EstusFlask_Button.IsValid())return;
     ScriptPrintMessageChatAll(" \x09 **A player has picked up Estus Flask**");
@@ -852,6 +865,7 @@ function UseLS()
 
 GreenBlossom_Owner <- null;
 GreenBlossom_Button <- null;
+GreenBlossom_Counter <- null;
 GreenBlossom_Weapon <- null;
 GreenBlossom_Text <- null;
 GreenBlossom_Max_Use <- 3;
@@ -862,6 +876,7 @@ function PickUpGreenBlossom()
     GreenBlossom_Owner = activator;
     if(GreenBlossom_Button == null){GreenBlossom_Button = Entities.FindByName(null, "Item_Salad_Button");}
     if(GreenBlossom_Text == null){GreenBlossom_Text = Entities.FindByName(null, "Item_Salad_Gametext");}
+     if(GreenBlossom_Counter == null){GreenBlossom_Counter = Entities.FindByName(null, "GreenBlossom_Counter");}
     if(GreenBlossom_Weapon == null){GreenBlossom_Weapon = caller;}
     if(!GreenBlossom_Button.IsValid())return;
     ScriptPrintMessageChatAll(" \x06 **A player has picked up Green Blossom**");
@@ -874,6 +889,7 @@ function UseGreenBlossom()
     if(PlayerValidationCT(activator, GreenBlossom_Owner))
     {
         GreenBlossom_Used++;
+          EntFireByHandle(GreenBlossom_Counter, "SetValue", "" + GreenBlossom_Used, 0.00, null, null);
         local GreenBlossom_Text_B = "GREEN BLOSSOM("+GreenBlossom_Used+"/"+GreenBlossom_Max_Use+")";
         if(GreenBlossom_Used >= GreenBlossom_Max_Use)
         {
@@ -1204,8 +1220,11 @@ function SetItemLevel(n)
     Within_Max_Use = n;
     EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
     Poison_Max_Use = n;
+     EntFireByHandle(Poison_Counter, "AddOutput", "max " + Poison_Max_Use, 0.00, null, null);
     BlackFlame_Max_Use = n;
+     EntFireByHandle(BlackFlame_Counter, "AddOutput", "max " + BlackFlame_Max_Use, 0.00, null, null);
     AEF_MAX_USE = n;
+     EntFireByHandle(AEF_Counter, "AddOutput", "max " + AEF_MAX_USE, 0.00, null, null);
     ChaosStorm_Max_Use = n;
     EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
     Darkstorm_Max_Use = n;
@@ -1213,6 +1232,7 @@ function SetItemLevel(n)
     DarkOrb_Max_Use = n;
     EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
     EstusFlask_Max_Use = n;
+     EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
     GHSA_Max_Use = n;
     EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
     HiBo_Max_Use = n;
@@ -1220,6 +1240,7 @@ function SetItemLevel(n)
     LS_Max_Use = n;
     EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
     GreenBlossom_Max_Use = n;
+     EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
     SS_Max_Use = n;
     EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
     WDB_Max_Use = n;
