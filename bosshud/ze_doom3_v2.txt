@@ -8,7 +8,6 @@
 		"HPbar_min"			"0"
 		"HPbar_max"			"20"
 		"HPbar_default"		"20"
-		"CustomText"		"Boss"
 	}
 	
 	"1"
