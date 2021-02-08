@@ -14,7 +14,8 @@
         "chat"              "" //always true
         "hud"               "" //always true
         "hammerid"          "" //hammerid of the weapon_ entity for the item
-        "mode"              "" //0 = nothing 1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used
+        "mathid"            "" //OPTIONAL: hammerid of the math_counter. Only available for modes 6 & 7
+        "mode"              "" //0 = nothing 1 = spam protection only, 2 = cooldown, 3 = limited uses, 4 = limited uses with cooldown, 5 = cooldown that only gets triggered after all maxuses are used, 6 = math_counter - stops when minimum reached, 7 = math_counter-  stops when maximum reached
         "maxuses"           "" //max uses of the item (if applicable)
         "cooldown"          "" //cooldown of the item (if applicable)
         "maxamount"         "" //how many instances of this item can exist
