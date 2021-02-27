@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"mini_boss_counter"
+		"CustomText"		"Crom Cruach"
+	}
+	"1"
+	{
+		"HP_counter"		"boss_hp_counter_static"
+		"CustomText"		"Revenant"
+	}
+	"2"
+	{
+		"HP_counter"		"boss_hp_counter"
+		"CustomText"		"Revenant"
+	}
+}
