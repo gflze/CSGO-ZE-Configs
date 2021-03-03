@@ -1,6 +1,6 @@
 # GFLClan CS:GO ZE Configs
 
-A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that a handful of private stripper configs are not included in this repository.
+A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore) are not included in this repository.
 
 # How to Contribute
 
