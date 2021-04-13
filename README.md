@@ -1,8 +1,13 @@
-# GFLClan CS:GO ZE Configs
+# GFLClan CS:GO ZE Configs  
+
+| Sync Status |
+|:-----------:|
+| [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
+
 
 A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore) are not included in this repository.
 
-Everything in this repository is auto-synced to our main/test servers every 15 minutes starting on the hour, e.g. 02:00, 02:15, 02:30 etc...
+Everything in this repository is auto-synced to our main/test servers on a new commit/push.
 
 # How to Contribute
 
