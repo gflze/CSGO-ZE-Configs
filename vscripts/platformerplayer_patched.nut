@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_platformer_b6 stripper
 //Removes HTML formatting broken after Shattered Web Update.
-//Install as csgo/scripts/vscripts/Cuniczek/platformer/platformerplayer_patched.nut
+//Install as csgo/scripts/vscripts/gfl/platformerplayer_patched.nut
 //#####################################################################
 
 Coins <- 0

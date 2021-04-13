@@ -2,6 +2,8 @@
 
 A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore) are not included in this repository.
 
+Everything in this repository is auto-synced to our main/test servers every 15 minutes starting on the hour, e.g. 02:00, 02:15, 02:30 etc...
+
 # How to Contribute
 
 For making any of these configs, you'll want a tool like [VIDE](http://www.riintouge.com/VIDE/)'s entity lump editor, or [entSpy](https://gamebanana.com/tools/5876) to navigate the entities in a map. You can also compare maps with current configs in this repository and see how it has already been done if you're looking for functional examples of things.
@@ -145,3 +147,7 @@ ze_map_name.cfg
 ## Stripper
 
 Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
+
+## VScripts
+
+Loose VScripts are always directly tied to an existing stripper config. However for our auto-sync to work properly, all external VScripts must be referred to by strippers as "gfl/scriptname.nut", and in absolute path, "csgo/scripts/vscripts/gfl/scriptname.nut".

@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_TESV_Skyrim_kr2 stripper
 //Uses ?level as the main level check command to fix the misleading SM "no permission" response due to savelevel
-//Install as csgo/scripts/vscripts/SavePlayersTargetname_patched.nut
+//Install as csgo/scripts/vscripts/gfl/SavePlayersTargetname_patched.nut
 //#####################################################################
 
 /*

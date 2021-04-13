@@ -1,3 +1,9 @@
+//#####################################################################
+//Patched version intended for use with GFL ze_santassination_v3 stripper
+//Implements all of Luffarens fixes
+//Install as csgo/scripts/vscripts/gfl/santa_v3_fixes.nut
+//#####################################################################
+
 //
 //		OFFICIAL ZE_SANTASSINATION_V3 STRIPPER SOLUTION
 //		UPDATED: 2020-08-20 (#9)

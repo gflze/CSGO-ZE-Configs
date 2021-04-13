@@ -1,6 +1,6 @@
 // Intended for use with the ze_FFXII_Paramina_Rift_r4 GFL stripper
 // Allows all the item level game_text to run on a single channel
-// Install as csgo/scripts/vscripts/paramina/paramina_items.nut
+// Install as csgo/scripts/vscripts/gfl/paramina_items.nut
 
 MESSAGE <- "";
 ICE <- "";

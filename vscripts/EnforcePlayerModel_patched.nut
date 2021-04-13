@@ -1,6 +1,7 @@
 //intended for use with the ze_space_flight_p3 GFL stripper
 //removes custom human models
-//install as csgo/scripts/vscripts/EnforcePlayerModel_patched.nut
+//install as csgo/scripts/vscripts/gfl/EnforcePlayerModel_patched.nut
+
 function CheckForMotherZombieSpawn() {
     zombie <- null
 

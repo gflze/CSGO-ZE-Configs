@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_tyranny_v5_2k3 stripper
 //Removes HTML formatting broken after Shattered Web Update.
-//Install as csgo/scripts/vscripts/tyranny/hud_killer_patched.nut
+//Install as csgo/scripts/vscripts/gfl/hud_killer_patched.nut
 //#####################################################################
 
 Tick <- true;

@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_v0u0v_a6_csgo1 stripper
 //Removes HTML formatting broken/non-functional after Shattered Web Update.
-//Install as csgo/scripts/vscripts/vouov/vouov_boss_patched.nut
+//Install as csgo/scripts/vscripts/gfl/vouov_boss_patched.nut
 //#####################################################################
 
 BossHpBar <- 10;

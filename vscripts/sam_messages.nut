@@ -1,6 +1,6 @@
 //intended for use with the ze_S_A_M_v1_7 GFL stripper
 //removes broken HTML formatting
-//install as csgo/scripts/vscripts/ze_sam/sam_messages.nut
+//install as csgo/scripts/vscripts/gfl/sam_messages.nut
 
 function SetZIceMessage()
 {

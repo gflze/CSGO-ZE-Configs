@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_SUMAI_facility_v1a stripper
 //Removes HTML formatting broken after Shattered Web Update.
-//Install as csgo/scripts/vscripts/darnias/bosshp_patched.nut
+//Install as csgo/scripts/vscripts/gfl/bosshp_patched.nut
 //#####################################################################
 
 //Used by Darnias in ze_SUMAI_facility

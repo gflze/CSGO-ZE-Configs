@@ -1,3 +1,8 @@
+//#####################################################################
+//Patched version intended for use with GFL ze_harry_potter_v2_1_csgo stripper
+//Install as csgo/scripts/vscripts/gfl/harry_potter_hp_fix.nut
+//#####################################################################
+
 STAGE <- 0;
 EXTREME <- false;
 ONLYZMMOD <- false;

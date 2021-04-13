@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_abandoned_project_v1_2_csgo stripper
 //Removes HTML formatting broken after Shattered Web Update.
-//Install as csgo/scripts/vscripts/abandoned/hud_v_patched.nut
+//Install as csgo/scripts/vscripts/gfl/hud_v_patched.nut
 //#####################################################################
 
 //S NS//

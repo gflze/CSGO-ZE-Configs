@@ -1,4 +1,8 @@
-//Patched script for ze_fe8_sacred_stones_v1_10
+//#####################################################################
+//Patched version intended for use with GFL ze_fe8_sacred_stones_v1_10 stripper
+//Removes refire time modification after Formortiis enters second phase.
+//Install as csgo/scripts/vscripts/gfl/level5_boss_controller_patched.nut
+//#####################################################################
 
 //current hp and others
 formortiis_hp <- 0;
