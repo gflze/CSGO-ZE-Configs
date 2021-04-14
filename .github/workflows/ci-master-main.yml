@@ -23,7 +23,8 @@ jobs:
           password: ${{ secrets.ftp_main_password }}
           local-dir: bosshud/
           server-dir: csgo/addons/sourcemod/configs/MapBossHP/
-          
+          log-level: verbose
+
       - name: Sync entWatch Files
         uses: SnowyGFL/FTP-Deploy-Action@1.1
         with:
