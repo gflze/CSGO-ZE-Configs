@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_crazykart_v4 stripper
 //Removes HTML formatting broken after Shattered Web Update.
-//Install as csgo/scripts/vscripts/luffaren/manager_crazykart_patched.nut
+//Install as csgo/scripts/vscripts/gfl/manager_crazykart_patched.nut
 //#####################################################################
 
 //ze_crazykart - by Luffaren

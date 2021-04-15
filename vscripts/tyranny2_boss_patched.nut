@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_tyranny2_v1_csgo2 stripper
 //Removes HTML formatting broken/non-functional after Shattered Web Update.
-//Install as csgo/scripts/vscripts/tyranny2/tyranny2_boss_patched.nut
+//Install as csgo/scripts/vscripts/gfl/tyranny2_boss_patched.nut
 //#####################################################################
 
 BossHpBar <- 10;

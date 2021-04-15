@@ -1,6 +1,6 @@
 //Patched version intended for use with GFL ze_lotr_isengard_csgo1 stripper
 //Removes broken HTML formatting from the bhud
-//install as csgo/scripts/vscripts/isengard/bosshp_hud_patched.nut
+//install as csgo/scripts/vscripts/gfl/bosshp_hud_patched.nut
 BossHpBar <- 10;
 
 ticking <- false;

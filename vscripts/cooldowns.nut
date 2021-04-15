@@ -1,6 +1,6 @@
-// Intended for use with the ze_tesv_skyrim_v5_6 GFL stripper
+// Intended for use with the ze_TESV_Skyrim_kr2 GFL stripper
 // Adding proper cooldown support for human items (game_ui)
-// Install as csgo/scripts/vscripts/skyrim/cooldowns.nut
+// Install as csgo/scripts/vscripts/gfl/cooldowns.nut
 
 // Original idea/implementation by Hestia
 // Script implementation by Vauff (from ze_lotr_isengard_csgo1), edited by sTc

@@ -1,6 +1,6 @@
 //===================================\\
 // Script by Luffaren (STEAM_0:1:22521282)
-// (PUT THIS IN: csgo/scripts/vscripts/luffaren/_mapscripts/ze_diddle/)
+// (PUT THIS IN: csgo/scripts/vscripts/gfl/)
 //
 //  Patched version intended for use with GFL ze_diddle_v3 stripper, included in the release
 //  Adds "Diddle Extreme", where you must beat everything in a single round (with some help/items)

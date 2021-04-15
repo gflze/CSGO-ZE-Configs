@@ -1,7 +1,7 @@
 //#####################################################################
 //Patched version intended for use with GFL ze_surf_shonyudo_v4_1 stripper
 //Translate japanese msgs into english
-//Install as csgo/scripts/vscripts/ze_surf_shonyudo/ze_surf_shonyudo_patched.nut
+//Install as csgo/scripts/vscripts/gfl/ze_surf_shonyudo_patched.nut
 //#####################################################################
 
 function text01()

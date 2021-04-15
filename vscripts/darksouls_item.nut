@@ -1,5 +1,6 @@
-// Custom VScript used to add to counters added via stripper so that entwatch can check uses left
-// Install as csgo/scripts/vscripts/darksouls_item.nut
+// Intended for use with the ze_dark_souls_ptd_csgo2 GFL stripper
+// Used to add to counters added via stripper so that entwatch can check uses left
+// Install as csgo/scripts/vscripts/gfl/darksouls_item.nut
 
 /////////////////////////////////////
 //////////////ZM ITEMS///////////////

@@ -1,3 +1,8 @@
+//#####################################################################
+//Patched version intended for use with GFL ze_harry_potter_v2_1_csgo stripper
+//Install as csgo/scripts/vscripts/gfl/boss_add_hp_in_counter_hp_fix.nut
+//#####################################################################
+
 mathname <- "";
 TotalHealth <- 0;
 TEST <- false;

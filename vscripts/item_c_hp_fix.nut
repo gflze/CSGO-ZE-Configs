@@ -1,3 +1,8 @@
+//#####################################################################
+//Patched version intended for use with GFL ze_harry_potter_v2_1_csgo stripper
+//Install as csgo/scripts/vscripts/gfl/item_c_hp_fix.nut
+//#####################################################################
+
 ZMITEMLVLUP <- 0;
 ITEM_DISABLE <- true;
 ZOMBIE_ITEM_DISABLE <- true;
