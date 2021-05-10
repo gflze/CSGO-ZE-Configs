@@ -5,7 +5,7 @@
 | [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
 
 
-A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore) are not included in this repository.
+A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
 
 Everything in this repository is auto-synced to our main/test servers on a new commit/push.
 
@@ -156,3 +156,7 @@ Stripper is quite a complicated beast and unfortunately a single template is not
 ## VScripts
 
 Loose VScripts are always directly tied to an existing stripper config. However for our auto-sync to work properly, all external VScripts must be referred to by strippers as "gfl/scriptname.nut", and in absolute path, "csgo/scripts/vscripts/gfl/scriptname.nut".
+
+## ZombieReloaded Configs
+
+These are basic CS:GO config files containing cvars/commands that get executed on map load. mapname.cfg is executed [OnAutoConfigsBuffered()](https://sourcemod.dev/#/sourcemod/function.OnAutoConfigsBuffered), mapname.post.cfg is executed on [OnConfigsExecuted()](https://sourcemod.dev/#/sourcemod/function.OnConfigsExecuted).
