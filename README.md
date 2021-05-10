@@ -159,4 +159,4 @@ Loose VScripts are always directly tied to an existing stripper config. However 
 
 ## ZombieReloaded Configs
 
-These are basic CS:GO config files containing cvars/commands that get executed on map load. mapname.cfg is executed [OnAutoConfigsBuffered()](https://sourcemod.dev/#/sourcemod/function.OnAutoConfigsBuffered), mapname.post.cfg is executed on [OnConfigsExecuted()](https://sourcemod.dev/#/sourcemod/function.OnConfigsExecuted).
+These are basic CS:GO config files containing cvars/commands that get executed on map start by ZR. mapname.cfg is executed [OnAutoConfigsBuffered()](https://sourcemod.dev/#/sourcemod/function.OnAutoConfigsBuffered), mapname.post.cfg is executed [OnConfigsExecuted()](https://sourcemod.dev/#/sourcemod/function.OnConfigsExecuted).
