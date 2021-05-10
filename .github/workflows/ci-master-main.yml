@@ -59,3 +59,12 @@ jobs:
           password: ${{ secrets.ftp_main_password }}
           local-dir: vscripts/
           server-dir: csgo/scripts/vscripts/gfl/
+
+      - name: Sync ZombieReloaded Files
+        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        with:
+          server: ${{ secrets.ftp_main_server }}
+          username: ${{ secrets.ftp_main_username }}
+          password: ${{ secrets.ftp_main_password }}
+          local-dir: zombiereloaded/
+          server-dir: csgo/cfg/sourcemod/zombiereloaded/
