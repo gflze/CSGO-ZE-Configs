@@ -448,6 +448,7 @@ function RoundStart()
 	}
 	humanitems_firstround = true;
 	stageChosen = -1;
+	EntFire("server", "Command", "sm_setcooldown 688312 " + torchcooldown_normal, 0.00, null);
 	normalTorchCooldowns = true;
 	firststage = true;
 	ResetDamageFilter();
@@ -1007,6 +1008,7 @@ function TorchExtremeCheck()
 {
 	if (extreme)
 	{
+		EntFire("server", "Command", "sm_setcooldown 688312 " + torchcooldown, 0.00, null);
 		normalTorchCooldowns = false;
 	}
 	else
