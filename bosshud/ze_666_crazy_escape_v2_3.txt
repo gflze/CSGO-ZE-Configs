@@ -11,7 +11,6 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Pyramid Head"
 	}
-	
 	"1"
 	{
 		"HP_counter"		"nrk1_boss_laser_counter"
@@ -21,6 +20,28 @@
 		"HPbar_max"		"5"
 		"HPbar_default"		"5"
 		"HPbar_mode"		"1"
-		"CustomText"		"Naraka"
+		"CustomText"		"Pyramid Head"
+	}
+	"2"
+	{
+		"HP_counter"		"nrk2_counter"
+		"HPbar_counter"		"nrk2_hp_iterations"
+		"HPinit_counter"	"nrk2_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Archangel"
+	}
+	"3"
+	{
+		"HP_counter"		"nrk2_boss_laser_counter"
+		"HPbar_counter"		"nrk2_boss_hp_iterations"
+		"HPinit_counter"	"nrk2_boss_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Pyramid Head"
 	}
 }
