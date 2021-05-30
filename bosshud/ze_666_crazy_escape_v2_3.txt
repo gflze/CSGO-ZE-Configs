@@ -33,7 +33,7 @@
 		"HPbar_mode"		"1"
 		"CustomText"		"Archangel"
 	}
-	"2"
+	"3"
 	{
 		"HP_counter"		"nrk2_boss_laser_counter"
 		"HPbar_counter"		"nrk2_boss_hp_iterations"
