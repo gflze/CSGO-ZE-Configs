@@ -1,0 +1,76 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"                "1"
+	}
+	"0"                   
+	{                   
+		"HP_counter"		"counter_dragon_1"
+		"HPbar_counter"		"counter_dragon_3"
+		"HPinit_counter"	"counter_dragon_2"
+  		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Ruby Dragon"
+	}
+	"1"
+	{
+		"HP_counter"		"meteor_counter"
+ 		"CustomText"		"Meteor"
+	}
+	"2"
+	{
+		"HP_counter"		"counter_golem_3"
+ 		"CustomText"		"Gaulle"
+	}
+	"3"
+	{
+		"HP_counter"		"counter_triface_1"
+		"HPbar_counter"		"counter_triface_3"
+		"HPinit_counter"	"counter_triface_2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"20"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Triface"
+	}
+	"4"
+	{
+		"HP_counter"		"counter_edge_1"
+		"HPbar_counter"		"Edge_Health"
+		"HPinit_counter"	"counter_edge_2"
+		"HPbar_min"		"0"
+ 		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Sephiroth"
+	}
+	"5"
+	{
+		"HP_counter"		"bomb_1_counter"
+ 		"CustomText"		"Bomb"
+	}
+	"6"
+	{ 
+		"HP_counter"		"bomb_3_counter"
+		"CustomText"		"Bomb"
+	}
+	"7"
+	{
+		"HP_counter"		"counter_seph"
+		"CustomText"		"Sephiroth"
+	}
+	"8"
+	{
+		"HP_counter"		"counter_dragon_1_3"
+		"HPbar_counter"		"counter_dragon_3_1"
+		"HPinit_counter"	"counter_dragon_2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+		"CustomText"		"Ruby Dragon"
+	}
+}
