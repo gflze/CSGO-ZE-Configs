@@ -1,0 +1,38 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+	
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"L1_Boss"
+		"CustomText"		"Angra"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Stage2_Boss"
+		"CustomText"		"Rex"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Ex_Boss_Breakable"
+		"CustomText"		"Agent Jay"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Stage3_Boss"
+		"CustomText"		"Zombie Jack"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Stage3_Minion"
+		"CustomText"		"Fallen Titan"
+	}
+}
