@@ -3,12 +3,10 @@
 	"0"
 	{
 		"HP_counter"		"boss_hp"
-		"CustomText"		"Ugly Pineapple"
 	}
 
 	"1"
 	{
 		"HP_counter"		"boss2_hp"
-		"CustomText"		"Ugly Pineapple 2"
 	}
 }
