@@ -26,3 +26,5 @@
 	{
 		"HP_counter"		"s5_sphere_boss_counter"
 		"CustomText"		"Sphere"
+	}
+}
