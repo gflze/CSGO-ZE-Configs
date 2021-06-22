@@ -1,0 +1,28 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"boss_health_main"
+		"HPbar_counter"		"boss_healthcount"
+		"HPbar_min"		"0"
+		"HPbar_max"		"16"
+		"HPbar_default"		"16"
+		"HPbar_mode"		"1"
+	}
+	"1"
+	{
+		"HP_counter"		"stage2_track_counter"
+	}
+	"2"
+	{
+		"HP_counter"		"niveau5_track_counter"
+		"HPbar_counter"		"s5_4boss_counter"
+		"HPbar_min"		"0"
+		"HPbar_max"		"4"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"1"
+	}
+	"3"
+	{
+		"HP_counter"		"s5_sphere_boss_counter"
+		"CustomText"		"Sphere"
