@@ -167,7 +167,7 @@ function UsePoison()
     if(PlayerValidationT(activator, Poison_Owner))
     {
         Poison_Used++;
-          EntFireByHandle(Poison_Counter, "SetValue", "" + Poison_Used, 0.00, null, null);
+        EntFireByHandle(Poison_Counter, "SetValue", "" + Poison_Used, 0.00, null, null);
         local Poison_Text_B = "POISON MIST("+Poison_Used+"/"+Poison_Max_Use+")";
         if(Poison_Used >= Poison_Max_Use)
         {
@@ -256,7 +256,7 @@ function UseBlackFlame()
     if(PlayerValidationT(activator, BlackFlame_Owner))
     {
         BlackFlame_Used++;
-          EntFireByHandle(BlackFlame_Counter, "SetValue", "" + BlackFlame_Used, 0.00, null, null);
+        EntFireByHandle(BlackFlame_Counter, "SetValue", "" + BlackFlame_Used, 0.00, null, null);
         local BlackFlame_Text_B = "BLACK FLAME("+BlackFlame_Used+"/"+BlackFlame_Max_Use+")";
         if(BlackFlame_Used >= BlackFlame_Max_Use)
         {
@@ -308,7 +308,7 @@ function UseAef()
     if(PlayerValidationCT(activator, AEF_OWNER))
     {
         AEF_USED++;
-          EntFireByHandle(AEF_Counter, "SetValue", "" + AEF_USED, 0.00, null, null);
+        EntFireByHandle(AEF_Counter, "SetValue", "" + AEF_USED, 0.00, null, null);
         local AEF_TEXT_B = "ASHEN ESTUS("+AEF_USED+"/"+AEF_MAX_USE+")";
         if(AEF_USED >= AEF_MAX_USE)
         {
@@ -350,7 +350,7 @@ function AddUseItems()
     if(ItemValidation(EstusFlask_Owner, EstusFlask_Weapon, EstusFlask_Button))
     {
         EstusFlask_Max_Use++;
-          EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
+        EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
         EntFireByHandle(EstusFlask_Text, "Display", "", 0.00, EstusFlask_Owner, null);
     }
     if(ItemValidation(GHSA_Owner, GHSA_Weapon, GHSA_Button))
@@ -374,7 +374,7 @@ function AddUseItems()
     if(ItemValidation(GreenBlossom_Owner, GreenBlossom_Weapon, GreenBlossom_Button))
     {
         GreenBlossom_Max_Use++;
-          EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
+        EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
         EntFireByHandle(GreenBlossom_Text, "Display", "", 0.00, GreenBlossom_Owner, null);
     }
     if(ItemValidation(SS_Owner, SS_Weapon, SS_Button))
@@ -652,6 +652,7 @@ function UseEstusFlask()
     if(PlayerValidationCT(activator, EstusFlask_Owner))
     {
         EstusFlask_Used++;
+        EntFireByHandle(EstusFlask_Counter, "SetValue", "" + EstusFlask_Used, 0.00, null, null);
         local EstusFlask_Text_B = "ESTUS FLASK("+EstusFlask_Used+"/"+EstusFlask_Max_Use+")";
         if(EstusFlask_Used >= EstusFlask_Max_Use)
         {
@@ -890,7 +891,7 @@ function UseGreenBlossom()
     if(PlayerValidationCT(activator, GreenBlossom_Owner))
     {
         GreenBlossom_Used++;
-          EntFireByHandle(GreenBlossom_Counter, "SetValue", "" + GreenBlossom_Used, 0.00, null, null);
+        EntFireByHandle(GreenBlossom_Counter, "SetValue", "" + GreenBlossom_Used, 0.00, null, null);
         local GreenBlossom_Text_B = "GREEN BLOSSOM("+GreenBlossom_Used+"/"+GreenBlossom_Max_Use+")";
         if(GreenBlossom_Used >= GreenBlossom_Max_Use)
         {
@@ -1221,11 +1222,11 @@ function SetItemLevel(n)
     Within_Max_Use = n;
     EntFireByHandle(Within_Counter, "AddOutput", "max " + Within_Max_Use, 0.00, null, null);
     Poison_Max_Use = n;
-     EntFireByHandle(Poison_Counter, "AddOutput", "max " + Poison_Max_Use, 0.00, null, null);
+    EntFireByHandle(Poison_Counter, "AddOutput", "max " + Poison_Max_Use, 0.00, null, null);
     BlackFlame_Max_Use = n;
-     EntFireByHandle(BlackFlame_Counter, "AddOutput", "max " + BlackFlame_Max_Use, 0.00, null, null);
+    EntFireByHandle(BlackFlame_Counter, "AddOutput", "max " + BlackFlame_Max_Use, 0.00, null, null);
     AEF_MAX_USE = n;
-     EntFireByHandle(AEF_Counter, "AddOutput", "max " + AEF_MAX_USE, 0.00, null, null);
+    EntFireByHandle(AEF_Counter, "AddOutput", "max " + AEF_MAX_USE, 0.00, null, null);
     ChaosStorm_Max_Use = n;
     EntFireByHandle(ChaosStorm_Counter, "AddOutput", "max " + ChaosStorm_Max_Use, 0.00, null, null);
     Darkstorm_Max_Use = n;
@@ -1233,7 +1234,7 @@ function SetItemLevel(n)
     DarkOrb_Max_Use = n;
     EntFireByHandle(DarkOrb_Counter, "AddOutput", "max " + DarkOrb_Max_Use, 0.00, null, null);
     EstusFlask_Max_Use = n;
-     EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
+    EntFireByHandle(EstusFlask_Counter, "AddOutput", "max " + EstusFlask_Max_Use, 0.00, null, null);
     GHSA_Max_Use = n;
     EntFireByHandle(GHSA_Counter, "AddOutput", "max " + GHSA_Max_Use, 0.00, null, null);
     HiBo_Max_Use = n;
@@ -1241,7 +1242,7 @@ function SetItemLevel(n)
     LS_Max_Use = n;
     EntFireByHandle(LS_Counter, "AddOutput", "max " + LS_Max_Use, 0.00, null, null);
     GreenBlossom_Max_Use = n;
-     EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
+    EntFireByHandle(GreenBlossom_Counter, "AddOutput", "max " + GreenBlossom_Max_Use, 0.00, null, null);
     SS_Max_Use = n;
     EntFireByHandle(SS_Counter, "AddOutput", "max " + SS_Max_Use, 0.00, null, null);
     WDB_Max_Use = n;
