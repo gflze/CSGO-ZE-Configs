@@ -1,0 +1,14 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"BossCounter1"
+		"HPbar_counter"		"BossCounter3"
+		"HPinit_counter"	"BossCounter2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"20"
+		"HPbar_default"		"20"
+		"HPbar_mode"		"1"
+		"CustomText"		"Eye"
+	}
+}

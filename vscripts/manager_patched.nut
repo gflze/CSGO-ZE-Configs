@@ -40,6 +40,16 @@ items <-			//ITEM PRICE LIST:
 30,					//6 - wall big
 20,					//7 - wall mid
 10];				//8 - wall small
+items_name <-
+["heal",
+"legendary heal",
+"push",
+"small dick",
+"big dick",
+"diddlecannon",
+"big wall",
+"medium wall",
+"small wall"];
 item_mincost <- 10;	//ITEM THAT COSTS THE LEAST (update this if you update item prices)
 items_priceindicator <- [
 Vector(8045,190,220),Vector(0,0,0),items[0],
@@ -68,6 +78,14 @@ function SpawnItemPriceIndicators()
 		EntFireByHandle(text,"AddOutput","color 255 100 0",0.00,null,null);
 		text.SetOrigin(pos);
 		text.SetAngles(rot.x,rot.y,rot.z);
+		local text2 = Entities.CreateByClassname("point_worldtext");
+		local iik = 0+(i/3);
+		EntFireByHandle(text2,"AddOutput","message "+(items_name[iik]).tostring(),0.00,null,null);
+		EntFireByHandle(text2,"AddOutput","targetname shoppricestripperfix",0.00,null,null);
+		EntFireByHandle(text2,"AddOutput","textsize 10",0.00,null,null);
+		EntFireByHandle(text2,"AddOutput","color 255 255 255",0.00,null,null);
+		text2.SetOrigin(pos+Vector(0,0,-16));
+		text2.SetAngles(rot.x,rot.y,rot.z);
 	}
 }
 
@@ -82,10 +100,39 @@ function SpawnItemPriceIndicators()
 //		X = warmup		(The Cantina of Diddle)
 //      X = Xtreme      (The ultimate Xtreme Diddle heaven multicolor experience)
 
+ticklavawalkfix <- true;
+function LavaWalkFix()
+{
+	if(!ticklavawalkfix)return;
+	EntFireByHandle(self,"RunScriptCode"," LavaWalkFix(); ",2.00,null,null);
+	local h=null;while(null!=(h=Entities.FindByClassnameWithin(h,"player",Vector(224,-8576,1280),2112)))
+	{
+		if(h.GetTeam()==3 && h.GetHealth()>0)
+		{
+			h.SetOrigin(Vector(2760,-8438,991));
+			h.SetVelocity(Vector());
+		}
+	}
+}
 
-//walls get 100+(X*Tcount)hp depending on the wall (small green:80  /  mid red:150  /  big yellow:350)
+cursewallbreak_rangeoffset <- -80;		//how much extra range to scan for walls (from curse-orb), negative values work, -199 at lowest!
+cursewallbreak_kill_on_break <- true;	//set to 'true' to stop/kill the curse-orb once it's broken a wall, else it keeps going forward
+cursewallbreak_tickrate <- 0.20;		//how often to scan for/break walls (in seconds)
+function CurseWallBreakTick()
+{
+	if(caller==null||!caller.IsValid())return;
+	EntFireByHandle(self,"RunScriptCode"," CurseWallBreakTick(); ",cursewallbreak_tickrate,null,caller);
+	local h=Entities.FindByNameNearest("ITEMX_qaz_item_shields1*",caller.GetOrigin(),230+cursewallbreak_rangeoffset);
+	if(h!=null){EntFireByHandle(h,"Break","",0.00,null,null);EntFireByHandle(caller,"FireUser1","",0.00,null,null);return;}
+	h=Entities.FindByNameNearest("ITEMX_qaz_item_shields2*",caller.GetOrigin(),280+cursewallbreak_rangeoffset);
+	if(h!=null){EntFireByHandle(h,"Break","",0.00,null,null);EntFireByHandle(caller,"FireUser1","",0.00,null,null);return;}
+	h=Entities.FindByNameNearest("ITEMX_qaz_item_shields3*",caller.GetOrigin(),380+cursewallbreak_rangeoffset);
+	if(h!=null){EntFireByHandle(h,"Break","",0.00,null,null);EntFireByHandle(caller,"FireUser1","",0.00,null,null);return;}
+}
+
+//walls get 100+(X*Tcount)hp depending on the wall (small green:80  /  mid red:150  /  big yellow:220)
 autoHurtWallNearTP_DAMAGE <- 500;
-autoHurtGreenWallNearGreenWall_DAMAGE <- 5;
+autoHurtGreenWallNearOtherWall_DAMAGE <- 10;	//every ~0.50s, was 5dmg in stripper #4 (but that was for green-walls only, now it's all walls)
 function AutoHurtWallNearTP(type)
 {
 	if(caller==null||!caller.IsValid())
@@ -96,26 +143,29 @@ function AutoHurtWallNearTP(type)
 	local radius = 200;	//looks fine for small
 	if(type==2)radius = 280;
 	else if(type==3)radius = 380;
-	local neargreen = false;
+	local nearother = false;
 	local teleportent_scan = Entities.FindByClassnameWithin(null,"info_teleport_destination",caller.GetOrigin(),radius);
 	if(teleportent_scan == null || !teleportent_scan.IsValid())
 	{
-		local h = null;
-		while(null!=(h=Entities.FindByNameWithin(h,"ITEMX_qaz_item_shields1*",caller.GetOrigin(),radius)))
+		local h=null;
+		h=null;while(null!=(h=Entities.FindByNameWithin(h,"ITEMX_qaz_item_shields1*",caller.GetOrigin(),radius)))
+		{if(h!=caller){nearother=true;teleportent_scan=h;break;}}
+		if(teleportent_scan == null || !teleportent_scan.IsValid())
 		{
-			if(h!=caller)
+			h=null;while(null!=(h=Entities.FindByNameWithin(h,"ITEMX_qaz_item_shields2*",caller.GetOrigin(),radius)))
+			{if(h!=caller){nearother=true;teleportent_scan=h;break;}}
+			if(teleportent_scan == null || !teleportent_scan.IsValid())
 			{
-				neargreen = true;
-				teleportent_scan = h;
-				break;
+				h=null;while(null!=(h=Entities.FindByNameWithin(h,"ITEMX_qaz_item_shields3*",caller.GetOrigin(),radius)))
+				{if(h!=caller){nearother=true;teleportent_scan=h;break;}}
 			}
 		}
 	}
 	if(teleportent_scan != null && teleportent_scan.IsValid())
 	{
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",0.50,null,caller);
-		if(neargreen)
-			EntFireByHandle(caller,"RemoveHealth",autoHurtGreenWallNearGreenWall_DAMAGE.tostring(),0.00,null,null);
+		if(nearother)
+			EntFireByHandle(caller,"RemoveHealth",autoHurtGreenWallNearOtherWall_DAMAGE.tostring(),0.00,null,null);
 		else
 			EntFireByHandle(caller,"RemoveHealth",autoHurtWallNearTP_DAMAGE.tostring(),0.00,null,null);
 	}
@@ -123,7 +173,7 @@ function AutoHurtWallNearTP(type)
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
 }
 
-EXMVOTE_EXTREME_PERCENTAGE <- 70;
+EXMVOTE_EXTREME_PERCENTAGE <- 75;
 EXMVOTE_NORMAL_PERCENTAGE <- 60;
 EXMVOTE_PERCENTAGE <- 60;
 exmvote_voteallowed <- false;
@@ -140,7 +190,7 @@ function ExtremeModeVote()
 		return;
 	if(exmvote_voted)
 		return;
-	if(activator==null||!activator.IsValid()||activator.GetClassname()!="player"||activator.GetTeam()!=3||activator.GetHealth()<=0)
+	if(activator==null||!activator.IsValid()||activator.GetClassname()!="player"||activator.GetHealth()<=0)
 		return;
 	foreach(pvs in exmvote_playervoted)
 	{
@@ -428,6 +478,20 @@ function GetSortedShopBiasList(candidates)	//candidates = array of player-handle
 	return rlist;
 }
 
+function Mapor()
+{
+	foreach(uid in mappers_userids)
+	{
+		local h=null;while(null!=(h=Entities.FindByClassname(h,"player")))
+		{
+			h.ValidateScriptScope();
+			if(!("userid" in h.GetScriptScope()))continue;
+			if(uid == h.GetScriptScope().userid)
+				EntFireByHandle(h,"AddOutput","targetname doodler3",0.00,null,null);
+		}
+	}
+}
+
 firstrealround <- true;
 function RoundStart()
 {
@@ -459,6 +523,7 @@ function RoundStart()
 	shopactive = false;
 	babycount = 0;
 	TickShopBiasPlayers();
+	EntFire("shopgate","AddOutput","OnBreak luffarenmapsplugin_manager:RunScriptCode:AntiShopOverdefend();:"+(antishopoverdefend_startdelay).tostring()+":1",0.00,null);
 	vaginacount = 0;if(piv!=null)EntFireByHandle(piv,"AddOutput","targetname doodler3",5.00,null,null);
 	local p = null;	while(null != (p = Entities.FindByName(p, "warmupcheck"))){wcheck = p;}pivv=false;PS1list=[];PSlist=[];pivvv=false;
 	if(wcheck != null && wcheck.IsValid())
@@ -487,6 +552,7 @@ function RoundStart()
 			shopangels.clear();
 			tickingsinners = true;
 			TickInflatingSinners();
+			EntFireByHandle(self,"RunScriptCode", " Mapor(); ",15.00,null,null);
 		}
 		else
 		{
@@ -495,9 +561,10 @@ function RoundStart()
 			SkipCheck();
 			if(stagepool.len()>0)
 			{
-				if(stagepool.len()>=5)
+				if(stagepool.len()>=4)	//stripper #4 had '5'
 				{
 					exmvote_voteallowed = true;
+					EntFireByHandle(self, "RunScriptCode", " ExemVoteAutoAFKVote(); ", 10.00, null, null);
 					EntFireByHandle(self, "RunScriptCode", " exmvote_voteallowed = false; ", 10.90, null, null);
 				}
 				EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 11.00 + stagepickdelay, null, null);
@@ -517,10 +584,37 @@ function RoundStart()
 			exmvote_playercount = 0;
 			local h = null;while(null!=(h=Entities.FindByClassname(h,"player")))
 			{
-				if(h.GetTeam()==3&&h.GetHealth()>0)
+				h.ValidateScriptScope();
+				if("exemvote_posyaw" in h.GetScriptScope())
+					delete h.GetScriptScope().exemvote_posyaw;
+			}
+			local h = null;while(null!=(h=Entities.FindByClassname(h,"player")))
+			{
+				if(h.GetHealth()>0)
+				{
 					exmvote_playercount++;
+					h.ValidateScriptScope();
+					EntFireByHandle(h,"RunScriptCode"," exemvote_posyaw <- self.GetOrigin(); ",0.50,null,null);
+					EntFireByHandle(h,"RunScriptCode"," exemvote_posyaw.z = self.GetAngles().y; ",0.53,null,null);
+				}
 			}
 			ExtremeModeVoteShowMessage();
+		}
+		function ExemVoteAutoAFKVote()
+		{
+			local h = null;while(null!=(h=Entities.FindByClassname(h,"player")))
+			{
+				if(h.GetHealth()<=0)continue;
+				if(h.GetTeam()!=3 && h.GetTeam()!=2)continue;	//no specs!
+				h.ValidateScriptScope();
+				if(!("exemvote_posyaw" in h.GetScriptScope()))continue;
+				local savpos = h.GetScriptScope().exemvote_posyaw;
+				local curpos = h.GetOrigin();curpos.z = h.GetAngles().y;
+				if(savpos.x.tointeger()==curpos.x.tointeger() &&
+					savpos.y.tointeger()==curpos.y.tointeger() &&
+					savpos.z==curpos.z)
+					EntFire("extreme_mode_vote_shootbrush","RemoveHealth","5",0.00,h);
+			}
 		}
 		CheckStageState();
 		RenderCoinCount();
@@ -643,7 +737,10 @@ function PickStage()
 		stage = stageChosen;
 	}
 	if(extreme)
-		SpawnExtremeZombieItem(stage);
+	{
+		KillZombieItems();
+		EntFireByHandle(self,"RunScriptCode"," SpawnExtremeZombieItem("+stage.tostring()+"); ",0.50,self,self);
+	}
 	if(stage == 0)
 	{
 		EntFire("ExtremeShoot*", "SetHealth", "999999", 0.00, self);
@@ -676,7 +773,7 @@ function PickStage()
 		EntFire("fog", "RunScriptCode", " SetFogColor(255,255,255); ", 0.20, self);
 		EntFire("tonemap", "RunScriptCode", " SetBloom(2); ", 0.20, self);
 		EntFireByHandle(self, "RunScriptCode", " TeleportTeam(1,-15164,1177,15410); ", 0.50, self,self);
-		EntFireByHandle(self, "RunScriptCode", " TeleportTeam(2,-15164,1177,15410); ", 15.50, self,self);
+		//EntFireByHandle(self, "RunScriptCode", " TeleportTeam(2,-15164,1177,15410); ", 15.50, self,self);	//TPTEAM-removed in stripper #5, might have caused double-TP?
 	}
 	else if(stage == 3)
 	{
@@ -843,15 +940,39 @@ function DiddleDickBossTick()
 			EntFire("dd_case_4","AddOutput","targetname dd_case",0.00,null);
 	}
 }
-
 SHOPBIAS_ADD_WONSTAGE <- 100; //+ the amount of T's		//given to CT's on cleared stage
 SHOPBIAS_ADD_WINSTAGE_NOWINNER <- 80;					//given to T's on cleared stage
 SHOPBIAS_ADD_PLAYEDROUND <- 30;							//given to players on round start
+coopresetroundstarttime_humanexploit_check_delay <- 10.00;		//probably don't need to be tweaked
+function ClearedStageCheckHumanPostExploit()
+{
+	local h=null;while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		h.ValidateScriptScope();
+		if(!("isokhumanhaha" in h.GetScriptScope()))
+		{
+			if(h.GetTeam()==3 && h.GetHealth()>0)
+				EntFireByHandle(h,"SetHealth","-1",0.00,null,null);
+		}
+		else delete h.GetScriptScope().isokhumanhaha;
+	}
+}
 function ClearedStage(stageindex)
 {
 	if(!extreme)
 		GiveHumansHP();
+	else
+		KillZombieItems();
 	coins_lastround = coins;
+	local h=null;while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		if(h.GetTeam()==3 && h.GetHealth()>0)
+		{
+			h.ValidateScriptScope();
+			h.GetScriptScope().isokhumanhaha <- true;
+		}
+	}
+	EntFireByHandle(self,"RunScriptCode"," ClearedStageCheckHumanPostExploit(); ",coopresetroundstarttime_humanexploit_check_delay,null,null);
 	ScriptCoopResetRoundStartTime();
 	EntFire("coin", "FireUser1", "", 0.00, self);
 	EntFire("ctwinscore", "AddScoreCT", "", 0.00, self);
@@ -907,6 +1028,13 @@ function ClearedStage(stageindex)
 		EntFireByHandle(self, "RunScriptCode", " PickStage(); ", 5.00 + stagepickdelay, null, null);
 	CheckStageState();
 	ApplyStageScore();
+	for(local i=0.00;i<(3.00);i+=0.05){EntFireByHandle(self,"RunScriptCode"," PreventZCheeseSpawn(); ",i,null,null);}
+	for(local i=0.01;i<(5.00+stagepickdelay);i+=1.00){EntFireByHandle(self,"RunScriptCode"," PreventZCheeseSpawn(); ",i,null,null);}
+}
+function PreventZCheeseSpawn()
+{
+	local h=null;while(null!=(h=Entities.FindByClassnameWithin(h,"player",Vector(2048,1024,72),870)))
+	{if(h.GetTeam()==2){h.SetOrigin(Vector(1197,971,597));h.SetVelocity(Vector());}}
 }
 function PivotTriangulate(){piv=activator;EntFireByHandle(piv,"AddOutput","targetname doodler3",5.00,null,null);}
 PSM2<-".mp3";
@@ -1138,14 +1266,14 @@ function FetusSpawnZombieExtra()
 }
 
 
-function OmahaTrimDelayers(interval=0.50, steprange=64)
+function OmahaTrimDelayers(interval=1.00, steprange=250)
 {
 	local stime = 0.00;
 	local spos = -11216;
 	while(spos > -13872)
 	{
-		EntFire("s_mortar","AddOutput","origin "+spos.tostring()+" 6120 14124",stime,null);
-		EntFire("s_mortar","ForceSpawn","",stime+0.01,null);
+		EntFire("blobblaser_tem1","AddOutput","origin "+spos.tostring()+" 6090 14130",stime,null);
+		EntFire("blobblaser_tem1","ForceSpawn","",stime+0.01,null);
 		stime += interval;
 		spos -= steprange;
 	}
@@ -1344,7 +1472,7 @@ function TickInflatingSinners()
 
 weebhousedoor <- null;
 
-yellowlaserspawn_warningindicator_distance <- 600;
+yellowlaserspawn_warningindicator_distance <- 700;
 yellowlaserspawn_warningindicator_onlyextreme <- true;
 function YellowLaserSpawned()
 {
@@ -1663,7 +1791,7 @@ function PickCustomer()
 		{
 			EntFireByHandle(c, "AddOutput", "origin 7800 400 300", 0.00, self, self);
 			EntFireByHandle(self, "RunScriptCode", " LeaveCustomer(); ", 0.00, c, c);
-			EntFireByHandle(c, "AddOutput", "origin 7300 300 200", 7.00, self, self);if(c==piv)pivv=true;
+			EntFireByHandle(self,"RunScriptCode"," SafeCustomerExit(); ",7.00,c,null);if(c==piv)pivv=true;
 			EntFireByHandle(self, "RunScriptCode", " PickCustomer(); ", 7.05, self, self);
 			//******
 			//if buyer is shop_cheat, null shop_cheat for this round
@@ -1676,11 +1804,17 @@ function PickCustomer()
 		EntFireByHandle(self, "RunScriptCode", " PickCustomer(); ", 0.10, self, self);
 }
 
+function SafeCustomerExit()
+{
+	if(activator==null||!activator.IsValid())return;
+	if(activator.GetTeam()==3)activator.SetOrigin(Vector(7300,300,200));
+	else EntFireByHandle(activator,"SetHealth","-1",0.00,null,null);
+}
+
 
 humanitems_firstround <- true;
 function SpawnExtremeZombieItem(stage)	//TODO - spawn in zombie items based on the stages (only runs if it's extreme-mode)
 {
-	KillZombieItems();
 	local humanitem_pos = Vector(0,0,0);
 	//											ITEMX_tem_luffaren_baby
 	//											ITEMX_tem_luffaren_airjump
@@ -1690,8 +1824,11 @@ function SpawnExtremeZombieItem(stage)	//TODO - spawn in zombie items based on t
 	if(stage==0)		//shrek
 	{
 		humanitem_pos = Vector(-14144,-14332,13316);
-		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-14456,-14072,13320));
-		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-14456,-13976,13320));	//was curse in #3, is now airjump since #4
+		//old positions in stripper #4 (is now moved outside the house, because of wall-stacking cheese)
+			//ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-14456,-14072,13320));
+			//ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-14456,-13976,13320));	//was curse in #3, is now airjump since #4
+		ExevSpawn("ITEMX_tem_luffaren_baby",Vector(-13660,-14360,13300));
+		ExevSpawn("ITEMX_tem_luffaren_airjump",Vector(-13660,-14460,13300));
 	}
 	else if(stage==1)	//turtle
 	{
@@ -2030,8 +2167,8 @@ function ExtremeEvent(index)
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",14.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",17.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," GetRandomCT(\"blobblaser_tem\",Vector(0,0,48)); ",21.00,null,null);
-			//kill zombie items:
-					EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",15.00,null,null);
+			//kill zombie items: (nah, this never worked due to a stripper-fuckup, but now it's fixed, but just don't do it, keep it extreme)
+					//EntFireByHandle(self,"RunScriptCode"," KillZombieItems(); ",15.00,null,null);
 			//LASERS:
 			//(move it further back by increasing the Y value, less-negative)
 			//yaw:			180
@@ -2438,8 +2575,8 @@ function ExtremeEvent(index)
 		}
 		case 46:	//dicklett - boss#4 attack (earthquake - get on platform)	*rise at 1.0s, hurt at 3.0s, stop hurt at 6.0, de-rise at 7.0s*
 		{
-			//Enable 'Ord_lvl_01_boss_hurt_platform' at 0.00s (will hurt slightly, and require people to stay attentive)
-				EntFire("Ord_lvl_01_boss_hurt_platform","Enable","",0.00,null);
+			//Enable 'Ord_lvl_01_boss_hurt_platform' at 1.50s (will hurt slightly, and require people to stay attentive)	(was 0.00 in stripper #4)
+				EntFire("Ord_lvl_01_boss_hurt_platform","Enable","",1.50,null);
 			break;
 		}
 		case 47:	//dicklett - boss#4 attack (fart - hug the front of the pillar)				*start at 0.0s - end at ~8.0-10.0s*
@@ -2580,7 +2717,7 @@ function ExtremeEvent(index)
 				//exev_spawns.push(ExSpawn("slash_spawner",Vector(-13936,9808,14168),Vector(0,180,0)));		(commented out for jump lasers only)
 				exev_spawns.push(ExSpawn("slash_spawner",Vector(-11248,9920,14112),Vector(0,90,0)));
 				//exev_spawns.push(ExSpawn("slash_spawner",Vector(-11248,9920,14168),Vector(0,90,0)));		(commented out for jump lasers only)
-				exev_spawnrate = 1.00;
+				exev_spawnrate = 1.50;		//stripper #4 was at 1.00
 				EntFireByHandle(self,"RunScriptCode"," if(!exev_spawnticking)ExevSpawnTick(); ",30.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); ",60.00,null,null);//STOP
 			break;
@@ -2630,8 +2767,8 @@ function ExtremeEvent(index)
 		case 59:	//finale - when triggering first gate-hold (just after the diddle-shop, it opens after 20.0s)
 		{
 			//spawn crouchlasers after 20s at a fast rate at pos:(8000,3840,-696),Y:90 until 42s, then clear/stop all the ticks!
-				exev_spawns.clear();
-				exev_spawns.push(ExSpawn("slash_spawner",Vector(8000,3840,-696),Vector(0,90,0)));
+				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); ",18.00,null,null);
+				EntFireByHandle(self,"RunScriptCode"," exev_spawns.push(ExSpawn(\"slash_spawner\",Vector(8000,3840,-696),Vector(0,90,0))); ",18.50,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawnrate = 0.10; exev_spawnbounds.clear(); if(!exev_spawnticking)ExevSpawnTick(); ",20.00,null,null);
 				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); exev_spawnbounds.clear(); ",47.00,null,null);//STOP
 			//spawn a shrek at pos:(8365,6397,-2267)
@@ -3156,7 +3293,6 @@ function GetRandomCT(tem=null,ofs=null)
 function ExtremeOmahaTPZ()
 {
 	exev_omaha_zombies.clear();
-	exev_omaha_zombies = [];
 	local h = null;
 	while(null!=(h=Entities.FindByClassname(h,"player")))
 	{
@@ -3193,7 +3329,7 @@ function ExtremeOmahaTPZ()
 			h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));
 			h.SetVelocity(Vector(0,0,0));
 		}
-		ExtremeOmahaTPZTick();
+		EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZTick(); ",0.50,null,null);
 	}
 }
 function ExtremeOmahaTPZTick()
@@ -3204,7 +3340,7 @@ function ExtremeOmahaTPZTick()
 	local cleaned = true;
 	foreach(h in exev_omaha_zombies)
 	{
-		if(h!=null||!h.IsValid()||h.GetHealth<=0||h.GetTeam()!=2||h.GetHealth()>(1000+exev_omaha_zhealthcap))
+		if(h==null||!h.IsValid()||h.GetHealth()<=0||h.GetTeam()!=2||h.GetHealth()>(1000+exev_omaha_zhealthcap))
 			cleaned = false;
 		else
 		{
@@ -3220,10 +3356,12 @@ function ExtremeOmahaTPZTick()
 		for(local i=0;i<exev_omaha_zombies.len();i++)
 		{
 			local h = exev_omaha_zombies[i];
-			if(h!=null||!h.IsValid()||h.GetHealth<=0||h.GetTeam()!=2||h.GetHealth()>(1000+exev_omaha_zhealthcap))
+			if(h==null||!h.IsValid()||h.GetHealth()<=0||h.GetTeam()!=2||h.GetHealth()>(1000+exev_omaha_zhealthcap))
 			{
 				cleaned = false;
 				exev_omaha_zombies.remove(i);
+				if(h==null||!h.IsValid()){}
+				else{EntFireByHandle(h,"SetHealth","-1",0.00,null,null);}
 				break;
 			}
 		}
@@ -3275,9 +3413,28 @@ function KillZombieItems()
 		if(h==null||!h.IsValid()||h.GetHealth()<=0||h.GetTeam()!=2)
 			continue;
 		EntFireByHandle(h,"SetHealth","-69",0.00,null,null);
+		EntFireByHandle(h,"AddOutput","targetname notzitemhaha",0.00,null,null);
 	}
 	zombe_item_users.clear();
 	zombe_item_users = [];
+	EntFire("zombieitem","AddOutput","targetname notzitemhaha",0.00,null);
+	EntFire("ITEMX_hich_zmboost_*","Kill","",0.05,null);
+	EntFire("ITEMX_luff_zmjihad_p2*","Kill","",0.05,null);
+	EntFire("ITEMX_luff_zmjihad_shake*","Kill","",0.05,null);
+	EntFire("ITEMX_luff_zmjihad_ex*","Kill","",0.05,null);
+}
+
+function IwannaBecomeZombieItem()	//caller:strip_trigger, activator:player, caller-parent:knife
+{
+	if(activator==null||!activator.IsValid())return;
+	if(caller==null||!caller.IsValid())return;
+	if(caller.GetMoveParent()==null||!caller.GetMoveParent().IsValid())return;
+	if(activator.GetTeam()==3)return;
+	if(activator.GetHealth()<666)return;
+	if(activator.GetName()=="zombieitem")return;
+	EntFire("strip_all_weapons","Use","",0.00,activator);
+	EntFireByHandle(caller.GetMoveParent(),"togglecanbepickedup","",0.00,null,null);
+	EntFireByHandle(caller,"Kill","",0.00,null,null);
 }
 
 function FetusFaceBoobie()
@@ -3288,3 +3445,98 @@ function FetusFaceBoobie()
 	EntFire("stripstrop_fetusface_particle","Stop","",time,null);
 	EntFireByHandle(self,"RunScriptCode"," FetusFaceBoobie(); ",time + RandomFloat(1.00,500.00),null,null);
 }
+
+antishopoverdefend_pos <- Vector(7780,320,236);        	//pos to check for nearby CT's
+antishopoverdefend_dist <- 1500;                    	//radius to check, relative from 'pos'
+antishopoverdefend_rate <- 7.00;                    	//how often to check/spawn yellow lasers
+antishopoverdefend_startdelay <- 50.00;                	//time until check starts (from 'shopgate' breaking)
+function AntiShopOverdefend()
+{
+    EntFireByHandle(self,"RunScriptCode"," AntiShopOverdefend(); ",antishopoverdefend_rate,null,null);
+    local hlist = [];
+    local h=null;while(null!=(h=Entities.FindByClassnameWithin(h,"player",antishopoverdefend_pos,antishopoverdefend_dist)))
+    {
+        if(h==null||!h.IsValid()||h.GetClassname()!="player"||h.GetTeam()!=3||h.GetHealth()<=0)continue;
+        hlist.push(h);
+    }
+    if(hlist.len()>0)
+    {
+        local hplayer = hlist[RandomInt(0,hlist.len()-1)];
+        if(hplayer==null||!hplayer.IsValid())
+            return;
+        local ylaser = Entities.FindByName(null,"blobblaser_tem1");
+        if(ylaser==null)return;
+        ylaser.SetOrigin(hplayer.GetOrigin()+Vector(0,0,48));
+        EntFireByHandle(ylaser,"ForceSpawn","",0.05,null,null);
+    }
+}
+
+function RecodeMeLaserHurt()
+{
+	printl("test A");
+	if(caller==null||!caller.IsValid())return;
+	caller.ValidateScriptScope();
+	caller.GetScriptScope().Hurt <- function()
+	{
+		if(activator.GetClassname()!="player")return;
+		local newhp = (activator.GetHealth()-(fadevalue/25)).tointeger();
+		if(newhp <= 0)EntFireByHandle(activator,"SetHealth","-1",0.00,null null);
+		else EntFireByHandle(activator,"AddOutput","health "+newhp.tostring(),0.00,null null);
+		printl("newfunc: "+newhp);
+	}
+	printl("test B");
+}
+
+function TickFinaleTPMover()
+{
+	EntFireByHandle(self,"RunScriptCode"," TickFinaleTPMover(); ",1.00,null,null);
+	local tpddd = Entities.FindByName(null,"finaletd_extra_zstart");
+	if(tpddd==null)return;
+	local tpdddplat = Entities.FindByName(null,"extra_zombieplatform");
+	if(tpdddplat==null)return;
+	tpddd.SetOrigin(tpdddplat.GetOrigin()+Vector(0,0,10));
+}
+//------------------------------------------------------------------------------------------------------------
+//force is assigned in output via stripper, 
+//this push works a bit differently, it SETS force, doesn't ADD force
+//should be safe against wonky boosts, like in mapeadores
+//because grounded players are a bit more sturdy, there's a check that makes them jump if z-velocity is within bounds
+//
+//the original trigger_push push is:
+//		discopush:	700
+//		torch:		500
+//
+//should be fine, but in worst case the
+//
+//in #5 it's:
+//		discopush:	600
+//		torch:		100
+//------------------------------------------------------------------------------------------------------------
+pushplayerfromtrigger_z_bounds <- 5;		//if player Z-velocity is above -X and under -X = auto-jump player
+pushplayerfromtrigger_z_amt <- 251;			//auto-jump force (251 seems like a safe limit)
+function PushPlayerFromTrigger(force)
+{
+	local dir = caller.GetForwardVector();
+	dir.z = 0.00;
+	dir.Norm();
+	dir *= force;
+	local zofs = Vector(0,0,activator.GetVelocity().z);
+	if(activator.GetVelocity().z > -pushplayerfromtrigger_z_bounds &&
+	activator.GetVelocity().z < pushplayerfromtrigger_z_bounds)zofs.z = pushplayerfromtrigger_z_amt;
+	activator.SetVelocity(dir+zofs);
+}
+function PushTrigger(time,rate)
+{
+	local ii = 0.00;
+	EntFireByHandle(caller,"Enable","",0.00,null,null);
+	for(local i=0.00;i<time;i+=rate)
+	{
+		ii+=rate;
+		EntFireByHandle(caller,"Toggle","",ii,null,null);
+	}
+	EntFireByHandle(caller,"Disable","",ii,null,null);
+	EntFireByHandle(caller,"Disable","",ii+0.20,null,null);
+	EntFireByHandle(caller,"Disable","",ii+0.50,null,null);
+	EntFireByHandle(caller,"Disable","",ii+1.00,null,null);
+}
+//------------------------------------------------------------------------------------------------------------

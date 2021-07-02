@@ -125,7 +125,8 @@ function MapStart()
     if(STAGE == 0 && !ONLYZMMOD)
 	{
 		TimerMap(117, 3);
-        EntFire("map_nuke_spawn", "Enable", "", 125.00, null);
+		EntFire("player", "SetDamageFilter", "", 116.95, null);
+		EntFire("map_nuke_spawn", "Enable", "", 117.00, null);
 		EntFireByHandle(self,"RunScriptCode","WonLevel();",115.00,null,null);
 		EntFire("map_fixthis", "FireUser1", "", 115.00, null);
 	    EntFire("console", "Command", "say >>> STARTING THE MAP - HAVE FUN <<<", 116.00, null);

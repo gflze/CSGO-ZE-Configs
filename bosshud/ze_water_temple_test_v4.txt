@@ -1,0 +1,13 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"b_hpcounter"
+		"CustomText"		"Dragon"
+	}
+	"1"
+	{
+		"HP_counter"		"b_hpcounterfinal"
+		"CustomText"		"Dragon"
+	}
+}
