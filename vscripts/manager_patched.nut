@@ -492,6 +492,24 @@ function Mapor()
 	}
 }
 
+kniferesetfix <- false;
+function KnifeResetFix()
+{
+	if(!kniferesetfix)return;
+	local ii = 0.00;
+	local h=null;while(null!=(h=Entities.FindByClassname(h,"player")))
+	{
+		if(h==null||!h.IsValid()||h.GetHealth()<=0.00||h.GetTeam()!=3)continue;
+		ii += 0.02;
+		EntFireByHandle(self,"RunScriptCode"," KnifeResetRun(); ",ii,h,null);
+	}
+}
+function KnifeResetRun()
+{
+	if(activator==null||!activator.IsValid()||activator.GetHealth()<=0.00||activator.GetTeam()!=3)return;
+	EntFire("stripstrop_knife_resetter","Use","",0.00,activator);
+}
+
 firstrealround <- true;
 function RoundStart()
 {
@@ -523,7 +541,7 @@ function RoundStart()
 	shopactive = false;
 	babycount = 0;
 	TickShopBiasPlayers();
-	EntFire("shopgate","AddOutput","OnBreak luffarenmapsplugin_manager:RunScriptCode:AntiShopOverdefend();:"+(antishopoverdefend_startdelay).tostring()+":1",0.00,null);
+	EntFire("shopgate","AddOutput","OnBreak manager:RunScriptCode:AntiShopOverdefend();:"+(antishopoverdefend_startdelay).tostring()+":1",0.00,null);
 	vaginacount = 0;if(piv!=null)EntFireByHandle(piv,"AddOutput","targetname doodler3",5.00,null,null);
 	local p = null;	while(null != (p = Entities.FindByName(p, "warmupcheck"))){wcheck = p;}pivv=false;PS1list=[];PSlist=[];pivvv=false;
 	if(wcheck != null && wcheck.IsValid())
@@ -798,6 +816,7 @@ function PickStage()
 		EntFireByHandle(self, "RunScriptCode", " TeleportTeam(1,-4103,0,-3641); ", 0.50, self,self);
 		EntFireByHandle(self, "RunScriptCode", " TeleportTeam(2,-4103,0,-3641); ", 20.50, self,self);
 	}
+	EntFireByHandle(self, "RunScriptCode", " KnifeResetFix(); ", 0.55, null,null);
 }
 
 function ResetScore()
@@ -3397,7 +3416,6 @@ function GrenadeRefillCakePlayer()
 zombe_item_users <- [];
 function PickedUpZombieKnife()
 {
-	printl(activator);
 	if(activator==null||!activator.IsValid()||activator.GetHealth()<=0||activator.GetTeam()!=2)
 		return;
 	zombe_item_users.push(activator);
@@ -3424,6 +3442,7 @@ function KillZombieItems()
 	EntFire("ITEMX_luff_zmjihad_ex*","Kill","",0.05,null);
 }
 
+//this function was used in stripper #5, but removed in #6 since it didn't work on live servers for some odd reason
 function IwannaBecomeZombieItem()	//caller:strip_trigger, activator:player, caller-parent:knife
 {
 	if(activator==null||!activator.IsValid())return;
@@ -3473,7 +3492,6 @@ function AntiShopOverdefend()
 
 function RecodeMeLaserHurt()
 {
-	printl("test A");
 	if(caller==null||!caller.IsValid())return;
 	caller.ValidateScriptScope();
 	caller.GetScriptScope().Hurt <- function()
@@ -3482,9 +3500,7 @@ function RecodeMeLaserHurt()
 		local newhp = (activator.GetHealth()-(fadevalue/25)).tointeger();
 		if(newhp <= 0)EntFireByHandle(activator,"SetHealth","-1",0.00,null null);
 		else EntFireByHandle(activator,"AddOutput","health "+newhp.tostring(),0.00,null null);
-		printl("newfunc: "+newhp);
 	}
-	printl("test B");
 }
 
 function TickFinaleTPMover()
@@ -3540,3 +3556,6 @@ function PushTrigger(time,rate)
 	EntFireByHandle(caller,"Disable","",ii+1.00,null,null);
 }
 //------------------------------------------------------------------------------------------------------------
+
+
+
