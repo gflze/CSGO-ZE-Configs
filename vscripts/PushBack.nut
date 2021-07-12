@@ -1,17 +1,23 @@
-//used to patch the no-knockback spin exploit on some maps
+//used to patch the no-knockback spin exploit on some maps.
 //install as csgo/scripts/vscripts/gfl/PushBack.nut
 
 enemy <- null;
+oneTickPassed <- true;
 
 function LoadActivatorAsEnemyTarget() 
 {
     enemy = activator;
 }
 
-function FuckTheEnemyUp(push_scale)
+//push_scale: speed kv of trigger_push that pushes back the ZM Item
+//input_name: Type of input that fires this script. Default: OnDamaged
+function FuckTheEnemyUp(push_scale = 50)
 {
     // Leave if either of them is invalid
     if (activator == null || enemy == null) return;
+
+	// Since trigger_push can only work once a tick, vscript should behave same way
+	if (!oneTickPassed) return;
 
     // Compute the direction vector from player to enemy
     local a = enemy.GetCenter();
@@ -26,4 +32,6 @@ function FuckTheEnemyUp(push_scale)
 
     // Apply onto the enemy
     enemy.__KeyValueFromVector("basevelocity", vel);
+	oneTickPassed=false;
+    EntFireByHandle(self,"RunScriptCode","oneTickPassed=true;",0.01,activator,self);
 }
