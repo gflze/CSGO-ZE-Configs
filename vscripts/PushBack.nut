@@ -14,9 +14,6 @@ function FuckTheEnemyUp(push_scale = 50)
     // Leave if either of them is invalid
     if (activator == null || enemy == null) return;
 
-	// Since trigger_push can only work once a tick, vscript should behave same way
-	if (!oneTickPassed) return;
-
     // Compute the direction vector from player to enemy
     local a = enemy.GetCenter();
     local b = activator.GetCenter();
