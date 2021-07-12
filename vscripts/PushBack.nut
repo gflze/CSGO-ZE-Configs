@@ -2,7 +2,6 @@
 //install as csgo/scripts/vscripts/gfl/PushBack.nut
 
 enemy <- null;
-oneTickPassed <- true;
 
 function LoadActivatorAsEnemyTarget() 
 {
@@ -10,7 +9,6 @@ function LoadActivatorAsEnemyTarget()
 }
 
 //push_scale: speed kv of trigger_push that pushes back the ZM Item
-//input_name: Type of input that fires this script. Default: OnDamaged
 function FuckTheEnemyUp(push_scale = 50)
 {
     // Leave if either of them is invalid
@@ -32,6 +30,4 @@ function FuckTheEnemyUp(push_scale = 50)
 
     // Apply onto the enemy
     enemy.__KeyValueFromVector("basevelocity", vel);
-	oneTickPassed=false;
-    EntFireByHandle(self,"RunScriptCode","oneTickPassed=true;",0.01,activator,self);
 }
