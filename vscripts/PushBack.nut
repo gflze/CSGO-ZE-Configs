@@ -1,15 +1,15 @@
-//used to patch the no-knockback spin exploit on some maps
+//used to patch the no-knockback spin exploit on some maps.
 //install as csgo/scripts/vscripts/gfl/PushBack.nut
 
 enemy <- null;
-const PUSH_SCALE = 48.0;
 
 function LoadActivatorAsEnemyTarget() 
 {
     enemy = activator;
 }
 
-function FuckTheEnemyUp()
+//push_scale: speed kv of trigger_push that pushes back the ZM Item
+function FuckTheEnemyUp(push_scale = 50)
 {
     // Leave if either of them is invalid
     if (activator == null || enemy == null) return;
@@ -23,7 +23,7 @@ function FuckTheEnemyUp()
     dir.Norm();
 
     // Scale appropiately to get the velocity
-    local vel = Vector(PUSH_SCALE * dir.x, PUSH_SCALE * dir.y, PUSH_SCALE * dir.z);
+    local vel = Vector(push_scale * dir.x, push_scale * dir.y, push_scale * dir.z);
 
     // Apply onto the enemy
     enemy.__KeyValueFromVector("basevelocity", vel);
