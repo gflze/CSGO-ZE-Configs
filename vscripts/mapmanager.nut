@@ -143,7 +143,7 @@ function StartMap()
 		EntFire("server","command","sv_airaccelerate 100",0.00,null);
 		EntFire("server","command","say ***DEFEND FOR SOME TIME***",45.00,null);
 		EntFire("server","command","say ***THE GATES WILL OPEN IN BALANCED ORDER***",46.00,null);
-		EntFire("s3_booster_lower","Open","",70.00,null);
+		EntFire("s3_booster_lower","Enable","",70.00,null);
 		EntFire("s3_gate_lower","Open","",90.00,null);
 		EntFire("s3_gate_mid","Open","",74.00,null);
 		EntFire("s3_gate_upper","Open","",70.00,null);
