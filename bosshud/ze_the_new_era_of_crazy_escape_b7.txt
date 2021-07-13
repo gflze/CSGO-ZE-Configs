@@ -1,0 +1,25 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"nrk1_counter"
+		"HPbar_counter"		"nrk1_hp_iterations"
+		"HPinit_counter"	"nrk1_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Demon"
+	}
+	"1"
+	{
+		"HP_counter"		"nrk1_boss_laser_counter"
+		"HPbar_counter"		"nrk1_boss_hp_iterations"
+		"HPinit_counter"	"nrk1_boss_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Pyramid Head"
+	}
+}
