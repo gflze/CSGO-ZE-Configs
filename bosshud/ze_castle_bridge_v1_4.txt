@@ -1,0 +1,8 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"                      "breakable"
+        "BreakableName"             "Frenchy_hbox"
+    }
+}
