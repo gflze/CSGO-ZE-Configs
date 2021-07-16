@@ -8,6 +8,5 @@
     {
         "Type"                      "breakable"
         "BreakableName"             "Frenchy_hbox"
-        "CustomText"                "Boss"
     }
 }
