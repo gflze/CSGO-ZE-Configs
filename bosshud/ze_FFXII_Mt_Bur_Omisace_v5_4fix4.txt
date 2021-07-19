@@ -75,4 +75,10 @@
 		"HP_counter"		"Stage4_Laser_HP_Counter"
 		"CustomText"		"Bergan"
 	}
+	"9"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Event_zombie_model5_func"
+		"CustomText"		"Zombie Warlock"
+	}
 }

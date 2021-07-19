@@ -24,4 +24,9 @@
 		"Type"				"breakable"
 		"BreakableName"			"hitbox_boss_lvl4"
 	}
+	"4"
+	{
+		"HP_counter"			"boss_lvl4_counter"
+		"CustomText"			"Tower Guardian"
+	}
 }
