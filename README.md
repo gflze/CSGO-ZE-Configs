@@ -2,7 +2,7 @@
 
 | Sync Status |
 |:-----------:|
-| [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
+| [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To ?????](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-secret.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
 
 
 A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
