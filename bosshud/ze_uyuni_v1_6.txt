@@ -1,0 +1,32 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"hp_boss_normal"
+	}
+	"1"
+	{
+		"HP_counter"		"hp_boss_hard"
+	}
+	"2"
+	{
+		"HP_counter"		"lv2_end_boss_counter"
+	}
+	"3"
+	{
+		"HP_counter"		"lv2_boss_killer_counter"
+	}
+	"4"
+	{
+		"HP_counter"		"lv3_midboss_counter"
+	}
+	"5"
+	{
+		"HP_counter"		"lv3_mid_boss2_counter"
+	}
+	"6"
+	{
+		"HP_counter"		"Edge_Health"
+		"CustomText"		"Possessed Light"
+	}
+}
