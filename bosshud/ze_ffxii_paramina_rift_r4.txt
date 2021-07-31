@@ -30,6 +30,6 @@
 	"3"
 	{
 		"HP_counter"		"Guardian_Counter"
-		"CustomText"		"Guardian"
+		"CustomText"		"3 Gabranths"
 	}
 }
