@@ -1,0 +1,20 @@
+name: Verify Stripper Capitalization
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Verify Stripper Capitalization
+        uses: Vauff/stripper-case-action@main
+        with:
+          stripper-path: stripper/
