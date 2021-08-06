@@ -152,7 +152,7 @@ ze_map_name.cfg
 
 ## Stripper
 
-**WARNING: Filenames for Stripper configs are CASE SENSITIVE to the capitalization used for the map on the server!**
+**WARNING: Filenames for Stripper configs must be all lower case!**
 
 Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
 
