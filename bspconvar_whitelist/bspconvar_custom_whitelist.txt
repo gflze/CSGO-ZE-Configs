@@ -392,10 +392,6 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_minimal_csgo"
-	{
-		sv_disable_radar								0
-	}
 	"ze_new_crazy_escape_v4_1"
 	{
 		sm_gravity										1
@@ -409,10 +405,6 @@
 		sm_gravity										1
 	}
 	"ze_stalker_ultimate_v4_9"
-	{
-		sv_disable_radar								0
-	}
-	"ze_SUMAI_facility_v1a"
 	{
 		sv_disable_radar								0
 	}
