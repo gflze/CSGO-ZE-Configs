@@ -4,7 +4,7 @@ name: Sync Files To Main Server
 
 on:
   push:
-    branches: master
+    branches: [ master ]
   workflow_dispatch:
   
 jobs:
@@ -23,6 +23,15 @@ jobs:
           password: ${{ secrets.ftp_main_password }}
           local-dir: bosshud/
           server-dir: csgo/addons/sourcemod/configs/MapBossHP/
+
+      - name: Sync BSP CVar Whitelist Files
+        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        with:
+          server: ${{ secrets.ftp_main_server }}
+          username: ${{ secrets.ftp_main_username }}
+          password: ${{ secrets.ftp_main_password }}
+          local-dir: bspconvar_whitelist/
+          server-dir: csgo/
 
       - name: Sync entWatch Files
         uses: SnowyGFL/FTP-Deploy-Action@1.1
