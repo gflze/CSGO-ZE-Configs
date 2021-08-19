@@ -3,26 +3,32 @@
 	"0"
 	{
 		"HP_counter"		"hp_boss_normal"
+		"CustomText"		"Snow Prism"
 	}
 	"1"
 	{
 		"HP_counter"		"hp_boss_hard"
+		"CustomText"		"Morning Star & Night Star"
 	}
 	"2"
 	{
 		"HP_counter"		"lv2_end_boss_counter"
+		"CustomText"		"Contradiction"
 	}
 	"3"
 	{
 		"HP_counter"		"lv2_boss_killer_counter"
+		"CustomText"		"Killer"
 	}
 	"4"
 	{
 		"HP_counter"		"lv3_midboss_counter"
+		"CustomText"		"Contradiction"
 	}
 	"5"
 	{
 		"HP_counter"		"lv3_mid_boss2_counter"
+		"CustomText"		"Cryogen"
 	}
 	"6"
 	{
