@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Stage2_PaperCity_Chopper_HP"
+		"CustomText"		"Paper Chopper"
+	}
+	"1"
+	{
+		"HP_counter"		"Stage3_Doritos_Cheese_HP"
+		"CustomText"		"Doritos Cheese"
+	}
+	"2"
+	{
+		"HP_counter"		"Stage3_MLG_Duck_HP"
+		"CustomText"		"MLG Duck"
+	}
+}
