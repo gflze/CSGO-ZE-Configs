@@ -1,6 +1,6 @@
 "math_counter"
 {
-	"1"
+	"0"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"ReptliBossHP"
