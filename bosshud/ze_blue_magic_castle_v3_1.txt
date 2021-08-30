@@ -1,0 +1,33 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "lava_counter"
+        "HPbar_counter"     "lava_hp_iterations"
+        "HPinit_counter"    "lava_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "1"
+    {
+        "HP_counter"        "demon_counter"
+        "HPbar_counter"     "demon_hp_iterations"
+        "HPinit_counter"    "demon_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "2"
+    {
+        "HP_counter"        "ogre_counter"
+        "HPbar_counter"     "ogre_hp_iterations"
+        "HPinit_counter"    "ogre_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+}
