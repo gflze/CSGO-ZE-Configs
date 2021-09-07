@@ -364,6 +364,10 @@
 	{
 		sm_gravity										1
 	}
+	"ze_beachescape_camperlamper_sausageclicker_koala"
+	{
+		zr_infect_mzombie_ratio							1
+	}
 	"ze_castlevania_p1_7"
 	{
 		sm_gravity										1
