@@ -154,12 +154,26 @@ ze_map_name.cfg
 
 **WARNING: Filenames for Stripper configs must be all lower case!**
 
-Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
+Stripper is quite a complicated beast and unfortunately a single template is not really going to help you too much. If you're looking for a good starting point to learn Stripper, you can check out [this tutorial](https://gflclan.com/forums/topic/47449-stripper-cfgs-guide/). If you have any questions regarding stripper creation, you can always join our [#mapping channel](https://discord.gg/zh2CVSM) on Discord for assistance.
 
 ## VScripts
 
-Loose VScripts are always directly tied to an existing stripper config. However for our auto-sync to work properly, all external VScripts must be referred to by strippers as "gfl/scriptname.nut", and in absolute path, "csgo/scripts/vscripts/gfl/scriptname.nut".
+Loose VScripts are always directly tied to an existing stripper config, and are similar in that a template will not help you. However you can use the [Squirrel Reference Manual](http://www.squirrel-lang.org/squirreldoc/stdlib/index.html) for language syntax, and this [Valve wiki article](https://developer.valvesoftware.com/wiki/List_of_Counter-Strike:_Global_Offensive_Script_Functions) for CS:GO specific functions.
+
+For the auto-sync to work properly on these files, all external VScripts must be referred to by stripper configs as "gfl/scriptname.nut". In absolute path, these scripts are located at "csgo/scripts/vscripts/gfl/scriptname.nut".
 
 ## ZombieReloaded Configs
 
 These are basic CS:GO config files containing cvars/commands that get executed on map start by ZR. mapname.cfg is executed [OnAutoConfigsBuffered()](https://sourcemod.dev/#/sourcemod/function.OnAutoConfigsBuffered), mapname.post.cfg is executed [OnConfigsExecuted()](https://sourcemod.dev/#/sourcemod/function.OnConfigsExecuted).
+
+Some common GFL plugin cvars that you may want to adjust are listed below with their functionalities.
+```
+mce_extend			//Number of extends for the map
+triggerpushlagfix_enable 0	//Used to disable the trigger_push lag fix, some maps don't play well with it
+zr_antiboost_enabled 0		//Used to disable antiboost functionality that certain weapons have
+zr_infect_mzombie_ratio		//Every n-th player is infected as a mother zombie
+zr_infect_mzombie_respawn 0	//Enables classic spawn for the map
+zr_infect_spawntime_max		//Maximum range in seconds for mother zombie infection countdown
+zr_infect_spawntime_min		//Minimum range in seconds for mother zombie infection countdown
+zr_restrict			//Restrict a weapon or weapon group
+```
