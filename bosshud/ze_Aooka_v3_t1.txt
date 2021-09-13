@@ -1,0 +1,27 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Stage1_Meat_Hp"
+        "CustomText"        "Meat"
+        "HPbar_mode"        "1"
+    }
+    "1"
+    {
+        "HP_counter"        "Stage2_Boot_hp"
+        "CustomText"        "Boot"
+        "HPbar_mode"        "1"
+    }
+    "2"
+    {
+        "HP_counter"        "Stage2_Ball_Hp"
+        "CustomText"        "Ball"
+        "HPbar_mode"        "1"
+    }
+    "3"
+    {
+        "HP_counter"        "Stage3_Spider_hp"
+        "CustomText"        "Spider"
+        "HPbar_mode"        "1"
+    }
+}

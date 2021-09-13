@@ -1,0 +1,39 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "L3_revenant_hp"
+        "CustomText"        "Revenant"
+        "HPbar_mode"        "1"
+    }
+    "1"
+    {
+        "HP_counter"        "L3_End_neid_hp"
+        "CustomText"        "Neid"
+        "HPbar_mode"        "1"
+    }
+    "2"
+    {
+        "HP_counter"        "L3_zavist_hp"
+        "CustomText"        "Zavist"
+        "HPbar_mode"        "1"
+    }
+    "3"
+    {
+        "HP_counter"        "L2_END_hopper_hp"
+        "CustomText"        "Hopper"
+        "HPbar_mode"        "1"
+    }
+    "4"
+    {
+        "HP_counter"        "L1_END_Jack_hp"
+        "CustomText"        "Jack"
+        "HPbar_mode"        "1"
+    }
+    "5"
+    {
+        "HP_counter"        "L1_Jack_hp"
+        "CustomText"        "Jack"
+        "HPbar_mode"        "1"
+    }
+}
