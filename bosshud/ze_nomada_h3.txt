@@ -1,0 +1,30 @@
+"math_counter"
+{
+    "config"
+    {
+        "MultBoss"          "1"
+    }
+    "0"
+    {
+        "HP_counter"        "s2_boss_hp"
+        "HPbar_counter"     "s2_boss_hp_main"
+        "HPinit_counter"    "s2_boss_hp_backup"
+        "CustomText"        "Ruler"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "1"
+    {
+        "HP_counter"        "s3_boss_hp"
+        "CustomText"        "Face"
+        "HPbar_mode"        "1"
+    }
+    "3"
+    {
+        "HP_counter"        "hey_boss_hp"
+        "CustomText"        "Duck"
+        "HPbar_mode"        "1"
+    }
+}
