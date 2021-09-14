@@ -1,0 +1,17 @@
+"math_counter"
+{
+    "config"
+    {
+        "HitMarkerOnly"     "1"
+    }
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv2_boss_hitbox"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv5_boss_hitbox"
+    }
+}
