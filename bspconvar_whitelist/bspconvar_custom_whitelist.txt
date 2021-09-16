@@ -364,10 +364,6 @@
 	{
 		sm_gravity										1
 	}
-	"ze_beachescape_camperlamper_sausageclicker_koala"
-	{
-		zr_infect_mzombie_ratio							1
-	}
 	"ze_castlevania_p1_7"
 	{
 		sm_gravity										1
@@ -408,13 +404,17 @@
 	{
 		sm_gravity										1
 	}
+	"ze_santassination_v3"
+	{
+		sm_gravity										1
+	}
 	"ze_stalker_ultimate_v4_9"
 	{
 		sv_disable_radar								0
 	}
-	"ze_santassination_v3"
+	"ze_surf_ffxiv_beachescape_camper_sausage_laser"
 	{
-		sm_gravity										1
+		zr_infect_mzombie_ratio							1
 	}
 	"ze_temple_of_the_demon_god_v2"
 	{
