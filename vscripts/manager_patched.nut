@@ -173,7 +173,7 @@ function AutoHurtWallNearTP(type)
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
 }
 
-EXMVOTE_EXTREME_PERCENTAGE <- 75;
+EXMVOTE_EXTREME_PERCENTAGE <- 70;
 EXMVOTE_NORMAL_PERCENTAGE <- 60;
 EXMVOTE_PERCENTAGE <- 60;
 exmvote_voteallowed <- false;
@@ -492,7 +492,14 @@ function Mapor()
 	}
 }
 
-kniferesetfix <- false;
+function KillDiddleBabyShrekEx()
+{
+	if(!extreme)return;
+	for(local h;h=Entities.FindByNameWithin(h,"i_diddlebaby_phys*",Vector(-14402,-14206,13377),1500);)
+	{EntFireByHandle(h,"Break","",0.00,null,null);}
+}
+
+kniferesetfix <- false;		//was true/enabled in #6, now false/disabled since #7 as z-knife filter should be ok
 function KnifeResetFix()
 {
 	if(!kniferesetfix)return;
@@ -552,6 +559,7 @@ function RoundStart()
 		if(checkpoint)
 		{
 			EntFire("stage_manager", "InValue", "finale", 0.00, self);
+			EntFireByHandle(self,"RunScriptCode", " Mapor(); ",15.00,null,null);
 			stagepool = [];
 			CheckMaxedCoinsCheckpoint();
 			SpawnBlobElements();
@@ -570,7 +578,6 @@ function RoundStart()
 			shopangels.clear();
 			tickingsinners = true;
 			TickInflatingSinners();
-			EntFireByHandle(self,"RunScriptCode", " Mapor(); ",15.00,null,null);
 		}
 		else
 		{
@@ -1620,7 +1627,7 @@ function CheckPS()
 {for(local i=0;i<PSlist.len();i+=1){if(PSlist[i]==activator){piv=activator;EntFireByHandle(caller,"break","",0.00,null,null);break;}}}}
 function CheckPSAffirmal(){if(activator==piv)piv=null;PSBlist.push(activator);}
 function LeavePS(){if(activator==piv)piv=null;}
-function ExcludePS(){if(activator==piv)pivvv=true;}
+function ExcludePS(){}
 function TryPS1(){local ex=false;for(local i=0;i<PSBlist.len();i+=1){if(PSBlist[i]==activator){ex=true;break;}}
 function PrintCoinAmount()
 {
@@ -1628,26 +1635,7 @@ function PrintCoinAmount()
 }
 
 for(local i=0;i<PSlist.len();i+=1){if(PSlist[i]==activator){ex=true;break;}}if(!ex)PS1list.push(activator);}
-function TryPS()
-{local ex=false;for(local i=0;i<PS1list.len();i+=1){if(PS1list[i]==activator){ex=true;PS1list.remove(i);break;}}if(ex)
-{PSlist.push(activator);if(PSI==1)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(12); ",0.00,activator,activator);if(PSI==2)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(5); ",0.00,activator,activator);
-if(PSI==3)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(9); ",0.00,activator,activator);if(PSI==4)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(11); ",0.00,activator,activator);
-if(PSI==5)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(2); ",0.00,activator,activator);if(PSI==6)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(18); ",0.00,activator,activator);
-if(PSI==7)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(10); ",0.00,activator,activator);if(PSI==8)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(6); ",0.00,activator,activator);
-if(PSI==9)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(19); ",0.00,activator,activator);if(PSI==10)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(22); ",0.00,activator,activator);
-if(PSI==11)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(16); ",0.00,activator,activator);if(PSI==12)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(4); ",0.00,activator,activator);
-if(PSI==13)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(21); ",0.00,activator,activator);if(PSI==14)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(23); ",0.00,activator,activator);
-if(PSI==15)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(13); ",0.00,activator,activator);if(PSI==16)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(24); ",0.00,activator,activator);
-if(PSI==17)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(20); ",0.00,activator,activator);if(PSI==18)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(1); ",0.00,activator,activator);
-if(PSI==19)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(17); ",0.00,activator,activator);if(PSI==20)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(7); ",0.00,activator,activator);
-if(PSI==21)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(14); ",0.00,activator,activator);if(PSI==22)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(3); ",0.00,activator,activator);
-if(PSI==23)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(8); ",0.00,activator,activator);if(PSI==24)EntFireByHandle(self,"RunScriptCode"," RunSomSAP(15); ",0.00,activator,activator);
-if(PSN){self.PrecacheSoundScript("*luffaren/step/sigh.mp3");EntFire("fwc","Command","play *luffaren/step/sigh.mp3",1.50,activator);}
-else{self.PrecacheSoundScript("*luffaren/step/dynexplode_1.mp3");EntFire("fwc","Command","play *luffaren/step/dynexplode_1.mp3",1.50,activator);}
-if(PSL){self.PrecacheSoundScript("*luffaren/step/laserhurt.mp3");EntFire("fwc","Command","play *luffaren/step/laserhurt.mp3",2.50,activator);}
-else{self.PrecacheSoundScript("*luffaren/step/blobb1.mp3");EntFire("fwc","Command","play *luffaren/step/blobb1.mp3",2.50,activator);}
-if(PSR){self.PrecacheSoundScript("*luffaren/step/blobb2.mp3");EntFire("fwc","Command","play *luffaren/step/blobb2.mp3",3.50,activator);}
-}}psx<-0;psy<-0;
+function TryPS(){}psx<-0;psy<-0;
 function InitPS(){local r=0;r=RandomInt(0,1);if(r==0)PSR=true;else PSR=false;
 r=RandomInt(0,1);if(r==0){psy=1168;if(PSR)PSL=false;else PSL=true;}else{psy=880;if(PSR)PSL=true;else PSL=false;}
 r=RandomInt(0,1);if(r==0)PSN=true;else PSN=false;
@@ -3167,7 +3155,7 @@ exev_finalboss_lasertickrate <- 0.90;
 exev_omaha_zchecktries_max <- 10;
 exev_omaha_zchecktries <- 10;
 exev_omaha_zpercentage <- 30.00;
-exev_omaha_zhealthcap <- 500;
+exev_omaha_zhealthcap <- 300;
 exev_omaha_zombies <- [];
 exev_weebtick_min <- 0.5;	//0.1 in #3
 exev_weebtick_max <- 20.0;	//5.0 in #3
@@ -3189,7 +3177,6 @@ function ExevRoundStart()	//reset states (triggered every round start IF 'extrem
 	exev_finalboss_laserticking = false;
 	exev_omaha_zchecktries = exev_omaha_zchecktries_max;
 	exev_omaha_zpercentage = 30.00;
-	exev_omaha_zhealthcap = 500;
 	zombe_item_users.clear();
 	zombe_item_users = [];
 	exev_omaha_zombies.clear();
@@ -3315,7 +3302,7 @@ function ExtremeOmahaTPZ()
 	local h = null;
 	while(null!=(h=Entities.FindByClassname(h,"player")))
 	{
-		if(h!=null&&h.IsValid()&&h.GetHealth()>6000&&h.GetTeam()==2)
+		if(h!=null&&h.IsValid()&&h.GetHealth()>2001&&h.GetTeam()==2)
 			exev_omaha_zombies.push(h);
 	}
 	if(exev_omaha_zombies.len()<=0)
@@ -3344,8 +3331,8 @@ function ExtremeOmahaTPZ()
 		}
 		foreach(h in exev_omaha_zombies)
 		{
-			EntFireByHandle(h,"SetHealth",exev_omaha_zhealthcap.tostring(),0.00,null,null);
 			h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));
+			h.SetHealth(exev_omaha_zhealthcap);
 			h.SetVelocity(Vector(0,0,0));
 		}
 		EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZTick(); ",0.50,null,null);
@@ -3364,9 +3351,15 @@ function ExtremeOmahaTPZTick()
 		else
 		{
 			if(h.GetOrigin().y > 4310)
-				h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));
-			if(h.GetHealth()>exev_omaha_zhealthcap)
-				EntFireByHandle(h,"SetHealth",exev_omaha_zhealthcap.tostring(),0.00,null,null);
+			{
+				//h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));		//#6 (tp fucked humans up, exploitable)
+				EntFireByHandle(h,"SetDamageFilter","",0.00,null,null);			//#7 (just ensure the zombie to die instead)
+				EntFireByHandle(h,"SetHealth","-1",0.02,null,null);				//#7
+				EntFireByHandle(h,"SetDamageFilter","",0.04,null,null);			//#7
+				EntFireByHandle(h,"SetHealth","-1",0.08,null,null);				//#7
+			}
+			else if(h.GetHealth()>exev_omaha_zhealthcap)
+				EntFireByHandle(h,"AddOutput","health "+exev_omaha_zhealthcap.tostring(),0.00,null,null);
 		}
 	}
 	while(!cleaned)
@@ -3443,6 +3436,7 @@ function KillZombieItems()
 }
 
 //this function was used in stripper #5, but removed in #6 since it didn't work on live servers for some odd reason
+//it's back in #7, the problem was game_player_equip stripping (due to the AmmoFix.smx plugin blocking shit)
 function IwannaBecomeZombieItem()	//caller:strip_trigger, activator:player, caller-parent:knife
 {
 	if(activator==null||!activator.IsValid())return;
@@ -3451,7 +3445,8 @@ function IwannaBecomeZombieItem()	//caller:strip_trigger, activator:player, call
 	if(activator.GetTeam()==3)return;
 	if(activator.GetHealth()<666)return;
 	if(activator.GetName()=="zombieitem")return;
-	EntFire("strip_all_weapons","Use","",0.00,activator);
+	//EntFire("strip_all_weapons","Use","",0.00,activator);				//shit bork
+	EntFire("stripstrop_wepwepstrip","Strip","",0.00,activator);		//shit work
 	EntFireByHandle(caller.GetMoveParent(),"togglecanbepickedup","",0.00,null,null);
 	EntFireByHandle(caller,"Kill","",0.00,null,null);
 }
