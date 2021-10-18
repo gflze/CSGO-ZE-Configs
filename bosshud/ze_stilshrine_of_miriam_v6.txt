@@ -1,0 +1,43 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Dragon_Aevis_Health"
+		"CustomText"		"Aevis"
+	}
+	"1"
+	{
+		"HP_counter"		"Blackened_Health"
+		"CustomText"		"Blackened"
+	}
+	"2"
+	{
+		"HP_counter"		"Mateus_Health"
+		"CustomText"		"Mateus"
+	}
+	"3"
+	{
+		"HP_counter"		"Occuria_halo_counter"
+		"CustomText"		"Occuria"
+	}
+	"4"
+	{
+		"HP_counter"		"Kata_Ifrit_Counter"
+		"CustomText"		"Occuria Kato"
+	}
+	"5"
+	{
+		"HP_counter"		"Stage4_Zeromus_Health"
+		"CustomText"		"Zeromus"
+	}
+	"6"
+	{
+		"HP_counter"		"Stage4_End_Guard_HP"
+		"CustomText"		"Gabranth"
+	}
+	"7"
+	{
+		"HP_counter"		"Hydro_Health"
+		"CustomText"		"Myath"
+	}
+}
