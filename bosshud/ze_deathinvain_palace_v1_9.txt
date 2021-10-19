@@ -30,4 +30,9 @@
         "HP_counter"        "L1_Jack_hp"
         "CustomText"        "Jack"
     }
+    "6"
+    {
+        "HP_counter"        "L2_hopper_hp"
+        "CustomText"        "Hopper"
+    }
 }
