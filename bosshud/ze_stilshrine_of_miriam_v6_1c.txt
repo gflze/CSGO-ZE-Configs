@@ -17,8 +17,8 @@
 	}
 	"3"
 	{
-		"HP_counter"		"Occuria_halo_counter"
-		"CustomText"		"Occuria"
+		"HP_counter"		"Stage_3_End_Guard_HP"
+		"CustomText"		"Mateus"
 	}
 	"4"
 	{
@@ -27,15 +27,20 @@
 	}
 	"5"
 	{
-		"HP_counter"		"Stage4_Zeromus_Health"
-		"CustomText"		"Zeromus"
+		"HP_counter"		"Stage4_Zeromus_phase1_Health"
+		"CustomText"		"Zeromus - Phase 1"
 	}
 	"6"
+	{
+		"HP_counter"		"Stage4_Zeromus_phase2_Health"
+		"CustomText"		"Zeromus - Phase 2"
+	}
+	"7"
 	{
 		"HP_counter"		"Stage4_End_Guard_HP"
 		"CustomText"		"Gabranth"
 	}
-	"7"
+	"8"
 	{
 		"HP_counter"		"Hydro_Health"
 		"CustomText"		"Myath"
