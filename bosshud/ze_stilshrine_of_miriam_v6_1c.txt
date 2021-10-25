@@ -17,7 +17,7 @@
 	}
 	"3"
 	{
-		"HP_counter"		"Stage_3_End_Guard_HP"
+		"HP_counter"		"Stage3_End_Guard_HP"
 		"CustomText"		"Mateus"
 	}
 	"4"
