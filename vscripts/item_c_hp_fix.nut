@@ -3,6 +3,40 @@
 //Install as csgo/scripts/vscripts/gfl/item_c_hp_fix.nut
 //#####################################################################
 
+//taken from ze_serpentis_temple
+//modified for gfl ammo values
+WeaponClassAmmo <- {
+	weapon_ak47 = 40
+	weapon_aug = 35
+	weapon_awp = 10
+	weapon_bizon = 64
+	weapon_deagle = 7
+	weapon_elite = 30
+	weapon_famas = 40
+	weapon_fiveseven = 20
+	weapon_g3sg1 = 20
+	weapon_galilar = 40
+	weapon_glock = 20
+	weapon_hkp2000 = 13
+	weapon_m249 = 100
+	weapon_m4a1 = 40
+	weapon_mac10 = 50
+	weapon_mag7 = 5
+	weapon_mp7 = 55
+	weapon_mp9 = 42
+	weapon_negev = 150
+	weapon_nova = 8
+	weapon_p250 = 13
+	weapon_p90 = 64
+	weapon_sawedoff = 7
+	weapon_scar20 = 20
+	weapon_sg556 = 35
+	weapon_ssg08 = 10
+	weapon_tec9 = 18
+	weapon_ump45 = 50
+	weapon_xm1014 = 7
+};
+
 ZMITEMLVLUP <- 0;
 ITEM_DISABLE <- true;
 ZOMBIE_ITEM_DISABLE <- true;
@@ -1445,7 +1479,6 @@ ACCIOACT <- null;
 ACCIOCALL <- null;
 ACCIOONCE <- true;
 ACCIOLEVEL <- 0;
-ACCIOAMMO <- 0;
 ////////////////////////////////
 
 ////////////////////////////////
@@ -1473,7 +1506,6 @@ function AccioReceivedLevel()
 {
     if(ACCIOLEVEL == 0)
     {
-        ACCIOAMMO = 150;
         EntFire("spx_effect_upgrade_accio","ClearParent","",1.00,null);
         EntFire("spx_effect_upgrade_accio","Stop","",1.00,null);
         EntFire("spx_accio_trigger3","ClearParent","",2.00,null);
@@ -1489,7 +1521,6 @@ function AccioReceivedLevel()
     else if(ACCIOLEVEL == 1)
     {
         AccioItemLevel1M();
-        ACCIOAMMO = 175;
         EntFire("spx_effect_upgrade_accio","Start","",0.00,null);
         EntFire("spx_effect_upgrade_accio","ClearParent","",1.00,null);
         EntFire("spx_effect_upgrade_accio","Stop","",1.00,null);
@@ -1507,7 +1538,6 @@ function AccioReceivedLevel()
     {
         AccioItemLevel2M();
         ZMITEMLVLUP++;
-        ACCIOAMMO = 200;
         EntFire("spx_effect_upgrade_accio","Start","",0.00,null);
         EntFire("spx_effect_upgrade_accio","ClearParent","",1.00,null);
         EntFire("spx_effect_upgrade_accio","Stop","",1.00,null);
@@ -1525,7 +1555,6 @@ function AccioReceivedLevel()
     {
         AccioItemLevel3M();
         ZMITEMLVLUP++;
-        ACCIOAMMO = 250;
         EntFire("spx_effect_upgrade_accio","Start","",0.00,null);
         EntFire("spx_effect_upgrade_accio","ClearParent","",1.00,null);
         EntFire("spx_effect_upgrade_accio","Stop","",1.00,null);
@@ -1543,7 +1572,6 @@ function AccioReceivedLevel()
     {
         AccioItemLevel4M();
         ZMITEMLVLUP++;
-        ACCIOAMMO = 300;
         EntFire("spx_effect_upgrade_accio","Start","",0.00,null);
         EntFire("spx_effect_upgrade_accio","ClearParent","",1.00,null);
         EntFire("spx_effect_upgrade_accio","Stop","",1.00,null);
@@ -1678,7 +1706,7 @@ function GiveAmmoAccio()
         ammo.GetClassname() != "weapon_taser" &&
         ammo.GetClassname() != "weapon_bumpmine")
         {
-            EntFireByHandle(ammo,"SetAmmoAmount",""+ACCIOAMMO,0.00,null,null);
+            EntFireByHandle(ammo,"SetAmmoAmount",WeaponClassAmmo[ammo.GetClassname()].tostring(),0.00,null,null);
         }  
 	}
 }
