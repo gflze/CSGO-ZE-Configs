@@ -418,7 +418,7 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_surf_ffxiv_ beachescape_camper_sausage_laser"
+	"ze_surf_ffxiv_beachescape_camper_isengard_laser"
 	{
 		zr_infect_mzombie_ratio							1
 		zr_class_modify									1
