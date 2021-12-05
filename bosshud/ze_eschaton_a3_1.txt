@@ -1,0 +1,13 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "s2_boss_counter1"
+        "CustomText"        "Face"
+    }
+    "1"
+    {
+        "HP_counter"        "s3_boss_counter1"
+        "CustomText"        "Face"
+    }
+}
