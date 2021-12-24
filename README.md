@@ -169,9 +169,10 @@ These are basic CS:GO config files containing cvars/commands that get executed o
 Some common GFL plugin cvars that you may want to adjust are listed below with their functionalities.
 ```
 mce_extend			//Number of extends for the map
-sm_enable_hurt_fix 1		//Used to enable the trigger_hurt stack damage fix as a quick fix for maps with the bug
-triggerpushlagfix_enable 0	//Used to disable the trigger_push lag fix, some maps don't play well with it
-zr_antiboost_enabled 0		//Used to disable antiboost functionality that certain weapons have
+sm_enable_hurt_fix 1		//Enables the trigger_hurt stack damage fix as a quick fix for maps with the bug
+sm_thirdperson_enabled 0	//Disables third person for the map
+triggerpushlagfix_enable 0	//Disables the trigger_push lag fix, some maps don't play well with it
+zr_antiboost_enabled 0		//Disables the antiboost functionality that certain weapons have
 zr_infect_mzombie_ratio		//Every n-th player is infected as a mother zombie
 zr_infect_mzombie_respawn 0	//Enables classic spawn for the map
 zr_infect_spawntime_max		//Maximum range in seconds for mother zombie infection countdown
