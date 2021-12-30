@@ -384,11 +384,9 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_last_man_standing_csgo3"
+	"ze_last_man_standing_h2"
 	{
 		zr_infect_mzombie_ratio							1
-		zr_class_modify									1
-		sv_disable_radar								0
 	}
 	"ze_lotr_isengard_csgo1"
 	{
