@@ -3493,6 +3493,7 @@ function UseItemReducio()
 {
     if(activator.GetTeam() == 2 && activator == REDUCIOACT && ZOMBIE_ITEM_DISABLE)
     { 
+        /* Model with old animations can crash clients post Riptide
         local zmsm = null;
 	    while(null != (zmsm = Entities.FindInSphere(zmsm,REDUCIOACT.GetOrigin(),550)))
 	    {
@@ -3500,7 +3501,7 @@ function UseItemReducio()
 		    {
                 zmsm.SetModel("models/player/gozombie_rescale.mdl");
 		    }
-	    }
+	    }*/
         EntFire("spxZM_reducio_button","Lock","", 0.00, null);
         EntFire("spxZM_reducio_effect_active","Start","", 0.00, null);
         EntFire("spxZM_effect_wand_reducio","Stop","", 0.00, null);
@@ -3530,6 +3531,7 @@ function UseItemReducio()
     }
 }
 
+/* Model with old animations can crash clients post Riptide
 function ResetModel()
 {
     local zmrm = null;
@@ -3540,7 +3542,7 @@ function ResetModel()
             zmrm.SetModel("models/player/zombie_harry.mdl");
 		}
 	}
-}
+}*/
 
 function ReducioItemM()
 {

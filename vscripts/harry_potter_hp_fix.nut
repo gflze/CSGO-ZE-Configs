@@ -2686,13 +2686,14 @@ function KillAll()
 	}
 }
 
+/* Model with old animations can crash clients post Riptide
 function SetZombiePlModel()
 {
 	if(activator.GetTeam() == 2 && activator.GetHealth() > 500)
 	{
         activator.SetModel("models/player/zombie_harry.mdl");
 	}
-}
+}*/
 
 Time <- 0.00;
 SaveTime <- 0.00;
