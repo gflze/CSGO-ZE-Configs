@@ -3510,7 +3510,7 @@ function UseItemReducio()
         EntFire("spxZM_reducio_effect_active","Stop","", 2.00, null);
         if(ZMITEMLVLUP < 7)
         {
-            EntFireByHandle(self,"RunScriptCode","ResetModel();",5.00,null,null);
+            //EntFireByHandle(self,"RunScriptCode","ResetModel();",5.00,null,null);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(0)",85.00,REDUCIOACT);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(1)",95.00,REDUCIOACT);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(2)",105.00,REDUCIOACT);
@@ -3520,7 +3520,7 @@ function UseItemReducio()
         }
         else if(ZMITEMLVLUP >= 7)
         {
-            EntFireByHandle(self,"RunScriptCode","ResetModel();",7.00,null,null);
+            //EntFireByHandle(self,"RunScriptCode","ResetModel();",7.00,null,null);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(0)",80.00,REDUCIOACT);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(1)",90.00,REDUCIOACT);
             EntFire("!activator","RunScriptCode","COOLDOWNITEM(2)",100.00,REDUCIOACT);
