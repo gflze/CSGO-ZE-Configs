@@ -1,0 +1,25 @@
+"math_counter"
+{
+	"config"
+	{
+		"MultBoss"		"1"
+	}
+
+	"0"
+	{
+		"HP_counter"	"lastboss_hpcounter"
+		"CustomText"	"Pain Light"
+	}
+
+	"1"
+	{
+		"HP_counter"	"exdark_hpcounter"
+		"CustomText"	"Pain Light (Rezurrected)"
+	}
+
+	"2"
+	{
+		"HP_counter"	"exholy_hpcounter"
+		"CustomText"	"Holy Light"
+	}	
+}
