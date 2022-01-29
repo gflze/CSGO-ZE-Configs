@@ -364,6 +364,10 @@
 	{
 		sm_gravity										1
 	}
+	"ze_boatescape111_v1_1f"
+	{
+		zr_infect_mzombie_ratio							1
+	}
 	"ze_castlevania_p1_7"
 	{
 		sm_gravity										1
@@ -416,7 +420,7 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_surf_ffxiv_beachescape_camper_isengard_laser"
+	"ze_surf_ffxiv_beachescape_camper_isengard_laser_luff"
 	{
 		zr_infect_mzombie_ratio							1
 		zr_class_modify									1
