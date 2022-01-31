@@ -1,0 +1,69 @@
+"math_counter"
+{
+    "config"
+    {
+        "MultBoss"          "1"
+    }
+    "0"
+    {
+        "HP_counter"        "ex2_boss_hp"
+        "HPinit_counter"    "ex2_boss_hp_add"
+        "HPbar_counter"     "ex2_boss_hp_left"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "1"
+    {
+        "HP_counter"        "ex2_ending_boss_hp"
+    }
+    "2"
+    {
+        "HP_counter"        "ex1_final_boss_hp"
+    }
+    "3"
+    {
+        "HP_counter"        "ex1_boss_hp"
+        "HPinit_counter"    "ex1_boss_hp_add"
+        "HPbar_counter"     "ex1_boss_hp_left"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "4"
+    {
+        "HP_counter"        "lvl2_boss_hp"
+        "HPinit_counter"    "lvl2_boss_hp_add"
+        "HPbar_counter"     "lvl2_boss_hp_left"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+    }
+    "5"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "ex2_electricalbox_red"
+        "CustomText"        "Red Electrical Box"
+    }
+    "6"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "ex2_electricalbox_green"
+        "CustomText"        "Green Electrical Box"
+    }
+    "7"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "ex2_electricalbox_yellow"
+        "CustomText"        "Yellow ELectrical Box"
+    }
+    "8"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "ex2_electricalbox_normal"
+        "CustomText"        "Silver Electrical Box"
+    }
+}
