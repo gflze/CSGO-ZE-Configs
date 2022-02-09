@@ -173,9 +173,9 @@ function AutoHurtWallNearTP(type)
 		EntFireByHandle(self,"RunScriptCode"," AutoHurtWallNearTP("+type.tostring()+"); ",3.00,null,caller);
 }
 
-EXMVOTE_EXTREME_PERCENTAGE <- 70;
-EXMVOTE_NORMAL_PERCENTAGE <- 60;
-EXMVOTE_PERCENTAGE <- 60;
+EXMVOTE_EXTREME_PERCENTAGE <- 65.00;		//the player-vote-percentage to vote for extreme-mode	(by shooting upwards in the spawn)
+EXMVOTE_NORMAL_PERCENTAGE <- 60.00;			//the player-vote-percentage to vote for normal-mode	(by shooting upwards in the spawn)
+EXMVOTE_PERCENTAGE <- 60.00;
 exmvote_voteallowed <- false;
 exmvote_voted <- false;
 exmvote_gtext <- null;
@@ -492,10 +492,22 @@ function Mapor()
 	}
 }
 
+distance_KillDiddleBabyShrekEx <- 1500;			//babyface kill distance from house (runs once every loop)
+distance_door_KillDiddleBabyShrekEx <- 300;		//baby kill distance from house entrance door (ticks every 0.10s from every loop, until the outer door breaks)
+stoptick_KillDiddleBabyShrekEx <- false;
 function KillDiddleBabyShrekEx()
 {
 	if(!extreme)return;
-	for(local h;h=Entities.FindByNameWithin(h,"i_diddlebaby_phys*",Vector(-14402,-14206,13377),1500);)
+	stoptick_KillDiddleBabyShrekEx = false;
+	EntFireByHandle(self,"RunScriptCode"," KillDiddleBabyShrekExTick(); ",0.10,null,null);
+	for(local h;h=Entities.FindByNameWithin(h,"i_diddlebaby_phys*",Vector(-14402,-14206,13377),distance_KillDiddleBabyShrekEx);)
+	{EntFireByHandle(h,"Break","",0.00,null,null);}
+}
+function KillDiddleBabyShrekExTick()
+{
+	if(stoptick_KillDiddleBabyShrekEx)return;
+	EntFireByHandle(self,"RunScriptCode"," KillDiddleBabyShrekExTick(); ",0.10,null,null);
+	for(local h;h=Entities.FindByNameWithin(h,"i_diddlebaby_phys*",Vector(-13924,-14037,13405),distance_door_KillDiddleBabyShrekEx);)
 	{EntFireByHandle(h,"Break","",0.00,null,null);}
 }
 
@@ -1539,6 +1551,14 @@ function RemoveVagina()
 	vaginacount--;
 }
 
+amount_TurtleBossLowerFloowExtreme <- 50;
+function TurtleBossLowerFloowExtreme()
+{
+	if(!extreme)return;
+	EntFire("X69XTurtleBreakable14","RunScriptCode",
+		" self.SetOrigin(self.GetOrigin()+Vector(0,0,-"+amount_TurtleBossLowerFloowExtreme.tostring()+")); ",0.05,null);
+}
+
 function OverrideVaginaFaceHP()
 {
 	if(!extreme)
@@ -2062,6 +2082,8 @@ function ExtremeEvent(index)
 				EntFire("X69Xluff_npc_phys2gg*","RunScriptCode"," AddHP(10,5); ",0.60,null);
 			//spawn a 10-coin at pos (3747,-11356,-13769), make sure there's no props/free clearance to get there
 				ExevSpawn("s_coin_3",Vector(3747,-11356,-13769));
+			//stripper#8: spawn yellow laser down below as well after some time, to prevent cheesing the defense too hard
+				ExevSpawn("blobblaser_tem1",Vector(5376,-8737,-14785),Vector(0,0,0),30.00);
 			break;
 		}
 		case 9:		//turtle - when triggering LEFT top hold just after push-elevator (door breaks at 40.0s)
@@ -2684,10 +2706,7 @@ function ExtremeEvent(index)
 				ExevSpawn("X69Xluff_shrekspawn",Vector(-11514,1977,13909));
 				EntFire("X69Xluff_npc_phys2gg*","RunScriptCode"," AddHP(10,5); ",0.55,null);
 			//teleport x% of the zombies in front of the humans with 500hp at pos:(-13760/-11328,3072,14208), prevent going above Y:4310
-				EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZ(); ",1.00,null,null);
-				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.00,null);
-				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.01,null);
-				EntFire("server","Command","say *SOME Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",3.02,null);
+				EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZ(); ",16.00,null,null);	//1.00 in #7, 16.00 in #8 (as z's TP back at ~15s for whatever reason)
 			break;
 		}
 		case 55:	//omaha - when triggering the explosive wall (explodes at 29.5s)
@@ -3152,9 +3171,7 @@ function ExevTickFinalbossLaser()
 }
 exev_finalboss_laserticking <- false;
 exev_finalboss_lasertickrate <- 0.90;
-exev_omaha_zchecktries_max <- 10;
-exev_omaha_zchecktries <- 10;
-exev_omaha_zpercentage <- 30.00;
+exev_omaha_zamount <- 5;
 exev_omaha_zhealthcap <- 300;
 exev_omaha_zombies <- [];
 exev_weebtick_min <- 0.5;	//0.1 in #3
@@ -3175,8 +3192,7 @@ function ExevRoundStart()	//reset states (triggered every round start IF 'extrem
 	}
 	EntFireByHandle(self,"RunScriptCode"," FetusFaceBoobie(); ",RandomFloat(1.00,500.00),null,null);
 	exev_finalboss_laserticking = false;
-	exev_omaha_zchecktries = exev_omaha_zchecktries_max;
-	exev_omaha_zpercentage = 30.00;
+	exev_omaha_zamount = 5;
 	zombe_item_users.clear();
 	zombe_item_users = [];
 	exev_omaha_zombies.clear();
@@ -3305,38 +3321,29 @@ function ExtremeOmahaTPZ()
 		if(h!=null&&h.IsValid()&&h.GetHealth()>2001&&h.GetTeam()==2)
 			exev_omaha_zombies.push(h);
 	}
-	if(exev_omaha_zombies.len()<=0)
+	if(exev_omaha_zombies.len() <= (2+exev_omaha_zamount))return;
+	local trimmed = false;
+	while(!trimmed)
 	{
-		exev_omaha_zchecktries--;
-		if(exev_omaha_zchecktries > 0)
-			EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZ(); ",1.00,null,null);
+		trimmed = true;
+		if(exev_omaha_zombies.len()>0)
+			exev_omaha_zombies.remove(RandomInt(0,exev_omaha_zombies.len()-1));
+		else
+			return;
+		if(exev_omaha_zombies.len() > exev_omaha_zamount)
+			trimmed = false;
 	}
-	else
+	foreach(h in exev_omaha_zombies)
 	{
-		if(exev_omaha_zombies.len() < 5)
-			return;
-		local targetsize = ((1/((1/exev_omaha_zpercentage)/(0.00 + exev_omaha_zombies.len())))/100);
-		if(targetsize <= 0)
-			return;
-		local trimmed = false;
-		while(!trimmed)
-		{
-			trimmed = true;
-			if(exev_omaha_zombies.len()>0)
-				exev_omaha_zombies.remove(RandomInt(0,exev_omaha_zombies.len()-1));
-			else
-				return;
-			if(exev_omaha_zombies.len() > targetsize)
-				trimmed = false;
-		}
-		foreach(h in exev_omaha_zombies)
-		{
-			h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));
-			h.SetHealth(exev_omaha_zhealthcap);
-			h.SetVelocity(Vector(0,0,0));
-		}
-		EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZTick(); ",0.50,null,null);
+		h.SetOrigin(Vector(RandomInt(-13760,-11328),3900,14000));			//Vector(RandomInt(-13760,-11328),3072,14208) in #<=7
+		h.SetHealth(exev_omaha_zhealthcap);
+		h.SetVelocity(Vector(0,0,0));
 	}
+	EntFire("server","Command","say *"+exev_omaha_zombies.len().tostring()+" Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",0.00,null);
+	EntFire("server","Command","say *"+exev_omaha_zombies.len().tostring()+" Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",0.01,null);
+	EntFire("server","Command","say *"+exev_omaha_zombies.len().tostring()+" Z'S ARE IN FRONT WITH LOW HP, KILL THEM!*",0.02,null);
+	EntFire("server","Command","say *THEY ALSO DIE BY TRAVERSING TOO FAR - BATTLE IT OUT!*",1.03,null);
+	EntFireByHandle(self,"RunScriptCode"," ExtremeOmahaTPZTick(); ",0.50,null,null);
 }
 function ExtremeOmahaTPZTick()
 {
@@ -3350,7 +3357,7 @@ function ExtremeOmahaTPZTick()
 			cleaned = false;
 		else
 		{
-			if(h.GetOrigin().y > 4310)
+			if(h.GetOrigin().y > 4310 || h.GetOrigin().y < -1400)
 			{
 				//h.SetOrigin(Vector(RandomInt(-13760,-11328),3072,14208));		//#6 (tp fucked humans up, exploitable)
 				EntFireByHandle(h,"SetDamageFilter","",0.00,null,null);			//#7 (just ensure the zombie to die instead)
