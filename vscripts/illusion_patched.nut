@@ -8,415 +8,415 @@ s1 <- null;
 s2 <- null;
 
 function Msg1(){
-	s1 = "Defense"
-	s2 = "seconds"
+	s1 = "Defend for "
+	s2 = " seconds"
 	CountdownTimer(40);
 }
 
 function Msg2(){
-	s1 = ""
-	s2 = "Second zombie teleportation"
+	s1 = "Zombies teleport in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg3(){
-	s1 = ""
-	s2 = "Second body cage open"
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
     CountdownTimer2(15);
 }
 
 function Msg4(){
-	s1 = ""
-	s2 = "Second body cage open"
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg5(){
-	s1 = "Defense"
-	s2 = "seconds"
+	s1 = "Defend for "
+	s2 = " seconds"
     CountdownTimer(30);
 }
 
 function Msg6(){
-	s1 = ""
-	s2 = "Second body cage open"
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg7(){
-	s1 = "Defense"
-	s2 = "seconds"
+	s1 = "Defend for "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg8(){
-	s1 = ""
-	s2 = "Second body cage open"
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
     CountdownTimer2(40);
 }
 
 function Msg9(){
-	s1 = "Defense"
-	s2 = "seconds"
+	s1 = "Defend for "
+	s2 = " seconds"
     CountdownTimer(60);
 }
 
 function Msg10(){
-	s1 = ""
-	s2 = "Second body cage open"
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
     CountdownTimer2(30);
 }
 
 function Msg11s(){
-	s1 = "Waiting"
-	s2 = "Second iron door open"
+	s1 = "Hold! Metal gate opens in "
+	s2 = " seconds"
     CountdownTimer(45);
 }
 
 function Msg13(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the door position, run"
+	s1 = "Zombies teleport to the door in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg14(){
-	s1 = ""
-	s2 = "Clear the small white box obstacle after seconds"
+	s1 = "White box will break in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg15(){
-	s1 = ""
-	s2 = "After seconds the zombie is teleported to the back of the narrow walkway"
+	s1 = "Zombies teleport to the walkway in "
+	s2 = " seconds"
     CountdownTimer2(15);
 }
 
 function Msg16(){
-	s1 = ""
-	s2 = "Seconds after the middle stairs of the iron door will open, quickly from the small dark room out of the middle rendezvous"
+	s1 = "Metal door opens in "
+	s2 = " seconds. Quickly exit the room and group up"
     CountdownTimer(25);
 }
 
 function Msg17(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the dark corridor"
+	s1 = "Zombies teleport to the corridor in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg18(){
-	s1 = ""
-	s2 = "After seconds the rock platform is completely raised and ready to go through the rotating corridor into the pool area"
+	s1 = "Stone platform rises in "
+	s2 = " seconds. Prepare to enter the corridor into the pool"
     CountdownTimer(25);
 }
 
 function Msg19(){
-	s1 = ""
-	s2 = "After the zombie collective airborne from above, beware of tailgating"
+	s1 = "Zombies drop in "
+	s2 = " seconds, watch your backs!"
     CountdownTimer2(10);
 }
 
 function Msg20(){
-	s1 = ""
-	s2 = "Clear the barbed wire barrier after seconds"
+	s1 = "Clearing wire fence in "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg21(){
-	s1 = ""
-	s2 = "Second zombie teleportation to the white box next to"
+	s1 = "Zombies teleport by the white box in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg22(){
-	s1 = ""
-	s2 = "After seconds the sunken platform begins to rise, and keep a distance from the fence do not stick to the edge"
+	s1 = "Sunken platforms rises in "
+	s2 = " seconds. Do not edge"
     CountdownTimer(20);
 }
 
 function Msg23(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the top of the mahogany stairs"
+	s1 = "Zombies teleport above the stairs in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg23s(){
-	s1 = ""
-	s2 = "After seconds, remove the barbed wire and prepare to throw mines to retreat"
+	s1 = "Wire fence breaks in "
+	s2 = " seconds. Throw some nades and retreat"
     CountdownTimer(20);
 }
 
 function Msg24(){
-	s1 = ""
-	s2 = "Hidden channel appears after seconds"
+	s1 = "Hidden path appears in "
+	s2 = " seconds"
     CountdownTimer(10);
 }
 
 function Msg25(){
-	s1 = ""
-	s2 = "After seconds the white box shattered, to the narrow passage into the bloody stairs"
+	s1 = "White boxes break in "
+	s2 = " second"
     CountdownTimer(15);
 }
 
 function Msg26(){
-	s1 = "Hold on"
-	s2 = "Seconds, beware of edge-gripping feet"
+	s1 = "Defend for "
+	s2 = " seconds, do not edge!"
     CountdownTimer(25);
 }
 
 function Msg26s(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation below the small room"
+	s1 = "Zombies teleport to the small room below in "
+	s2 = " seconds"
     CountdownTimer2(15);
 }
 
 function Msg27(){
-	s1 = ""
-	s2 = "After seconds the zombie teleports to the back of the hanger"
+	s1 = "Zombies teleport behind in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg28(){
-	s1 = "Hold on"
-	s2 = "Seconds after the barbed wire barrier was removed"
+	s1 = "Defend! Metal wire breaks in "
+	s2 = " seconds"
     CountdownTimer(15);
 }
 
 function Msg29(){
-	s1 = ""
-	s2 = "After seconds the elevator starts, the first level is about to end"
+	s1 = "Elevator starts in "
+	s2 = " seconds, then level one complete!"
     CountdownTimer(25);
 }
 
 function Msg30(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleported to the human below the bloody small platform, up the stairs to play the broken plate"
+	s1 = "Zombies teleport below in "
+	s2 = " seconds. Head up and break the board"
     CountdownTimer2(10);
 }
 
 function Msg31(){
-	s1 = "The Sunlight Halo icon is lit up."
-	s2 = "The roadblock to the inner world will be lifted in seconds."
+	s1 = "Ritual has been lit! Obstacles clearing in "
+	s2 = " seconds."
     CountdownTimer(50);
 }
 
 function Msg32(){
-	s1 = "Defending the doorway"
-	s2 = "Seconds after the human collective teleportation into the inner world"
+	s1 = "Defend the doorway! Humans teleport to the world in "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg32s(){
-	s1 = ""
-	s2 = "After seconds the zombie teleports to the back of the human"
+	s1 = "Zombies teleport behind in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg33(){
-	s1 = ""
-	s2 = "Door opens in seconds"
+	s1 = "Door opens in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg34(){
-	s1 = ""
-	s2 = "Second white room after the roadblock lifted"
+	s1 = "White room obstacles clearing in "
+	s2 = " seconds"
     CountdownTimer2(30);
 }
 
 function Msg35(){
-	s1 = "Enter the white room to defend"
-	s2 = "Seconds to the door off, away from the door, the card door will be caught dead"
+	s1 = "Defend! Door closes in "
+	s2 = " seconds"
     CountdownTimer3(10);
 }
 
 function Msg35s(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleport into the white room"
+	s1 = "Zombies teleport to the white room in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg36(){
-	s1 = ""
-	s2 = "Seconds after the black room behind the iron door open"
+	s1 = "Metal door behind the black room opens in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg37(){
-	s1 = "Stay in the dark room walkway."
-	s2 = "Seconds after the human collective teleportation into the black world"
+	s1 = "Stay on the walkway, teleporting humans to the dark world in "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg37s(){
-	s1 = ""
-	s2 = "Second zombie teleportation to behind the human"
+	s1 = "Zombies teleport behind in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg38(){
-	s1 = "The sun's halo is illuminated and"
-	s2 = "Seconds after the zombie teleportation to the stairs under"
+	s1 = "Ritual lit, zombies teleport under the stairs in "
+	s2 = " seconds"
     CountdownTimer(15);
 }
 
 function Msg38s(){
-	s1 = ""
-	s2 = "After seconds the plate is removed and access is gained"
+	s1 = "Boards break in "
+	s2 = " seconds. Prepare to enter the pathway"
     CountdownTimer(30);
 }
 
 function Msg39(){
-	s1 = "The sun's halo is illuminated and"
-	s2 = "Seconds both sides of the board at the same time was destroyed, ready to enter the black water channel"
+	s1 = "Ritual lit, boards at both sides will break in "
+	s2 = " seconds. Prepare to enter the sewers"
     CountdownTimer(25);
 }
 
 function Msg40(){
-	s1 = ""
-	s2 = "Seconds after the human collective teleportation, stay in the black water channel do not go out"
+	s1 = "Teleporting humans in "
+	s2 = " seconds. Stay in the sewers!"
     CountdownTimer(20);
 }
 
 function Msg40s(){
-	s1 = ""
-	s2 = "Seconds after the zombie then teleported into the black water channel"
+	s1 = "Zombies teleport to the sewers in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg42(){
-	s1 = ""
-	s2 = "Seconds later humans teleported en masse, defended against the door and prepared to enter the plasma factory"
+	s1 = "Teleporting humans to the blood factory in "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg42s(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleports behind the human"
+	s1 = "Zombies teleport behind in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg43(){
-	s1 = "Defense"
-	s2 = "After seconds the iron gate starts to rise"
+	s1 = "Defend while the metal door opens in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 function Msg44(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the bottom"
+	s1 = "Zombies teleport below in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg44s(){
-	s1 = "Defense"
-	s2 = "After seconds the iron door opens"
+	s1 = "Defend while the metal door opens in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg45(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the barbed wire walkway"
+	s1 = "Zombies teleport to the metal walkway in "
+	s2 = " seconds"
     CountdownTimer2(15);
 }
 
 function Msg46(){
-	s1 = ""
-	s2 = "The iron door is about to open in seconds, leading to the elevator entrance"
+	s1 = "Metal door leading to elevators open in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg47(){
-	s1 = ""
-	s2 = "Elevator starts in seconds"
+	s1 = "Elevator starts in "
+	s2 = " seconds"
     CountdownTimer(25);
 }
 
 function Msg48(){
-	s1 = ""
-	s2 = "Seconds after the zombie teleportation to the slope iron plate"
+	s1 = "Zombies teleport to the metal platform in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg50(){
-	s1 = ""
-	s2 = "Turn on the switch off button after seconds"
+	s1 = "Stage selection buttons unlock in "
+	s2 = " seconds"
     CountdownTimer3(10);
 }
 
 function Msg52(){
-	s1 = ""
-	s2 = "After seconds all players eat nuclear explosion, enter the selected level"
+	s1 = "Launching nuke in "
+	s2 = " seconds"
     CountdownTimer3(30);
 }
 
 function Msg53(){
-	s1 = ""
-	s2 = "Second zombie teleportation to the bloody space above"
+	s1 = "Zombies teleport above in "
+	s2 = " seconds"
     CountdownTimer(10);
 }
 
 function Msg54(){
-	s1 = "Zombie thrust left"
-	s2 = "seconds"
+	s1 = "Zombie protection deactivates in "
+	s2 = " seconds"
     CountdownTimer4(3);
 }
 
 function Msg55(){
-	s1 = "Zombie thrust left"
-	s2 = "seconds"
+	s1 = "Zombie protection deactivates in "
+	s2 = " seconds"
     CountdownTimer4(5);
 }
 
 function Msg56(){
-	s1 = "Zombie thrust left"
-	s2 = "seconds"
+	s1 = "Zombie protection deactivates in "
+	s2 = " seconds"
     CountdownTimer4(5);
 }
 
 function Msg57(){
-	s1 = "Zombie thrust left"
-	s2 = "seconds"
+	s1 = "Zombie protection deactivates in "
+	s2 = " seconds"
     CountdownTimer4(5);
 }
 
 function Msg58(){
-	s1 = ""
-	s2 = "After seconds the zombie then teleports behind the human"
+	s1 = "Zombie teleport behind in "
+	s2 = " seconds"
     CountdownTimer2(5);
 }
 
 function Msg59(){
-	s1 = ""
-	s2 = "After seconds humans start to teleport"
+	s1 = "Teleporting humans in "
+	s2 = " seconds"
     CountdownTimer(20);
 }
 
 function Msg60(){
-	s1 = ""
-	s2 = "After seconds the iron door opens, the door opens and goes up"
+	s1 = "Head up after metal door opens in "
+	s2 = " seconds"
     CountdownTimer(30);
 }
 
 function Msg61(){
-	s1 = ""
-	s2 = "Seconds after the zombie begins to teleport below"
+	s1 = "Zombies teleport below in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg62(){
-	s1 = ""
-	s2 = "The box barrier will break down after seconds"
+	s1 = "Boxes break in "
+	s2 = " seconds"
     CountdownTimer(30);
 }
 
 function Msg63(){
-	s1 = ""
-	s2 = "Second zombie teleportation to the intermediate platform"
+	s1 = "Zombies teleport to the platform in "
+	s2 = " seconds"
     CountdownTimer2(10);
 }
 
 function Msg64(){
-	s1 = "Defense"
-	s2 = "seconds until the stone door is completely closed"
+	s1 = "Defend for "
+	s2 = " seconds until the stone door closes"
     CountdownTimer3(30);
 }
 
@@ -424,11 +424,11 @@ function CountdownTimer(amount)
 {
 	local i = amount;
 	local j;
-	  for(j = amount;j > 0;j--)
-	  {
+	for(j = amount;j > 0;j--)
+	{
 		EntFire("Channel 1","SetText",s1 + j.tostring() + s2,i-j);
 		EntFire("Channel 1","Display","",i-j);
-	  }
+	}
 }
 
 function CountdownTimer2(amount)
@@ -519,7 +519,7 @@ function MT4(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n     Placement of cube batteries" + 
+			"\n     Place the batteries" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -535,7 +535,7 @@ function MT5(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n       Being charged" + 
+			"\n       Charging..." + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -551,7 +551,7 @@ function MT6(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n       Charging 50%" + 
+			"\n       Charged 50%" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -567,7 +567,7 @@ function MT7(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n       Charging 100%" + 
+			"\n       Charged 100%" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -583,7 +583,7 @@ function MT8(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  The area is a nuclear explosion safety zone" + 
+			"\n  This area is protected from the nuke" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -599,7 +599,7 @@ function MT9(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Waiting for the glide path to trigger a nuclear explosion" + 
+			"\n  Wait for the surf path to trigger the nuke" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -647,8 +647,8 @@ function MT14(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Road closure planks can only pass the button of the Black Pass route" +			
-			"\n  Triggered at the same time, both sides must be defended to the final confluence point" +
+			"\n  Only the dark side can break the boards" +
+			"\n  Both sides must defend before grouping up again" +
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -664,7 +664,7 @@ function MT15(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Trigger the shibboleth egg（1/1)" +			
+			"\n  Triggered secret easter egg（1/1)" +
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -680,7 +680,7 @@ function MT16(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Hand-painted by: 港村村长" +			
+			"\n  Drawn by: 港村村长" +
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -696,7 +696,7 @@ function MT17(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n             pixiv homepage" + 
+			"\n             Pixiv homepage:" + 
 			"\n https://www.pixiv.net/users/12413989" + 
 			"\n"
 			
@@ -729,7 +729,7 @@ function MT19(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n    Difficulty: Difficult" + 
+			"\n    Difficulty: Hard" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -745,7 +745,7 @@ function MT20(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n   Second week" + 
+			"\n   The Second Week" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -761,7 +761,7 @@ function MT21(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Unlock the new Bgm: Promise" + 
+			"\n Unlocked new BGM: Promise" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -777,7 +777,7 @@ function MT23(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n The process is all cleared" + 
+			"\n Map has been cleared!" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -793,7 +793,7 @@ function MT24(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Next is the transfer link, open the second week" + 
+			"\n Next is stage selection, starting from week 2" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -809,7 +809,7 @@ function MT25(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Tip: The level has no zombie thrust" + 
+			"\n Hint: This stage has no zombie protection" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -825,7 +825,7 @@ function MT26(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n       Egg ending" + 
+			"\n       Secret Easter Egg Ending" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -841,7 +841,7 @@ function MT27(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n   True ending: Escape" + 
+			"\n   True Ending: Escape" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
