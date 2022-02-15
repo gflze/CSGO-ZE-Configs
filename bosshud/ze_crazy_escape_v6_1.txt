@@ -1,0 +1,119 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "nrk7_secret_counter"
+        "HPbar_counter"     "nrk7_secret_hp_iterations"
+        "HPinit_counter"    "nrk7_secret_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Secret Bosses"
+    }
+    "1"
+    {
+        "HP_counter"        "nrk6_laser2_counter"
+        "HPbar_counter"     "nrk6_laser2_hp_iterations"
+        "HPinit_counter"    "nrk6_laser2_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Ultimate Laser Boss"
+    }
+    "2"
+    {
+        "HP_counter"        "nrk6_laser1_counter"
+        "HPbar_counter"     "nrk6_laser1_hp_iterations"
+        "HPinit_counter"    "nrk6_laser1_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Naraka"
+    }
+    "3"
+    {
+        "HP_counter"        "nrk6_boss_counter"
+        "HPbar_counter"     "nrk6_boss_hp_iterations"
+        "HPinit_counter"    "nrk6_boss_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "DJ"
+    }
+    "4"
+    {
+        "HP_counter"        "nrk5_laser_counter"
+        "HPbar_counter"     "nrk5_laser_hp_iterations"
+        "HPinit_counter"    "nrk5_laser_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Naraka"
+    }
+    "5"
+    {
+        "HP_counter"        "nrk5_boss_counter"
+        "HPbar_counter"     "nrk5_boss_hp_iterations"
+        "HPinit_counter"    "nrk5_boss_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Headless Demon"
+    }
+    "6"
+    {
+        "HP_counter"        "nrk4_boss_laser_counter"
+        "HPinit_counter"    "nrk4_boss_hp_backup"
+        "HPbar_counter"     "nrk4_boss_hp_iterations"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Crucified"
+    }
+    "7"
+    {
+        "HP_counter"        "nrk3_ultimate_counter"
+        "HPinit_counter"    "nrk3_ultimate_hp_backup"
+        "HPbar_counter"     "nrk3_ultimate_hp_iterations"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "3 Narakas"
+    }
+    "8"
+    {
+        "HP_counter"        "nrk3_boss_hp_counter"
+        "HPinit_counter"    "nrk3_boss_hp_backup"
+        "HPbar_counter"     "nrk3_boss_hp_iterations"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Giant Crucified"
+    }
+    "9"
+    {
+        "HP_counter"        "nrk2_boss_counter"
+        "HPinit_counter"    "nrk2_boss_hp_iterations"
+        "HPbar_counter"     "nrk2_boss_hp_backup"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Naraka"
+    }
+    "10"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "nrk1_room4_boss_hp"
+        "CustomText"        "Sinner"
+    }
+}
