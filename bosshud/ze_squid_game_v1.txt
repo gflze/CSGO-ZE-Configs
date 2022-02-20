@@ -1,0 +1,25 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "big_doll_counter"
+        "HPinit_counter"    "big_doll_hp_backup"
+        "HPbar_counter"     "big_doll_hp_iterations"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Doll"
+    }
+    "1"
+    {
+        "HP_counter"        "mask_counter"
+        "HPinit_counter"    "mask_hp_backup"
+        "HPbar_counter"     "mask_hp_iterations"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Mask"
+    }
+}
