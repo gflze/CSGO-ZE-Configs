@@ -420,7 +420,7 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_surf_ffxiv_beachescape_camper_isengard_laser_luff"
+	"ze_surf_ffxiv_beachescape_camper_isengard_laser_mako"
 	{
 		zr_infect_mzombie_ratio							1
 		zr_class_modify									1
