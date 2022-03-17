@@ -1,68 +1,68 @@
 //#####################################################################
-//Patched version intended for use with GFL ze_silent_hill_2_illusion_b5 stripper
+//Patched version intended for use with GFL ze_silent_hill_3_flee_v4 stripper
 //Translates the map
-//Install as csgo/scripts/vscripts/gfl/sh2_patched.nut
+//Install as csgo/scripts/vscripts/gfl/flee_patched.nut
 //#####################################################################
 
 s1 <- null;
 s2 <- null;
 
-function Msg2(){
-	s1 = "Red blood door opens in "
+function Msg1(){
+	s1 = "Defend for "
 	s2 = " seconds"
 	CountdownTimer(40);
+}
+
+function Msg2(){
+	s1 = "Zombies teleport in "
+	s2 = " seconds"
+	CountdownTimer2(10);
 }
 
 function Msg3(){
-	s1 = "Humans teleport in "
+	s1 = "Zombie cage opens in "
 	s2 = " seconds"
-	CountdownTimer1(9);
+	CountdownTimer2(15);
 }
 
 function Msg4(){
-	s1 = "Boxes break in "
-	s2 = " seconds \nBeware of zombies coming from the side door!"
-	CountdownTimer(40);
+	s1 = "Zombie cage opens in "
+	s2 = " seconds"
+	CountdownTimer2(10);
 }
 
 function Msg5(){
-	s1 = "This is all but an elaborate illusion~ \nTeleporting humans back to reality in "
+	s1 = "Defend for "
 	s2 = " seconds"
-	CountdownTimer(10);
+	CountdownTimer(30);
 }
 
-function Msg7(){
-	s1 = "Zombies teleport to the storage room \nin "
+function Msg6(){
+	s1 = "Zombie cage opens in "
 	s2 = " seconds"
-	CountdownTimer2(10);
+	CountdownTimer2(5);
 }
 
 function Msg8(){
-	s1 = "Boxes break in "
+	s1 = "Defend for "
 	s2 = " seconds"
-	CountdownTimer(20);
-}
-
-function Msg9(){
-	s1 = "Zombies teleport to the stairs in "
-	s2 = " seconds"
-	CountdownTimer2(10);
+	CountdownTimer(45);
 }
 
 function Msg10(){
-	s1 = "Wooden boards break in "
+	s1 = "Boards break in "
 	s2 = " seconds \nPrepare to enter the dark world..."
 	CountdownTimer(15);
 }
 
 function Msg11(){
-	s1 = "Zombies teleport behind the humans \nin "
+	s1 = "Zombies teleport behind in "
 	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg12(){
-	s1 = "Zombies teleport behind the metal boards \nin "
+	s1 = "Doorhug and defend! \nZombies teleport in "
 	s2 = " seconds"
 	CountdownTimer2(10);
 }
@@ -75,12 +75,12 @@ function Msg12s(){
 
 function Msg13(){
 	s1 = "Zombies teleport to the door in "
-	s2 = " seconds \nRUN!"
+	s2 = " seconds \nRun!"
 	CountdownTimer2(10);
 }
 
 function Msg14(){
-	s1 = "The boxes break in "
+	s1 = "Obstacles clear in "
 	s2 = " seconds"
 	CountdownTimer(25);
 }
@@ -93,43 +93,43 @@ function Msg15(){
 
 function Msg16(){
 	s1 = "Metal door opens in "
-	s2 = " seconds \nQuickly exit the room and group up"
+	s2 = " seconds \nQuickly regroup!"
 	CountdownTimer(25);
 }
 
 function Msg17(){
-	s1 = "Zombies teleport to the dark walkway \nin "
+	s1 = "Zombies teleport to the walkway in "
 	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg18(){
-	s1 = "Bridge rises in "
-	s2 = " seconds \nPrepare to drop down to the pool"
+	s1 = "Platform rises in "
+	s2 = " seconds"
 	CountdownTimer(25);
 }
 
 function Msg19(){
-	s1 = "Zombies teleport above in "
-	s2 = " seconds! \nWatch your backs!"
+	s1 = "Zombies drop behind in "
+	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg20(){
-	s1 = "Breaking the metal fence in "
+	s1 = "Metal fence breaks in "
 	s2 = " seconds"
 	CountdownTimer(20);
 }
 
 function Msg21(){
-	s1 = "Zombies teleport by the white box \nin "
+	s1 = "Zombies teleport by the boxes in "
 	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg22(){
-	s1 = "Sunken platforms rises in "
-	s2 = " seconds \nDo not edge!"
+	s1 = "Platform rises in "
+	s2 = " seconds. Do not edge"
 	CountdownTimer(20);
 }
 
@@ -141,30 +141,30 @@ function Msg23(){
 
 function Msg23s(){
 	s1 = "Metal fence breaks in "
-	s2 = " seconds \nThrow some nades and retreat"
+	s2 = " seconds"
 	CountdownTimer(20);
 }
 
 function Msg24(){
-	s1 = "Hidden path appears in "
+	s1 = "Hidden passage appears in "
 	s2 = " seconds"
 	CountdownTimer(10);
 }
 
 function Msg25(){
-	s1 = "White boxes break in "
-	s2 = " second"
+	s1 = "White box breaks in "
+	s2 = " seconds"
 	CountdownTimer(15);
 }
 
 function Msg26(){
 	s1 = "Defend for "
-	s2 = " seconds \nDO NOT EDGE!"
+	s2 = " seconds. Do not edge"
 	CountdownTimer(25);
 }
 
 function Msg26s(){
-	s1 = "Zombies teleport to the small room below in "
+	s1 = "Zombies teleport below in "
 	s2 = " seconds"
 	CountdownTimer2(15);
 }
@@ -176,31 +176,31 @@ function Msg27(){
 }
 
 function Msg28(){
-	s1 = "Defend! \nMetal fence breaks in "
+	s1 = "Metal fence breaks in "
 	s2 = " seconds"
 	CountdownTimer(15);
 }
 
 function Msg29(){
-	s1 = "Elevator starts in "
-	s2 = " seconds \nThen level one complete!"
+	s1 = "Stage 1 ends after elevator activates in "
+	s2 = " seconds"
 	CountdownTimer(25);
 }
 
 function Msg30(){
-	s1 = "Zombies teleport below in "
-	s2 = " seconds \nHead up and break the wall"
+	s1 = "Zombie teleport below in "
+	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg31(){
 	s1 = "Ritual has been lit! \nObstacles clearing in "
-	s2 = " seconds."
+	s2 = " seconds"
 	CountdownTimer(50);
 }
 
 function Msg32(){
-	s1 = "Defend the doorway! \nHumans teleport to the world in "
+	s1 = "Defend the doorway! \nHuman teleport to the world in "
 	s2 = " seconds"
 	CountdownTimer(20);
 }
@@ -218,62 +218,62 @@ function Msg33(){
 }
 
 function Msg34(){
-	s1 = "White room obstacles clearing in "
+	s1 = "Clearing obstacles in "
 	s2 = " seconds"
 	CountdownTimer2(30);
 }
 
 function Msg35(){
-	s1 = "Defend! Door closes in "
-	s2 = " seconds"
+	s1 = "Defend for "
+	s2 = " seconds until door closes"
 	CountdownTimer3(10);
 }
 
 function Msg35s(){
-	s1 = "Zombies teleport to the white room in "
+	s1 = "zombies teleport to the white room in "
 	s2 = " seconds"
 	CountdownTimer2(5);
 }
 
 function Msg36(){
-	s1 = "Metal door behind the black room opens in "
+	s1 = "Metal door opens in "
 	s2 = " seconds"
 	CountdownTimer(25);
 }
 
 function Msg37(){
-	s1 = "Stay on the walkway \nTeleporting humans to the dark world in "
+	s1 = "Teleporting humans to the dark world in "
 	s2 = " seconds"
 	CountdownTimer(20);
 }
 
 function Msg37s(){
-	s1 = "Zombies teleport behind in "
+	s1 = "Zombies teleport behind humans in "
 	s2 = " seconds"
 	CountdownTimer2(5);
 }
 
 function Msg38(){
-	s1 = "Ritual has been lit! \nZombies teleport under the stairs in "
+	s1 = "Ritual has been lit! \nZombies teleport to the stairs in "
 	s2 = " seconds"
 	CountdownTimer(15);
 }
 
 function Msg38s(){
-	s1 = "Wooden boards break in "
-	s2 = " seconds \nPrepare to enter the pathway"
+	s1 = "Enter the pathway once the wooden boards \nbreak in "
+	s2 = " seconds"
 	CountdownTimer(30);
 }
 
 function Msg39(){
-	s1 = "Ritual has been lit! \nWooden boards at both sides will break in "
-	s2 = " seconds \nPrepare to enter the sewers"
+	s1 = "Ritual has been lit! \nPrepare to enter the sewers in "
+	s2 = " seconds"
 	CountdownTimer(25);
 }
 
 function Msg40(){
 	s1 = "Teleporting humans in "
-	s2 = " seconds! \nStay in the sewers!"
+	s2 = " seconds"
 	CountdownTimer(20);
 }
 
@@ -284,19 +284,19 @@ function Msg40s(){
 }
 
 function Msg42(){
-	s1 = "Teleporting humans to the blood factory in "
+	s1 = "Defend until humans teleport to the blood factory in "
 	s2 = " seconds"
 	CountdownTimer(20);
 }
 
 function Msg42s(){
-	s1 = "Zombies teleport behind in "
+	s1 = "Zombies teleport behind humans in "
 	s2 = " seconds"
 	CountdownTimer2(5);
 }
 
 function Msg43(){
-	s1 = "Defend while the metal door opens in "
+	s1 = "Defend until metal door raises in "
 	s2 = " seconds"
 	CountdownTimer(25);
 }
@@ -307,7 +307,7 @@ function Msg44(){
 }
 
 function Msg44s(){
-	s1 = "Defend while the metal door opens in "
+	s1 = "Defend until metal door opens in "
 	s2 = " seconds"
 	CountdownTimer(25);
 }
@@ -319,7 +319,7 @@ function Msg45(){
 }
 
 function Msg46(){
-	s1 = "Metal door leading to elevators open in "
+	s1 = "Enter the elevator once the door opens in "
 	s2 = " seconds"
 	CountdownTimer(25);
 }
@@ -331,19 +331,19 @@ function Msg47(){
 }
 
 function Msg48(){
-	s1 = "Zombies teleport to the metal platform in "
+	s1 = "Zombies teleport to the ramp in "
 	s2 = " seconds"
 	CountdownTimer2(10);
 }
 
 function Msg50(){
-	s1 = "Stage selection buttons unlock in "
+	s1 = "Button unlocks in "
 	s2 = " seconds"
 	CountdownTimer3(10);
 }
 
 function Msg52(){
-	s1 = "Launching nuke in "
+	s1 = "Nuke goes off in "
 	s2 = " seconds"
 	CountdownTimer3(30);
 }
@@ -355,43 +355,43 @@ function Msg53(){
 }
 
 function Msg54(){
-	s1 = "Zombie protection deactivates in "
-	s2 = " seconds"
+	s1 = ""
+	s2 = " seconds before zombie protection ends"
 	CountdownTimer4(3);
 }
 
 function Msg55(){
-	s1 = "Zombie protection deactivates in "
-	s2 = " seconds"
+	s1 = ""
+	s2 = " seconds before zombie protection ends"
 	CountdownTimer4(5);
 }
 
 function Msg56(){
-	s1 = "Zombie protection deactivates in "
-	s2 = " seconds"
+	s1 = ""
+	s2 = " seconds before zombie protection ends"
 	CountdownTimer4(5);
 }
 
 function Msg57(){
-	s1 = "Zombie protection deactivates in "
-	s2 = " seconds"
+	s1 = ""
+	s2 = " seconds before zombie protection ends"
 	CountdownTimer4(5);
 }
 
 function Msg58(){
-	s1 = "Zombie teleport behind in "
+	s1 = "Zombies teleport behind humans in "
 	s2 = " seconds"
 	CountdownTimer2(5);
 }
 
 function Msg59(){
-	s1 = "Teleporting humans in "
+	s1 = "Humans teleport in "
 	s2 = " seconds"
 	CountdownTimer(20);
 }
 
 function Msg60(){
-	s1 = "Head up after metal door opens in "
+	s1 = "Metal door opens in "
 	s2 = " seconds"
 	CountdownTimer(30);
 }
@@ -415,8 +415,8 @@ function Msg63(){
 }
 
 function Msg64(){
-	s1 = "Defend for "
-	s2 = " seconds until the stone door closes"
+	s1 = "Defend until the stone door closes in "
+	s2 = " seconds"
 	CountdownTimer3(30);
 }
 
@@ -486,7 +486,7 @@ function MT3(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n 《Silent Hill 2：Illusion》" + 
+			"\n 《Silent Hill 3: Flee》" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -501,7 +501,7 @@ function MT4(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Mapper：港村村長" + 
+			"\n Medium Difficulty" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -516,7 +516,7 @@ function MT5(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Stage 1: Chaos" + 
+			"\n Extreme Difficulty" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -524,18 +524,19 @@ function MT5(){
 	}
 }
 
-function MT7(){
-	theGameText <- Entities.FindByName(null,"channel 4 maptext3")
+function MT6(){
+	theGameText <- Entities.FindByName(null,"channel 4 maptext")
 	if(theGameText != null)
 	{
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Easter Egg Found:" + 
-			"\n Temporarily locked in a small room..."
+			"\n Normal Difficulty" + 
+			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
 		EntFire(temp1,"Display", "", 0.10,  null)
+		
 	}
 }
 
@@ -546,7 +547,7 @@ function MT8(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Stage 2: White Room" + 
+			"\n Normal Difficulty" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -561,7 +562,7 @@ function MT9(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Hint: Defend all three zombie paths" + 
+			"\n  Hint: Defend all 3 zombie paths" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -576,7 +577,7 @@ function MT10(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Hint: Maze route is under your feet!" + 
+			"\n  Hint: Maze route is under your feet" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -623,8 +624,8 @@ function MT14(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Only the dark path can break the boards" +
-			"\n Both sides must defend before regrouping" +
+			"\n  Only the dark path can break the wooden boards" +
+			"\n  Both sides must defend before regrouping" +
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -639,7 +640,7 @@ function MT15(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n Triggered Easter Egg (1/1)" +
+			"\n  Triggered easter egg (1/1)" +
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -685,7 +686,7 @@ function MT18(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Difficulty: Normal" + 
+			"\n Difficulty: Easy" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
@@ -700,7 +701,7 @@ function MT19(){
 		local temp1 = theGameText.GetName();
 		
 		Text <- "\n" +
-			"\n  Difficulty: Hard" + 
+			"\n Difficulty: Hard" + 
 			"\n"
 			
 		theGameText.__KeyValueFromString("message",Text)
