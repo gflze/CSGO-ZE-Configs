@@ -1,0 +1,36 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"nrk1_counter"
+		"HPbar_counter"		"nrk1_hp_iterations"
+		"HPinit_counter"	"nrk1_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Troll"
+	}
+	"1"
+	{
+		"HP_counter"		"nrk2_counter"
+		"HPbar_counter"		"nrk2_hp_iterations"
+		"HPinit_counter"	"nrk2_hp_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Lord of Death"
+	}
+	"2"
+	{
+		"HP_counter"		"nrk3_boss_counter"
+		"HPbar_counter"		"nrk3_boss_iterations"
+		"HPinit_counter"	"nrk3_boss_backup"
+		"HPbar_min"		"0"
+		"HPbar_max"		"5"
+		"HPbar_default"		"5"
+		"HPbar_mode"		"1"
+		"CustomText"		"Blood Seeker"
+	}
+}
