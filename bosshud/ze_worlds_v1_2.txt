@@ -1,0 +1,26 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "st2_counter_2"
+    }
+    "1"
+    {
+        "HP_counter"        "st3_boss_sub_hp"
+        "HPbar_counter"     "st3_boss_hp"
+        "HPbar_min"         "0"
+        "HPbar_max"         "4"
+        "HPbar_default"     "4"
+        "HPbar_mode"        "1"
+    }
+    "2"
+    {
+        "HP_counter"        "st2_chicken_sub_hp"
+        "HPbar_counter"     "st2_chicken_hp"
+        "HPbar_min"         "0"
+        "HPbar_max"         "3"
+        "HPbar_default"     "3"
+        "HPbar_mode"        "1"
+        "CustomText"        "Chicken"
+    }
+}
