@@ -1,0 +1,19 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "madara_HP_Counter"
+        "CustomText"        "Uchiha Madara"
+    }
+    "1"
+    {
+        "HP_counter"        "Madara_boss_health"
+        "CustomText"        "Uchiha Madara"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "gedomazo_break"
+        "CustomText"        "Gedo Mazo Statue"
+    }
+}
