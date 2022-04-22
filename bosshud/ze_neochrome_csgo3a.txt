@@ -1,0 +1,18 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"nut_boss_hp"
+		"HPbar_counter"		"nut_boss_segment"
+		"HPbar_min"		"0"
+		"HPbar_max"		"10"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Blue Sphere"
+ 	}
+	"1"
+	{
+		"HP_counter"		"nut_final_sphere_counter"
+		"CustomText"		"Purple Sphere"
+	}
+}
