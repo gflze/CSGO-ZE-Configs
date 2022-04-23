@@ -1,0 +1,13 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "l1_boss_hp_counter"
+        "CustomText"        "Sphere"
+    }
+    "1"
+    {
+        "HP_counter"        "l2_boss_counter"
+        "CustomText"        "Sphere"
+    }
+}

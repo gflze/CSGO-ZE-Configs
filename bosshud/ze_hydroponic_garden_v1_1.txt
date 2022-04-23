@@ -1,0 +1,18 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "stx3_health"
+        "HPbar_counter"     "stx3_segment"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Pink Ball"
+    }
+    "1"
+    {
+        "HP_counter"        "ee_counter"
+        "CustomText"        "Light Pillar"
+    }
+}
