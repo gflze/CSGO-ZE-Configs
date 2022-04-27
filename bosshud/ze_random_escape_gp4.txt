@@ -6,4 +6,11 @@
 		"BreakableName" 	"ZombieMurder_Boss_Break"
 		"CustomText" 		"Droneship (Push)"
 	}
+
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"	"Zeal_Boss_Break"
+		"CustomText"	"Droneship"
+	}
 }
