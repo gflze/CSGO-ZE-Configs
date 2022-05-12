@@ -20,4 +20,9 @@
         "HP_counter"        "Stage3_Spider_hp"
         "CustomText"        "Spider"
     }
+    "4"
+    {
+        "HP_counter"        "Stage4_Meat_hp"
+        "CustomText"        "Meat Giant"
+    }
 }
