@@ -1,6 +1,6 @@
 "math_counter"
 {
-	"0" //math_counter
+	"0"
 	{
 		"HP_counter"		"boss_math"
 		"HPbar_counter"		"boss_hpbar_overlaycounter"
