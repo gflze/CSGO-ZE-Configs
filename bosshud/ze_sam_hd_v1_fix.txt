@@ -1,0 +1,24 @@
+"math_counter"
+{	
+	"0"
+	{
+		"HP_counter"		"math_ramses_boss_health"
+		"CustomText"		"Ramses"
+	}
+	"1"
+	{
+		"HP_counter"		"math_valley_boss_health"
+	}
+	"2"
+	{
+		"HP_counter"		"math_sandcanyon_boss_health"
+	}
+	"3"
+	{
+		"HP_counter"		"math_oasis_boss_health"
+	}
+	"4"
+	{
+		"HP_counter"		"math_luxor_boss_health"
+	}
+}
