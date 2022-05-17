@@ -1,0 +1,37 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly" 		"1"
+	}
+	"0"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s14boss_hit"
+	}
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s25boss_hit"
+	}
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s36miniboss_hit"
+	}
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s3boss_hit1"
+	}
+	"4"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s3boss_hit2"
+	}
+	"5"
+	{
+		"Type"				"breakable"
+		"BreakableName"			"s6_boss_hit"
+	}
+}
