@@ -152,7 +152,7 @@ function KillTeam(team)
 
 		while ((iPlayer = Entities.FindByClassname(iPlayer, "player")) != null)
 			if (iPlayer.GetTeam() == team && iPlayer.GetHealth() > 0)
-				iPlayer.SetHealth(-1);
+				EntFireByHandle(iPlayer, "SetHealth", "-1", 0.0, null, null);
 
 		if (team == 2)
 			EntFire("map1tkiller1", "Enable");
