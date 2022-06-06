@@ -28,10 +28,4 @@
 		"BreakableName"		"stage_savage_final_rock_body"
 		"CustomText"		"Rock Wall"
 	}
-	"5"
-	{
-		"Type"			"breakable"
-		"BreakableName"		"golem_body"
-		"CustomText"		"Golem"
-	}
 }
