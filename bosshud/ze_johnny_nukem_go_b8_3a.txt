@@ -1,31 +1,21 @@
 "math_counter"
 {
-	"config"
-	{
-		"MultBoss"	"1"
-	}
 	"0"
-	{
-		"Type"	"breakable"
-		"BreakableName"	"NPCHitbox"
-		"CustomText"	"Nazi Soldier"
-	}
-	"1"
 	{
 		"HP_counter"	"frog_counter"
 		"CustomText"	"King of Frogs"
 	}
-	"2"
+	"1"
 	{
 		"HP_counter"	"frog2_counter"
 		"CustomText"	"Lego King IV"
 	}
-	"3"
+	"2"
 	{
 		"HP_counter"	"solid_paper_counter"
 		"CustomText"	"General Solid Paper"
 	}
-	"4"
+	"3"
 	{
 		"HP_counter"	"stage3_laser_counter"
 		"CustomText"	"Resurrected General Solid Paper"
