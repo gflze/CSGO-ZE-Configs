@@ -1,0 +1,23 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Cave3CopperS_Dragon_Boss_counter"
+		"CustomText"		"Dragon"
+	}
+	"1"
+	{
+		"HP_counter"		"Ghoul_HP"
+		"CustomText"		"Ghoul"
+	}
+	"2"
+	{
+		"HP_counter"		"Minotaur_Mage_HP"
+		"CustomText"		"Minotaur Mage"
+	}
+	"3"
+	{
+		"HP_counter"		"OutOfEarth_Desert_Elemental_Health"
+		"CustomText"		"Energy Elemental"
+	}
+}
