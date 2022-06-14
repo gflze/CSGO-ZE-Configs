@@ -3,11 +3,11 @@
 	"0"
 	{
 		"HP_counter"		"st2_boss_hp"
-		"CustomText"		"Cube"
+		"CustomText"		"Black Cube"
 	}
 	"1"
 	{
 		"HP_counter"		"st3_boss_hp_counter"
-		"CustomText"		"BOSS"
+		"CustomText"		"White Cube"
 	}
 }
