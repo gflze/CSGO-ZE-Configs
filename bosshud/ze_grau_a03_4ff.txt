@@ -9,6 +9,6 @@
 		"HPbar_max"		"10"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
-		"CustomText"		"BOSS HP"
+		"CustomText"		"Gray Ball"
 	}
 }
