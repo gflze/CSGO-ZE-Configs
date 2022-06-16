@@ -5,6 +5,10 @@
 //  Patched version intended for use with GFL ze_diddle_v3 stripper, included in the release
 //  Adds "Diddle Extreme", where you must beat everything in a single round (with some help/items)
 //===================================\\
+//	To instantly skip to finale (even on extreme), run these 2 outputs just after the round begins (before the first stage gets picked):
+//		ent_fire manager runscriptcode " stagepool.clear() "
+//		ent_fire manager runscriptcode " ReachedCheckpoint() "
+//===================================\\
 
 stagepickdelay <- 10.00;	//how many extra seconds to delay the stage-picking (allowing players to vote + give breathing room)
 coins_max_normalmode <- 250;
@@ -544,8 +548,11 @@ function RoundStart()
 {
 	EntFireByHandle(self,"RunScriptCode"," DiddleMeWind(); ",1.00,null,null);
 	exmvote_voteallowed = false;
+	zombe_item_users.clear();
+	zombe_item_users = [];
 	if (extreme)
 	{
+		vaginaface_limit = 10;
 		coins_max = coins_max_extrememode;
 		EntFire("manager", "RunScriptCode", "VoteMsg();", 4.00, null);
 		exmvote_voteallowed = true;
@@ -555,6 +562,7 @@ function RoundStart()
 	}
 	else
 	{
+		vaginaface_limit = 4;
 		coins_max = coins_max_normalmode;
 		EntFire("ExtremeShoot*", "Kill", "", 0.00, null);
 	}
@@ -960,6 +968,13 @@ function ReachedCheckpoint()
 
 ddicktimeout <- 1.20;
 ddickdead <- false;
+function DiddleDickBossInitHP()
+{
+	if(extreme)
+		EntFire("dd_hp","RunScriptCode"," AddHP(10000,1500); ",0.00,null);		//extreme only (more base HP)
+	else
+		EntFire("dd_hp","RunScriptCode"," AddHP(2000,1500); ",0.00,null);		//default values for normal
+}
 function DiddleDickBossInit()
 {
 	ddicktimeout = 1.20;
@@ -1565,7 +1580,7 @@ function GiveHumansHP()
 		}
 	} 
 }
-vaginaface_limit <- 10;		//added in #9
+vaginaface_limit <- 4;		//added in #9
 function AddVagina()
 {
 	//gets called from vaginaface_base as activator
@@ -1627,17 +1642,25 @@ function CakeHealTouch()
 	local curhp = activator.GetHealth();
 	if(curhp <= 0)return;
 	local newhp = 100;
+	local isbluecake = false;
 	if(extreme)
 	{
 		caller.ValidateScriptScope();
 		if("dicklettboss2entry" in caller.GetScriptScope())
+		{
 			newhp = (0+cakeheal_dicklettboss2entry);
+			isbluecake = true;
+		}
 		else
 			newhp = (0+cakeheal_extreme);
 	}
 	else 
 		newhp = (0+cakeheal_normal);
-	if(curhp >= newhp)return;
+	if(curhp >= newhp)
+	{
+		if(isbluecake){newhp = (curhp-1);}
+		else return;
+	}
 	EntFireByHandle(activator,"AddOutput","health "+newhp.tostring(),0.00,null,null);
 }
 
@@ -2021,7 +2044,7 @@ extreme_shreks_in_weeb <- 5;
 extreme_shreks_in_weeb_hp_eachplayer <- 5.00;	//5*50 = 250
 function ExtremeEvent(index)
 {
-	if(!extreme)
+	if(!extreme && index != 71)	//case 71 fixes a thing needed for normal as well
 		return;
 	printl("ExtremeEvent#"+index.tostring()+" triggered!");
 	switch(index)
@@ -2543,6 +2566,11 @@ function ExtremeEvent(index)
 				exev_spawnbounds.push(ExSpawnBounds("s_mortar",-13984,-12192,12080,14512,16056,Vector(0,0,0)));
 				exev_spawnrate = 2.00;
 				EntFireByHandle(self,"RunScriptCode"," if(!exev_spawnticking)ExevSpawnTick(); ",3.00,null,null);
+			//spawn some yellow lasers on top of the safe/cheese pillar spots:
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12128,15877),null,7.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12399,15877),null,7.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12884,15877),null,7.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,13172,15877),null,7.00);
 			break;
 		}
 		case 36:	//dicklett - boss#3 attack (quake - starts hurting at 2.0s - ends hurting at 8.50s)
@@ -2711,6 +2739,11 @@ function ExtremeEvent(index)
 				EntFire("X69XOrd_main_large_diglett_break","RunScriptCode"," AddHP(5000,5700); ",2.20,null);
 			//spawn a yellow laser after 5.0s at pos:(-12959,13043,15472)
 				ExevSpawn("blobblaser_tem1",Vector(-12959,13043,15472),null,5.0);
+			//spawn some yellow lasers on top of the safe/cheese pillar spots:
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12128,15877),null,8.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12399,15877),null,8.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,12884,15877),null,8.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12130,13172,15877),null,8.00);
 			break;
 		}
 		case 51:	//dicklett - boss#5 attack (quake - starts hurting at 2.0s - ends hurting at 8.50s)
@@ -2812,7 +2845,11 @@ function ExtremeEvent(index)
 				EntFireByHandle(self,"RunScriptCode"," exev_spawns.clear(); ",60.00,null,null);//STOP
 			//spawn some yellow lasers to prevent cheese-defending for 'too' long after the hold is open (50.0s)
 				ExevSpawn("blobblaser_tem1",Vector(-12551,6785,14137),null,50.00);
-				ExevSpawn("blobblaser_tem1",Vector(-12551,7535,14137),null,53.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12551,6785,14137),null,55.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12551,7535,14137),null,54.00);
+				ExevSpawn("blobblaser_tem1",Vector(-13231,7556,14123),null,58.00);
+				ExevSpawn("blobblaser_tem1",Vector(-12551,7535,14137),null,60.00);
+				ExevSpawn("blobblaser_tem1",Vector(-13714,7700,14137),null,62.00);
 			break;
 		}
 		case 57:	//omaha - when reaching trigger below helicopter (final hold, TP-out for CT's enable after 80.0s)
@@ -3015,19 +3052,34 @@ function ExtremeEvent(index)
 		}
 		case 71:	//finale - when the fetus boss is defeated (zcage-rock-hold breaks after 128.0s, zcage breaks after 134.0s)
 		{
-			//stop spawning in mortarstrikes across the arena
-				EntFireByHandle(self,"RunScriptCode"," exev_spawnbounds.clear(); ",0.00,null,null);//STOP
-			//spawn yellow lasers at 16.0s at pos:(9043,-9560,1034),(9202,-8161,990)
-				ExevSpawn("blobblaser_tem1",Vector(9043,-9560,1034),null,16.0);
-				ExevSpawn("blobblaser_tem1",Vector(9202,-8161,990),null,16.0);
-			//spawn a yellow laser at 110.0s at pos:(2645,-8483,910)
-				ExevSpawn("blobblaser_tem1",Vector(2645,-8483,910),null,110.0);
-			//spawn vaginafaces at pos:(7266,-8779,2499),(8777,-5799,1770),(4585,-8369,1442)
-				ExevSpawn("s_vaginaface",Vector(7266,-8779,2499));
-				ExevSpawn("s_vaginaface",Vector(8777,-5799,1770));
-				ExevSpawn("s_vaginaface",Vector(4585,-8369,1442));
-			//break the zcage by FireUser1 on 'finale_zcage' at 131.0s, a few seconds earlier than usual 
-				EntFire("finale_zcage","FireUser1","",131.00,null);
+			if(extreme)
+			{
+				//stop spawning in mortarstrikes across the arena
+					EntFireByHandle(self,"RunScriptCode"," exev_spawnbounds.clear(); ",0.00,null,null);//STOP
+				//spawn yellow lasers at 16.0s at pos:(9043,-9560,1034),(9202,-8161,990)
+					ExevSpawn("blobblaser_tem1",Vector(9043,-9560,1034),null,16.0);
+					ExevSpawn("blobblaser_tem1",Vector(9202,-8161,990),null,16.0);
+				//spawn a yellow laser at 110.0s at pos:(2645,-8483,910)
+					ExevSpawn("blobblaser_tem1",Vector(2645,-8483,910),null,110.0);
+				//spawn vaginafaces at pos:(7266,-8779,2499),(8777,-5799,1770),(4585,-8369,1442)
+					ExevSpawn("s_vaginaface",Vector(7266,-8779,2499));
+					ExevSpawn("s_vaginaface",Vector(8777,-5799,1770));
+					ExevSpawn("s_vaginaface",Vector(4585,-8369,1442));
+				//break the zcage by FireUser1 on 'finale_zcage' at 131.0s, a few seconds earlier than usual 
+					EntFire("finale_zcage","FireUser1","",131.00,null);
+			}
+			//spawn a trigger inside the displacement that prevents a fucked shortcut
+				local trig = Entities.CreateByClassname("trigger_multiple");
+				trig.SetOrigin(Vector(3136,-9096,2432));
+				trig.SetAngles(0,0,0);
+				trig.SetSize(Vector(-64,-376,-1664),Vector(64,376,1664));
+				trig.__KeyValueFromInt("spawnflags",1);
+				trig.__KeyValueFromInt("solid",3);
+				trig.__KeyValueFromInt("startdisabled",1);
+				trig.__KeyValueFromInt("collisiongroup",10);
+				trig.__KeyValueFromString("targetname","finaleanticheese_postbabyboss");
+				EntFireByHandle(trig,"AddOutput","OnStartTouch !activator:SetHealth:-1:0:-1",0.00,null,null);
+				EntFireByHandle(trig,"Enable","",0.10,null,null);
 			break;
 		}
 		case 72:	//finale - 2-split hold just after the lavarise zcage-rock-hold (breaks/opens after 20.0s)
@@ -3118,6 +3170,12 @@ function ExtremeEvent(index)
 				exev_finalboss_laserticking = true;
 				EntFireByHandle(self,"RunScriptCode"," ExevTickFinalbossLaser(); ",7.00,null,null);
 				EntFireByHandle(self,"RunScriptCode","exev_finalboss_laserticking = false; ",25.00,null,null);//STOP
+			//spawn some final yellow lasers at the jump, the most evil ones in the entire map for sure (i'm sorry, maybe?)
+				ExevSpawn("blobblaser_tem1",Vector(-14592,-15360,2048),null,19.00);
+				ExevSpawn("blobblaser_tem1",Vector(-14592,-15360,2048),null,20.00);
+				ExevSpawn("blobblaser_tem1",Vector(-14592,-15360,2048),null,21.00);
+				ExevSpawn("blobblaser_tem1",Vector(-14592,-15360,2048),null,22.00);
+				ExevSpawn("blobblaser_tem1",Vector(-14592,-15360,2048),null,23.00);
 			break;
 		}
 		case 80:	//finale - when a CT wins by teleporting into the white box win area (triggers for each !activator that is the CT)
@@ -3270,8 +3328,6 @@ function ExevRoundStart()	//reset states (triggered every round start IF 'extrem
 	EntFireByHandle(self,"RunScriptCode"," FetusFaceBoobie(); ",RandomFloat(1.00,500.00),null,null);
 	exev_finalboss_laserticking = false;
 	exev_omaha_zamount = 5;
-	zombe_item_users.clear();
-	zombe_item_users = [];
 	exev_omaha_zombies.clear();
 	exev_omaha_zombies = [];
 	exev_weebticking = false;
