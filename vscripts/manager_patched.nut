@@ -548,6 +548,7 @@ function RoundStart()
 {
 	EntFireByHandle(self,"RunScriptCode"," DiddleMeWind(); ",1.00,null,null);
 	exmvote_voteallowed = false;
+	finale_curseorbcheese_tick = true;
 	zombe_item_users.clear();
 	zombe_item_users = [];
 	if (extreme)
@@ -3068,18 +3069,32 @@ function ExtremeEvent(index)
 				//break the zcage by FireUser1 on 'finale_zcage' at 131.0s, a few seconds earlier than usual 
 					EntFire("finale_zcage","FireUser1","",131.00,null);
 			}
-			//spawn a trigger inside the displacement that prevents a fucked shortcut
-				local trig = Entities.CreateByClassname("trigger_multiple");
-				trig.SetOrigin(Vector(3136,-9096,2432));
-				trig.SetAngles(0,0,0);
-				trig.SetSize(Vector(-64,-376,-1664),Vector(64,376,1664));
-				trig.__KeyValueFromInt("spawnflags",1);
-				trig.__KeyValueFromInt("solid",3);
-				trig.__KeyValueFromInt("startdisabled",1);
-				trig.__KeyValueFromInt("collisiongroup",10);
-				trig.__KeyValueFromString("targetname","finaleanticheese_postbabyboss");
-				EntFireByHandle(trig,"AddOutput","OnStartTouch !activator:SetHealth:-1:0:-1",0.00,null,null);
-				EntFireByHandle(trig,"Enable","",0.10,null,null);
+			//spawn some triggers inside the displacement that prevents a fucked shortcut
+				local cheesetrigs = [
+						{pos=Vector(2224,-9120,2432),		rot=Vector(0,35,0),		minsmaxs=Vector(112,304,1664)},
+						{pos=Vector(2576,-8952,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(112,304,1664)},
+						{pos=Vector(3136,-9096,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(64,376,1664)},
+						{pos=Vector(1480,-9212,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(48,24,1664)},
+					];
+				foreach(ctrig in cheesetrigs)
+				{
+					local trig = Entities.CreateByClassname("trigger_multiple");
+					trig.SetOrigin(ctrig.pos);
+					trig.SetAngles(ctrig.rot.x,ctrig.rot.y,ctrig.rot.z);
+					trig.SetSize(	Vector(-ctrig.minsmaxs.x,-ctrig.minsmaxs.y,-ctrig.minsmaxs.z),
+									Vector(ctrig.minsmaxs.x,ctrig.minsmaxs.y,ctrig.minsmaxs.z));
+					trig.__KeyValueFromInt("spawnflags",1);
+					trig.__KeyValueFromInt("solid",3);
+					trig.__KeyValueFromInt("startdisabled",1);
+					trig.__KeyValueFromInt("collisiongroup",10);
+					trig.__KeyValueFromString("targetname","finaleanticheese_postbabyboss");
+					EntFireByHandle(trig,"AddOutput","OnStartTouch !activator:AddOutput:origin 1652 1367 200:0:-1",0.00,null,null);
+					EntFireByHandle(trig,"Enable","",0.10,null,null);
+					EntFireByHandle(trig,"Kill","",170.00,null,null);
+				}
+			//scan for curse orbs inside the displacement to prevent humans gettins trimmed off
+				EntFireByHandle(self,"RunScriptCode"," FinaleCurseOrbCheeseScan(); ",0.00,null,null);
+				EntFireByHandle(self,"RunScriptCode"," finale_curseorbcheese_tick = false; ",150.00,null,null);
 			break;
 		}
 		case 72:	//finale - 2-split hold just after the lavarise zcage-rock-hold (breaks/opens after 20.0s)
@@ -3544,6 +3559,20 @@ function GrenadeRefillCakePlayer()
 {
 	if(activator!=null&&activator.IsValid()&&activator.GetHealth()>0&&activator.GetTeam()==3)
 		EntFire("stripstrop_nade_refill","Use","",0.00,activator);
+}
+
+finale_curseorbcheese_tick <- true;
+finale_curseorbcheese_tickrate <- 0.30;
+finale_curseorbcheese_scanrange <- 1084;
+finale_curseorbcheese_scanpos <- Vector(2640,-9680,956);
+function FinaleCurseOrbCheeseScan()
+{
+	if(!finale_curseorbcheese_tick)return;
+	EntFireByHandle(self,"RunScriptCode"," FinaleCurseOrbCheeseScan(); ",finale_curseorbcheese_tickrate,null,null);
+	for(local h;h=Entities.FindByNameWithin(h,"i_curse_trigger*",finale_curseorbcheese_scanpos,finale_curseorbcheese_scanrange);)
+	{
+		EntFireByHandle(h,"FireUser1","",0.00,null,null);
+	}
 }
 
 zombe_item_users <- [];
