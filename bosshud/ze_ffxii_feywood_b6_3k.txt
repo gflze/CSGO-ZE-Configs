@@ -9,7 +9,6 @@
 		"HPbar_max"		"7"
 		"HPbar_default"		"1"
 		"HPbar_mode"		"2"
-		"CustomText"		"BOSS HP"
 	}
 	"1"
 	{
