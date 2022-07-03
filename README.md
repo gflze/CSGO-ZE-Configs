@@ -150,6 +150,30 @@ ze_map_name.cfg
 }
 ```
 
+## MusicNames
+
+Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config. 
+
+**Note:** You can specify only the file name to identify the music. However, if there are two files of the same name in different directories, you **must** specify part of the path to differentiate between the two. See the example in the template below.
+
+The general template of a MusicName config will be as follows:
+
+ze_map_name.cfg
+```
+"music"
+{
+    "key1"      "value1"        //key1 will be the filename or file path. value1 will be the actual music name that will be shown when using !nowplaying etc.
+
+    // Examples
+    "rick_roll.mp3"                     "Rick Astley - Never Gonna Give You Up"
+    "pendulum.mp3"                      "Pendulum - Tarantula"
+
+    // Two files of the same name in different directories
+    "sound/folder1/music.mp3"        "Pendulum - Blood Sugar"
+    "sound/folder2/music.mp3"        "Queen – Bohemian Rhapsody"
+}
+```
+
 ## Stripper
 
 **WARNING: Filenames for Stripper configs must be all lower case!**
