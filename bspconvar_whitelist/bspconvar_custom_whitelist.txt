@@ -437,4 +437,8 @@
 	{
 		sm_gravity										1
 	}
+	"ze_v0u0v_csgo1"
+	{
+		sv_disable_radar								0
+	}
 }
