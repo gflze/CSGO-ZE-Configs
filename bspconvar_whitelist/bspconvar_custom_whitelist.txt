@@ -400,6 +400,10 @@
 	{
 		sv_disable_radar								0
 	}
+	"ze_moltentemple_csgo1"
+	{
+		sv_disable_radar								0
+	}
 	"ze_monolith_csgo"
 	{
 		sv_disable_radar								0
