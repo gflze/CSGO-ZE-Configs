@@ -1,0 +1,42 @@
+"math_counter"
+{
+	"config"
+	{
+		"HitMarkerOnly" 	"1"
+	}
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_energy_1"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_energy_2"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_container"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_2_hitbox"
+	}
+	"4"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_3_hitbox"
+	}
+	"5"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_worm_01_physbox"
+	}
+	"6"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"boss_quad_encounter_01_hitbox"
+	}
+}
