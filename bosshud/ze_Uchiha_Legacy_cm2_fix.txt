@@ -1,0 +1,81 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"s1_itachi_Boss_Health"
+		"HPbar_counter"		"s1_itachi_Boss_HealthCount"
+		"HPinit_counter"	"s1_itachi_Boss_HealthBackup"
+		"CustomText"		"Itachi Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"1"
+	{
+		"HP_counter"		"qsdfg_sasuke_Boss_Health"
+		"HPbar_counter"		"qsdfg_sasuke_Boss_HealthCount"
+		"HPinit_counter"	"qsdfg_sasuke_Boss_HealthBackup"
+		"CustomText"		"Sasuke Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"2"
+	{
+		"HP_counter"		"s2_sasuke_final_health"
+		"HPbar_counter"		"s2_sasuke_final_HealthCount"
+		"HPinit_counter"	"s2_sasuke_final_health_backup"
+		"CustomText"		"Sasuke Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"3"
+	{
+		"HP_counter"		"obito_Boss_Health"
+		"HPbar_counter"		"obito_Boss_HealthCount"
+		"HPinit_counter"	"obito_Boss_HealthBackup"
+		"CustomText"		"Obito Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"4"
+	{
+		"HP_counter"		"madara_Boss_Health"
+		"HPbar_counter"		"madara_Boss_HealthCount"
+		"HPinit_counter"	"madara_Boss_HealthBackup"
+		"CustomText"		"Madara Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+
+	}
+	"5"
+	{
+		"HP_counter"		"654321234_susano_Health"
+		"HPbar_counter"		"654321234_susano_HealthCount"
+		"HPinit_counter"	"654321234_susano_HealthBackup"
+		"CustomText"		"Madara Susano"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+	"6"
+	{
+		"HP_counter"		"exsdfgh_madara_Health"
+		"HPbar_counter"		"exsdfgh_madara_HealthCount"
+		"HPinit_counter"	"exsdfgh_madara_HealthBackup"
+		"CustomText"		"Madara Uchiha"
+		"HPbar_min"			"0"
+		"HPbar_max"			"10"
+		"HPbar_default"		"0"
+		"HPbar_mode"		"2"
+	}
+}
