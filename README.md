@@ -165,12 +165,12 @@ ze_map_name.cfg
     "key1"      "value1"        //key1 will be the filename or file path. value1 will be the actual music name that will be shown when using !nowplaying etc.
 
     // Examples
-    "rick_roll.mp3"                     "Rick Astley - Never Gonna Give You Up"
-    "pendulum.mp3"                      "Pendulum - Tarantula"
+    "rick_roll.mp3"                 "Rick Astley - Never Gonna Give You Up"
+    "pendulum.mp3"                  "Pendulum - Tarantula"
 
     // Two files of the same name in different directories
-    "sound/folder1/music.mp3"        "Pendulum - Blood Sugar"
-    "sound/folder2/music.mp3"        "Queen – Bohemian Rhapsody"
+    "sound/folder1/music.mp3"       "Pendulum - Blood Sugar"
+    "sound/folder2/music.mp3"       "Queen – Bohemian Rhapsody"
 }
 ```
 
