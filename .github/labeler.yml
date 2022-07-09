@@ -1,0 +1,18 @@
+BossHud:
+- bosshud/*
+
+entWatch:
+- entwatch/*
+
+MusicName:
+- musicname/*
+
+SaveLevel:
+- savelevel/*
+
+Stripper:
+- stripper/*
+
+ZombieReloaded:
+- zombiereloaded/*
+
