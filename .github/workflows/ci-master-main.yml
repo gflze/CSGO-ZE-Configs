@@ -77,3 +77,12 @@ jobs:
           password: ${{ secrets.ftp_main_password }}
           local-dir: zombiereloaded/
           server-dir: csgo/cfg/sourcemod/zombiereloaded/
+
+      - name: Sync MusicName Files
+        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        with:
+          server: ${{ secrets.ftp_main_server }}
+          username: ${{ secrets.ftp_main_username }}
+          password: ${{ secrets.ftp_main_password }}
+          local-dir: musicname/
+          server-dir: csgo/addons/sourcemod/configs/MusicName/
