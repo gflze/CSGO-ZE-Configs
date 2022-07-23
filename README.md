@@ -5,7 +5,7 @@
 | [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
 
 
-A collection of the BossHud, entWatch, SaveLevel and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
+A collection of the BossHud, entWatch, SaveLevel, MusicName and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
 
 Everything in this repository is auto-synced to our main/test servers on a new commit/push.
 
@@ -154,7 +154,7 @@ ze_map_name.cfg
 
 Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config. 
 
-**Note:** You can specify only the file name to identify the music. However, if there are two files of the same name in different directories, you **must** specify part of the path to differentiate between the two. See the example in the template below.
+**Note:** You can specify only the file name to identify the music. However, if there are two files of the same name in different directories, you **must** specify the full path to differentiate between the two. See the example in the template below.
 
 The general template of a MusicName config will be as follows:
 
