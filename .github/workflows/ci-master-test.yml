@@ -85,4 +85,4 @@ jobs:
           username: ${{ secrets.ftp_test_username }}
           password: ${{ secrets.ftp_test_password }}
           local-dir: musicname/
-          server-dir: csgo/addons/sourcemod/MusicName/
+          server-dir: csgo/addons/sourcemod/configs/MusicName/
