@@ -3075,6 +3075,12 @@ function ExtremeEvent(index)
 						{pos=Vector(2576,-8952,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(112,304,1664)},
 						{pos=Vector(3136,-9096,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(64,376,1664)},
 						{pos=Vector(1480,-9212,2432),		rot=Vector(0,0,0),		minsmaxs=Vector(48,24,1664)},
+						
+						{pos=Vector(-4188,-8115,1928),		rot=Vector(0,47,0),		minsmaxs=Vector(200,40,200)},
+						{pos=Vector(-4560,-8310,2380),		rot=Vector(0,20,0),		minsmaxs=Vector(150,80,500)},
+						{pos=Vector(-4646,-7830,1639),		rot=Vector(0,0,0),		minsmaxs=Vector(150,400,2000)},
+						{pos=Vector(-4440,-9080,1467),		rot=Vector(0,0,15),		minsmaxs=Vector(350,200,2000)},
+						{pos=Vector(-151,-8980,1022),		rot=Vector(0,-12,20),	minsmaxs=Vector(50,600,2000)},
 					];
 				foreach(ctrig in cheesetrigs)
 				{
@@ -3090,7 +3096,8 @@ function ExtremeEvent(index)
 					trig.__KeyValueFromString("targetname","finaleanticheese_postbabyboss");
 					EntFireByHandle(trig,"AddOutput","OnStartTouch !activator:AddOutput:origin 1652 1367 200:0:-1",0.00,null,null);
 					EntFireByHandle(trig,"Enable","",0.10,null,null);
-					EntFireByHandle(trig,"Kill","",170.00,null,null);
+					EntFireByHandle(trig,"Kill","",300.00,null,null);
+						//DebugDrawBoxAngles(ctrig.pos,ctrig.minsmaxs*-1,ctrig.minsmaxs,ctrig.rot,255,200,0,10,10.00);
 				}
 			//scan for curse orbs inside the displacement to prevent humans gettins trimmed off
 				EntFireByHandle(self,"RunScriptCode"," FinaleCurseOrbCheeseScan(); ",0.00,null,null);
