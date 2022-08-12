@@ -18,8 +18,8 @@ class Bet
     }
     function GetWinmoney()
     {
-        if(color == -1) return this.bet + this.bet * 10;
-        else return this.bet + this.bet * 0.5;
+        if(color == -1) return this.bet + this.bet * 7;
+        else return this.bet + this.bet * 0.35;
     }
 }
 int_array <- [0,32,15,19,4,21,2,25,17,34,
@@ -142,7 +142,6 @@ function StopRoll()
 
 function SetColor()
 {
-
     local textb;
     local textm;
     local textf;

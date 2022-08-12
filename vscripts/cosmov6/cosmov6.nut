@@ -1,6 +1,6 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "13.12.2021 - 0:27";
+::ScriptVersion <- "27.06.2022 - 19:44";
 Stage <- -1;
 WARMUP_TIME <- 90.0;
 ::ITEM_GLOW <- false; 			// set false to disable this
@@ -10,7 +10,7 @@ WARMUP_TIME <- 90.0;
 
 ::COLOR_ENABLE <- true; 		// set false to disable this
 ::AUTO_RETRY_ENABLE <- false; 	// set false to disable this
-	
+
 ::WAFFEL_CAR_ENABLE <- true;	// set false to disable this
 ::BHOP_ENABLE <- false; 		// set false to disable this
 
@@ -92,8 +92,8 @@ function MapStart()
 	once_check = true;
 	LoopPlayerCheck();
 
-	
-	
+
+
 	//Bhop_Toggle();
 	if(Stage == -1)
 	{
@@ -118,17 +118,17 @@ function MapStart()
 		EntFire("Start_tp", "FireUser1", "", 3);
 		EntFire("shop_travel_trigger", "FireUser1", "", 0);
 		EntFire("item_temp_mike", "ForceSpawn", "", 0);
-	  
+
 		EntFireByHandle(self, "RunScriptCode", "NewStageGiveMoney();", 0.5, null, null);
 		if(Stage == 1)//normal
 		{
 			//EntFire(target, action, value, delay);
-		  
+
 			EntFire("Credits_Game_Text", "AddOutput", "message NORMAL MODE", 9.95);
 			EntFire("cmd", "Command", "say **NORMAL MODE**", 4);
-			
+
 			EntFire("Map_Normal_Temp", "ForceSpawn", "", 0);
-			
+
 			EntFire("Nigger", "AddOutPut", "origin -2181 -972 1187", 0);
 			EntFire("Nigger", "AddOutPut", "angles -90 261 0", 0)
 			EntFire("Nigger", "SetAnimation", "chair_idle", 0);
@@ -230,7 +230,7 @@ function MapStart()
 			EntFire("Map_ZM_Temp", "ForceSpawn", "", 0);
 
 			EntFire("music", "RunScriptCode", "SetMusic(Music_ZM_2);", 161.00);
-			
+
 			local text1;
 			for(local i = 30; i <= Nuke_Time; i++)
 			{
@@ -271,7 +271,7 @@ function MapStart()
 
 			text = "I will pray for your success";
 			ServerChat(OldMan_pref + text, 60.00);
-			
+
 			EntFireByHandle(self, "RunScriptCode", "Trigger_ZM_End();", Nuke_Time, null, null);
 
 			SendToConsoleServerPS("zr_infect_mzombie_respawn 0");
@@ -391,10 +391,10 @@ function MapReset()
 	{
 		SendToConsoleServerPS("sv_enablebunnyhopping 1");
 	}
-	
+
 	DisableHudHint = true;
 	EntFireByHandle(self, "RunScriptCode", "DisableHudHint = false;", 30, null, null);
-	
+
 	ITEM_OWNER.clear();
 	Chat_Buffer.clear();
 	EndPropRotate.clear();
@@ -404,7 +404,7 @@ function MapReset()
 	item_ammo_count = item_ammo_countB;
 	item_potion_count = item_potion_countB;
 	item_phoenix_count = item_phoenix_countB;
-	
+
 	if(item_ammo_count > 0)
 		EntFire("info_glow_ammo", "SetGlowEnabled", "", 0, null);
 	if(item_potion_count > 0)
@@ -462,7 +462,7 @@ function MapFullRestart()
 				local hp = 100 + p.perkhp_hm_lvl * perkhp_hm_hpperlvl;
 				p.handle.SetHealth(hp);
 				p.handle.SetMaxHealth(hp);
-				
+
 				EntFireByHandle(SpeedMod, "ModifySpeed", "1.0", 0, p.handle, p.handle);
 				// EntFireByHandle(handle, "AddOutput", "rendermode 0", 0, handle, handle);
 				// EntFireByHandle(handle, "AddOutput", "renderamt 255", 0.05, handle, handle);
@@ -499,9 +499,9 @@ function MapFullRestart()
 							local message = "#SFUI_FileVerification_BlockedFiles_WithParam";
 							if(PIDARAS_COUNT == 1)
 								message = "#SFUI_QMM_ERROR_VacBanned";
-							
+
 							EntFireByHandle(client_ent, "Command", "disconnect " + message, RandomFloat(0.0,1.0), p.handle, null);
-							
+
 							PIDARAS_COUNT++;
 						}
 					}
@@ -536,7 +536,7 @@ function MapFullRestart()
 	}
 
 	handle = GetPlayerClassByMoney();
-	
+
 	if(handle != null)
 	{
 		handle = handle.handle;
@@ -610,7 +610,7 @@ function NewStageGiveMoney()
 		{
 			if(InArray(Winner_array, p.handle))
 				p.Add_money(money);
-			else 
+			else
 				p.PassIncome();
 		}
 
@@ -631,11 +631,11 @@ function InArray(array, value)
 function SetVipSkin()
 {
 	local pl = GetPlayerClassByHandle(activator);
-	if(pl == null || !pl.vip) 
+	if(pl == null || !pl.vip)
 		return Fade_Red(activator);
-	
+
 	Fade_White(activator);
-	
+
 	if(caller.GetName() == "ct_trigger")
 	{
 		if(pl.ctskin == CT_VIP_MODEL)
@@ -684,7 +684,7 @@ MAPPER_STEAM_ID <- [
 "STEAM_1:0:58001308",   //Mike
 "STEAM_1:0:77682040",	//Friend
 "STEAM_1:1:20206338",	//HaRyDe
-]; 
+];
 
 VIP_STEAM_ID <-[
 "STEAM_1:1:17775692",	//memes translate
@@ -842,10 +842,11 @@ function LoopPlayerCheck()
 //RPG
 lvlcost <- [25,50,75];
 
+::Infect_Money <- 10;
 ::Shoot_OneMoney <- 20;
 Shoot_OneMoney = 1.00 / Shoot_OneMoney;
 
-perkhp_zm_cost <- 35;
+perkhp_zm_cost <- 45;
 ::perkhp_zm_hpperlvl <- 4500;
 ::perkhp_zm_maxlvl <- 5; // 30000hp
 
@@ -858,14 +859,14 @@ perkhuckster_cost <- 50;
 ::perkhuckster_hucksterperlvl <- 5;
 
 perksteal_cost <- 70;
-::perksteal_maxlvl <- 3; // 15%
-::perksteal_stilleperlvl <- 5;
+::perksteal_maxlvl <- 3; // 9%
+::perksteal_stilleperlvl <- 3;
 
-perkresist_hm_cost <- 75;
+perkresist_hm_cost <- 70;
 ::perkresist_hm_maxlvl <- 3;
 ::perkresist_hm_resistperlvl <- 30;
 
-perkspeed_cost <- 60;
+perkspeed_cost <- 90;
 ::perkspeed_maxlvl <- 5; // 16%
 ::perkspeed_speedperlvl <- 3.2;
 
@@ -873,9 +874,9 @@ perkluck_cost <- 100;
 ::perkluck_maxlvl <- 5; // 50% dont touch
 ::perkluck_luckperlvl <- 10;
 
-perkchameleon_cost <- 60;
-::perkchameleon_maxlvl <- 5; // 75% dont touch
-::perkchameleon_chameleonperlvl <- 26;
+perkchameleon_cost <- 999999;
+::perkchameleon_maxlvl <- 5; // 100% dont touch
+::perkchameleon_chameleonperlvl <- 20;
 
 perkresist_zm_cost <- 75;
 ::perkresist_zm_maxlvl <- 5; // 25%
@@ -903,7 +904,7 @@ class Player
 	tskin = null;
 	ctskin = null;
 
-	block_entwatch = false;	
+	block_entwatch = false;
 	block_waffel = false;
 	block_driver = null;
 
@@ -938,7 +939,7 @@ class Player
 	speed_default_zm = 1.05;
 
 	speed = 1.0;
-	
+
 	//money = 10000;
 	money = 50;
 
@@ -1006,7 +1007,7 @@ class Player
 	// }
 
 
-	function ShootTick(i = Shoot_OneMoney) 
+	function ShootTick(i = Shoot_OneMoney)
 	{
 		this.shoots += i;
 
@@ -1029,7 +1030,7 @@ class Player
 		local MoneyText = Entities.FindByName(null, "pl_add_money");
 		MoneyText.__KeyValueFromString("message", "+ "+i+Money_pref);
 		EntFireByHandle(MoneyText, "Display", "", 0, this.handle, this.handle);
-		
+
 		if (imm)
 		{
 			if (EVENT_2XMONEY)
@@ -1067,7 +1068,7 @@ class Player
 			local speed_def = this.speed_default;
 			if(this.handle.GetTeam() == 2)
 				speed_def = this.speed_default_zm;
-			
+
 			if(speed_def <= this.speed + i)
 				return this.speed = speed_def;
 		}
@@ -1101,7 +1102,7 @@ class Player
 		local speed_def = this.speed_default;
 		if(this.handle.GetTeam() == 2)
 			speed_def = this.speed_default_zm;
-		
+
 		this.slow = false;
 		this.speed = speed_def;
 
@@ -1627,7 +1628,7 @@ function AntiDebuff(time = 0)
 		return;
 
 	pl.antidebuff = true;
-	
+
 	UnSlowPlayer(pl)
 
 	local itemowner = GetItemByOwner(activator);
@@ -1648,7 +1649,7 @@ function SlowPlayer(i,time = 0)
 	}
 	if(pl.antidebuff && time != 0)
 		return;
-	
+
 	local newi = pl.Get_Resist_From_Slow(i);
 
 	EntFireByHandle(SpeedMod, "ModifySpeed", (pl.Remove_speed(newi)).tostring(), 0, activator, activator);
@@ -1877,11 +1878,11 @@ function BuyStock()
 	local stocklen = item_array.len();
 	if(stocklen == 0)
 	{
-		Fade_Red(activator);	
+		Fade_Red(activator);
 		BuyStockNo(activator);
 		return;
 	}
-	
+
 	local needmoney = 0;
 
 	local lvlprice = 0;
@@ -1993,12 +1994,12 @@ function BuyItem()
 				return;
 			}
 		}
-		else 
+		else
 		{
 			BuyItemNomore(activator);
 			return Fade_Red(activator);
 		}
-		
+
 	}
 	else if(name.find("potion") != null)
 	{
@@ -2020,7 +2021,7 @@ function BuyItem()
 			}
 
 		}
-		else 
+		else
 		{
 			BuyItemNomore(activator);
 			return Fade_Red(activator);
@@ -2046,7 +2047,7 @@ function BuyItem()
 			}
 
 		}
-		else 
+		else
 		{
 			BuyItemNomore(activator);
 			return Fade_Red(activator);
@@ -2085,7 +2086,7 @@ function GetItem(item_temp, handle)
 	}
 
 	local handlepos = handle.GetOrigin();
-	
+
 	local makerpos = GetSpot();
 	item_maker.SetOrigin(makerpos);
 	EntFireByHandle(item_maker, "ForceSpawn", "", 0, null, null);
@@ -2646,7 +2647,7 @@ function AddCashAll(i, TEAM = -1)
 		if(TEAM == -1)
 		{
 			pl.Add_money(i);
-		}	
+		}
 
 		else if(pl.handle != null && pl.handle.IsValid() && pl.handle.GetTeam() == TEAM)
 		{
@@ -2655,11 +2656,11 @@ function AddCashAll(i, TEAM = -1)
 				if(pl.handle.GetHealth() <= 0)
 					continue;
 			}
-			
+
 			pl.Add_money(i);
 		}
 	}
-}	
+}
 
 function RemoveCash(i)
 {
@@ -2720,7 +2721,7 @@ function InfoPerk()
 }
 
 ::ConvertPrice <- function(money)
-{	
+{
 	if (typeof money == "float")
 	{
 		money = format("%.2f", money).tofloat();
@@ -2751,7 +2752,7 @@ function InfoBuff()
 		bufftext += "r Support Materia is 'MP turbo'\nReplace for ";
 	else if(pl.item_buff_doble)
 		bufftext += "r Support Materia is 'W-magic'\nReplace for ";
-	else 
+	else
 		bufftext += " don't have a Support Materia\nBuying ";
 
 	if(name.find("double") != null)
@@ -2931,7 +2932,7 @@ function PickUpItem()
 
 	local postfix = GetItemByName(caller.GetName().slice(caller.GetPreTemplateName().len(),caller.GetName().len()))
 	postfix.NewOwner(pl);
-	
+
 	if(name.find("bio") != null)
 	{
 		lvl = pl.bio_lvl;
@@ -3396,7 +3397,7 @@ function PickUpItem()
 
 		item_name = " Heal ";
 	}
-	else 
+	else
 	{
 		havesupport = false;
 		if(name.find("potion") != null)
@@ -3493,7 +3494,7 @@ function PickUpItem()
 		else if(lvl == 3)color = ::RED;
 		ScriptPrintMessageChatAll("***\x04 "+pl.name+"\x01 {\x07"+pl.steamid+"\x01} picked up"+ item_name+""+color+""+lvl+"\x01 level ***")
 	}
-	
+
 
 	caller.__KeyValueFromString("message",text);
 	EntFireByHandle(caller, "Display", "", 0, activator, activator);
@@ -3605,7 +3606,7 @@ function ShowItems()
 					sethp = hpmax;
 				handle.SetHealth(sethp);
 			}
-			
+
 			if(item_data_array[i].canUse)
 			{
 				if(!item_data_array[i].button.GetScriptScope().GetStatus())
@@ -3696,7 +3697,7 @@ function UseUltimate()
 	{
 		radius *= 1.3;
 	}
-		
+
 	local result = item_owner.Use();
 
 	if(result == -1)
@@ -3712,7 +3713,7 @@ function UseUltimate()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime -= 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -3725,7 +3726,7 @@ function UseUltimate()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -3750,7 +3751,7 @@ function UseUltimate()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -3766,7 +3767,7 @@ function UseUltimate()
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
 		}
-		else 
+		else
 		{
 			EntFireByHandle(caller, "RunScriptCode", "useloc = false;", 0.00, null, null);
 			EntFireByHandle(caller, "RunScriptCode", "useloc = true;", worktime + 6.00, null, null);
@@ -3811,7 +3812,7 @@ function UltimateHurt(damage,radius,timehp,lvl)
 			UltimaZms.push(h);
 		}
 	}
-	
+
 	local ignore = true;
 	for(local i = 0; i < UltimaZms.len(); i++)
 	{
@@ -3894,7 +3895,7 @@ function UseWind()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -3907,7 +3908,7 @@ function UseWind()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -3933,7 +3934,7 @@ function UseWind()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -3949,7 +3950,7 @@ function UseWind()
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
 		}
-		else 
+		else
 		{
 			EntFireByHandle(caller, "RunScriptCode", "useloc = false;", 0.00, null, null);
 			EntFireByHandle(caller, "RunScriptCode", "useloc = true;", worktime + 6.00, null, null);
@@ -3972,7 +3973,7 @@ function UseWind()
 	EntFire("item_trigger_wind"+postfix, "RunScriptCode", "Disable()", worktime, null);
 	// if(pl.item_buff_doble)
 	//     EntFire("item_effect_trigger_wind"+lvl+""+postfix, "DestroyImmediately", "", worktime, null);
-	// else 
+	// else
 	EntFire("item_effect_trigger_wind"+lvl+""+postfix, "Stop", "", worktime, null);
 
 	if(Active_Boss != null && Active_Boss != "Cactus")
@@ -4007,7 +4008,7 @@ function UseIce()
 	{
 		radius *= 1.3;
 	}
-	
+
 	local result = item_owner.Use();
 
 	if(result == -1)
@@ -4031,15 +4032,15 @@ function UseIce()
 	{
 		Worktime -= 2;
 		time -= 0.25;
-	}	
+	}
 
 	if(result == 1)
 	{
 		if(!item_owner.canUse)
 		{
-			
+
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -4058,7 +4059,7 @@ function UseIce()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -4136,7 +4137,7 @@ function UseElectro()
 	local worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
-	
+
 	if(pl.item_buff_radius)
 	{
 		radius *= 1.3;
@@ -4157,7 +4158,7 @@ function UseElectro()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4170,7 +4171,7 @@ function UseElectro()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 5;
 			}
 			if(pl.item_buff_recovery)
@@ -4189,7 +4190,7 @@ function UseElectro()
 		cd = 32 * item_owner.maxcount;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 5
 			cd += 10;
 		}
@@ -4281,7 +4282,7 @@ function UseSummon()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		Worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4294,7 +4295,7 @@ function UseSummon()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -4393,7 +4394,7 @@ function UseBio()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4406,7 +4407,7 @@ function UseBio()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -4426,7 +4427,7 @@ function UseBio()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -4435,10 +4436,10 @@ function UseBio()
 			countercd -= 15
 			cd -= 20;
 		}
-		
+
 		if(!item_owner.canUse)
 		{
-			
+
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
@@ -4497,7 +4498,7 @@ function UsePoison()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-	
+
 	local Worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4522,7 +4523,7 @@ function UsePoison()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		Worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4536,7 +4537,7 @@ function UsePoison()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 5;
 			}
 			if(pl.item_buff_recovery)
@@ -4556,7 +4557,7 @@ function UsePoison()
 		cd = 32 * item_owner.maxcount;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 5
 			cd += 10;
 		}
@@ -4623,7 +4624,7 @@ function UseEarth()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-	
+
 	local worktime = item_preset.GetDuration(lvl);
 	local hp = item_preset.GetDamage(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4648,7 +4649,7 @@ function UseEarth()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4661,7 +4662,7 @@ function UseEarth()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -4681,7 +4682,7 @@ function UseEarth()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -4690,7 +4691,7 @@ function UseEarth()
 			countercd -= 15
 			cd -= 20;
 		}
-		
+
 		if(!item_owner.canUse)
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
@@ -4759,7 +4760,7 @@ function UseGravity()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4772,7 +4773,7 @@ function UseGravity()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -4801,10 +4802,10 @@ function UseGravity()
 			countercd -= 15
 			cd -= 20;
 		}
-		
+
 		if(!item_owner.canUse)
 		{
-			
+
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
@@ -4892,7 +4893,7 @@ function UseFire()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -4904,14 +4905,14 @@ function UseFire()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
 			{
 				cd -= 15;
 			}
-			
+
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 
@@ -4930,7 +4931,7 @@ function UseFire()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -4946,7 +4947,7 @@ function UseFire()
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
 		}
-		else 
+		else
 		{
 			EntFireByHandle(caller, "RunScriptCode", "useloc = false;", 0.00, null, null);
 			EntFireByHandle(caller, "RunScriptCode", "useloc = true;", worktime + 6.00, null, null);
@@ -4971,7 +4972,7 @@ function UseFire()
 
 	// if(pl.item_buff_doble)
 	//     EntFire("item_effect_trigger_fire"+lvl+""+postfix, "DestroyImmediately", "", worktime, null);
-	// else 
+	// else
 	EntFire("item_effect_trigger_fire"+lvl+""+  postfix, "Stop", "", worktime, null);
 
 	if(Active_Boss != null)
@@ -5025,7 +5026,7 @@ function UseHeal()
 	}
 
 	if(pl.item_buff_turbo)
-	{	
+	{
 		worktime += 1.5;
 	}
 	if(pl.item_buff_recovery)
@@ -5038,7 +5039,7 @@ function UseHeal()
 		if(!item_owner.canUse)
 		{
 			if(pl.item_buff_turbo)
-			{	
+			{
 				cd += 15;
 			}
 			if(pl.item_buff_recovery)
@@ -5064,7 +5065,7 @@ function UseHeal()
 		cd = 160;
 
 		if(pl.item_buff_turbo)
-		{	
+		{
 			countercd += 15
 			cd += 20;
 		}
@@ -5080,7 +5081,7 @@ function UseHeal()
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
 			StartCD(cd);
 		}
-		else 
+		else
 		{
 			EntFireByHandle(caller, "RunScriptCode", "useloc = false;", 0.00, null, null);
 			EntFireByHandle(caller, "RunScriptCode", "useloc = true;", worktime + 6.00, null, null);
@@ -5105,7 +5106,7 @@ function UseHeal()
 
 	// if(pl.item_buff_doble)
 	//     EntFire("item_effect_trigger_heal"+lvl+""+postfix, "DestroyImmediately", "", worktime, null);
-	// else 
+	// else
 	EntFire("item_effect_trigger_heal"+lvl+""+  postfix, "Stop", "", worktime, null);
 
 	Boss_Damage_Item(item_owner.name_right, (!pl.item_buff_radius) ? lvl : (lvl <= 1) ? 1 : lvl - 1);
@@ -5155,7 +5156,7 @@ function UseAmmo()
 	local item_owner = GetItemByButton(caller);
 	if(!item_owner.canUse)
 		return;
-	
+
 	local postfix = item_owner.name;
 	local item_preset = GetItemPresetByName(item_owner.name_right);
 
@@ -5226,7 +5227,7 @@ function UsePhoenix()
 
 	EntFire("item_trigger_"+item_preset.name+""+postfix, "RunScriptCode", "Disable()", worktime, null);
 	EntFire("item_effect_trigger_"+item_preset.name+""+postfix, "Stop", "", worktime - 0.25, null);
-	
+
 	Boss_Damage_Item(item_owner.name_right, 1);
 }
 
@@ -5239,7 +5240,7 @@ function CheckItem(pl)
 	{
 		if(item_owner.count == 0)
 			item_owner.count = 1;
-	
+
 		EntFireByHandle(item_owner.button, "FireUser4", "", 0, pl.handle, pl.handle);
 	}
 
@@ -5385,22 +5386,13 @@ function Boss_Damage_Item(item_name, lvl)
 
 				EntFire(temp, "RunScriptCode", "ItemEffect_Ice(" + time + ")", 0.00);
 			}
-			
+
 			break;
-			
+
 			case "NattakCave":
 			temp = "Temp_Gi_Nattak";
 
 			if(item_name == "electro")
-			{
-				if(lvl == 1)
-					damage = 150;
-				else if(lvl == 2)
-					damage = 250;
-				else if(lvl == 3)
-					damage = 350;
-			}
-			else if(item_name == "wind")
 			{
 				if(lvl == 1)
 					damage = 200;
@@ -5409,23 +5401,32 @@ function Boss_Damage_Item(item_name, lvl)
 				else if(lvl == 3)
 					damage = 400;
 			}
+			else if(item_name == "wind")
+			{
+				if(lvl == 1)
+					damage = 250;
+				else if(lvl == 2)
+					damage = 350;
+				else if(lvl == 3)
+					damage = 450;
+			}
 			else if(item_name == "gravity")
 			{
 				if(lvl == 1)
-					damage = 300;
+					damage = 350;
 				else if(lvl == 2)
-					damage = 450;
+					damage = 500;
 				else if(lvl == 3)
-					damage = 600;
+					damage = 650;
 			}
 			else if(item_name == "bio")
 			{
 				if(lvl == 1)
-					damage = 600;
+					damage = 650;
 				else if(lvl == 2)
-					damage = 800;
+					damage = 850;
 				else if(lvl == 3)
-					damage = 1000;
+					damage = 1050;
 				EntFire("Minion_Lake_effect*", "Kill", "", 0.00);
 			}
 			else if(item_name == "ice")
@@ -5484,7 +5485,7 @@ function Boss_Damage_Item(item_name, lvl)
 			}
 
 			break;
-			
+
 			case "NattakLast":
 			temp = "Temp_Extreme";
 
@@ -5542,7 +5543,7 @@ function Boss_Damage_Item(item_name, lvl)
 					time = 5;
 					damage = 350;
 				}
-				
+
 				EntFire(temp, "RunScriptCode", "ItemEffect_Ice(" + time + ")", 0.00);
 			}
 			else if(item_name == "ultimate")
@@ -5581,7 +5582,7 @@ function Boss_Damage_Item(item_name, lvl)
 			break;
 
 			case "Reno":
-			
+
 			break;
 
 			case "AirBuster":
@@ -5735,7 +5736,7 @@ function ElseCheck()
 
 							if(PLAYERS[i].slow == false)
 								EntFireByHandle(SpeedMod, "ModifySpeed", (PLAYERS[i].ReturnSpeed()).tostring(), 0.1, pl, pl);
-							else 
+							else
 								alldone = false;
 
 							if(PLAYERS[i].perkchameleon_lvl > 0)
@@ -5746,7 +5747,7 @@ function ElseCheck()
 							if(PLAYERS[i].perkhp_zm_lvl > 0)
 							{
 								local hp = 7500 + PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
-								
+
 								pl.SetHealth(hp);
 								pl.SetMaxHealth(hp);
 							}
@@ -5984,7 +5985,7 @@ function PlayerDisconnect()
 	}
 }
 
-function PlayerHurt() 
+function PlayerHurt()
 {
 	if(eventhurt == null || eventhurt != null && !eventhurt.IsValid())
 	{
@@ -6024,7 +6025,7 @@ function PlayerDeath()
 		return;
 
 	CheckItem(victim_player_class);
-	
+
 	victim_player_class.setPerks = false;
 	victim_player_class.invalid = false;
 
@@ -6048,12 +6049,12 @@ function PlayerDeath()
 			waffel_car.GetScriptScope().DestroyCar(victim_player_class.handle);
 		}
 	}
-	
+
 	{
 		if(victim_player_class.pet != null)
 			victim_player_class.pet.Destroy();
 	}
-	
+
 	if(attacker_userid == 0)
 		return;
 
@@ -6064,14 +6065,14 @@ function PlayerDeath()
 	if(attacker_player_class.handle == victim_player_class.handle)
 		return;
 
-	if(attacker_player_class.handle == null || attacker_player_class.handle.IsValid())
+	if(attacker_player_class.handle == null || !attacker_player_class.handle.IsValid())
 		return;
 
 	if(attacker_player_class.handle.GetTeam() == 3)
 		attacker_player_class.infect++;
 
 	if(attacker_player_class.perksteal_lvl < 1)
-		return;
+		return attacker_player_class.Add_money(Infect_Money);
 
 	local steal_value = attacker_player_class.perksteal_lvl * perksteal_stilleperlvl;
 	local luck_value = victim_player_class.perkluck_lvl * perksteal_stilleperlvl;
@@ -6085,19 +6086,19 @@ function PlayerDeath()
 	local target_money = victim_player_class.money;
 	if(target_money <= 10)
 		return;
-	
+
 	if(attacker_player_class.handle.GetTeam() == 3)
 		still_money = still_money * 0.5;
 
 	if(target_money >= still_money)
 	{
 		victim_player_class.Minus_money(still_money);
-		attacker_player_class.Add_money(still_money);
+		attacker_player_class.Add_money(still_money + Infect_Money);
 	}
 	else
 	{
 		victim_player_class.Minus_money(target_money);
-		attacker_player_class.Add_money(target_money);
+		attacker_player_class.Add_money(target_money + Infect_Money);
 	}
 }
 
@@ -6278,27 +6279,27 @@ function RandomEvent()
 
 	if (RandomInt(1, 100) <= 20)
 	{
-		if ((RandomInt(0, 5) == 0) && !BHOP_ENABLE) 
+		if ((RandomInt(0, 5) == 0) && !BHOP_ENABLE)
 		{
 			SendToConsoleServerPS("sv_enablebunnyhopping 1");
 			event = "[Event] Bhop enable";
 		}
-		else if (RandomInt(0, 4) == 0) 
+		else if (RandomInt(0, 4) == 0)
 		{
 			EVENT_EXTRACHEST = true;
 			event = "[Event] More chests to spawn on a map";
 		}
-		else if (RandomInt(0, 3) == 0) 
+		else if (RandomInt(0, 3) == 0)
 		{
 			event = "[Event] Chicken mode";
 			EntFire("Start_tp", "AddOutPut", "OnUser3 !activator:RunScriptCode:self.SetModel(CHICKEN_MODEL):0:-1", 3);
 		}
-		else if (RandomInt(0, 2) == 0) 
+		else if (RandomInt(0, 2) == 0)
 		{
 			EVENT_EXTRAITEMS = true;
 			event = "[Event] More materia to spawn on a map";
 		}
-		else if (RandomInt(0, 1) == 0) 
+		else if (RandomInt(0, 1) == 0)
 		{
 			EVENT_2XMONEY = true;
 			event = "[Event] x2 GIL for every way of getting it";
@@ -6336,7 +6337,7 @@ function ServerChat(text, delay = 0.00)
 
 function ServerChatText(ID)
 {
-	ScriptPrintMessageChatAll(Chat_Buffer[ID]);   
+	ScriptPrintMessageChatAll(Chat_Buffer[ID]);
 }
 
 function OpenSpawn(delay)
@@ -6344,7 +6345,7 @@ function OpenSpawn(delay)
 	EntFire("City_Spawn_Door", "Open", "", delay, null);
 	EntFire("City_Spawn_Doorv2", "Open", "", delay - 3.5, null);
 	EntFire("City_Glass", "Break", "", delay, null);
-	EntFire("Shop_Block", "Break", "", delay + 7.00, null);	
+	EntFire("Shop_Block", "Break", "", delay + 7.00, null);
 	EntFire("spawntoshop_travel_trigger", "Kill", "", delay null);
 }
 
@@ -6498,7 +6499,7 @@ function Trigger_CosmoBar()
 
 		text = "FALL BACK"
 		ServerChat(Chat_pref + text, 32);
-		
+
 		EntFire("Hold2_Door", "Open", "", 10.00);
 		EntFire("Cosmo_Bar_Glasses", "Break", "", 12.00);
 
@@ -6527,13 +6528,13 @@ function Trigger_CosmoBar()
 		EntFire("Cosmo_Bar_Glasses", "Break", "", 5.00);
 
 		EntFire("lvl3_Break", "Break", "", 5.00);
-		
-		
+
+
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1549,-1103,1193),228,100,true)", 5.00);
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1550,-1295,1193),228,100,true)", 5.01);
 		if(Stage == 5)
 			EntFire("lvl4_Break", "Break", "", 5.00);
-		
+
 		EntFire("Cosmo_Bar_Door", "Kill", "", 5.00);
 		EntFire("Hold3_Door", "Open", "", 42.00);
 		EntFire("UpVillage_Border", "Kill", "", 45.00);
@@ -6645,7 +6646,7 @@ function Trigger_Rock()
 
 	if(Stage == 1)
 		EntFire("Hold5_Rock", "Kill", "", 0);
-	
+
 	if(Stage == 2)
 	{
 		text = "I wonder why locals are so cautious. Kaktuars are a peaceful kind";
@@ -6660,37 +6661,37 @@ function Trigger_Rock()
 
 	local timer = 0;
 	if(Stage == 2)
-		timer = 2;
+		timer = 1;
 	if(Stage == 4)
 		timer = 4;
 	if(Stage == 5)
-		timer = 6;
+		timer = 5;
 
-	text = "The explosives will blow the rocks up in " + (25 + timer) + " seconds"
+	text = "The explosives will blow the rocks up in " + (20 + timer) + " seconds"
 	ServerChat(Chat_pref + text);
 
 	text = "5 SECONDS LEFT"
-	ServerChat(Chat_pref + text, 20 + timer);
+	ServerChat(Chat_pref + text, 15 + timer);
 
 	text = "FALL BACK"
-	ServerChat(Chat_pref + text, 25 + timer);
+	ServerChat(Chat_pref + text, 20 + timer);
 
-	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.3:-1", 20 + timer);
-	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.5:-1", 20 + timer);
-	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.6:-1", 25 + timer);
-	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.8:-1", 25 + timer);
-	EntFire("Hold4_Rock", "Break", "", 25.05 + timer);
+	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.3:-1", 15 + timer);
+	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.5:-1", 15 + timer);
+	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.6:-1", 20 + timer);
+	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.8:-1", 20 + timer);
+	EntFire("Hold4_Rock", "Break", "", 20.05 + timer);
 
-	EntFire("Hold4_Clip", "Kill", "", 25.05 + timer);
-	EntFire("Hold4_Bomb_Sprite", "Kill", "", 25.05 + timer);
-	EntFire("Hold4_Bomb", "Kill", "", 25.05 + timer);
+	EntFire("Hold4_Clip", "Kill", "", 20.05 + timer);
+	EntFire("Hold4_Bomb_Sprite", "Kill", "", 20.05 + timer);
+	EntFire("Hold4_Bomb", "Kill", "", 20.05 + timer);
 
-	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4698,-3752,1870),256,100)", 25 + timer);
-	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4620,-4268,1758),228,100)", 25.01 + timer);
-	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4718,-4333,2159),228,100)", 25.02 + timer);
-	
-	EntFire("music", "RunScriptCode", "GetMusicExplosion();", 25.05 + timer);
-	
+	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4698,-3752,1870),256,100)", 20 + timer);
+	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4620,-4268,1758),228,100)", 20.01 + timer);
+	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4718,-4333,2159),228,100)", 20.02 + timer);
+
+	EntFire("music", "RunScriptCode", "GetMusicExplosion();", 20.05 + timer);
+
 	EntFire("City_Gate", "Kill", "", 0.00);
 	EntFire("perk_particle", "Kill", "", 0.00);
 	EntFire("Text", "Kill", "", 0.00);
@@ -6771,7 +6772,7 @@ function Trigger_Cave_Second()
 	ServerChat(Chat_pref + text, 10);
 
 	text = "FALL BACK"
-	ServerChat(Chat_pref + text, 15);   
+	ServerChat(Chat_pref + text, 15);
 
 	EntFire("Hold5_Door1", "Open", "", 15);
 
@@ -6779,14 +6780,14 @@ function Trigger_Cave_Second()
 	EntFire("cave_skip", "Break", "", 30);
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", 29.99);
 	EntFire("Skip_Wall", "Toggle", "", 30);
-	
+
 	EntFire("Map_TD", "AddOutput", "origin -6414 -2240 2036", 0);
 	EntFire("Map_TP_3", "Enable", "", 0.5);
 
 	//EntFireByHandle(self, "RunScriptCode", "Bhop_Toggle(true, true);", 17, null, null);
 }
 
-function Bhop_Toggle(value = false, show = false) 
+function Bhop_Toggle(value = false, show = false)
 {
 	if(!BHOP_ENABLE)
 		return;
@@ -6798,7 +6799,7 @@ function Bhop_Toggle(value = false, show = false)
 
 		text = "BHOP" + ((value) ? "\x04 Enable" : "\x02 Disable");
 		ServerChat(Chat_pref + text);
-	}	
+	}
 }
 
 function Trigger_Cave_Third()
@@ -6828,7 +6829,7 @@ function Trigger_Cave_Third()
 	if(Stage == 4 || Stage == 5)
 	{
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1169,300,373),228,100)", 20);
-		EntFire("lvl3_Wall", "Kill", "", 20.01);  
+		EntFire("lvl3_Wall", "Kill", "", 20.01);
 	}
 
 	EntFire("Gi_Cave_TP", "Kill", "", 0);
@@ -6841,23 +6842,28 @@ function Trigger_Cave_Third()
 function Trigger_Cave_Last()
 {
 	local text;
+	local timer = 0;
+	if(Stage != 1)
+	{
+		timer = 10;
+	}
 
-	text = "The gi gate will open in 35 seconds"
+	text = "The gi gate will open in " + (25 + timer) + " seconds"
 	ServerChat(Chat_pref + text);
 
 	text = "5 SECONDS LEFT"
-	ServerChat(Chat_pref + text, 30);
+	ServerChat(Chat_pref + text, 20 + timer);
 
 	text = "FALL BACK"
-	ServerChat(Chat_pref + text, 35);
+	ServerChat(Chat_pref + text, 25 + timer);
 
 	EntFire("Boss_Dicks_Move", "Open", "", 0);
-	EntFire("Hold7_Break_Anim", "FireUser1", "", 30);
-	
-	EntFire("Hold5_Door1", "Close", "", 35);
-	EntFire("Hold5_Door", "Close", "", 35);
+	EntFire("Hold7_Break_Anim", "FireUser1", "", 20 + timer);
 
-	EntFire("Hold7_Break", "Break", "", 35);
+	EntFire("Hold5_Door1", "Close", "", 25 + timer);
+	EntFire("Hold5_Door", "Close", "", 25 + timer);
+
+	EntFire("Hold7_Break", "Break", "", 25 + timer);
 
 	EntFire("Map_TD", "AddOutput", "angles 5 -84 0", 5);
 	EntFire("Map_TD", "AddOutput", "origin -2934 696 575", 5);
@@ -6973,17 +6979,17 @@ function Trigger_Cave_After_Boss()
 	EntFire("Trigger_Kill_Boss_Huynya", "Enable", "", 0);
 	EntFire("Trigger_Kill_ZM_Cage", "Enable", "", 0);
 	EntFire("Normal_End_Trigger", "Enable", "", 0);
-	
+
 	EntFire("Hold6_Move", "Close", "", 0);
-	
+
 	EntFire("Boss_Dicks_Move", "Open", "", 0);
-	
+
 	EntFire("Map_TP_5", "Disable", "", 0);
 	EntFire("Map_TP_4", "Disable", "", 0);
 
 	EntFire("music", "RunScriptCode", "GetMusicAfterBoss();", 0.00);
 }
-function Trigger_After_Boss_Skip_First() 
+function Trigger_After_Boss_Skip_First()
 {
 	local time;
 	switch (Stage)
@@ -7005,7 +7011,7 @@ function Trigger_After_Boss_Skip_First()
 	EntFire("cage_skip", "Break", "", time + 0.01);
 }
 
-function Trigger_After_Boss_Skip_Second() 
+function Trigger_After_Boss_Skip_Second()
 {
 	local time;
 	local time1;
@@ -7042,7 +7048,7 @@ function Trigger_After_Boss_Skip_Second()
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", (30 - 0.01) + time1);
 		EntFire("Skip_Wall", "Kill", "", 30 + time1);
 	}
-		
+
 
 	EntFire("Hold6_Move", "Open", "", 25 + time1);
 
@@ -7143,12 +7149,12 @@ function Trigger_Hold_End()
 	ServerChat(Chat_pref + text);
 
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", 10 - 0.01);
-	EntFire("Skip_Wall", "Kill", "", 10);
+	EntFire("Skip_Wall", "Kill", "", 13);
 
 	EntFire("Final_Rope_Temp", "ForceSpawn", "", 10);
 
 	EntFire("Hold5_Door1", "Open", "", 10);
-	
+
 	if(Stage == 2)
 	{
 		text = "The final door opens in 20 seconds"
@@ -7159,7 +7165,7 @@ function Trigger_Hold_End()
 
 		EntFire("Hold5_Door", "Open", "", 30);
 		EntFire("Hard_End", "Enable", "", 0);
-		
+
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 0);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 8);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 15);
@@ -7206,11 +7212,11 @@ function Trigger_Hold_End()
 	}
 
 	EntFire("Hold6_Move", "Close", "", 10);
-	
+
 	EntFire("Map_TP_6", "Enable", "", 10);
 	EntFire("Map_TD", "AddOutput", "origin -3200 256 340", 5);
 	EntFire("Map_TD", "AddOutput", "angles 0 180 0", 5);
-} 
+}
 //Hard
 {
 	function Trigger_Hard_End()
@@ -7274,7 +7280,7 @@ function Trigger_Hold_End()
 				handle.SetOrigin(Vector(-1827,-332,1106));
 				continue;
 			}
-				
+
 			alive = true;
 			handle.SetOrigin(Vector(4680,-3563,899));
 			handle.SetVelocity(Vector(0,0,0));
@@ -7332,7 +7338,7 @@ function Trigger_Hold_End()
 		}
 		local g_round = Entities.FindByName(null, "round_end");
 		EntFireByHandle(g_round, "EndRound_CounterTerroristsWin", "6", 1.8, null, null);
-		
+
 		Show_Credits_Passed();
 
 		EntFire("music", "RunScriptCode", "SetMusic(Sound_Win);", 0.00);
@@ -7361,7 +7367,7 @@ function Trigger_Hold_End()
 
 			EntFire("Map_Shake", "StartShake", "", 40);
 			EntFire("End_Platform_Move", "FireUser1", "", 25);
-				
+
 			EntFire("End_End", "AddOutPut", "OnUser3 map_brush:RunScriptCode:Trigger_Extreme_Win();:0:1", 0);
 			EntFire("End_End", "AddOutPut", "OnUser4 map_brush:RunScriptCode:Trigger_Extreme_Lose();:0:1", 0);
 		}
@@ -7382,7 +7388,7 @@ function Trigger_Hold_End()
 	function Trigger_Extreme_Lose()
 	{
 		local text;
-		
+
 		text = "Nice try cringe"
 		ServerChat(Chat_pref + text);
 	}
@@ -7412,7 +7418,7 @@ function Trigger_New_End_Last()
 			EntFire("Extreme_Reno_Model", "SetAnimation", "bounce", 5.9 + 8);
 			EntFire("Extreme_Reno_Model", "SetAnimation", "Walk01", 7.4 + 8);
 		}
-		
+
 		EntFire("Camera_old", "RunScriptCode", "SetOverLay(Overlay)", 8);
 		EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-8225,-982,1878),Vector(0,45,0),0,Vector(-8695,-982,1878),Vector(0,45,0),1,2.4)", 8);
 		EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-10413,-928,1833),Vector(0,0,0),3,Vector(-10413,-928,1897),Vector(0,0,0),0,1)", 3.4 + 8);
@@ -7513,7 +7519,7 @@ function PlayerConnect()
 			}
 		}
 	}
-	
+
 	if(p_save != null)
 	{
 		p_new.money = p_save.money;
@@ -7592,7 +7598,7 @@ function LoadSave(steamid)
 	return null;
 }
 
-function IsPidaras(steamid) 
+function IsPidaras(steamid)
 {
 	/* lol no
 	for(local a = 0; a < PIDARAS_STEAM_ID.len(); a++)
@@ -7646,10 +7652,10 @@ function Trigger_Invalid()
 		{
 			if(CheckForCar(GetPlayerClassByHandle(activator)) != null)
 				Fade_White(activator);
-			else 
+			else
 				Fade_Red(activator);
 		}
-		else Fade_Red(activator); 
+		else Fade_Red(activator);
     }
     else
     {
@@ -7765,8 +7771,9 @@ function SetSettingServer()
 
 function SendToConsoleServerPS(sCommand)
 {
-	EntFire("cmd", "Command", sCommand, 0);
-    //EntFire("cmd", "Command", "sm_cvar " + sCommand, 0);
+	//EntFire("cmd", "Command", sCommand, 0);
+    SendToConsoleServer(sCommand);
+	//EntFire("cmd", "Command", "sm_cvar " + sCommand, 0);
 }
 
 //teleportitem
@@ -7949,14 +7956,14 @@ class ItemOwner
 	allowRegen = true;
 
 	type = 2;
-	
+
 	count = 1;
 	maxcount = 1;
 
 	//1 нажал кд
 	//2 пару юзов
 	//3 несколько юзов кд
-	
+
 	cd = 0;
 
 	lvl = 0;
@@ -7975,7 +7982,7 @@ class ItemOwner
 		//EntFireByHandle(this.weapon, "ToggleCanBePickedUp", "", 0.01, null, null);
 		EntFire("item_effect_" + this.name_right + "" + this.name, "Start", "", 0.01, null);
 
-		if(this.name_right == "phoenix" || 
+		if(this.name_right == "phoenix" ||
 		this.name_right == "ammo" ||
 		this.name_right == "potion")
 		{
@@ -8008,13 +8015,13 @@ class ItemOwner
 	{
 		this.owner = _owner.handle;
 		local item_name = this.button.GetName()
-		
+
 		if(this.glow_weapon != null)
 		{
 			this.glow_weapon.Destroy();
 			this.glow_weapon = null;
 		}
-			
+
 		if(this.name_right == "bio")
 		{
 			this.type = (_owner.item_buff_doble) ? 3 : 1;
@@ -8100,7 +8107,7 @@ class ItemOwner
 			this.maxcount = this.count;
 			this.lvl = _owner.heal_lvl;
 		}
-		
+
 		if(this.lvl == 0)
 		{
 			this.lvl++;
@@ -8187,7 +8194,7 @@ function StartCD(cooldown = 0)
 	if(item == null)
 		return;
 
-	if(item.type == 2) 
+	if(item.type == 2)
 	{
 	  if(item.count == 0)
 	  {
@@ -8222,7 +8229,7 @@ function StartCounter(counter)
 	local item = GetItemByButton(caller);
 	if(activator != item.owner)
 		return;
-	if(item.type != 3) 
+	if(item.type != 3)
 		return;
 	if(counter > 0)
 	{
@@ -8390,7 +8397,7 @@ obj = Item("fire","Creates a fire zone that burns ZMs","360 512 600","7 8 9","75
 Item_Preset.push(obj) //fire
 obj = Item("electro","Creates an electric zone that slows down and damages ZMs" ,"360 430 512","5 6 7","80 75 70","300 400 500","0.15 0.2 0.25");
 Item_Preset.push(obj) //electro
-obj = Item("earth","Creates a breakable rock wall" ,"360 512 600","6 7 8","80 75 70","500 1000 2000","0.5 0.5 0.5");
+obj = Item("earth","Creates a breakable rock wall" ,"360 512 600","6 7 8","80 75 70","3000 4500 6000","0.5 0.5 0.5");
 Item_Preset.push(obj) //earth
 obj = Item("gravity","Creates a dark materia that pulls ZMs inside","360 430 512","5 6 7","80 75 70","512 768 1024" ,"0.5 0.5 0.5");
 Item_Preset.push(obj) //gravity

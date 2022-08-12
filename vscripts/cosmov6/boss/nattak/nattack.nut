@@ -1,12 +1,12 @@
 /*
 ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
     Gi Nattack script by Kotya[STEAM_1:1:124348087]
-    test branch update 29.11.2021 
+    test branch update 21.01.2022
 ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 */
 
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Main settings    
+//      Main settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
     CenterArea <- Vector(-1888, 5120, 276);
@@ -33,11 +33,11 @@
     }
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Status   
+//      Status
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 Status              <- "";
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      HP settings    
+//      HP settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
     HP <- 0;
@@ -47,7 +47,7 @@ Status              <- "";
     function SetHP(i)
     {
         i = (0.00 + i) / HP_BARS;
-        
+
         local handle = null;
         while(null != (handle = Entities.FindByClassname(handle, "player")))
         {
@@ -105,7 +105,7 @@ Status              <- "";
 
     function NadeDamage()
     {
-        SubtractHP(80);
+        SubtractHP(100);
 
         if(Stanblock)
 			return;
@@ -133,10 +133,10 @@ Status              <- "";
             return;
         cd_use_CAN = false;
 
-		local ice_temp = Entities.FindByName(null, "map_ice_temp_01"); 
+		local ice_temp = Entities.FindByName(null, "map_ice_temp_01");
         ice_temp.SetOrigin(Model.GetOrigin() + Vector(0, 0, 150))
         EntFireByHandle(ice_temp, "ForceSpawn", "", 0.00, null, null);
-        
+
         local name = Time().tointeger();
 
         EntFire("map_ice_model_01", "SetParent", "!activator", 0, Model);
@@ -145,7 +145,7 @@ Status              <- "";
 
 	    EntFire("map_ice_model_01", "AddOutPut", "targetname map_ice_model_01"+name, 0, null);
         EntFire("map_ice_model_01"+name, "RunScriptCode", "Kill(" + (time * 0.9) + ")", time * 0.2, null);
-        
+
 
         EntFireByHandle(Model, "Color", "0 255 0", 0.00, null, null);
 
@@ -176,7 +176,7 @@ Status              <- "";
 
         EntFire("Gi_Nattak_Background_Fire", "Kill", "", 0);
         EntFire("Gi_Nattak_Ultima*", "Kill", "", 0);
-        
+
         EntFire("Gi_Nattak_Superattack*", "Kill", "", 0);
 
         EntFire("map_sound_boss_dead", "PlaySound", "", 0);
@@ -198,7 +198,7 @@ Status              <- "";
     }
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Stun settings    
+//      Stun settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
     Stanblock           <- true;
@@ -252,18 +252,18 @@ Status              <- "";
     allow_superattack     <- false;
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Attack settings    
+//      Attack settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
     last_attack <- null;
     //FIRE
-    {    
+    {
         function Cast_Fire()
         {
             last_attack = "Fire";
 
             ScriptPrintMessageChatAll(Scan_pref + "\x07Gi Nattak\x01 is using\x02 Fire");
-            
+
             EntFire("Gi_Nattak_Fire_Sound", "PlaySound", "", 0);
 
             EntFire("Gi_Nattak_Fire_Hurt", "Enable", "", 1.0);
@@ -573,8 +573,8 @@ Status              <- "";
                         {
                             array.push(h);
                             continue;
-                        }  
-                    }     
+                        }
+                    }
                 }
 
                 list.push(h);
@@ -583,10 +583,10 @@ Status              <- "";
             {
                 if(array.len() <= 0)
                     return true;
-                else 
+                else
                 h = array[RandomInt(0, array.len() - 1)].GetOrigin();
             }
-            else 
+            else
                 h = list[RandomInt(0, list.len() - 1)].GetOrigin();
             FireNova_Maker.SpawnEntityAtLocation(Vector(h.x, h.y , 276), Vector(0,0,0));
             return false;
@@ -594,7 +594,7 @@ Status              <- "";
     }
     //FIRENOVA SPAM
     {
-        FireNova_Spam_Interval_Timer <- 8; 
+        FireNova_Spam_Interval_Timer <- 8;
         FireNova_Spam_Interval_Limit <- [0.6,4];
         FireNova_Spam_Interval <- FireNova_Spam_Interval_Limit[1];
         FireNova_Spam_Interval_Timer = (FireNova_Spam_Interval_Limit[1] - FireNova_Spam_Interval_Limit[0]) / FireNova_Spam_Interval_Timer;
@@ -602,7 +602,7 @@ Status              <- "";
         {
             if(!ticking)
                 return;
-            
+
             if(Cast_FireNova())
                 return;
             //printl("In : " + FireNova_Spam_Interval);
@@ -624,7 +624,7 @@ Status              <- "";
             ScriptPrintMessageChatAll(Scan_pref + "\x07Gi Nattak\x01 is using\x02 Super Attack");
 
             SetCastTimeByOneAttack = true;
-            
+
             allow_superattack = false;
 
             EntFireByHandle(self, "RunScriptCode", "GetRockForSuperattack()", 0, null, null);
@@ -669,7 +669,7 @@ Status              <- "";
 
             SetCDUse(16.0);
             SetCastTimeByOneAttack = true;
-            
+
             allow_ultima = false;
 
             EntFire("Gi_Nattak_Ultima_Fade", "Fade", "", 15);
@@ -708,12 +708,12 @@ Status              <- "";
     function Init()
     {
         EntFire("Camera_old", "RunScriptCode", "SetOverLay(Overlay)", 9.05);
-        
+
         if(RandomInt(0,1))
             EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-3575,4055,217),Vector(38.5,69,0),0,Vector(-3575,4055,217),Vector(38.5,69,0),3,1)", 9.05);
         else
             EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-3014,6625,-1502),Vector(-18,263,3),0,Vector(-3014,6625,-1502),Vector(-18,263,3),3,1)", 9.05);
-        
+
         EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-2742,5132,580),Vector(0,180,0),0,Vector(-2742,5132,580),Vector(0,180,0),5,0)", 9.05 + 4.00);
 
         EntFire("Gi_Nattak_Smex", "PlaySound", "", 9.05 + 4.00);
@@ -736,11 +736,11 @@ Status              <- "";
         EntFire("Gi_Nattak_Rot1", "Open", "", 19);
         EntFire("GI_Nattak_Rot_Move", "Open", "", 19);
         EntFire("Credits_Game_Text", "AddOutput", "message Gi Nattak", 0);
-       
+
         EntFire("Boss_Dicks_Move", "Close", "", 10);
         EntFire("Boss_Push", "Kill", "", 10);
         EntFire("Credits_Game_Text", "Display", "", 10);
-       
+
         EntFire("Gi_Nattak_Appear", "Start", "", 10);
         EntFire("Gi_Nattak_Model", "FireUser1", "", 13);
         EntFire("Gi_Nattak_Nade_Explode", "SetParent", "Gi_Nattak_Model", 0);
@@ -823,10 +823,10 @@ Status              <- "";
             minion_use = RandomInt(minion_useDef[0], minion_useDef[1]);
 
             if(smart_system)
-                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(40, 80), null, null);
-            else 
+                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(15, 40), null, null);
+            else
                 allow_gravity = true;
-    
+
             allow_shield = true;
 
             Shield_Health = 50.0;
@@ -835,15 +835,15 @@ Status              <- "";
             SetCDUse(13.0);
         }
         else if(stage == 4)
-        {   
+        {
             smart_system = true;
 
             minion_useDef = [12,15];
             minion_use = RandomInt(minion_useDef[0], minion_useDef[1]);
 
             if(smart_system)
-                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(39, 51), null, null);
-            else 
+                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(20, 40), null, null);
+            else
                 allow_gravity = true;
 
             allow_shield = true;
@@ -872,7 +872,7 @@ Status              <- "";
         UpDateStatus()
 
         ShowBossStatus();
-        
+
         //DrawTriggers();
 
         EntFireByHandle(self, "RunScriptCode", "Tick()", tickrate, null, null);
@@ -946,7 +946,7 @@ Status              <- "";
         local use_random_index = RandomInt(0, use_array.len() - 1);
 
         EntFireByHandle(self, "RunScriptCode", "Cast_"+use_array[use_random_index]+"();", 0, null, null);
-        
+
         use_array.remove(use_random_index);
     }
 
@@ -986,7 +986,7 @@ Status              <- "";
         }
 
         local use_index = -1;
-        
+
         //COMBO USE
         if(last_attack != null && GetChance(75))
         {
@@ -1000,7 +1000,7 @@ Status              <- "";
                 if(GetChance(25))
                     use_index = InArray("Fire", use_array);
 
-                if(use_index == -1 && GetChance(10))
+                if(use_index == -1 && GetChance(15))
                     use_index = InArray("FireNova", use_array);
                 if(use_index == -1)
                     use_index = InArray("Silence", use_array);
@@ -1044,12 +1044,12 @@ Status              <- "";
                 if(use_index == -1)
                     use_index = InArray("Heal", use_array);
             }
-        
+
             if(iInArena > (iCountAlive / 4) && GetChance(60))
             {
                 if(use_index == -1)
                     use_index = InArray("Fire", use_array);
-                
+
                 if(use_index == -1)
                     use_index = InArray("FireNova", use_array);
             }
@@ -1088,7 +1088,7 @@ Status              <- "";
             use_index = RandomInt(0, use_array.len() - 1);
 
         EntFireByHandle(self, "RunScriptCode", "Cast_"+use_array[use_index]+"();", 0, null, null);
-        
+
         use_array.remove(use_index);
     }
 
@@ -1133,7 +1133,7 @@ Status              <- "";
         if(HP_BARS <= 0)
         {
             ticking = false;
-            ShowBossDeadStatus(); 
+            ShowBossDeadStatus();
 
             BossDead();
 
@@ -1153,7 +1153,7 @@ Status              <- "";
                 {
                     SetUnStanned();
                 }
-                    
+
                 NadeCount = 0;
                 NadeTickRate = 0;
             }
@@ -1217,9 +1217,9 @@ Status              <- "";
         }
         else
         {
-            message += "\nStunTime : " + (NadeTickRate).tointeger(); 
+            message += "\nStunTime : " + (NadeTickRate).tointeger();
         }
-        
+
         ScriptPrintMessageCenterAll(message);
     }
 
@@ -1255,7 +1255,7 @@ Status              <- "";
     LeftMinion <- true;
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Support Function 
+//      Support Function
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
     Idle_Anim <- "idle";
