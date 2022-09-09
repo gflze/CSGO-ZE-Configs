@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Sync BossHud Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -25,7 +25,7 @@ jobs:
           server-dir: csgo/addons/sourcemod/configs/MapBossHP/
 
       - name: Sync BSP CVar Whitelist Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -34,7 +34,7 @@ jobs:
           server-dir: csgo/
 
       - name: Sync entWatch Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -43,7 +43,7 @@ jobs:
           server-dir: csgo/cfg/sourcemod/entwatch/maps/
 
       - name: Sync SaveLevel Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -52,7 +52,7 @@ jobs:
           server-dir: csgo/addons/sourcemod/configs/savelevel/
 
       - name: Sync Stripper Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -61,7 +61,7 @@ jobs:
           server-dir: csgo/addons/stripper/maps/
 
       - name: Sync VScript Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -70,7 +70,7 @@ jobs:
           server-dir: csgo/scripts/vscripts/gfl/
 
       - name: Sync ZombieReloaded Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
@@ -79,7 +79,7 @@ jobs:
           server-dir: csgo/cfg/sourcemod/zombiereloaded/
 
       - name: Sync MusicName Files
-        uses: SnowyGFL/FTP-Deploy-Action@1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ${{ secrets.ftp_test_server }}
           username: ${{ secrets.ftp_test_username }}
