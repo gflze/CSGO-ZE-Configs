@@ -21,6 +21,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: bosshud/
           server-dir: csgo/addons/sourcemod/configs/MapBossHP/
 
@@ -30,6 +31,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: bspconvar_whitelist/
           server-dir: csgo/
 
@@ -39,6 +41,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: entwatch/
           server-dir: csgo/cfg/sourcemod/entwatch/maps/
 
@@ -48,6 +51,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: savelevel/
           server-dir: csgo/addons/sourcemod/configs/savelevel/
 
@@ -57,6 +61,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: stripper/
           server-dir: csgo/addons/stripper/maps/
 
@@ -66,6 +71,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: vscripts/
           server-dir: csgo/scripts/vscripts/gfl/
 
@@ -75,6 +81,7 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: zombiereloaded/
           server-dir: csgo/cfg/sourcemod/zombiereloaded/
 
@@ -84,5 +91,6 @@ jobs:
           server: ${{ secrets.ftp_main_server }}
           username: ${{ secrets.ftp_main_username }}
           password: ${{ secrets.ftp_main_password }}
+          protocol: ftps
           local-dir: musicname/
           server-dir: csgo/addons/sourcemod/configs/MusicName/
