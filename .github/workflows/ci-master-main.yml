@@ -37,38 +37,14 @@ jobs:
       - name: Sync SaveLevel Files
         run: git ftp push --verbose --auto-init --syncroot "savelevel" --remote-root "csgo/addons/sourcemod/configs/savelevel/"
 
-      # - name: Sync Stripper Files
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      #   with:
-      #     server: ${{ secrets.ftp_main_server }}
-      #     username: ${{ secrets.ftp_main_username }}
-      #     password: ${{ secrets.ftp_main_password }}
-      #     local-dir: stripper/
-      #     server-dir: csgo/addons/stripper/maps/
+      - name: Sync Stripper Files
+        run: git ftp push --verbose --auto-init --syncroot "stripper" --remote-root "csgo/addons/stripper/maps/"
 
-      # - name: Sync VScript Files
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      #   with:
-      #     server: ${{ secrets.ftp_main_server }}
-      #     username: ${{ secrets.ftp_main_username }}
-      #     password: ${{ secrets.ftp_main_password }}
-      #     local-dir: vscripts/
-      #     server-dir: csgo/scripts/vscripts/gfl/
+      - name: Sync VScript Files
+        run: git ftp push --verbose --auto-init --syncroot "vscripts" --remote-root "csgo/scripts/vscripts/gfl/"
 
-      # - name: Sync ZombieReloaded Files
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      #   with:
-      #     server: ${{ secrets.ftp_main_server }}
-      #     username: ${{ secrets.ftp_main_username }}
-      #     password: ${{ secrets.ftp_main_password }}
-      #     local-dir: zombiereloaded/
-      #     server-dir: csgo/cfg/sourcemod/zombiereloaded/
+      - name: Sync ZombieReloaded Files
+        run: git ftp push --verbose --auto-init --syncroot "zombiereloaded" --remote-root "csgo/cfg/sourcemod/zombiereloaded/"
 
-      # - name: Sync MusicName Files
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      #   with:
-      #     server: ${{ secrets.ftp_main_server }}
-      #     username: ${{ secrets.ftp_main_username }}
-      #     password: ${{ secrets.ftp_main_password }}
-      #     local-dir: musicname/
-      #     server-dir: csgo/addons/sourcemod/configs/MusicName/
+      - name: Sync MusicName Files
+        run: git ftp push --verbose --auto-init --syncroot "musicname" --remote-root "csgo/addons/sourcemod/configs/MusicName/"
