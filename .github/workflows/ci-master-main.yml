@@ -19,9 +19,10 @@ jobs:
 
       - name: Set Git Config
         run: |
+          echo "${{ secrets.ftp_main_password }}" > key.pem
           git config git-ftp.url ${{ secrets.ftp_main_server }}
           git config git-ftp.user ${{ secrets.ftp_main_username }}
-          git config git-ftp.password ${{ secrets.ftp_main_password }}
+          git config git-ftp.key key.pem
           git config git-ftp.insecure "1"
           echo "::add-mask::${{ secrets.ftp_main_hostname }}"
       
