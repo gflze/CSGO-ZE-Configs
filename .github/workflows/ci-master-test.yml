@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "${{ secrets.sftp_key }}" > key.pem
           git config git-ftp.url ${{ secrets.sftp_test_url }}
-          git config git-ftp.user ${{ secrets.sftp_user }}
+          git config git-ftp.user ${{ secrets.sftp_test_user }}
           git config git-ftp.key key.pem
           git config git-ftp.insecure "1"
           echo "::add-mask::${{ secrets.sftp_test_hostname }}"
