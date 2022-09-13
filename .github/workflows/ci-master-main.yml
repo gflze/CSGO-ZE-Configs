@@ -19,12 +19,12 @@ jobs:
 
       - name: Set Git Config
         run: |
-          echo "${{ secrets.ftp_main_password }}" > key.pem
-          git config git-ftp.url ${{ secrets.ftp_main_server }}
-          git config git-ftp.user ${{ secrets.ftp_main_username }}
+          echo "${{ secrets.sftp_key }}" > key.pem
+          git config git-ftp.url ${{ secrets.sftp_main_url }}
+          git config git-ftp.user ${{ secrets.sftp_user }}
           git config git-ftp.key key.pem
           git config git-ftp.insecure "1"
-          echo "::add-mask::${{ secrets.ftp_main_hostname }}"
+          echo "::add-mask::${{ secrets.sftp_main_hostname }}"
       
       - name: Sync BossHud Files
         run: git ftp push --verbose --auto-init --syncroot "bosshud" --remote-root "csgo/addons/sourcemod/configs/MapBossHP/"

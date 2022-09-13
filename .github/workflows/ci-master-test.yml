@@ -1,4 +1,4 @@
-# Could be better but it's whatever for now
+# The best
 
 name: Sync Files To Test Server
 
@@ -13,76 +13,39 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Set Git Config
+        run: |
+          echo "${{ secrets.sftp_key }}" > key.pem
+          git config git-ftp.url ${{ secrets.sftp_test_url }}
+          git config git-ftp.user ${{ secrets.sftp_user }}
+          git config git-ftp.key key.pem
+          git config git-ftp.insecure "1"
+          echo "::add-mask::${{ secrets.sftp_test_hostname }}"
       
       - name: Sync BossHud Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: bosshud/
-          server-dir: csgo/addons/sourcemod/configs/MapBossHP/
+        run: git ftp push --verbose --auto-init --syncroot "bosshud" --remote-root "csgo/addons/sourcemod/configs/MapBossHP/"
 
       - name: Sync BSP CVar Whitelist Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: bspconvar_whitelist/
-          server-dir: csgo/
+        run: git ftp push --verbose --auto-init --syncroot "bspconvar_whitelist" --remote-root "csgo/"
 
       - name: Sync entWatch Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: entwatch/
-          server-dir: csgo/cfg/sourcemod/entwatch/maps/
+        run: git ftp push --verbose --auto-init --syncroot "entwatch" --remote-root "csgo/cfg/sourcemod/entwatch/maps/"
 
       - name: Sync SaveLevel Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: savelevel/
-          server-dir: csgo/addons/sourcemod/configs/savelevel/
+        run: git ftp push --verbose --auto-init --syncroot "savelevel" --remote-root "csgo/addons/sourcemod/configs/savelevel/"
 
       - name: Sync Stripper Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: stripper/
-          server-dir: csgo/addons/stripper/maps/
+        run: git ftp push --verbose --auto-init --syncroot "stripper" --remote-root "csgo/addons/stripper/maps/"
 
       - name: Sync VScript Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: vscripts/
-          server-dir: csgo/scripts/vscripts/gfl/
+        run: git ftp push --verbose --auto-init --syncroot "vscripts" --remote-root "csgo/scripts/vscripts/gfl/"
 
       - name: Sync ZombieReloaded Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: zombiereloaded/
-          server-dir: csgo/cfg/sourcemod/zombiereloaded/
+        run: git ftp push --verbose --auto-init --syncroot "zombiereloaded" --remote-root "csgo/cfg/sourcemod/zombiereloaded/"
 
       - name: Sync MusicName Files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.ftp_test_server }}
-          username: ${{ secrets.ftp_test_username }}
-          password: ${{ secrets.ftp_test_password }}
-          local-dir: musicname/
-          server-dir: csgo/addons/sourcemod/configs/MusicName/
+        run: git ftp push --verbose --auto-init --syncroot "musicname" --remote-root "csgo/addons/sourcemod/configs/MusicName/"
