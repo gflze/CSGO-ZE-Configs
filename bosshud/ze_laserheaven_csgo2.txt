@@ -1,0 +1,15 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"	"lasermaster_breakable"
+		"CustomText"	"-=LASERMASTER=-"
+	}
+	"1"
+	{
+		"Type" 			"breakable"
+		"BreakableName" "tr_boss_physhealth"
+		"CustomText" 	"-=THE TRUTH KLEINER=-"
+	}
+}
