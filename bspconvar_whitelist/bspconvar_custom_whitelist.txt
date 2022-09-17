@@ -396,10 +396,6 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_last_man_standing_h2"
-	{
-		zr_infect_mzombie_ratio							1
-	}
 	"ze_last_man_standing_p2"
 	{
 		zr_infect_mzombie_ratio							1
