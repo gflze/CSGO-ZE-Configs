@@ -39,7 +39,7 @@ jobs:
         run: git ftp push --verbose --auto-init --syncroot "savelevel" --remote-root "csgo/addons/sourcemod/configs/savelevel/"
 
       - name: Sync Stripper Files
-        run: git ftp push --verbose --auto-init --syncroot "stripper" --remote-root "csgo/addons/stripper/maps/"
+        run: git ftp push --verbose --auto-init --syncroot "stripper" --remote-root "csgo/addons/sourcemod/configs/stripper/maps/"
 
       - name: Sync VScript Files
         run: git ftp push --verbose --auto-init --syncroot "vscripts" --remote-root "csgo/scripts/vscripts/gfl/"
