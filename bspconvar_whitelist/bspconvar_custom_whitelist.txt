@@ -432,6 +432,10 @@
 	{
 		sm_gravity										1
 	}
+	ze_shrek_swamp_v2
+	{
+		sv_enablebunnyhopping							1
+	}
 	"ze_stalker_ultimate_v4_9"
 	{
 		sv_disable_radar								0
