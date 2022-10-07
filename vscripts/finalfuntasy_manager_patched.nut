@@ -35,7 +35,7 @@
 ::luff_ff_fix_weapon_kill <- false;						//set this to true to force-kill weapons for players
 ::luff_ff_fix_disable_flashlight <- true;				//set this to 'true' to run a tick to disable flashlights via EntFire("player","AddOutputs","effects 0",0.00,null);
 ::luff_ff_fix_disable_flashlight_rate <- 0.01;			//tickrate of above, should probably be good with 0.01s to keep it as fast/clear of flashlights as possible
-::luff_ff_fix_invisible_models <- false;				//set to 'true' to force all players to use invisible models during the stage
+::luff_ff_fix_invisible_models <- true;				//set to 'true' to force all players to use invisible models during the stage
 ::luff_ff_fix_late_forgive <- false;					//set to 'true' to forgive humans who are late to boss/etc, else slay them (set to 'false' to prevent them from afking in spawn)
 ::luff_ff_fix_start_at_boss <- false;					//set to 'true' to start the players directly at the bossfight, could be more fast-paced if people are getting bored
 ::luff_ff_fix_bosshug_pos <- Vector(14672,-5168,7744);	//the position of the very left-side of the boss arena where doorhuggers usually gather
@@ -91,7 +91,7 @@ enemy_hpadd_each_player_cap <- 200;				//the max extra-hp-add^ allowed, if it re
 enemy_hpadd_each_player_septhcap <- 150;		//the max extra-hp-add^ allowed for sepiroth specifically, it may need a lower value due to its difficulty
 boss_health <- 200.00;							//how much health the boss has (base health) (scorpion guard)
 enemy_hpadd_each_player_bosscap <- 2500.00;		//the max extra-hp-add^ allowed for boss specifically, it may need a lower value due to its difficulty
-sephlaser_seph_health <- 120.00;				//how much health sepiroth has (base health) (to make it auto-kill by time instead, set below var to a float)
+sephlaser_seph_health <- 100.00;				//how much health sepiroth has (base health) (to make it auto-kill by time instead, set below var to a float)
 sephlaser_sephkilltime <- null;					//62.00: dies 3 seconds before final door starts closing (good value), 61.00: dies 4 seconds before, etc...
 //=========================================================================================================================================\\
 introangles <- true;
