@@ -449,6 +449,13 @@
 	{
 		sm_gravity										1
 	}
+	"ze_ubermenschen_test10"
+	{
+		zr_infect_spawntime_min							1
+		zr_infect_spawntime_max							1
+		zr_infect_mzombie_ratio							1
+		zr_respawn_delay								1
+	}
 	"ze_the_last_chapter_v1_5"
 	{
 		sm_gravity										1

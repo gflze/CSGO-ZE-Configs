@@ -30,19 +30,30 @@
 //	- decreased damage_touch_boss from 29 to 21
 //	- increased sephlaser_damage from 23 to 28
 //	- increased sephlaser_seph_health from 100 to 120
+//---------------------------------------------------\\
+//		***EDIT 2022-10-09***
+//		^After some testing on GFL (thanks to Vauff) it seems that '::luff_ff_fix_invisible_models' was the cause of the client crashes
+//		(namely the playermodel 'models/player/custom_player/luffaren/invisibleplayer.mdl' being borked)
+//		As a result - ALL old variables/settings EXCEPT 'sephlaser_damage' + 'damage_touch_boss' are back to how they were now
+//		The playermodel has now been replaced with one that works ('models/player/chinny/chinny_invis_model.mdl')
+//		
+//		***EDIT 2022-10-11***
+//		Vauff saw that 'chinny_invis_model.mdl' is running the old skeleton, but also noticed that they were running 'rendermode 10' for that stage
+//		As a result, this stage will also run 'rendermode 10' for players (if '::luff_ff_fix_invisible_models' is true)
+//	
 //-----------------------------------------------------------------------------------------------------------------------------------------\\
 ::luff_ff_fix_viewmodel_hide <- true;					//set this to true to force-hide the predicted_viewmodel for players
 ::luff_ff_fix_weapon_kill <- true;						//set this to true to force-kill weapons for players
 ::luff_ff_fix_disable_flashlight <- true;				//set this to 'true' to run a tick to disable flashlights via EntFire("player","AddOutputs","effects 0",0.00,null);
 ::luff_ff_fix_disable_flashlight_rate <- 0.01;			//tickrate of above, should probably be good with 0.01s to keep it as fast/clear of flashlights as possible
-::luff_ff_fix_invisible_models <- false;				//set to 'true' to force all players to use invisible models during the stage
+::luff_ff_fix_invisible_models <- true;					//set to 'true' to force all players to use invisible models during the stage
 ::luff_ff_fix_late_forgive <- false;					//set to 'true' to forgive humans who are late to boss/etc, else slay them (set to 'false' to prevent them from afking in spawn)
 ::luff_ff_fix_start_at_boss <- false;					//set to 'true' to start the players directly at the bossfight, could be more fast-paced if people are getting bored
 ::luff_ff_fix_bosshug_pos <- Vector(14672,-5168,7744);	//the position of the very left-side of the boss arena where doorhuggers usually gather
 ::luff_ff_fix_bosshug_tp_range <- 400;					//players within this range of '::luff_ff_fix_bosshug_pos' gets TP'd further back (-Y)
 ::luff_ff_fix_bosshug_tp_dist <- 500;					//how far back to TP players who doorhug (-Y)
-::luff_ff_fix_damage_fade <- false;						//set to 'true' to run an env_fade for players who get damaged
-::luff_ff_fix_damage_sound <- false;					//set to 'true' to run a clientcommand play sound for players who get damaged
+::luff_ff_fix_damage_fade <- true;						//set to 'true' to run an env_fade for players who get damaged
+::luff_ff_fix_damage_sound <- true;						//set to 'true' to run a clientcommand play sound for players who get damaged
 
 //=========================================================================================================================================\\
 
@@ -282,12 +293,15 @@ function End()
 		local sc = h.GetScriptScope();
 		if(::luff_ff_fix_invisible_models)//#####FIX_PATCHED
 		{
-			if(h.GetModelName()=="models/player/custom_player/luffaren/invisibleplayer.mdl")
+			if(h.GetModelName()=="models/player/chinny/chinny_invis_model.mdl")
 			{
 				if(!("lff_pmodel" in sc))EntFireByHandle(h,"SetHealth","-1",0.00,null,null);
 				else h.SetModel(sc.lff_pmodel);
 			}
 		}
+		EntFireByHandle(h,"AddOutput","rendermode 0",0.00,null,null);//#####FIX_PATCHED
+		EntFireByHandle(h,"AddOutput","rendermode 0",0.10,null,null);//#####FIX_PATCHED
+		EntFireByHandle(h,"AddOutput","rendermode 0",1.00,null,null);//#####FIX_PATCHED
 		EntFireByHandle(self,"RunScriptCode"," EndWeaponEquip(); ",ii_equip,h,null);
 		ii_equip += 0.05;
 	}
@@ -1045,11 +1059,12 @@ function Tick()
 		local sc = h.GetScriptScope();
 		if(::luff_ff_fix_invisible_models)//#####FIX_PATCHED
 		{
-			if(h.GetModelName()!="models/player/custom_player/luffaren/invisibleplayer.mdl")
+			EntFireByHandle(h,"AddOutput","rendermode 10",0.00,null,null);//#####FIX_PATCHED
+			if(h.GetModelName()!="models/player/chinny/chinny_invis_model.mdl")
 			{
 				sc.lff_pmodel <- h.GetModelName();
-				self.PrecacheModel("models/player/custom_player/luffaren/invisibleplayer.mdl");
-				h.SetModel("models/player/custom_player/luffaren/invisibleplayer.mdl");
+				self.PrecacheModel("models/player/chinny/chinny_invis_model.mdl");
+				h.SetModel("models/player/chinny/chinny_invis_model.mdl");
 			}
 		}
 		if("lff_health" in sc)
