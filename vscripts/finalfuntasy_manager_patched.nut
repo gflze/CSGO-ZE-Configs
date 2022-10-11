@@ -31,11 +31,11 @@
 //	- increased sephlaser_damage from 23 to 28
 //	- increased sephlaser_seph_health from 100 to 120
 //-----------------------------------------------------------------------------------------------------------------------------------------\\
-::luff_ff_fix_viewmodel_hide <- false;					//set this to true to force-hide the predicted_viewmodel for players
-::luff_ff_fix_weapon_kill <- false;						//set this to true to force-kill weapons for players
+::luff_ff_fix_viewmodel_hide <- true;					//set this to true to force-hide the predicted_viewmodel for players
+::luff_ff_fix_weapon_kill <- true;						//set this to true to force-kill weapons for players
 ::luff_ff_fix_disable_flashlight <- true;				//set this to 'true' to run a tick to disable flashlights via EntFire("player","AddOutputs","effects 0",0.00,null);
 ::luff_ff_fix_disable_flashlight_rate <- 0.01;			//tickrate of above, should probably be good with 0.01s to keep it as fast/clear of flashlights as possible
-::luff_ff_fix_invisible_models <- true;				//set to 'true' to force all players to use invisible models during the stage
+::luff_ff_fix_invisible_models <- false;				//set to 'true' to force all players to use invisible models during the stage
 ::luff_ff_fix_late_forgive <- false;					//set to 'true' to forgive humans who are late to boss/etc, else slay them (set to 'false' to prevent them from afking in spawn)
 ::luff_ff_fix_start_at_boss <- false;					//set to 'true' to start the players directly at the bossfight, could be more fast-paced if people are getting bored
 ::luff_ff_fix_bosshug_pos <- Vector(14672,-5168,7744);	//the position of the very left-side of the boss arena where doorhuggers usually gather
@@ -49,7 +49,7 @@
 
 
 
-::luff_ff_tickrate <- 0.50;						//how fast to tick player-angles + predicted_viewmodel hide + kill weapons
+::luff_ff_tickrate <- 0.05;						//how fast to tick player-angles + predicted_viewmodel hide + kill weapons
 ::luff_ff_character_tickrate <- 0.10;			//how fast to tick visual character-animations/states
 ::luff_ff_health <- 100.00;						//starting health for players
 ::luff_ff_tpforgive_losing_humans <- false;		//set to 'true' to TP all loser-humans to the vote-room safely (else they get TP:d to zombie-room)
