@@ -34,6 +34,7 @@ function RoundStart()
 	CHAT_BUFFER.clear();
 	PRESELECTS.clear();
 	SPORE_INDIVIDUAL_PLAYERS.clear();
+	CH03_QUEST2_TICKING = false;
 
 	ResetAllCamers();
 	ResetAllCameraSlot();
@@ -49,6 +50,7 @@ function RoundStart()
 	EF("instanceauto1-skybox_env", "Start");
 
 	EF("map_trigger_start", "Enable", "", 1.0);
+	EF("map_entity_weapon_restrict", "Enable", "", 1.0);
 
 	EF("map_entity_text_puzzle00", "SetText", Translate["puzzle00"]);
 	EF("map_entity_text_puzzle01", "SetText", Translate["puzzle01"]);
@@ -56,8 +58,8 @@ function RoundStart()
 
 	if (iChapter == -2)
 	{
-		// local warmup = 5;
-		local warmup = 60;
+		local warmup = 5;
+		// local warmup = 60;
 		for (local i = 0; i < warmup; i++)
 		{
 			PrintChatMessageAll(Translate["warmup"] + " : " + (warmup - i), i);
@@ -78,7 +80,7 @@ function RoundStart()
 
 function WarmUpEnd()
 {
-	iChapter = 0;
+	iChapter = 2;
 	EF("game_round_end", "EndRound_Draw", "1.0");
 }
 
@@ -525,7 +527,7 @@ function Touch_Start()
 
 ::DamagePlayer <- function(player, damage, damagetype = null)
 {
-	local hp = player.GetHealth() - damage;
+	local hp = player.GetHealth() - damage.tointeger();
 
 	if (hp < 1)
 	{
@@ -610,12 +612,53 @@ function Touch_Start()
 
 	//SUBS
 	{
-		function Text_nietzsche()
+		function Text_Autors()
+		{
+			EF("map_entity_text", "SetText", "HaRyDe\nKotya\nMicrorost\nFriend");
+			EF("map_entity_text", "AddOutPut", "effect 2");
+			EF("map_entity_text", "AddOutPut", "fadein 0.45");
+			EF("map_entity_text", "AddOutPut", "y 0.55");
+			EF("map_entity_text", "AddOutPut", "x -1.00");
+			EF("map_entity_text", "AddOutPut", "duration 10");
+
+			foreach (player in PLAYERS)
+			{
+				if (!TargetValid(player))
+				{
+					continue;
+				}
+
+				EntFire("map_entity_text", "Display", "", 0, player);
+			}
+		}
+
+		function Text_Autors_A()
+		{
+			EF("map_entity_text", "SetText", Translate["autors"]);
+			EF("map_entity_text", "AddOutPut", "effect 2");
+			EF("map_entity_text", "AddOutPut", "fadein 0.1");
+			EF("map_entity_text", "AddOutPut", "y 0.52");
+			EF("map_entity_text", "AddOutPut", "x -1.00");
+			EF("map_entity_text", "AddOutPut", "duration 4");
+
+			foreach (player in PLAYERS)
+			{
+				if (!TargetValid(player))
+				{
+					continue;
+				}
+
+				EntFire("map_entity_text", "Display", "", 0, player);
+			}
+		}
+
+		function Text_Nietzsche()
 		{
 			EF("map_entity_text", "SetText", Translate["nietzsche"]);
 			EF("map_entity_text", "AddOutPut", "effect 2");
 			EF("map_entity_text", "AddOutPut", "fadein 0.08");
 			EF("map_entity_text", "AddOutPut", "y 0.43");
+			EF("map_entity_text", "AddOutPut", "x -1.00");
 			EF("map_entity_text", "AddOutPut", "duration 10");
 
 			foreach (player in PLAYERS)
@@ -848,6 +891,9 @@ function Touch_Start()
 		EF("cp_logic_mover01*", "SetSpeed", "75", 96);
 		EF("cp_logic_mover01*", "SetSpeed", "175", 98);
 
+
+		CallFunction("Text_Autors()", 80.0);
+		CallFunction("Text_Autors_A()", 95.0);
 		CallFunction("StartOverLay(\"overlay/uber\", 10.0);", 98.0);
 
 		EF("map_entity_fade_end_chapter_in", "Fade", "", 101);
@@ -858,7 +904,6 @@ function Touch_Start()
 
 	function Trigger_Prologue_01()
 	{
-		local bAlive = false;
 		foreach (player in PLAYERS)
 		{
 			if (!TargetValid(player))
@@ -871,20 +916,7 @@ function Touch_Start()
 				continue;
 			}
 
-			if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(4100, 4406, -11268), Vector(468, 333, 500)))
-			{
-				EF(player, "SetHealth", "0");
-				continue;
-			}
-
-			bAlive = true;
 			player.SetOrigin(g_vecCTRoom);
-		}
-
-		if (!bAlive)
-		{
-			EF("game_round_end", "EndRound_Draw", "1.0");
-			return;
 		}
 
 		CUT_SCENE_DATA = [
@@ -1185,7 +1217,7 @@ function Touch_Start()
 
 		Spawn_Location01();
 
-		CallFunction("Text_nietzsche();", 5.5);
+		CallFunction("Text_Nietzsche();", 5.5);
 
 		CallFunction("bFade = true;", 16.5);
 		EF("map_entity_fade_end_chapter_in", "Fade", "", 16.5);
@@ -1310,7 +1342,7 @@ function Touch_Start()
 		Portal_Scope.Portal_Init_CH02_Quest01();
 		Portal_Scope.Portal_Init_CH01_Save();
 
-		CallFunction("Text_nietzsche();", 5.5);
+		CallFunction("Text_Nietzsche();", 5.5);
 		CallFunction("Spore_Start(300);", 20.0);
 		CallFunction("Human_Glow_Disabled()", 15);
 
@@ -1389,7 +1421,7 @@ function Touch_Start()
 		Portal_Scope.Portal_Init_CH03();
 		EF("cp03", "ForceSpawn");
 
-		CallFunction("Text_nietzsche();", 5.5);
+		CallFunction("Text_Nietzsche();", 5.5);
 		CallFunction("Spore_Start(300);", 20.0);
 		CallFunction("Human_Glow_Disabled()", 15);
 
@@ -1484,7 +1516,7 @@ function Touch_Start()
 		EF("loc01_quest00_door*", "SetGlowEnabled", "", 7);
 
 		EF("map_trigger_start_human", "Enable", "", 1.0);
-		ZombieToTeleportRadius(Vector(-3487, -2269, -67), 1750);
+		Portal_Scope.ZombieToTeleportRadius(Vector(-3487, -2269, -67), 1750);
 
 		StartOverLay("overlay/c1", 7.0);
 		CallFunction("Text_CP1()", 7);
@@ -1492,26 +1524,26 @@ function Touch_Start()
 		CallFunction("Human_SetHalfHP()", 1.0);
 		CallFunction("Human_Glow_Enabled()", 7.0);
 
-		EF("cp01_sound02*", "PlaySound", "", 19.75);
-		EF("cp01_effect02*", "Start", "", 19.75);
+		EF("cp01_sound02*", "PlaySound", "", 9.75);
+		EF("cp01_effect02*", "Start", "", 9.75);
 
-		EF("cp01_sound01*", "PlaySound", "", 20);
-		EF("cp01_effect01*", "Start", "", 20);
-		EF("loc01_wall00*", "Toggle", "", 20);
+		EF("cp01_sound01*", "PlaySound", "", 10);
+		EF("cp01_effect01*", "Start", "", 10);
+		EF("loc01_wall00*", "Toggle", "", 10);
 
-		CallFunction("KillHelicopter()", 20);
+		CallFunction("KillHelicopter()", 10);
 
-		EF("cp01_sound00*", "PlaySound", "", 20.25);
-		EF("cp01_effect00*", "Start", "", 20.25);
+		EF("cp01_sound00*", "PlaySound", "", 10.25);
+		EF("cp01_effect00*", "Start", "", 10.25);
 
-		EF("cp01_fire*", "Kill", "", 20.1);
-		EF("cp01_sound0*", "Kill", "", 30);
+		EF("cp01_fire*", "Kill", "", 10.1);
+		EF("cp01_sound0*", "Kill", "", 20);
 
-		EF("cp01_props_helicopter*", "Kill", "", 20.1);
-		EF("loc01_props_helicopter*", "Enable", "", 20);
+		EF("cp01_props_helicopter*", "Kill", "", 10.1);
+		EF("loc01_props_helicopter*", "Enable", "", 10);
 		// EF("loc01_props_helicopter*", "EnableCollision", "", 20);
 
-		EF("cp01_effect0*", "Kill", "", 25);
+		EF("cp01_effect0*", "Kill", "", 15);
 	}
 
 	::Trigger_Chapter1_01 <- function()
@@ -1556,7 +1588,6 @@ function Touch_Start()
 		}
 
 		Portal_Scope.Portal_Init_CH01_Quest01();
-		Portal_Scope.Portal_Enable_CH01_Quest01();
 
 		EF("loc01_props_lift*", "SetGlowEnabled");
 		EF("cp01_quest02_trigger*", "Enable");
@@ -1767,7 +1798,7 @@ function Touch_Start()
 						EF("cp01_quest02_trigger*", "Enable", "", 3.0);
 						EF("cp01_quest02_prop*", "Enable", "", 3.0);
 						EF("cp01_quest02_prop*", "SetGlowEnabled", "", 3.0);
-						DamagePlayer(owner, 101);
+						DamagePlayer(owner, 50);
 					}
 
 					function Draw()
@@ -1858,12 +1889,11 @@ function Touch_Start()
 				EF("loc01_logic_lift_door02*", "Close", "", 30.5);
 				EF("loc01_logic_lift_door03*", "Open", "", 33);
 
-				EF("loc01_logic_lift_glow00*", "SetGlowDisabled", "", 30);
+				EF("loc01_logic_lift_glow00*", "SetGlowDisabled", "", 25);
 
 				LIFT_STATUS_CP01 = Enum_LIFT.Move_Up;
 
 				Portal_Scope.Portal_Init_CH01_Quest04();
-				Portal_Scope.Portal_Enable_CH01_Quest04();
 
 				PrintChatMessageAll(Enum_TextColor.Award + Translate["text19"]);
 				return;
@@ -2159,7 +2189,8 @@ function Touch_Start()
 			EF("cp02", "ForceSpawn");
 			Spawn_Location02();
 
-			Portal_Scope.Portal_InitCH01_CH02();
+			Portal_Scope.Portal_Init_CH02();
+			Portal_Scope.Portal_Init_CH01_CH02();
 			Portal_Scope.Portal_Init_CH02_Quest01();
 			Portal_Scope.ZombieToTeleport();
 		}
@@ -2196,6 +2227,9 @@ function Touch_Start()
 
 			EF("cp02_quest00_prop02*", "Enable");
 			EF("cp02_quest00_prop02*", "SetGlowEnabled");
+
+			EF("cp02_quest04_prop*", "Enable");
+			EF("cp02_quest04_prop*", "SetGlowEnabled");
 
 			Portal_Scope.Portal_Maker_CH02a();
 		}
@@ -2239,7 +2273,7 @@ function Touch_Start()
 				function Lose()
 				{
 					EF("cp02_quest01_button00*", "UnLock", "", 3.0);
-					DamagePlayer(owner, 101);
+					DamagePlayer(owner, 50);
 				}
 
 				function Draw()
@@ -2297,7 +2331,7 @@ function Touch_Start()
 				function Lose()
 				{
 					EF("cp02_quest01_button01*", "UnLock", "", 3.0);
-					DamagePlayer(owner, 101);
+					DamagePlayer(owner, 50);
 				}
 
 				function Draw()
@@ -2411,9 +2445,6 @@ function Touch_Start()
 			EF("cp02_quest03_sound*", "PlaySound");
 			EF("cp02_quest03_sound*", "Kill", "", 10);
 
-			EF("cp02_quest04_prop*", "Enable");
-			EF("cp02_quest04_prop*", "SetGlowEnabled");
-
 			PrintChatMessageAll(Enum_TextColor.Award + Translate["text41"]);
 			PrintChatMessageAll(Enum_TextColor.Award + Translate["text42"], 15.0);
 			CH02_QUEST3_INIT = true;
@@ -2519,7 +2550,7 @@ function Touch_Start()
 					continue;
 				}
 
-				if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 886, -24), Vector(267.5, 272.5, 160)))
+				if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 981, -24), Vector(267.5, 365, 160)))
 				{
 					Individual_Spore(player);
 					continue;
@@ -2706,7 +2737,7 @@ function Touch_Start()
 
 		::Trigger_Chapter3_01 <- function()
 		{
-			ZombieToTeleportRadius(Vector(7112, 666, -70), 1750);
+			Portal_Scope.ZombieToTeleportRadius(Vector(7112, 666, -70), 1750);
 			DISABLE_ABILITY = false;
 
 			EF("instanceauto1-skybox_env", "Stop");
@@ -2798,7 +2829,7 @@ function Touch_Start()
 
 				if (player.GetTeam() != 3)
 				{
-					if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 886, -24), Vector(267.5, 272.5, 160)))
+					if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 981, -24), Vector(267.5, 365, 160)))
 					{
 						continue;
 					}
@@ -2806,7 +2837,7 @@ function Touch_Start()
 				}
 				else
 				{
-					if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 886, -24), Vector(267.5, 272.5, 160)))
+					if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 981, -24), Vector(267.5, 365, 160)))
 					{
 						EF(player, "SetHealth", "0");
 						continue;
@@ -2864,18 +2895,26 @@ function Touch_Start()
 			CallFunction("Trigger_Chapter3_04()", 14);
 		}
 
-		CH03_QUEST2_BACK_HP <- 110;
+		CH03_QUEST2_TICKING <- false;
+		CH03_QUEST2_BACK_HP <- 100;
+		CH03_QUEST2_HP_MAX <- 0;
+
+		CH03_QUEST2_00_TIME <- 0;
+		CH03_QUEST2_01_TIME <- 0;
+		CH03_QUEST2_02_TIME <- 0;
 		CH03_QUEST2_00_HP <- CH03_QUEST2_BACK_HP;
 		CH03_QUEST2_01_HP <- CH03_QUEST2_BACK_HP;
 		CH03_QUEST2_02_HP <- CH03_QUEST2_BACK_HP;
 		::Trigger_Chapter3_04 <- function()
 		{
-			ZombieToTeleport();
+			CH03_QUEST2_TICKING = true;
+			Portal_Scope.ZombieToTeleport();
 			Spore_Add(100);
 
-			CH03_QUEST2_00_HP = HUMAN_OWNERS.len() * CH03_QUEST2_BACK_HP;
-			CH03_QUEST2_01_HP = HUMAN_OWNERS.len() * CH03_QUEST2_BACK_HP;
-			CH03_QUEST2_02_HP = HUMAN_OWNERS.len() * CH03_QUEST2_BACK_HP;
+			CH03_QUEST2_HP_MAX = HUMAN_OWNERS.len() * CH03_QUEST2_BACK_HP;
+			CH03_QUEST2_00_HP = CH03_QUEST2_HP_MAX;
+			CH03_QUEST2_01_HP = CH03_QUEST2_HP_MAX;
+			CH03_QUEST2_02_HP = CH03_QUEST2_HP_MAX;
 
 			EF("loc03_quest00_door0*", "Open", "", 2);
 
@@ -2888,6 +2927,10 @@ function Touch_Start()
 		}
 		::Hook_Damage_Worm_Chapter3 <- function()
 		{
+			if (!CH03_QUEST2_TICKING)
+			{
+				return;
+			}
 			local ID = caller.GetPreTemplateName().slice(caller.GetPreTemplateName().len() - 1).tointeger();
 			if (ID == 0)
 			{
@@ -2898,6 +2941,12 @@ function Touch_Start()
 					EF("cp03_quest02_prop0" + ID + "*", "SetAnimation", "Rise_down", 1.0);
 					EF("cp03_quest02_prop0" + ID + "*", "FadeAndKill", "", 5.0);
 					EF("cp03_quest02_effect0" + ID + "*", "Stop");
+				}
+				else if (Time() > CH03_QUEST2_00_TIME)
+				{
+					CH03_QUEST2_00_TIME = Time() + 0.25;
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 200 150 150");
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 255 255 255", 0.15);
 				}
 			}
 			else if (ID == 1)
@@ -2910,6 +2959,12 @@ function Touch_Start()
 					EF("cp03_quest02_prop0" + ID + "*", "FadeAndKill", "", 5.0);
 					EF("cp03_quest02_effect0" + ID + "*", "Stop");
 				}
+				else if (Time() > CH03_QUEST2_01_TIME)
+				{
+					CH03_QUEST2_01_TIME = Time() + 0.25;
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 200 150 150");
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 255 255 255", 0.15);
+				}
 			}
 			else if (ID == 2)
 			{
@@ -2921,17 +2976,24 @@ function Touch_Start()
 					EF("cp03_quest02_prop0" + ID + "*", "FadeAndKill", "", 5.0);
 					EF("cp03_quest02_effect0" + ID + "*", "Stop");
 				}
+				else if (Time() > CH03_QUEST2_02_TIME)
+				{
+					CH03_QUEST2_02_TIME = Time() + 0.25;
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 200 150 150");
+					EF("cp03_quest02_prop0" + ID + "*", "AddOutPut", "rendercolor 255 255 255", 0.15);
+				}
 			}
 
 			if (CH03_QUEST2_00_HP <= 0 &&
-				CH03_QUEST2_01_HP <= 0 &&
-				CH03_QUEST2_02_HP <= 0)
+			CH03_QUEST2_01_HP <= 0 &&
+			CH03_QUEST2_02_HP <= 0)
 			{
 				Trigger_Chapter3_05();
 			}
 		}
 		::Trigger_Chapter3_05 <- function()
 		{
+			CH03_QUEST2_TICKING = false;
 			EF("cp03_quest03_trigger*", "Enable", "", 2);
 			EF("loc03_quest00_door00_prop*", "SetGlowEnabled");
 
@@ -2986,7 +3048,7 @@ function Touch_Start()
 					continue;
 				}
 
-				if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 886, -24), Vector(267.5, 272.5, 160)))
+				if (!IsVectorInBoundingBox(player.GetOrigin(), Vector(6774, 981, -24), Vector(267.5, 365, 160)))
 				{
 					EF(player, "SetHealth", "0");
 					continue;
@@ -3128,7 +3190,36 @@ function Touch_Start()
 			return;
 		}
 
-		ScriptPrintMessageCenterAll("<font color='#" + GetCOLORHEX(SPORE_TIME, SPORE_TIME_MAX) +"'>" + Translate["ct_sporetime"] + " : "+SPORE_TIME.tointeger() +"</font>");
+		local text_spore = Translate["ct_sporetime"] + " : <font color='#" + GetCOLORHEX(SPORE_TIME, SPORE_TIME_MAX) +"'>" + SPORE_TIME.tointeger() +"</font>";
+		if (CH03_QUEST2_TICKING)
+		{
+			text_spore += "\n\n";
+			if (CH03_QUEST2_00_HP > 0)
+			{
+				text_spore += "Ἄργης : <font color='#" + GetCOLORHEX(CH03_QUEST2_00_HP, CH03_QUEST2_HP_MAX) +"'>" + (CH03_QUEST2_00_HP * 1.0 / CH03_QUEST2_HP_MAX * 100).tointeger() + "</font>% HP\n";
+			}
+			else
+			{
+				text_spore +="Ἄργης : <font color='#FF0000'>Dead</font>\n";
+			}
+			if (CH03_QUEST2_01_HP > 0)
+			{
+				text_spore += "Βρόντης : <font color='#" + GetCOLORHEX(CH03_QUEST2_01_HP, CH03_QUEST2_HP_MAX) +"'>" + (CH03_QUEST2_01_HP * 1.0 / CH03_QUEST2_HP_MAX * 100).tointeger() + "</font>% HP\n";
+			}
+			else
+			{
+				text_spore +="Βρόντης : <font color='#FF0000'>Dead</font>\n";
+			}
+			if (CH03_QUEST2_02_HP > 0)
+			{
+				text_spore += "Στερόπης : <font color='#" + GetCOLORHEX(CH03_QUEST2_02_HP, CH03_QUEST2_HP_MAX) +"'>" + (CH03_QUEST2_02_HP * 1.0 / CH03_QUEST2_HP_MAX * 100).tointeger() + "</font>% HP\n";
+			}
+			else
+			{
+				text_spore += "Στερόπης : <font color='#FF0000'>Dead</font>\n";
+			}
+		}
+		ScriptPrintMessageCenterAll(text_spore);
 	}
 
 	::Spore_End <- function()
@@ -3739,6 +3830,7 @@ function Touch_Start()
 
 		local bHaveName = (szName != "");
 		local bFind;
+
 		foreach (targetname in FREE_TARGETNAME)
 		{
 			bFind = false;
@@ -4162,11 +4254,6 @@ function Touch_Start()
 		}
 
 		if (GetPickerClassByOwner(handle) != null)
-		{
-			return;
-		}
-
-		if (GetPortalPickerClassByOwner(handle) != null)
 		{
 			return;
 		}
