@@ -58,8 +58,8 @@ function RoundStart()
 
 	if (iChapter == -2)
 	{
-		local warmup = 5;
-		// local warmup = 60;
+		// local warmup = 5;
+		local warmup = 60;
 		for (local i = 0; i < warmup; i++)
 		{
 			PrintChatMessageAll(Translate["warmup"] + " : " + (warmup - i), i);
@@ -80,7 +80,7 @@ function RoundStart()
 
 function WarmUpEnd()
 {
-	iChapter = 2;
+	iChapter = 0;
 	EF("game_round_end", "EndRound_Draw", "1.0");
 }
 
