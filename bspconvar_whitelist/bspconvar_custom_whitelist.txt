@@ -432,7 +432,7 @@
 	{
 		sm_gravity										1
 	}
-	ze_shrek_swamp_v2
+	"ze_shrek_swamp_v3"
 	{
 		sv_enablebunnyhopping							1
 	}
@@ -449,7 +449,7 @@
 	{
 		sm_gravity										1
 	}
-	"ze_ubermenschen_b1"
+	"ze_ubermenschen_b2"
 	{
 		zr_infect_spawntime_min							1
 		zr_infect_spawntime_max							1
