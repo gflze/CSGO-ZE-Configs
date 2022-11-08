@@ -4,7 +4,7 @@
 //Install as csgo/scripts/vscripts/gfl/bible_antiswear.nut
 //#####################################################################
 
-::swearWords <- ["fuck", "fucking", "fucker", "fucked", "motherfucker", "crap", "shit", "bullshit", "horseshit", "ass", "arse", "asshole", "arsehole", "damn", "goddamn", "hell", "satan", "bastard", "bitch", "dick", "dickhead", "penis", "cock", "cocksucker", "cunt", "pussy", "vagina", "piss", "slut", "whore", "puta", "twat", "wanker", "fag", "faggot", "zeddy", "zeddys", "zed", "mapea", "mapeadores"];
+::swearWords <- ["fuck", "fucking", "fucker", "fucked", "motherfucker", "crap", "shit", "shitty", "shitter", "bullshit", "horseshit", "ass", "arse", "asshole", "arsehole", "damn", "goddamn", "hell", "satan", "lucifer", "antichrist", "bastard", "bitch", "dick", "dickhead", "penis", "cock", "cocksucker", "cunt", "pussy", "vagina", "boob", "boobs", "tit", "tits", "titties", "piss", "slut", "whore", "puta", "twat", "wanker", "fag", "faggot", "sex", "anal", "vaginal", "rape", "fap", "masturbate", "masturbation", "horny", "cum", "zeddy", "zeddys", "zed", "mapea", "mapeadores"];
 
 function ContainsSwear(tokenList)
 {
@@ -12,12 +12,27 @@ function ContainsSwear(tokenList)
 	{
 		foreach (s in swearWords)
 		{
-			if (s == t.tolower())
+			if (s == StripPunctuation(t).tolower())
 				return true;
 		}
 	}
 
 	return false;
+}
+
+function StripPunctuation(token)
+{
+	local strippedToken = "";
+
+	for (local i = 1; i <= token.len(); i++)
+	{
+		local char = token.slice(i - 1, i);
+
+		if (char != "." && char != "," && char != "?" && char != "!")
+			strippedToken = strippedToken + char;
+	}
+
+	return strippedToken;
 }
 
 function ParsePlayerMessage(player, message)
