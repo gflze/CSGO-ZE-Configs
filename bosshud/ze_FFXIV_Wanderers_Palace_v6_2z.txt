@@ -1,0 +1,65 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Boss_Health_Goobbue"
+		"CustomText"		"Goobbue"
+	}
+	"1"
+	{
+		"HP_counter"		"Boss_Health_Garuda"
+		"CustomText"		"Garuda"
+	}
+	"2"
+	{
+		"HP_counter"		"Boss_Health_Ifrit"
+		"CustomText"		"Ifrit"
+	}
+	"3"
+	{
+		"HP_counter"		"Boss_Health_Titan"
+		"CustomText"		"Titan"
+	}
+	"4"
+	{
+		"HP_counter"		"Boss_Health_Suzaku"
+		"CustomText"		"Suzaku"
+	}
+	"5"
+	{
+		"HP_counter"		"Boss_Health_Ultima_Weapon"
+		"CustomText"		"Ultima Weapon"
+	}
+	"6"
+	{
+		"HP_counter"		"Boss_Health_Chaos"
+		"CustomText"		"Chaos"
+	}
+	"7"
+	{
+		"HP_counter"		"Dreamland_Dreamed_Chaser_Health"
+		"CustomText"		"Dream Chaser"
+	}
+	"8"
+	{
+		"HP_counter"		"Dreamland_Dreamed_Chaser_Health1"
+		"CustomText"		"Dream Chaser"
+	}
+	"9"
+	{
+		"HP_counter"		"Dreamland_Dreamed_Chaser_Health2"
+		"CustomText"		"Dream Chaser"
+	}
+	"10"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Gaol_Breakable"
+		"CustomText"		"Gaol"
+	}
+	"11"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Final_Ultima_Weapon_Hitbox"
+		"CustomText"		"Ultima Weapon"
+	}
+}
