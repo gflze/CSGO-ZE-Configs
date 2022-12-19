@@ -1,0 +1,33 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "pkey_boss_health"
+        "CustomText"        "Purple Cube"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "c_lz_break"
+        "CustomText"        "LzYoRHa"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "c_ko_break"
+        "CustomText"        "koen"
+    }
+    "3"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "c_th_break"
+        "CustomText"        "thegibbon"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "c_rh_break"
+        "CustomText"        "Rheaneas"
+    }
+}
