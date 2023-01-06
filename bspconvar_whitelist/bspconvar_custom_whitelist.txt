@@ -400,6 +400,10 @@
 	{
 		zr_infect_mzombie_ratio							1
 	}
+	"ze_last_man_standing_p3"
+	{
+		zr_infect_mzombie_ratio							1
+	}
 	"ze_lotr_isengard_csgo1"
 	{
 		sv_disable_radar								0
