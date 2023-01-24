@@ -1,0 +1,25 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "boss_chet_Hp"
+        "HPinit_counter"    "boss_chet_HpBackup"
+        "HPbar_counter"     "boss_chet_HpCounter"
+        "HPbar_min"         "1"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Chet"
+    }
+    "1"
+    {
+        "HP_counter"        "rocklee_Hp"
+        "HPinit_counter"    "rocklee_HpBackup"
+        "HPbar_counter"     "rocklee_HpCounter"
+        "HPbar_min"         "1"
+        "HPbar_max"         "7"
+        "HPbar_default"     "7"
+        "HPbar_mode"        "1"
+        "CustomText"        "RockLee"
+    }
+}
