@@ -1,8 +1,8 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "27.06.2022 - 19:44";
+::ScriptVersion <- "28.12.2022 - 15:27";
 Stage <- -1;
-WARMUP_TIME <- 90.0;
+WARMUP_TIME <- 30.0;
 ::ITEM_GLOW <- false; 			// set false to disable this
 ::MAPPER_ENT_FIRE <- false; 		// set false to disable this
 ::ENT_WATCH_ENABLE <- false; 	// set false to disable this(change entwatch config!)
@@ -92,7 +92,16 @@ function MapStart()
 	once_check = true;
 	LoopPlayerCheck();
 
+	EntFire("map_tone ", "FireUser4", "", 0);
+	if (Stage > 3)
+	{
+		EntFire("map_tone ", "SetBloomScale", "2", 0.1);
+		EntFire("map_tone ", "SetAutoExposureMax", "2.5", 0.1);
+		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 0.1);
+	}
 
+	self.PrecacheModel("models/kmodels/cosmo/props/cs_office/crates_indoor.mdl");
+	FastFix();
 
 	//Bhop_Toggle();
 	if(Stage == -1)
@@ -117,13 +126,18 @@ function MapStart()
 
 		EntFire("Start_tp", "FireUser1", "", 3);
 		EntFire("shop_travel_trigger", "FireUser1", "", 0);
+
 		EntFire("item_temp_mike", "ForceSpawn", "", 0);
+		EntFire("item_temp_yuffie", "AddOutPut", "origin 4286 -3794 653", 0.5);
+		EntFire("item_temp_yuffie", "ForceSpawn", "", 1);
+
+		EntFire("Spawn_Lift", "Open", "", 0);
+		EntFire("Spawn_Lift1", "Open", "", 0);
+
 
 		EntFireByHandle(self, "RunScriptCode", "NewStageGiveMoney();", 0.5, null, null);
 		if(Stage == 1)//normal
 		{
-			//EntFire(target, action, value, delay);
-
 			EntFire("Credits_Game_Text", "AddOutput", "message NORMAL MODE", 9.95);
 			EntFire("cmd", "Command", "say **NORMAL MODE**", 4);
 
@@ -133,6 +147,8 @@ function MapStart()
 			EntFire("Nigger", "AddOutPut", "angles -90 261 0", 0)
 			EntFire("Nigger", "SetAnimation", "chair_idle", 0);
 			EntFire("Nigger", "SetDefaultAnimation", "chair_idle", 0);
+			EntFire("Hold5_Button", "Unlock", "", 0);
+			EntFire("Hold5_Button1", "Unlock", "", 0);
 
 			SendToConsoleServerPS("zr_infect_mzombie_respawn 1");
 			SendToConsoleServerPS("zr_infect_mzombie_ratio 12");
@@ -174,8 +190,11 @@ function MapStart()
 		{
 			EntFire("Credits_Game_Text", "Display", "", 10);
 			EntFire("Credits_Game_Text", "AddOutput", "message HARD MODE", 9.95);
+			EntFire("Hold5_Button1", "Unlock", "", 0);
+			EntFire("Hard_Mine_Button", "Unlock", "", 0);
 
 			EntFire("cmd", "Command", "say **HARD MODE**", 4);
+			EntFire("temp_mine", "forcespawn", "", 20);
 
 			SendToConsoleServerPS("zr_infect_mzombie_respawn 1");
 			SendToConsoleServerPS("zr_infect_mzombie_ratio 10");
@@ -209,8 +228,7 @@ function MapStart()
 		}
 		else if(Stage == 3)//zm
 		{
-			//210
-			local Nuke_Time = 210;
+			local Nuke_Time = 215;
 			EntFire("kojima*", "Kill", "", 0, null);
 
 			EntFire("Credits_Game_Text", "Display", "", 10);
@@ -229,7 +247,13 @@ function MapStart()
 
 			EntFire("Map_ZM_Temp", "ForceSpawn", "", 0);
 
-			EntFire("music", "RunScriptCode", "SetMusic(Music_ZM_2);", 161.00);
+			EntFire("City_Gate", "Close", "", 120.00);
+			EntFire("zm_travel_trigger", "kill", "", 145.00);
+			EntFire("map_brush", "RunScriptCode", "Trigger_ZM_Tp();", 149.00);
+			EntFire("music01", "RunScriptCode", "SetMusic(Music_ZM_2);", 160.00);
+			EntFire("City_Gate", "Open", "", 154.00);
+			EntFire("ZM_End_Chek", "Enable", "", 215.0);
+			EntFire("ZM_End_Chek", "touchtest", "", 215.1);
 
 			local text1;
 			for(local i = 30; i <= Nuke_Time; i++)
@@ -272,7 +296,8 @@ function MapStart()
 			text = "I will pray for your success";
 			ServerChat(OldMan_pref + text, 60.00);
 
-			EntFireByHandle(self, "RunScriptCode", "Trigger_ZM_End();", Nuke_Time, null, null);
+			text = "Run to the airship and defend it.";
+			ServerChat(Chat_pref + text, 149.00);
 
 			SendToConsoleServerPS("zr_infect_mzombie_respawn 0");
 			SendToConsoleServerPS("zr_infect_mzombie_ratio 6");
@@ -286,6 +311,9 @@ function MapStart()
 			EntFire("Credits_Game_Text", "Display", "", 10);
 			EntFire("Credits_Game_Text", "AddOutput", "message EXTREME MODE", 9.95);
 			EntFire("cmd", "Command", "say **EXTREME MODE**", 4);
+			EntFire("Hold5_Button", "Unlock", "", 0);
+			EntFire("Hold5_Button1", "Unlock", "", 0);
+			EntFire("lvl3_Crate", "kill", "", 0);
 
 			SendToConsoleServerPS("zr_infect_mzombie_respawn 1");
 			SendToConsoleServerPS("zr_infect_mzombie_ratio 6");
@@ -313,6 +341,10 @@ function MapStart()
 		}
 		else if(Stage == 5)//Inferno
 		{
+			EntFire("Temp_Inferno", "ForceSpawn", "", 2);
+			EntFire("Inferno_Mine_Door_Button", "Unlock", "", 0);
+			EntFire("Hold5_Button", "Unlock", "", 0);
+			EntFire("lvl3_Crate", "kill", "", 0);
 			EntFire("sky_fire", "Start", "", 0.5);
 
 			EntFire("Credits_Game_Text", "Display", "", 10);
@@ -325,8 +357,133 @@ function MapStart()
 			OpenSpawn(25);
 		}
 	}
+	CountStage();
 	//EntFireByHandle(self, "RunScriptCode", "SavePos();", 5, null, null);
 }
+
+function CountStage()
+{
+	switch (Stage)
+	{
+		case 1:
+		{
+			Stage_Beat_Normal_Count++;
+			break;
+		}
+		case 2:
+		{
+			Stage_Beat_Hard_Count++;
+			break;
+		}
+		case 3:
+		{
+			Stage_Beat_ZM_Count++;
+			break;
+		}
+		case 4:
+		{
+			Stage_Beat_Extreme_Count++;
+			break;
+		}
+		case 4:
+		{
+			Stage_Beat_Inferno_Count++;
+			break;
+		}
+	}
+}
+function BeatStage()
+{
+	// local fTime = 120.0;
+	// ::Stage_Beat_Normal_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Normal_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Hard_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Hard_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_ZM_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_ZM_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Extreme_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Extreme_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Inferno_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Inferno_Count = RandomInt(0, 5);
+
+
+	if (Stage_Beat_Normal_Time != null)
+	{
+		local Time = Stage_Beat_Normal_Time - Map_Start_Time;
+
+		local text = "Normal mode был пройден за " +((Time / 60) % 60).tointeger() + " минут и " + (Time % 60).tointeger() + " секунд, с " + Stage_Beat_Normal_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Hard_Time != null)
+	{
+		local SumTime = Stage_Beat_Hard_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Normal_Time != null)
+		{
+			SumTime = Stage_Beat_Hard_Time - Stage_Beat_Normal_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Hard mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Hard_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_ZM_Time != null)
+	{
+		local SumTime = Stage_Beat_ZM_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Hard_Time != null)
+		{
+			SumTime = Stage_Beat_ZM_Time - Stage_Beat_Hard_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "ZM mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_ZM_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Extreme_Time != null)
+	{
+		local SumTime = Stage_Beat_Extreme_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_ZM_Time != null)
+		{
+			SumTime = Stage_Beat_Extreme_Time - Stage_Beat_ZM_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Extreme mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Extreme_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Inferno_Time != null)
+	{
+		local SumTime = Stage_Beat_Inferno_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Extreme_Time != null)
+		{
+			SumTime = Stage_Beat_Inferno_Time - Stage_Beat_Extreme_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Inferno mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Inferno_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+}
+
 function Warmup_TICK()
 {
 	local text;
@@ -335,6 +492,7 @@ function Warmup_TICK()
 	{
 		text = "MAP START";
 		AdminSetStage(1);
+		Map_Start_Time = Time() + 6.00;
 	}
 	else
 	{
@@ -597,13 +755,13 @@ function NewStageGiveMoney()
 	{
 		local money = 0;
 		if(Stage == 2)
-			money = 120;
-		else if(Stage == 3)
 			money = 150;
+		else if(Stage == 3)
+			money = 200;
 		else if(Stage == 4)
-			money = 125;
+			money = 150;
 		else if(Stage == 5)
-			money = 250;
+			money = 350;
 		else if(Stage == 6)
 			money = 500;
 		foreach(p in PLAYERS)
@@ -661,6 +819,7 @@ function SetVipSkin()
 function SetStage(i)
 {
 	Stage = i;
+	BeatStage();
 }
 
 function AdminSetStage(i)
@@ -674,7 +833,7 @@ function AdminSetStage(i)
 }
 ///////////////////////////////////////////////////////////
 //events chat commands for admin room
-PLAYERS <- [];
+::PLAYERS <- [];
 PLAYERS_SAVE <- [];
 PL_HANDLE <- [];
 TEMP_HANDLE <- null;
@@ -687,111 +846,138 @@ MAPPER_STEAM_ID <- [
 ];
 
 VIP_STEAM_ID <-[
-"STEAM_1:1:17775692",	//memes translate
-"STEAM_1:1:175332810",	//Champagne translate
-"STEAM_1:1:114921174",	//Koen  translate
+"STEAM_1:1:17775692",    //memes translate
+"STEAM_1:1:175332810",    //Champagne translate
+"STEAM_1:1:114921174",    //Koen  translate
 
-"STEAM_1:1:161274095",	//Niceshoot script help
+"STEAM_1:1:161274095",    //Niceshoot script help
 "STEAM_1:1:22521282",   //Luffaren script help
-"STEAM_1:0:205165205",	//waffel just waffel
+"STEAM_1:0:205165205",    //waffel just waffel
 
-"STEAM_1:1:159416248",	//toppi made skin for VIP
+"STEAM_1:1:159416248",    //toppi made skin for VIP
 
-"STEAM_1:0:36455426",	//Lexer
-"STEAM_1:1:32284494",	//Jayson
-"STEAM_1:0:176529696",	//switchwwe
+"STEAM_1:0:36455426",    //Lexer
+"STEAM_1:1:32284494",    //Jayson
+"STEAM_1:0:176529696",    //switchwwe
 "STEAM_1:1:98076432",   //xmin
 "STEAM_1:1:31474938",   //Headsh
 "STEAM_1:0:56405847",   //Vishnya
 
-"STEAM_1:1:53251263"	//SHUFEN
-"STEAM_1:0:32966106",	//extrim
-"STEAM_1:1:93569664",	//Kun
-"STEAM_1:1:70706976",	//Lunar
-"STEAM_1:0:33036708",	//CrazyKid
-"STEAM_1:0:96803884",	//Hestia
-"STEAM_1:1:95551530",	//ZeddY
-"STEAM_1:1:67559577",	//FireWork
-"STEAM_1:0:52425310",	//Nemo
-"STEAM_1:0:68863967",	//Nano
-"STEAM_1:0:217698549",	//Tianli
+"STEAM_1:1:53251263"    //SHUFEN
+"STEAM_1:0:32966106",    //extrim
+"STEAM_1:1:93569664",    //Kun
+"STEAM_1:1:70706976",    //Lunar
+"STEAM_1:0:33036708",    //CrazyKid
+"STEAM_1:0:96803884",    //Hestia
+"STEAM_1:1:95551530",    //ZeddY
+"STEAM_1:1:67559577",    //FireWork
+"STEAM_1:0:52425310",    //Nemo
+"STEAM_1:0:68863967",    //Nano
+"STEAM_1:0:217698549",    //Tianli
 
-"STEAM_1:0:187018106",	//creepy
+"STEAM_1:0:187018106",    //creepy
 
-"STEAM_1:0:545026218",	//sushibanana
-"STEAM_1:0:67807133",	//spxctator
-"STEAM_1:1:184872578",	//xiaodi
-"STEAM_1:0:139000667",	//liala
-"STEAM_1:1:231588744",	//takoyaki
-"STEAM_1:0:21838852",	//detroid
-"STEAM_1:1:420073883",	//shizuka
-"STEAM_1:1:76518687",	//tupu
-"STEAM_1:1:183225255",	//ponya
-"STEAM_1:0:213888379",	//burning my life
-"STEAM_1:1:101719126",	//bulavator
-"STEAM_1:0:44723115",	//umad
-"STEAM_1:1:129184042",	//dead angel
+"STEAM_1:0:545026218",    //sushibanana
+"STEAM_1:0:67807133",    //spxctator
+"STEAM_1:1:184872578",    //xiaodi
+"STEAM_1:0:139000667",    //liala
+"STEAM_1:1:231588744",    //takoyaki
+"STEAM_1:0:21838852",    //detroid
+"STEAM_1:1:420073883",    //shizuka
+"STEAM_1:1:76518687",    //tupu
+"STEAM_1:1:183225255",    //ponya
+"STEAM_1:0:213888379",    //burning my life
+"STEAM_1:1:101719126",    //bulavator
+"STEAM_1:0:44723115",    //umad
+"STEAM_1:1:129184042",    //dead angel
+"STEAM_1:0:130098902",    //Ruby
 
-"STEAM_1:0:134448990",	//Mist
-"STEAM_1:1:164683076",	//Tsukasa
+"STEAM_1:0:134448990",    //Mist
+"STEAM_1:1:164683076",    //Tsukasa
 
-"STEAM_1:0:121740322",	//Ambitious
-"STEAM_1:0:82660003",	//tilgep
-"STEAM_1:0:602192040",	//ump9
+"STEAM_1:0:121740322",    //Ambitious
+"STEAM_1:0:82660003",    //tilgep
+"STEAM_1:0:602192040",    //ump9
 
 "STEAM_1:0:54446629",    //FPT
 
-"STEAM_1:1:195974930",	//Igromen
+"STEAM_1:1:195974930",    //Igromen
 
-"STEAM_1:1:54109628",	//Cron
+"STEAM_1:1:54109628",    //Cron
+
+"STEAM_1:0:125983318",    //widez
+
+"STEAM_1:0:564459774",    //kiskis
+
+"STEAM_1:1:188314072",    //Crimson
+"STEAM_1:0:51987357",    //Tachibana
+
+"STEAM_1:1:444681594",    //M1mic
+
+"STEAM_1:0:201197343",    //WhiteShadow
+"STEAM_1:1:42492310",    //Wind of Liberty
+"STEAM_1:0:620260550",    //xz china nickname
+"STEAM_1:0:33069283",    //Datless
 ];
-
 INVALID_STEAM_ID <- [
-"STEAM_1:0:56405847 27",	//Vishnya
-"STEAM_1:1:20206338 22",	//HaRyDe
-"STEAM_1:1:210572608 0" 	//Shy Way
-"STEAM_1:0:430842357 0",	//naiz
-"STEAM_1:1:124348087 1",  	//kotya
-"STEAM_1:1:31474938 0",    	//headshoter
-"STEAM_1:1:98076432 0",    	//xmin
-"STEAM_1:1:17775692 3",		//memes
-"STEAM_1:0:561327146 0",	//INSIDE
-"STEAM_1:0:205165205 2",	//waffle
-"STEAM_1:0:58001308 4",		//Mike
-"STEAM_1:0:32966106 0",		//extrim
-"STEAM_1:0:53585397 0",		//Imma
-"STEAM_1:0:16144131 0",		//Malgo
-"STEAM_1:1:175332810 5",	//Champagne
-"STEAM_1:0:148147606 6",	//mrs. Champagne
-"STEAM_1:0:187018106 7",	//Creepy
-"STEAM_1:0:134448990 8",	//Mist
+"STEAM_1:0:56405847 27",    //Vishnya
+"STEAM_1:1:20206338 22",    //HaRyDe
+"STEAM_1:1:210572608 0"     //Shy Way
+"STEAM_1:0:430842357 0",    //naiz
+"STEAM_1:1:124348087 1",      //kotya
+"STEAM_1:1:31474938 0",        //headshoter
+"STEAM_1:1:98076432 0",        //xmin
+"STEAM_1:1:17775692 3",        //memes
+"STEAM_1:0:561327146 0",    //INSIDE
+"STEAM_1:0:205165205 2",    //waffle
+"STEAM_1:0:58001308 4",        //Mike
+"STEAM_1:0:32966106 0",        //extrim
+"STEAM_1:0:53585397 0",        //Imma
+"STEAM_1:0:16144131 0",        //Malgo
+"STEAM_1:1:175332810 5",    //Champagne
+"STEAM_1:0:148147606 6",    //mrs. Champagne
+"STEAM_1:0:187018106 7",    //Creepy
+"STEAM_1:0:134448990 8",    //Mist
 
-"STEAM_1:0:545026218 9",	//sushibanana
-"STEAM_1:0:67807133 10",	//spxctator
-"STEAM_1:1:184872578 11",	//xiaodi
-"STEAM_1:0:139000667 12",	//liala
-"STEAM_1:1:231588744 13",	//takoyaki
-"STEAM_1:0:21838852 14",	//detroid
-"STEAM_1:1:420073883 15",	//shizuka
-"STEAM_1:1:76518687 16",	//tupu
-"STEAM_1:1:183225255 17",	//ponya
-"STEAM_1:0:213888379 18",	//burning my life
-"STEAM_1:1:101719126 19",	//bulavator
-"STEAM_1:0:44723115 20",	//umad
-"STEAM_1:1:129184042 21",	//dead angel
+"STEAM_1:0:545026218 9",    //sushibanana
+"STEAM_1:0:67807133 10",    //spxctator
+"STEAM_1:1:184872578 11",    //xiaodi
+"STEAM_1:0:139000667 12",    //liala
+"STEAM_1:1:231588744 13",    //takoyaki
+"STEAM_1:0:21838852 14",    //detroid
+"STEAM_1:1:420073883 15",    //shizuka
+"STEAM_1:1:76518687 16",    //tupu
+"STEAM_1:1:183225255 17",    //ponya
+"STEAM_1:0:213888379 18",    //burning my life
+"STEAM_1:1:101719126 19",    //bulavator
+"STEAM_1:0:44723115 20",    //umad
+"STEAM_1:1:129184042 21",    //dead angel
 
-"STEAM_1:0:121740322 29",	//Ambitious
-"STEAM_1:0:82660003 28",	//tilgep
-"STEAM_1:0:602192040 23",	//ump9
+"STEAM_1:0:121740322 29",    //Ambitious
+"STEAM_1:0:82660003 28",    //tilgep
+"STEAM_1:0:602192040 23",    //ump9
 
-"STEAM_1:0:52425310 24",	//Nemo
+"STEAM_1:0:52425310 24",    //Nemo
 "STEAM_1:0:54446629 25",    //FPT
-"STEAM_1:1:195974930 26",	//Igromen
+"STEAM_1:1:195974930 26",    //Igromen
 
-"STEAM_1:1:551667585 30",	//Bonesaw
-"STEAM_1:0:118645099 31",	//MercaXlv
+"STEAM_1:1:551667585 30",    //Bonesaw
+"STEAM_1:0:118645099 31",    //MercaXlv
 
-"STEAM_1:1:54109628 32",	//Cron
+"STEAM_1:1:54109628 32",    //Cron
+
+"STEAM_1:0:564459774 33",    //kiskis
+
+"STEAM_1:1:188314072 34",    //Crimson
+"STEAM_1:0:51987357 35",    //Tachibana
+"STEAM_1:0:217789846 36",    //Kurumi
+
+"STEAM_1:1:444681594 37",    //M1mic
+
+"STEAM_1:0:201197343 38",    //WhiteShadow
+"STEAM_1:1:42492310 39",    //Wind of Liberty
+"STEAM_1:0:620260550 40",    //xz china nickname
+"STEAM_1:0:33069283 41",    //Datless
 ];
 
 PIDARAS_COUNT <- 0;
@@ -820,7 +1006,7 @@ PlayerText  <- null;
 CreditsText <- null;
 ItemText    <- null;
 ShopHud     <- null;
-SpeedMod    <- null;
+::SpeedMod    <- null;
 
 g_zone      <- null;
 client_ent <- null;
@@ -840,7 +1026,7 @@ function LoopPlayerCheck()
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
 //RPG
-lvlcost <- [25,50,75];
+lvlcost <- [50,75,100];
 
 ::Infect_Money <- 10;
 ::Shoot_OneMoney <- 20;
@@ -848,11 +1034,12 @@ Shoot_OneMoney = 1.00 / Shoot_OneMoney;
 
 perkhp_zm_cost <- 45;
 ::perkhp_zm_hpperlvl <- 4500;
-::perkhp_zm_maxlvl <- 5; // 30000hp
+::perkhp_zm_maxlvl <- 6; // 30000hp
 
 perkhp_hm_cost <- 30;
-::perkhp_hm_maxlvl <- 8; // 300hp
+::perkhp_hm_maxlvl <- 10; // 300hp
 ::perkhp_hm_hpperlvl <- 25;
+
 
 perkhuckster_cost <- 50;
 ::perkhuckster_maxlvl <- 5; // 25%
@@ -866,7 +1053,7 @@ perkresist_hm_cost <- 70;
 ::perkresist_hm_maxlvl <- 3;
 ::perkresist_hm_resistperlvl <- 30;
 
-perkspeed_cost <- 90;
+perkspeed_cost <- 100;
 ::perkspeed_maxlvl <- 5; // 16%
 ::perkspeed_speedperlvl <- 3.2;
 
@@ -878,9 +1065,9 @@ perkchameleon_cost <- 999999;
 ::perkchameleon_maxlvl <- 5; // 100% dont touch
 ::perkchameleon_chameleonperlvl <- 20;
 
-perkresist_zm_cost <- 75;
-::perkresist_zm_maxlvl <- 5; // 25%
-::perkresist_zm_resistperlvl <- 5;
+perkresist_zm_cost <- 90;
+::perkresist_zm_maxlvl <- 50; // 50%
+::perkresist_zm_resistperlvl <- 1;
 
 ::MaxLevel <- 3;
 
@@ -892,7 +1079,7 @@ item_ammo_countB <- 2;
 
 item_potion_cost <- 50;
 item_potion_count <- 0;
-item_potion_countB <- 2;
+item_potion_countB <- 4;
 
 item_phoenix_cost <- 65;
 item_phoenix_count <- 0;
@@ -914,7 +1101,6 @@ class Player
 	name = null;
 	steamid = null;
 	handle = null;
-	//debug
 	mapper = false;
 	vip = false;
 
@@ -940,7 +1126,6 @@ class Player
 
 	speed = 1.0;
 
-	//money = 10000;
 	money = 50;
 
 	otm = 0;
@@ -964,7 +1149,7 @@ class Player
 	perkhp_hm_lvl = 0;
 	perkhuckster_lvl = 0;
 	perksteal_lvl = 0;
-	//debug
+
 	perkresist_hm_lvl = 0;
 	perkspeed_lvl = 0;
 	perkluck_lvl = 0;
@@ -1170,7 +1355,7 @@ class Player
 	}
 	function level_up_perkresist_zm()
 	{
-		if(this.perkresist_zm_lvl < perkresist_zm_maxlvl)
+		if(this.perkresist_zm_lvl < 50)
 		{
 			this.setPerks = false;
 			this.perkresist_zm_lvl++;
@@ -1319,14 +1504,6 @@ class Player
 		name = _name;
 		steamid = _steamid;
 	}
-	function ReturnMapper()
-	{
-		if(this.mapper)
-		{
-			return true;
-		}
-		return false;
-	}
 	function SetMapper()
 	{
 		if(!this.mapper)
@@ -1360,7 +1537,7 @@ class Player
 	}
 	function level_up_perkheal_zm()
 	{
-		if(this.perkhp_zm_lvl < perkhp_zm_maxlvl)
+		// if(this.perkhp_zm_lvl < perkhp_zm_maxlvl)
 		{
 			this.setPerks = false;
 			this.perkhp_zm_lvl++;
@@ -1372,7 +1549,7 @@ class Player
 	}
 	function level_up_perkheal_hm()
 	{
-		if(this.perkhp_hm_lvl < perkhp_hm_maxlvl)
+		// if(this.perkhp_hm_lvl < perkhp_hm_maxlvl)
 		{
 			this.perkhp_hm_lvl++;
 		}
@@ -1564,8 +1741,8 @@ function DamagePlayer(i,typedamage = null)
 			newi = pl.Get_Resist_From_Third_lvl(i);
 		}
 	}
-	local hp = activator.GetHealth() - newi;
-	if(hp <= 0)
+	local hp = (activator.GetHealth() - newi).tointeger();
+	if(hp < 1)
 	{
 		EntFireByHandle(activator,"SetHealth","-69",0.00,null,null);
 	}
@@ -2103,13 +2280,10 @@ function BuyPerk()
 	if(name.find("hp_hm") != null)
 	{
 		local lvl = pl.perkhp_hm_lvl;
-		if(lvl == perkhp_hm_maxlvl)
-		{
-			Fade_Red(activator);
-			BuyPerkMax(activator)
-			return;
-		}
-		needmoney = pl.GetNewPrice(perkhp_hm_cost);
+		local maxlvl = perkhp_hm_maxlvl;
+		local defaultcost = perkhp_hm_cost;
+		local cost = ((lvl > maxlvl) ? (defaultcost * 2) : defaultcost);
+		needmoney = pl.GetNewPrice(cost);
 		if(pl.money >= needmoney)
 		{
 			pl.level_up_perkheal_hm();
@@ -2130,13 +2304,10 @@ function BuyPerk()
 	else if(name.find("hp_zm") != null)
 	{
 		local lvl = pl.perkhp_zm_lvl;
-		if(lvl == perkhp_zm_maxlvl)
-		{
-			Fade_Red(activator);
-			BuyPerkMax(activator)
-			return;
-		}
-		needmoney = pl.GetNewPrice(perkhp_zm_cost);
+		local maxlvl = perkhp_hm_maxlvl;
+		local defaultcost = perkhp_zm_maxlvl;
+		local cost = ((lvl > maxlvl) ? (defaultcost * 2) : defaultcost);
+		needmoney = pl.GetNewPrice(cost);
 		if(pl.money >= needmoney)
 		{
 			pl.level_up_perkheal_zm();
@@ -2246,13 +2417,10 @@ function BuyPerk()
 	else if(name.find("resist_zm") != null)
 	{
 		local lvl = pl.perkresist_zm_lvl;
-		if(lvl == perkresist_zm_maxlvl)
-		{
-			Fade_Red(activator);
-			BuyPerkMax(activator)
-			return;
-		}
-		needmoney = pl.GetNewPrice(perkresist_zm_cost);
+		local maxlvl = perkresist_zm_maxlvl;
+		local defaultcost = perkresist_zm_cost;
+		local cost = ((lvl > maxlvl) ? (defaultcost * 2) : defaultcost);
+		needmoney = pl.GetNewPrice(cost);
 		if(pl.money >= needmoney)
 		{
 			pl.level_up_perkresist_zm();
@@ -2685,6 +2853,11 @@ function Fade_Poison(handle)
 	EntFire("Poison_fade", "Fade", "", 0, handle);
 }
 
+function Fade_Black(handle)
+{
+	EntFire("travel_fade", "Fade", "", 0, handle);
+}
+
 function Fade_Red(handle)
 {
 	EntFire("fade_red", "Fade", "", 0, handle);
@@ -2703,14 +2876,14 @@ function InfoPerk()
 	local lvl = 0;
 	local lvlMax = 0;
 	local price = 0;
-	if(name.find("hp_hm") != null){lvl = pl.perkhp_hm_lvl;lvlMax = perkhp_hm_maxlvl;price = pl.GetNewPrice(perkhp_hm_cost);perktext += "Human HP";}
-	else if(name.find("hp_zm") != null){lvl = pl.perkhp_zm_lvl;lvlMax = perkhp_zm_maxlvl;price = pl.GetNewPrice(perkhp_zm_cost);perktext += "Zombie HP";}
+	if(name.find("hp_hm") != null){lvl = pl.perkhp_hm_lvl;lvlMax = 400;price = pl.GetNewPrice(((lvl > 400) ? (perkhp_hm_maxlvl * 2) : perkhp_hm_maxlvl));perktext += "Human HP";}
+	else if(name.find("hp_zm") != null){lvl = pl.perkhp_zm_lvl;lvlMax = 400;price = pl.GetNewPrice(((lvl > 400) ? (perkhp_zm_maxlvl * 2) : perkhp_zm_maxlvl));perktext += "Zombie HP";}
 	else if(name.find("huckster") != null){lvl = pl.perkhuckster_lvl;lvlMax = perkhuckster_maxlvl;price = perkhuckster_cost;perktext += "Huckster";}
 	else if(name.find("speed") != null){lvl = pl.perkspeed_lvl;lvlMax = perkspeed_maxlvl;price = pl.GetNewPrice(perkspeed_cost);perktext += "Zombie Speed";}
 	else if(name.find("steal") != null){lvl = pl.perksteal_lvl;lvlMax = perksteal_maxlvl;price = pl.GetNewPrice(perksteal_cost);perktext += "Thief";}
 	else if(name.find("chameleon") != null){lvl = pl.perkchameleon_lvl;lvlMax = perkchameleon_maxlvl;price = pl.GetNewPrice(perkchameleon_cost);perktext += "Zombie Chameleon";}
-	else if(name.find("resist_zm") != null){lvl = pl.perkresist_zm_lvl;lvlMax = perkresist_zm_maxlvl;price = pl.GetNewPrice(perkresist_zm_cost);perktext += "Attack Resist";}
-	else if(name.find("resist_hm") != null){lvl = pl.perkresist_hm_lvl;lvlMax = perkresist_hm_maxlvl;price = pl.GetNewPrice(perkresist_hm_cost);perktext += "Human Materia Resist";}
+	else if(name.find("resist_zm") != null){lvl = pl.perkresist_zm_lvl;lvlMax = 50;price = pl.GetNewPrice(((lvl > 400) ? (perkresist_zm_cost * 2) : perkresist_zm_cost));perktext += "Human Materia Resist";}
+	else if(name.find("resist_hm") != null){lvl = pl.perkresist_hm_lvl;lvlMax = perkresist_hm_maxlvl;price = pl.GetNewPrice(perkresist_hm_cost);perktext += "Attack Resist";}
 	else if(name.find("luck") != null){lvl = pl.perkluck_lvl;lvlMax = perkluck_maxlvl;price = pl.GetNewPrice(perkluck_cost);perktext += "Lucky Warrior";}
 	perktext += " ["+lvl+"/"+lvlMax+"]\n";
 	if(lvl == lvlMax)perktext += "You can't upgrade anymore";
@@ -2940,13 +3113,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12558461 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12558461 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12558461 70");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_bio"+postfix.name, "Enable", "", 0, null);
@@ -2985,13 +3151,6 @@ function PickUpItem()
 		local item = GetItemPresetByName("ice");
 
 		if(lvl == 0)lvl++;
-
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559808 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559808 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559808 70");
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3068,13 +3227,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559138 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559138 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559138 70");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_wind"+postfix.name, "Enable", "", 0, null);
@@ -3111,13 +3263,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559583 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559583 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559583 70");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_summon"+postfix.name, "Enable", "", 0, null);
@@ -3152,14 +3297,6 @@ function PickUpItem()
 		local item = GetItemPresetByName("fire");
 
 		if(lvl == 0)lvl++;
-
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559662 75");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559662 70");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559662 65");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_fire"+postfix.name, "Enable", "", 0, null);
@@ -3197,13 +3334,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559503 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559503 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559503 70");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_electro"+postfix.name, "Enable", "", 0, null);
@@ -3240,13 +3370,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559894 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559894 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559894 70");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_earth"+postfix.name, "Enable", "", 0, null);
@@ -3281,13 +3404,6 @@ function PickUpItem()
 		local item = GetItemPresetByName("gravity");
 
 		if(lvl == 0)lvl++;
-
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559425 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559425 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559425 70");
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3325,13 +3441,6 @@ function PickUpItem()
 
 		if(lvl == 0)lvl++;
 
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12558989 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12558989 90");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12558989 100");
-
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_ultimate"+postfix.name, "Enable", "", 0, null);
@@ -3360,13 +3469,6 @@ function PickUpItem()
 		local item = GetItemPresetByName("heal");
 
 		if(lvl == 0)lvl++;
-
-		if (lvl == 1)
-			SendToConsoleServerPS("sm_setcooldown 12559283 80");
-		else if (lvl == 2)
-			SendToConsoleServerPS("sm_setcooldown 12559283 75");
-		else if (lvl == 3)
-			SendToConsoleServerPS("sm_setcooldown 12559283 70");
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3444,14 +3546,14 @@ function PickUpItem()
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+ i + "_" + postfix.name_right + "" + postfix.name, "Enable", "", 0, null);
-			if (pl.vip)
+			// if (pl.vip)
 			{
 				EntFire("item_star"+ i + "_" + postfix.name_right + "" + postfix.name, "SetGlowEnabled", "", 0, null);
 				EntFire("item_star"+ i + "_" + postfix.name_right + "" + postfix.name, "Alpha", "1", 0, null);
 			}
 		}
 
-		if (pl.vip)
+		// if (pl.vip)
 		{
 			EntFire("item_star0_" + postfix.name_right + "" + postfix.name, "Alpha", "1", 0, null);
 			EntFire("item_star0_" + postfix.name_right + "" + postfix.name, "SetGlowEnabled", "", 0, null);
@@ -3709,6 +3811,10 @@ function UseUltimate()
 	if(!item_owner.canUse)
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
+
+		EntFire("item_ultima_ligh*", "turnoff", "", 0, null);
+		EntFire("item_ultima_sprite*", "togglesprite", "", 0, null);
+
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
 	}
 
@@ -3735,6 +3841,8 @@ function UseUltimate()
 			}
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_ultima_ligh*", "turnon", "", cd, null);
+			EntFire("item_ultima_sprite*", "showsprite", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -3765,6 +3873,8 @@ function UseUltimate()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_ultima_ligh*", "turnon", "", cd, null);
+			EntFire("item_ultima_sprite*", "showsprite", "", cd, null);
 			StartCD(cd);
 		}
 		else
@@ -3811,6 +3921,10 @@ function UltimateHurt(damage,radius,timehp,lvl)
 		{
 			UltimaZms.push(h);
 		}
+	}
+	if (lvl >= 3)
+	{
+		damage = 99999;
 	}
 
 	local ignore = true;
@@ -3892,6 +4006,8 @@ function UseWind()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -3918,6 +4034,8 @@ function UseWind()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -3948,6 +4066,9 @@ function UseWind()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
+
 			StartCD(cd);
 		}
 		else
@@ -4021,6 +4142,8 @@ function UseIce()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4049,6 +4172,8 @@ function UseIce()
 			}
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4073,6 +4198,8 @@ function UseIce()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4155,6 +4282,8 @@ function UseElectro()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4180,6 +4309,8 @@ function UseElectro()
 			}
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4204,6 +4335,8 @@ function UseElectro()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4279,6 +4412,8 @@ function UseSummon()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4304,6 +4439,8 @@ function UseSummon()
 			}
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4328,6 +4465,8 @@ function UseSummon()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4391,6 +4530,8 @@ function UseBio()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4417,6 +4558,8 @@ function UseBio()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4442,6 +4585,8 @@ function UseBio()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4518,8 +4663,10 @@ function UsePoison()
 	}
 	if(!item_owner.canUse)
 	{
-		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
+		EntFire("item_"+item_preset.name+"_effect"+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4545,8 +4692,10 @@ function UsePoison()
 				cd -= 5;
 			}
 
-			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
+			EntFire("item_"+item_preset.name+"_effect"+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4569,8 +4718,10 @@ function UsePoison()
 
 		if(!item_owner.canUse)
 		{
-			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
+			EntFire("item_"+item_preset.name+"_effect"+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4646,6 +4797,8 @@ function UseEarth()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4672,6 +4825,8 @@ function UseEarth()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4696,6 +4851,8 @@ function UseEarth()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4757,6 +4914,8 @@ function UseGravity()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4783,6 +4942,8 @@ function UseGravity()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4808,6 +4969,8 @@ function UseGravity()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 
@@ -4890,6 +5053,8 @@ function UseFire()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -4915,6 +5080,8 @@ function UseFire()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -4945,6 +5112,8 @@ function UseFire()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 		else
@@ -5023,6 +5192,8 @@ function UseHeal()
 	{
 		EntFire("item_effect_"+item_preset.name+""+postfix, "Stop", "", 0, null);
 		EntFire("item_button_"+item_preset.name+""+postfix, "Lock", "", 0, null);
+		EntFire("item_"+item_preset.name+"_sprite"+postfix, "hidesprite", "", 0, null);
+		EntFire("item_"+item_preset.name+"_light"+postfix, "turnoff", "", 0, null);
 	}
 
 	if(pl.item_buff_turbo)
@@ -5049,6 +5220,8 @@ function UseHeal()
 
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 
 			StartCD(cd);
 		}
@@ -5079,6 +5252,8 @@ function UseHeal()
 		{
 			EntFire("item_effect_"+item_preset.name+""+postfix, "Start", "", cd, null);
 			EntFire("item_button_"+item_preset.name+""+postfix, "UnLock", "", cd, null);
+			EntFire("item_"+item_preset.name+"_sprite"+postfix, "ShowSprite", "", cd, null);
+			EntFire("item_"+item_preset.name+"_light"+postfix, "TurnOn", "", cd, null);
 			StartCD(cd);
 		}
 		else
@@ -5308,7 +5483,7 @@ function UseSilence(time = SilenceTime)
 }
 
 Active_Boss <- null;
-function Boss_Damage_Item(item_name, lvl)
+function Boss_Damage_Item(item_name, lvl = 1)
 {
 	if(Active_Boss != null)
 	{
@@ -5328,6 +5503,10 @@ function Boss_Damage_Item(item_name, lvl)
 					damage = 180;
 				else if(lvl == 3)
 					damage = 270;
+			}
+			else if(item_name == "shuriken")
+			{
+				damage = 50;
 			}
 			else if(item_name == "electro")
 			{
@@ -5401,6 +5580,10 @@ function Boss_Damage_Item(item_name, lvl)
 				else if(lvl == 3)
 					damage = 400;
 			}
+			else if(item_name == "shuriken")
+			{
+				damage = 250;
+			}
 			else if(item_name == "wind")
 			{
 				if(lvl == 1)
@@ -5473,11 +5656,11 @@ function Boss_Damage_Item(item_name, lvl)
 			else if(item_name == "fire")
 			{
 				if(lvl == 1)
-					heal = 1;
+					heal = -1;
 				else if(lvl == 2)
-					heal = 2;
+					heal = -2;
 				else if(lvl == 3)
-					heal = 3;
+					heal = -3;
 			}
 			else if(item_name == "phoenix")
 			{
@@ -5506,6 +5689,10 @@ function Boss_Damage_Item(item_name, lvl)
 					damage = 120;
 				else if(lvl == 3)
 					damage = 170;
+			}
+			else if(item_name == "shuriken")
+			{
+				damage = 100;
 			}
 			else if(item_name == "gravity")
 			{
@@ -5568,11 +5755,11 @@ function Boss_Damage_Item(item_name, lvl)
 			else if(item_name == "fire")
 			{
 				if(lvl == 1)
-					heal = 2;
+					heal = -2;
 				else if(lvl == 2)
-					heal = 3;
+					heal = -3;
 				else if(lvl == 3)
-					heal = 4;
+					heal = -4;
 			}
 			else if(item_name == "phoenix")
 			{
@@ -5582,20 +5769,116 @@ function Boss_Damage_Item(item_name, lvl)
 			break;
 
 			case "Reno":
-
-			break;
-
-			case "AirBuster":
-			temp = "Temp_AirBuster";
+			temp = "Temp_Reno";
 
 			if(item_name == "gravity")
 			{
 				if(lvl == 1)
-					damage = -1;
+					damage = 150;
 				else if(lvl == 2)
-					damage = -2;
+					damage = 175;
 				else if(lvl == 3)
+					damage = 300;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "wind")
+			{
+				if(lvl == 1)
+					damage = 90;
+				else if(lvl == 2)
+					damage = 125;
+				else if(lvl == 3)
+					damage = 170;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "electro")
+			{
+				if(lvl == 1)
+					heal = -1;
+				else if(lvl == 2)
+					heal = -2;
+				else if(lvl == 3)
+					heal = -3;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "bio")
+			{
+				if(lvl == 1)
+					damage = 150;
+				else if(lvl == 2)
+					damage = 175;
+				else if(lvl == 3)
+					damage = 300;
+
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "ice")
+			{
+				if(lvl == 1)
+					damage = 140;
+				else if(lvl == 2)
+					damage = 160;
+				else if(lvl == 3)
+					damage = 270;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "shuriken")
+			{
+				damage = 50;
+			}
+			else if(item_name == "fire")
+			{
+				if(lvl == 1)
+					damage = 170;
+				else if(lvl == 2)
+					damage = 260;
+				else if(lvl == 3)
+					damage = 350;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "poison")
+			{
+				if(lvl == 1)
+					damage = 25;
+				else if(lvl == 2)
+					damage = 35;
+				else if(lvl == 3)
+					damage = 50;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "ultimate")
+			{
+				if(lvl == 1)
+					damage = -2;
+				else if(lvl == 2)
 					damage = -3;
+				else if(lvl == 3)
+					damage = -4;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			else if(item_name == "earth")
+			{
+				if(lvl == 1)
+					damage = 200;
+				else if(lvl == 2)
+					damage = 250;
+				else if(lvl == 3)
+					damage = 300;
+				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
+			}
+			break;
+
+			case "AirBuster":
+			temp = "AirBuster_Move_Physbox";
+
+			if(item_name == "gravity")
+			{
+				if(lvl == 1)
+					heal = -1;
+				else if(lvl == 2)
+					heal = -2;
+				else if(lvl == 3)
+					heal = -3;
 			}
 			else if(item_name == "wind")
 			{
@@ -5606,32 +5889,58 @@ function Boss_Damage_Item(item_name, lvl)
 				else if(lvl == 3)
 					damage = 700;
 			}
+			else if(item_name == "shuriken")
+			{
+				damage = 100;
+			}
 			else if(item_name == "electro")
 			{
+				local time = 0;
 				if(lvl == 1)
-					damage = 750;
+				{
+					time = 3;
+					damage = 400;
+				}
 				else if(lvl == 2)
-					damage = 1100;
+				{
+					time = 4;
+					damage = 600;
+				}
 				else if(lvl == 3)
-					damage = 1400;
+				{
+					time = 5;
+					damage = 800;
+				}
+				EntFire(temp, "RunScriptCode", "ItemEffect_Electro(" + time + ")", 0.00);
 			}
 			else if(item_name == "bio")
 			{
 				if(lvl == 1)
-					damage = 400;
-				else if(lvl == 2)
 					damage = 600;
-				else if(lvl == 3)
+				else if(lvl == 2)
 					damage = 800;
+				else if(lvl == 3)
+					damage = 1000;
 			}
 			else if(item_name == "ice")
 			{
+				local time = 0;
 				if(lvl == 1)
-					damage = 300;
+				{
+					time = 3;
+					damage = 500;
+				}
 				else if(lvl == 2)
-					damage = 450;
+				{
+					time = 3;
+					damage = 650;
+				}
 				else if(lvl == 3)
-					damage = 600;
+				{
+					time = 3;
+					damage = 800;
+				}
+				EntFire(temp, "RunScriptCode", "ItemEffect_Ice(" + time + ")", 0.00);
 			}
 			else if(item_name == "fire")
 			{
@@ -5647,9 +5956,9 @@ function Boss_Damage_Item(item_name, lvl)
 				if(lvl == 1)
 					damage = 300;
 				else if(lvl == 2)
-					damage = 500;
+					damage = 450;
 				else if(lvl == 3)
-					damage = 700;
+					damage = 600;
 			}
 			else if(item_name == "ultimate")
 			{
@@ -5663,11 +5972,102 @@ function Boss_Damage_Item(item_name, lvl)
 			else if(item_name == "earth")
 			{
 				if(lvl == 1)
+					damage = 250;
+				else if(lvl == 2)
+					damage = 400;
+				else if(lvl == 3)
+					damage = 550;
+			}
+			break;
+
+
+			case "Scorpion":
+			temp = "scorpion_hbox";
+
+			if(item_name == "gravity")
+			{
+				if(lvl == 1)
 					damage = 150;
 				else if(lvl == 2)
-					damage = 300;
+					damage = 175;
 				else if(lvl == 3)
-					damage = 450;
+					damage = 300;
+			}
+			else if(item_name == "shuriken")
+			{
+				damage = 50;
+			}
+			else if(item_name == "wind")
+			{
+				if(lvl == 1)
+					damage = 90;
+				else if(lvl == 2)
+					damage = 125;
+				else if(lvl == 3)
+					damage = 170;
+			}
+			else if(item_name == "electro")
+			{
+				if(lvl == 1)
+					damage = 50;
+				else if(lvl == 2)
+					damage = 75;
+				else if(lvl == 3)
+					damage = 100;
+			}
+			else if(item_name == "bio")
+			{
+				if(lvl == 1)
+					damage = 150;
+				else if(lvl == 2)
+					damage = 175;
+				else if(lvl == 3)
+					damage = 300;
+			}
+			else if(item_name == "ice")
+			{
+				if(lvl == 1)
+					damage = 140;
+				else if(lvl == 2)
+					damage = 160;
+				else if(lvl == 3)
+					damage = 270;
+			}
+			else if(item_name == "fire")
+			{
+				if(lvl == 1)
+					damage = 170;
+				else if(lvl == 2)
+					damage = 210;
+				else if(lvl == 3)
+					damage = 250;
+			}
+			else if(item_name == "poison")
+			{
+				if(lvl == 1)
+					heal = -1;
+				else if(lvl == 2)
+					heal = -2;
+				else if(lvl == 3)
+					heal = -3;
+			}
+			else if(item_name == "ultimate")
+			{
+				if(lvl == 1)
+					damage = -2;
+				else if(lvl == 2)
+					damage = -3;
+				else if(lvl == 3)
+					damage = -4;
+			}
+			else if(item_name == "earth")
+			{
+				if(lvl == 1)
+					heal = -1;
+				else if(lvl == 2)
+					heal = -2;
+				else if(lvl == 3)
+					heal = -3;
 			}
 			break;
 		}
@@ -6265,8 +6665,8 @@ function ShowCredits()
 	text = "Map by Kondik, Kotya, Friend, Mizz(Haryde) and Microrost"
 	ServerChat(Chat_pref + text);
 
-	text = "More info - docs.google.com/spreadsheets/d/1V65cuBFta6nxAQkCVwxGqUJPMTszqJGQEUJFT_uKi9s"
-	ServerChat(Chat_pref + text, 6.50);
+	// text = "More info - docs.google.com/spreadsheets/d/1V65cuBFta6nxAQkCVwxGqUJPMTszqJGQEUJFT_uKi9s"
+	// ServerChat(Chat_pref + text, 6.50);
 }
 
 function RandomEvent()
@@ -6343,10 +6743,20 @@ function ServerChatText(ID)
 function OpenSpawn(delay)
 {
 	EntFire("City_Spawn_Door", "Open", "", delay, null);
-	EntFire("City_Spawn_Doorv2", "Open", "", delay - 3.5, null);
+	EntFire("Spawn_Door_down", "Open", "", delay + 2.5, null);
+	EntFire("Spawn_Door_Up", "Open", "", delay + 4.0, null);
 	EntFire("City_Glass", "Break", "", delay, null);
+	if (Stage == 5)
+	{
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(6744,-2920,-112),84,100)", delay - 0.05);
+
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(5640,-3704,80),256,100)", delay + 7.05);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(4832,-4096,80),256,100)", delay + 9.55);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(4288,-4416,336),256,100)", delay + 12.05);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(3560,-3696,584),256,100)", delay + 14.55);
+	}
 	EntFire("Shop_Block", "Break", "", delay + 7.00, null);
-	EntFire("spawntoshop_travel_trigger", "Kill", "", delay null);
+	EntFire("spawntoshop_travel_trigger", "Kill", "", delay, null);
 }
 
 function ToggleParticles()
@@ -6358,7 +6768,10 @@ function ToggleParticles()
 	EntFire("shop_item_particle", "Start", "", 1.00, null);
 	EntFire("perk_particle", "Start", "", 1.00, null);
 	EntFire("kojima_main_particle", "Start", "", 1.00, null);
-	EntFire("Canyon_Fire", "StartFire", "", 1.00, null);
+	EntFire("Spawn_Fire", "StartFire", "", 1.00, null);
+	EntFire("bar_Fire", "StartFire", "", 1.00);
+
+	DisabledOldParticles();
 }
 
 
@@ -6374,6 +6787,8 @@ function Trigger_City_Gate()
 	if(Stage == 4 || Stage == 5)
 	{
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(2846,-3937,136),350,500)", timer - 0.1);
+
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(3012,-4659,337),350,200)", timer - 0.05);
 		EntFire("City_Gate", "Kill", "", timer - 0.05);
 		EntFire("Temp_City_Gate", "ForceSpawn", "", timer);
 	}
@@ -6504,6 +6919,7 @@ function Trigger_CosmoBar()
 		EntFire("Cosmo_Bar_Glasses", "Break", "", 12.00);
 
 		EntFire("Hold3_Door", "Open", "", 32.00);
+		EntFire("Hold3_Vent", "Break", "", 35.00);
 		EntFire("UpVillage_Border", "Kill", "", 35.00);
 		EntFire("UpVillage_Border_fence", "Kill", "", 42.00);
 	}
@@ -6514,14 +6930,14 @@ function Trigger_CosmoBar()
 		text = "The barman will open the door in 5 esconds"
 		ServerChat(Chat_pref + text);
 
-		text = "Zombies are coming. Defend Cosmo Bar for 42 seconds before we open the back door";
+		text = "Zombies are coming. Defend Cosmo Bar for 35 seconds before we open the back door";
 		ServerChat(Chat_pref + text, 7);
 
 		text = "5 SECONDS LEFT"
-		ServerChat(Chat_pref + text, 37);
+		ServerChat(Chat_pref + text, 30);
 
 		text = "FALL BACK"
-		ServerChat(Chat_pref + text, 42);
+		ServerChat(Chat_pref + text, 35);
 
 		EntFire("Hold2_Door", "Open", "", 4.50);
 		EntFire("Hold2_Door", "Kill", "", 5.00);
@@ -6532,14 +6948,20 @@ function Trigger_CosmoBar()
 
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1549,-1103,1193),228,100,true)", 5.00);
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1550,-1295,1193),228,100,true)", 5.01);
+
 		if(Stage == 5)
+		{
 			EntFire("lvl4_Break", "Break", "", 5.00);
+			EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1848,-1224,1640),256,100)", 4.95);
+		}
 
 		EntFire("Cosmo_Bar_Door", "Kill", "", 5.00);
-		EntFire("Hold3_Door", "Open", "", 42.00);
-		EntFire("UpVillage_Border", "Kill", "", 45.00);
-		EntFire("UpVillage_Border_fence", "Kill", "", 51.00);
+		EntFire("Hold3_Door", "Open", "", 35.00);
+		EntFire("Hold3_Vent", "Break", "", 38.00);
+		EntFire("UpVillage_Border", "Kill", "", 38.00);
+		EntFire("UpVillage_Border_fence", "Kill", "", 44.00);
 	}
+
 
 	EntFire("Map_TP_1", "Enable", "", 40.00);
 
@@ -6624,6 +7046,18 @@ function Trigger_CosmoBar()
 
 		EntFire("info_item_electro", "Kill", "", 40.00);
 		EntFire("shop_item_electro", "Kill", "", 40.00);
+
+		EntFire("info_glow_ammo", "Kill", "", 40.00);
+		EntFire("shop_item_ammo", "Kill", "", 40.00);
+		EntFire("info_item_ammo", "Kill", "", 40.00);
+
+		EntFire("info_glow_phoenix", "Kill", "", 40.00);
+		EntFire("shop_item_phoenix", "Kill", "", 40.00);
+		EntFire("info_item_phoenix", "Kill", "", 40.00);
+
+		EntFire("info_glow_potion", "Kill", "", 40.00);
+		EntFire("shop_item_potion", "Kill", "", 40.00);
+		EntFire("info_item_potion", "Kill", "", 40.00);
 	}
 
 	EntFire("shop_travel_trigger", "Kill", "", 40.00);
@@ -6634,6 +7068,27 @@ function Trigger_CosmoBar()
 
 	EntFire("City_Spawn_Doorv2", "Kill", "", 40.00);
 	EntFire("City_Spawn_Door", "Kill", "", 40.00);
+	EntFire("Spawn_Lift*", "Kill", "", 40.00);
+	EntFire("Waffel_Set", "Kill", "", 40.00);
+	EntFire("Ebaniy_Freind_Move", "Kill", "", 39.90);
+	EntFire("Ebaniy_Freind*", "Kill", "", 40.00);
+	EntFire("Ebaniy_Haryde*", "Kill", "", 40.00);
+	EntFire("t_trigger", "Kill", "", 40.00);
+	EntFire("t_skin", "Kill", "", 40.00);
+	EntFire("ct_trigger", "Kill", "", 40.00);
+	EntFire("ct_skin", "Kill", "", 40.00);
+	EntFire("ring*", "Kill", "", 40.00);
+	EntFire("ebani_rot_etogo_kazino*", "Kill", "", 40.00);
+	EntFire("white", "Kill", "", 40.00);
+	EntFire("green", "Kill", "", 40.00);
+	EntFire("red", "Kill", "", 40.00);
+	EntFire("casino*", "Kill", "", 40.00);
+	EntFire("hud_casino", "Kill", "", 40.00);
+	EntFire("texture_tablo*", "Kill", "", 40.00);
+	EntFire("Spawn_Door*", "Kill", "", 40.00);
+
+	EntFire("Temp_AfterBar", "ForceSpawn", "", 35.00);
+	EntFire("Canyon_Fire", "StartFire", "", 36.00);
 }
 
 function Trigger_Rock()
@@ -6647,25 +7102,30 @@ function Trigger_Rock()
 	if(Stage == 1)
 		EntFire("Hold5_Rock", "Kill", "", 0);
 
-	if(Stage == 2)
-	{
-		text = "I wonder why locals are so cautious. Kaktuars are a peaceful kind";
-		ServerChat(Tifa_pref + text, 30.00);
+	// if(Stage == 2)
+	// {
+	// 	text = "I wonder why locals are so cautious. Kaktuars are a peaceful kind";
+	// 	ServerChat(Tifa_pref + text, 30.00);
 
-		text = "it's no ordinary Kaktuar. There are myths that there is a legendary kaktuar that can walk";
-		ServerChat(RedX_pref + text, 33.00);
+	// 	text = "it's no ordinary Kaktuar. There are myths that there is a legendary kaktuar that can walk";
+	// 	ServerChat(RedX_pref + text, 33.00);
 
-		text = "That legendary kaktuar attacks everyone indiscriminately.";
-		ServerChat(RedX_pref + text, 36.00);
-	}
+	// 	text = "That legendary kaktuar attacks everyone indiscriminately.";
+	// 	ServerChat(RedX_pref + text, 36.00);
+	// }
 
 	local timer = 0;
-	if(Stage == 2)
-		timer = 1;
-	if(Stage == 4)
-		timer = 4;
-	if(Stage == 5)
-		timer = 5;
+	// if(Stage == 2)
+	// 	timer = 1;
+	// if(Stage == 4)
+	// 	timer = 1;
+	// if(Stage == 5)
+	// 	timer = 1;
+
+	if (Stage == 5)
+	{
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2704,-3760,1672),256,100)", 10 + timer);
+	}
 
 	text = "The explosives will blow the rocks up in " + (20 + timer) + " seconds"
 	ServerChat(Chat_pref + text);
@@ -6682,7 +7142,7 @@ function Trigger_Rock()
 	EntFire("Hold4_Bomb_Sprite", "AddOutput", "OnUser1 Hold4_Bomb_Sprite:ToggleSprite::0.8:-1", 20 + timer);
 	EntFire("Hold4_Rock", "Break", "", 20.05 + timer);
 
-	EntFire("Hold4_Clip", "Kill", "", 20.05 + timer);
+	EntFire("Hold4_Clip", "Toggle", "", 20.05 + timer);
 	EntFire("Hold4_Bomb_Sprite", "Kill", "", 20.05 + timer);
 	EntFire("Hold4_Bomb", "Kill", "", 20.05 + timer);
 
@@ -6690,7 +7150,7 @@ function Trigger_Rock()
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4620,-4268,1758),228,100)", 20.01 + timer);
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4718,-4333,2159),228,100)", 20.02 + timer);
 
-	EntFire("music", "RunScriptCode", "GetMusicExplosion();", 20.05 + timer);
+	EntFire("music01", "RunScriptCode", "GetMusicExplosion();", 20.05 + timer);
 
 	EntFire("City_Gate", "Kill", "", 0.00);
 	EntFire("perk_particle", "Kill", "", 0.00);
@@ -6759,6 +7219,7 @@ function Trigger_Cave_First()
 	EntFire("Map_TD", "AddOutput", "origin -5774 -3668 1889", 10);
 
 	EntFire("Hold5_Door", "Open", "", 25);
+	EntFire("Ebaniy_Haryde*", "kill", "", 0);
 }
 
 function Trigger_Cave_Second()
@@ -6778,13 +7239,260 @@ function Trigger_Cave_Second()
 
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5111,-1827,1922),228,100)", 29.99);
 	EntFire("cave_skip", "Break", "", 30);
-	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", 29.99);
-	EntFire("Skip_Wall", "Toggle", "", 30);
+	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", 29.96);
+	EntFire("Skip_Wall", "Toggle", "", 30); //выкл
+
+	EntFire("Map_TD", "AddOutput", "origin -6414 -2240 2036", 0);
+	EntFire("Map_TP_3", "Enable", "", 0.5);
+	EntFire("Temp_OldMine", "ForceSpawn", "", 15);
+	EntFire("Cave_Fire", "StartFire", "", 16);
+	if (Stage == 5)
+	{
+		EntFire("Hard_Mine_Door_Down", "Close", "", 19);
+		EntFire("Hard_Mine_Door_Up", "Close", "", 19);
+		EntFire("Inferno_Mine_Door_Down", "Close", "", 0);
+		EntFire("Inferno_Mine_Door_Up", "Close", "", 0);
+		EntFire("Hold5_Door", "Open", "", 0);
+		EntFire("Map_TP_Mine_1", "Enable", "", 20);
+		EntFire("Map_TP_Mine_2", "Enable", "", 20);
+	}
+
+	//EntFireByHandle(self, "RunScriptCode", "Bhop_Toggle(true, true);", 17, null, null);
+}
+
+function Trigger_Hard_Mine() //вход на 2 лвле
+{
+	local text;
+
+	text = "The gates в ебеня will open in 15 seconds"
+	ServerChat(Chat_pref + text);
+
+	text = "5 SECONDS LEFT"
+	ServerChat(Chat_pref + text, 10);
+
+	text = "FALL BACK"
+	ServerChat(Chat_pref + text, 15);
+
+	EntFire("Hard_Mine_Door_Down", "Open", "", 15);
+	EntFire("Hard_Mine_Door_Up", "Open", "", 15);
+	EntFire("Mine_Door2_Button", "Unlock", "", 0);
 
 	EntFire("Map_TD", "AddOutput", "origin -6414 -2240 2036", 0);
 	EntFire("Map_TP_3", "Enable", "", 0.5);
 
-	//EntFireByHandle(self, "RunScriptCode", "Bhop_Toggle(true, true);", 17, null, null);
+	EntFire("music01", "RunScriptCode", "SetMusic(Music_Hard_2);", 14.0);
+}
+
+function Mine_Door2()
+{
+	if (Stage ==2)
+	{
+		local text;
+
+		text = "Дверь откроется через 15 секунд"
+		ServerChat(Chat_pref + text, 0);
+
+		EntFire("Mine_Door2_1", "Open", "", 15);
+		EntFire("Mine_Door2_2", "Open", "", 15);
+		EntFire("Mine_Door1", "Open", "", 18);
+		EntFire("Mine_Door3_Button", "Unlock", "", 0);
+		EntFire("Map_TP_Mine_2", "Enable", "", 18); //Вкл телепорта
+		EntFire("Map_TP_Mine_2", "Disable", "", 20); //Выкл телепорта
+		EntFire("Hard_Mine_Door_Down", "Close", "", 18);
+		EntFire("Hard_Mine_Door_Up", "Close", "", 18);
+		EntFire("Map_TP_4", "Enable", "", 18);
+		EntFire("Map_TD", "AddOutput", "origin -5538 90 1861", 18);
+		EntFire("Map_TD", "AddOutput", "angles 0 90 0", 18);
+
+	}
+	//Mine_Door2_2 1ая открывется 15
+	//Mine_Door1
+}
+
+function Mine_Door3()
+{
+	//Mine_Door3
+	if(Stage == 2)
+	{
+		local text;
+
+		text = "Дверь откроется через 25 секунд"
+		ServerChat(Chat_pref + text, 0);
+
+		text = "Удерживайте зомби пока двери не зароются"
+		ServerChat(Chat_pref + text, 25);
+
+		EntFire("Temp_Scorpion", "ForceSpawn", "", 0);
+		EntFire("Mine_Vent_Break_2", "Break", "", 0);
+		EntFire("Mine_Door3", "Close", "", 33);
+		EntFire("Mine_Door3", "Open", "", 25);
+		EntFire("Mine_Side_Door_Down", "kill", "", 0);
+		EntFire("Mine_Side_Door_Up", "kill", "", 0);
+
+
+		EntFire("Credits_Game_Text", "AddOutput", "message Scorpion", 35);
+		EntFire("Temp_Scorpion", "RunScriptCode", "Camera();", 36);
+		EntFire("music01", "RunScriptCode", "GetMusicBossFight();", 36);
+		EntFire("Credits_Game_Text", "Display", "", 37);
+		EntFire("Camera_old", "RunScriptCode", "SetOverLay(Overlay)", 36);
+		EntFire("Map_TD", "AddOutput", "origin -5872 2300 2104", 39.5);
+		//EntFire("Map_TP_4", "Enable", "", 40);  //перенес включение выше
+		EntFire("Map_TP_Mine_1", "Enable", "", 40);
+		EntFire("Camera_old", "RunScriptCode", "SetOverLay()", 41.5);
+		EntFire("Temp_Scorpion", "RunScriptCode", "Start();", 43);
+	}
+	if(Stage == 5)
+	{
+		local text;
+
+		text = "Дверь откроется через 25 секунд"
+		ServerChat(Chat_pref + text, 0);
+		EntFire("Mine_Side_Door_Down", "open", "", 0);
+		EntFire("Mine_Side_Door_Up", "open", "", 0);
+		EntFire("Mine_Vent_Break", "Break", "", 10);
+		EntFire("Mine_Vent_Break_2", "Break", "", 10);
+		EntFire("Mine_Door3", "Open", "", 25);
+		EntFire("Mine_Door1", "Open", "", 25);
+		EntFire("Mine_Door5*", "Open", "", 31);
+
+		EntFire("Map_TD", "AddOutput", "origin -6142 732 1868", 39.5);
+		EntFire("Map_TD", "AddOutput", "angles 0 0 0", 39.5);
+//		EntFire("Map_TP_Mine_2", "Enable", "", 40);
+
+		//25+после через 10 сек ломаются венты +после открытия правые
+							//дверио ткроются через 5 сек
+							//след воротавсе октрыты
+	}
+}
+
+function Mine_Door6() //выход 2 лвл
+{
+	if (Stage == 2)
+	{
+	local text;
+
+	text = "The final door opens in 35 seconds"
+	ServerChat(Chat_pref + text, 0);
+
+	text = "The final door opens in 10 seconds"
+	ServerChat(Chat_pref + text, 25);
+
+	EntFire("Hard_End", "Enable", "", 0);
+	EntFire("Map_Shake_7_Sec", "StartShake", "", 0);
+	EntFire("Map_Shake_7_Sec", "StartShake", "", 8);
+	EntFire("Hold4_Clip", "Toggle", "", 10);
+	EntFire("Map_TP_3", "Disable", "", 10);
+	EntFire("Map_Shake_7_Sec", "StartShake", "", 15);
+	EntFire("Mine_Door1", "Close", "", 20);
+	EntFire("Mine_Door2_1", "Close", "", 20);
+	EntFire("Mine_Door2_2", "Close", "", 20);
+	EntFire("Hold5_Door", "Close", "", 20);
+//	EntFire("Mine_Door3", "Open", "", 20);
+//	EntFire("Mine_Door5_1", "Open", "", 25);
+//	EntFire("Mine_Door5_2", "Open", "", 25);
+	EntFire("Mine_Vent_Break", "Break", "", 25);
+	EntFire("Inferno_Mine_Door_Down", "Open", "", 35);
+	EntFire("Inferno_Mine_Door_Up", "Open", "", 35);
+	EntFire("Map_TP_3", "Disable", "", 35);
+	EntFire("Hard_End", "Enable", "", 35);
+	EntFire("Map_TP_4", "Disable", "", 35);
+
+	EntFire("Map_TD", "AddOutput", "angles 0 -90 0", 50);
+	EntFire("Map_TD", "AddOutput", "origin -6800 -106 1888", 50);
+	EntFire("Map_TP_Mine_2", "Enable", "", 51);
+	EntFire("Map_TP_Mine_1", "Enable", "", 51);
+	}
+}
+
+function Trigger_Inferno_Mine() //вход на 4 лвле
+{
+	local text;
+
+	text = "The gates will open in 20 seconds"
+	ServerChat(Chat_pref + text);
+
+	text = "5 SECONDS LEFT"
+	ServerChat(Chat_pref + text, 15);
+
+	text = "FALL BACK"
+	ServerChat(Chat_pref + text, 20);
+
+	EntFire("Inferno_Mine_Door_Down", "Open", "", 20);
+	EntFire("Inferno_Mine_Door_Up", "open", "", 20);
+
+	EntFire("Map_TD", "AddOutput", "angles 0 180 0", 10);
+	EntFire("Map_TD", "AddOutput", "origin -5774 -3668 1889", 10);
+
+	EntFire("temp_mine", "forcespawn", "", 0);
+	EntFire("Mine_Door4_Trigger", "Enable", "", 10);
+	EntFire("Mine_Door7_Button", "Unlock", "", 10);
+
+	EntFire("Map_TD", "AddOutput", "origin -6414 -2240 2036", 10.5);
+	EntFire("Map_TP_3", "Enable", "", 11);
+
+	//25
+	//Inferno_Mine_Door_Down
+}
+
+function DisabledOldParticles()
+{
+	local particle = Entities.CreateByClassname("prop_physics");
+	particle.SetModel("models/props_junk/glassbottle01a.mdl");
+	particle.SetOrigin(Vector(7777, -2821, -438));
+	particle.__KeyValueFromString("rendermode","1");
+	particle.__KeyValueFromString("rendercolor","255 0 255");
+}
+
+function Mine_Door4() //большие ворота
+{
+	local text;
+	//Mine_Door3
+	if(Stage == 2)
+	{
+		text = "Двери скоро откроются... Ждите..."
+		ServerChat(Chat_pref + text, 0);
+
+		EntFire("Mine_Door4", "Open", "", 5);
+		EntFire("Mine_Door6_Button", "Unlock", "", 0);
+		EntFire("Map_TP_Mine_1", "Disable", "", 40);
+		EntFire("Mine_Door4_Ladder", "Open", "", 10);
+		EntFire("music01", "RunScriptCode", "SetMusic(Music_Hard_4);", 0);
+	}
+	if(Stage == 5)
+	{
+		text = "The gates will open in 25 seconds"
+		ServerChat(Chat_pref + text);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 20);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 25);
+
+		EntFire("Mine_Door4", "Open", "", 25);
+		EntFire("Mine_Door4_Ladder", "Open", "", 27);
+	}
+}
+
+function Mine_Door7() //выход на 4 лвл
+{
+	local text;
+	if (Stage == 5)
+	{
+		text = "The gates will open in 15 seconds"
+		ServerChat(Chat_pref + text);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 10);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 15);
+
+		EntFire("Hard_Mine_Door_Down", "Open", "", 15);
+		EntFire("Hard_Mine_Door_Up", "Open", "", 15);
+	}
+	//15
+	//Hard_Mine_Door_Down
 }
 
 function Bhop_Toggle(value = false, show = false)
@@ -6811,8 +7519,16 @@ function Trigger_Cave_Third()
 
 	EntFire("Hold6_Move", "Open", "", 15);
 
-	if(Stage == 2 || Stage == 4 || Stage == 5)
+	EntFire("map_tone ", "SetBloomScale", "5", 0);
+	EntFire("map_tone ", "SetAutoExposureMax", "2.5", 0);
+	EntFire("map_tone ", "SetAutoExposureMin", "0.9", 0);
+
+	if(Stage == 4 || Stage == 5)
 	{
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2646,-704,432),228,100)", 18);
+		EntFire("Hold6_Rock1", "Disable", "", 18.51);
+		EntFire("Hold6_Rock1_wall", "Toggle", "", 18.51);
+
 		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-3157,753,553),228,100)", 22);
 		EntFire("Hold6_Rock", "Disable", "", 22.01);
 		EntFire("Hold6_Rock_wall", "Toggle", "", 22.01);
@@ -6845,7 +7561,7 @@ function Trigger_Cave_Last()
 	local timer = 0;
 	if(Stage != 1)
 	{
-		timer = 10;
+		timer = 5;
 	}
 
 	text = "The gi gate will open in " + (25 + timer) + " seconds"
@@ -6867,6 +7583,10 @@ function Trigger_Cave_Last()
 
 	EntFire("Map_TD", "AddOutput", "angles 5 -84 0", 5);
 	EntFire("Map_TD", "AddOutput", "origin -2934 696 575", 5);
+	if(Stage == 5)
+	{
+		EntFire("Boss_Rock", "kill", "", 5);
+	}
 }
 
 function Trigger_Cave_Boss_Start()
@@ -6883,20 +7603,21 @@ function Trigger_Cave_Boss_Start()
 		text = "Then it's time to warm up."
 		ServerChat(Tifa_pref + text, 24);
 	}
-	else if(Stage == 2)
-	{
-		local text;
-		text = "This time, you won't get away."
-		ServerChat(RedX_pref + text, 20);
-	}
-	if(Stage == 1 || Stage == 2 || Stage == 4)
+	// else if(Stage == 2)
+	// {
+	// 	local text;
+	// 	text = "This time, you won't get away."
+	// 	ServerChat(RedX_pref + text, 20);
+	// }
+	if(Stage == 1 || Stage == 4)
 	{
 		EntFire("Temp_Gi_Nattak", "ForceSpawn", "", 5);
 		EntFire("Temp_Gi_Nattak", "RunScriptCode", "Init();", 5.01);
 	}
 	if(Stage == 5)
 	{
-
+		EntFire("Temp_AirBuster", "ForceSpawn", "", 4.9);
+		EntFire("Temp_AirBuster", "RunScriptCode", "PreStart()", 5);
 	}
 }
 
@@ -6913,18 +7634,10 @@ function Trigger_Cave_After_Boss()
 	EntFire("Boss_Cage", "Kill", "", 6.5);
 	EntFire("Boss_ZM_Dicks_Move", "Open", "", 5);
 
-	EntFire("Skip_Wall", "Toggle", "", 5);
+	EntFire("Boss_Cage", "Toggle", "", 5);
+	EntFire("Boss_After_v1", "Enable", "", 0);
 
-	if(Stage == 2 || Stage == 4 || Stage == 5)
-	{
-		EntFire("Hold_End_Button", "UnLock", "", 0);//?
-
-		EntFire("Hold6_Rock", "Enable", "", 0);
-		EntFire("Hold6_Rock_wall", "Toggle", "", 0);
-
-		EntFire("Hold_End_Ladder_Model", "Enable", "", 0);
-		EntFire("Hold_End_Ladder_Wall", "Toggle", "", 0);
-	}
+	EntFire("Skip_Wall", "Toggle", "", 0);
 
 	if(Stage == 1)
 	{
@@ -6947,23 +7660,7 @@ function Trigger_Cave_After_Boss()
 		EntFire("Nigger", "SetAnimation", "idle", 0);
 		EntFire("Nigger", "SetDefaultAnimation", "idle", 0);
 	}
-	else if(Stage == 2)
-	{
-		text = "Damn, that wasn't an easy one"
-		ServerChat(Tifa_pref + text, 5);
 
-		text = "I am concerned with the fact that he looked different."
-		ServerChat(RedX_pref + text, 8);
-
-		text = "What do you mean?"
-		ServerChat(Tifa_pref + text, 11);
-
-		text = "Just some random thoughts. Excellent job fellas, how about a quick trip to the bar?"
-		ServerChat(RedX_pref + text, 14);
-
-		text = "I will pass on that offer."
-		ServerChat(Tifa_pref + text, 17);
-	}
 	else if(Stage == 4)
 	{
 		text = "Great, now we need to get out of the cave and reach his main body."
@@ -6974,6 +7671,31 @@ function Trigger_Cave_After_Boss()
 
 		text = "I doubt it. He is using all his power to create an illusion. I think we will need to beat him fast"
 		ServerChat(RedX_pref + text, 11);
+
+		EntFire("Hold_End_Button", "UnLock", "", 0);//?
+
+		EntFire("Hold6_Rock", "Enable", "", 0);
+		EntFire("Hold6_Rock_wall", "Toggle", "", 0);
+
+		EntFire("Hold6_Rock1", "Enable", "", 0);
+		EntFire("Hold6_Rock1_wall", "Toggle", "", 0);
+
+		EntFire("Hold_End_Ladder_Model", "Enable", "", 0);
+		EntFire("Hold_End_Ladder_Wall", "Toggle", "", 0);
+	}
+
+	else if(Stage == 5)
+	{
+		EntFire("Hold_End_Button", "UnLock", "", 0);//?
+
+		EntFire("Hold6_Rock", "Enable", "", 0);
+		EntFire("Hold6_Rock_wall", "Toggle", "", 0);
+
+		EntFire("Hold6_Rock1", "Enable", "", 0);
+		EntFire("Hold6_Rock1_wall", "Toggle", "", 0);
+
+		EntFire("Hold_End_Ladder_Model", "Enable", "", 0);
+		EntFire("Hold_End_Ladder_Wall", "Toggle", "", 0);
 	}
 
 	EntFire("Trigger_Kill_Boss_Huynya", "Enable", "", 0);
@@ -6987,7 +7709,7 @@ function Trigger_Cave_After_Boss()
 	EntFire("Map_TP_5", "Disable", "", 0);
 	EntFire("Map_TP_4", "Disable", "", 0);
 
-	EntFire("music", "RunScriptCode", "GetMusicAfterBoss();", 0.00);
+	EntFire("music01", "RunScriptCode", "GetMusicAfterBoss();", 0.00);
 }
 function Trigger_After_Boss_Skip_First()
 {
@@ -7008,7 +7730,9 @@ function Trigger_After_Boss_Skip_First()
 		break;
 	}
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(643,5346,637),228,100)", time);
-	EntFire("cage_skip", "Break", "", time + 0.01);
+	EntFire("Boss_After_v1_Skip", "kill", "", time + 0.01);
+
+	EntFire("Boss_After_v2", "Enable", "", 0);
 }
 
 function Trigger_After_Boss_Skip_Second()
@@ -7035,6 +7759,28 @@ function Trigger_After_Boss_Skip_Second()
 		break;
 	}
 
+	if(Stage == 5)
+	{
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1704,2520,244),156,100)", 3);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2248,2520,256),156,100)", 5);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2600,1720,432),156,100)", 8);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-1832,1536,413),156,100)", 11);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2110,535,262),156,100)", 14);
+	}
+
+	if (Stage > 3)
+	{
+		EntFire("map_tone ", "SetBloomScale", "4", 30 + time1);
+		EntFire("map_tone ", "SetAutoExposureMax", "3.5", 30 + time1);
+		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 30 + time1);
+	}
+	else
+	{
+		EntFire("map_tone ", "SetBloomScale", "2", 30 + time1);
+		EntFire("map_tone ", "SetAutoExposureMax", "2.5", 30 + time1);
+		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 30 + time1);
+	}
+
 	EntFire("Map_TD", "AddOutput", "angles 7 -145 0", 15);
 	EntFire("Map_TD", "AddOutput", "origin -950 3297 469", 15);
 
@@ -7042,13 +7788,21 @@ function Trigger_After_Boss_Skip_Second()
 	EntFire("Boss_Side_Model", "Kill", "", time + 0.01);
 	EntFire("Boss_Side_Wall", "Kill", "", time + 0.01);
 
-
 	if(Stage == 1)
 	{
-		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", (30 - 0.01) + time1);
-		EntFire("Skip_Wall", "Kill", "", 30 + time1);
-	}
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", (30 - 0.05) + time1);
+		EntFire("Skip_Wall", "Toggle", "", 30 + time1);  //выкл
 
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2423,-693,333),228,100)", 36 + time1);
+		EntFire("Hold6_Rock1", "Disable", "", 36.01 + time1);
+		EntFire("Hold6_Rock1_wall", "Toggle", "", 36.01 + time1);
+	}
+	else
+	{
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-2423,-693,333),228,100)", 31 + time1);
+		EntFire("Hold6_Rock1", "Disable", "", 31.01 + time1);
+		EntFire("Hold6_Rock1_wall", "Toggle", "", 31.01 + time1);
+	}
 
 	EntFire("Hold6_Move", "Open", "", 25 + time1);
 
@@ -7114,6 +7868,8 @@ function Trigger_After_Boss_Skip_Second()
 
 		Winner_array = caller.GetScriptScope().GetWinner();
 		SetStage(2);
+
+		Stage_Beat_Normal_Time = Time();
 	}
 
 	function Trigger_Normal_Lose()
@@ -7149,66 +7905,82 @@ function Trigger_Hold_End()
 	ServerChat(Chat_pref + text);
 
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4450,-1515,566),228,100)", 10 - 0.01);
-	EntFire("Skip_Wall", "Kill", "", 13);
+	EntFire("Skip_Wall", "Toggle", "", 10); //выкл
 
 	EntFire("Final_Rope_Temp", "ForceSpawn", "", 10);
 
 	EntFire("Hold5_Door1", "Open", "", 10);
 
-	if(Stage == 2)
-	{
-		text = "The final door opens in 20 seconds"
-		ServerChat(Chat_pref + text, 10);
-
-		EntFire("Hard_End_Wall", "Toggle", "", 10);
-		EntFire("Map_TP_3", "Disable", "", 10);
-
-		EntFire("Hold5_Door", "Open", "", 30);
-		EntFire("Hard_End", "Enable", "", 0);
-
-		EntFire("Map_Shake_7_Sec", "StartShake", "", 0);
-		EntFire("Map_Shake_7_Sec", "StartShake", "", 8);
-		EntFire("Map_Shake_7_Sec", "StartShake", "", 15);
-	}
 	if(Stage == 4)
 	{
-		text = "The final door opens in 35 seconds"
+		text = "The final door opens in 25 seconds"
 		ServerChat(Chat_pref + text, 10);
 
-		EntFire("Hold5_Door", "Open", "", 45);
+		EntFire("Hold5_Door", "Open", "", 35);
+		Bridge(37);
 
-		EntFire("New_ending_wall", "Kill", "", 47);
-		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-521,-957,2053),228,100)", 46.99);
+		EntFire("New_ending_wall", "Kill", "", 37);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-521,-957,2053),228,100)", 36.99);
 
 		EntFire("Temp_End", "ForceSpawn", "", 5);
+		EntFire("End_Fire", "StartFire", "", 5.1);
 		EntFire("End_Fire", "Start", "", 10);
 
-		EntFire("Extreme_Reno_Model", "Enable", "", 45);
-		EntFire("Extreme_Reno_Model", "FireUser2", "", 46);
-		EntFire("Extreme_Reno_Model", "RunScriptCode", "PlaySound(Sound_First);", 49);
+		EntFire("Extreme_Reno_Model", "Enable", "", 35);
+		EntFire("Extreme_Reno_Model", "FireUser2", "", 36);
+		EntFire("Extreme_Reno_Model", "RunScriptCode", "PlaySound(Sound_First);", 39);
 
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 0);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 16);
-		EntFire("Map_Shake_7_Sec", "StartShake", "", 33);
+		EntFire("Map_Shake_7_Sec", "StartShake", "", 23);
 
 		text = "Damn, that's ain't easy one."
-		ServerChat(Tifa_pref + text, 45);
+		ServerChat(Tifa_pref + text, 35);
 
 		text = "I am concerned with the fact that he looked different."
-		ServerChat(RedX_pref + text, 47);
+		ServerChat(RedX_pref + text, 37);
 	}
 	if(Stage == 5)
 	{
 		text = "The final door opens in 35 seconds"
 		ServerChat(Chat_pref + text, 10);
 
-		EntFire("Temp_End", "ForceSpawn", "", 5);
+		EntFire("Temp_End", "ForceSpawn", "", 0);
 		EntFire("End_Fire", "Start", "", 10);
 
 		EntFire("Hold5_Door", "Open", "", 45);
+		Bridge(47);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 0);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 20.5);
 		EntFire("Map_Shake_7_Sec", "StartShake", "", 38);
+		EntFire("New_ending_wall", "kill", "", 38);
+
+		EntFire("New_ending_wall", "Kill", "", 47);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-521,-957,2053),228,100)", 46.99);
+
+
+    	EntFire("Temp_Reno", "ForceSpawn", "", 0);
+
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4945,-1342,1826),156,100)", 2);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-4768,-833,1828),156,100)", 6);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5272,-1277,1847),156,100)", 12);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5579,-701,1842),156,100)", 14);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5744,-1744,1833),156,100)", 16);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5399,-1837,1832),156,100)", 18);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-5936,-1248,1895),156,100)", 40);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6084,-889,1831),156,100)", 43);
+
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6920,-530,1833),356,220)", 37 + 10);
+
+
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-7482,-1057,1815),156,100)", 39 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-7904,-808,1815),156,100)", 41 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-8193,-1071,1815),156,100)", 43 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-8387,-825,1815),156,100)", 45 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-8956,-1069,1815),156,100)", 47 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-9198,-789,1815),156,100)", 49 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-9651,-1080,1815),156,100)", 51 + 10);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-9880,-793,1815),156,100)", 53 + 10);
 	}
 
 	EntFire("Hold6_Move", "Close", "", 10);
@@ -7240,6 +8012,19 @@ function Trigger_Hold_End()
 
 		EntFire("temp_cactus", "forcespawn", "", 24);
 		EntFire("temp_cactus", "runscriptcode", "Init()", 25);
+		Bridge(39);
+	}
+
+	function Bridge(time)
+	{
+		EntFire("Bridge_*", "kill", "", 0 + time);
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6860,-2210,1862),256,100)",0 + time);  //мост
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6860,-1860,1862),256,100)",0.01 + time);  //мост
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6860,-2916,1862),256,100)",0.02 + time);  //мост
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6338,-2824,1790),156,100)",0.05 + time);  //скала у стены
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-6320,-2636,1890),156,100)",0.1 + time);  //скала у стены
+		EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-7425,-3403,1758),256,100)",0.15 + time);  //скала у стены
+
 	}
 	function Trigger_Hard_Win()
 	{
@@ -7251,6 +8036,8 @@ function Trigger_Hold_End()
 		Winner_array = caller.GetScriptScope().GetWinner();
 
 		SetStage(3);
+
+		Stage_Beat_Hard_Time = Time();
 	}
 
 	function Trigger_Hard_Lose()
@@ -7263,6 +8050,31 @@ function Trigger_Hold_End()
 }
 //ZM
 {
+	function Trigger_ZM_Tp()
+	{
+		EntFire("Start_tp", "AddOutput", "OnStartTouch !activator:RunScriptCode:self.SetOrigin(Vector(2464,-3942,140));:0.01:-1", 0);
+		EntFire("ZM_TP_Shit", "Enable", "", 0.0);
+		local handle = null;
+		while((handle = Entities.FindByClassname(handle, "player")) != null)
+		{
+			if(handle == null)
+				continue;
+			if(!handle.IsValid())
+				continue;
+			if(handle.GetHealth() <= 0)
+				continue;
+			if(handle.GetTeam() != 3)
+			{
+				handle.SetOrigin(Vector(2464,-3942,140));
+				handle.SetVelocity(Vector(0,0,0));
+				continue;
+			}
+			handle.SetOrigin(Vector(2850,-3942,140));
+			handle.SetVelocity(Vector(0,0,0));
+		}
+
+	}
+
 	function Trigger_ZM_End()
 	{
 		local handle = null;
@@ -7310,12 +8122,33 @@ function Trigger_Hold_End()
 		text = "They can't get away this time";
 		ServerChat(ShinraSoldier_pref + text, 33.00);
 	}
+		function Trigger_ZM_Lose()
+	{
+		local text;
+
+		text = "Nice try cringe"
+		ServerChat(Chat_pref + text);
+		local handle = null;
+		while((handle = Entities.FindByClassname(handle, "player")) != null)
+		{
+			if(handle == null)
+				continue;
+			if(!handle.IsValid())
+				continue;
+			if(handle.GetHealth() <= 0)
+				continue;
+			else if(handle.GetTeam() == 3)
+			{
+				EntFireByHandle(handle, "SetHealth", "-1", 0.0, null, null);
+			}
+		}
+	}
 
 	function Trigger_ZM_End_Win()
 	{
 		local text;
 
-		text = "ZM mode was beaten. Unlocking Extreme mode"
+		text = "ZM mode was beaten. Unlocking EXTREME mode"
 		ServerChat(Chat_pref + text);
 
 		Winner_array.clear();
@@ -7333,7 +8166,7 @@ function Trigger_Hold_End()
 			else if(handle.GetTeam() == 2)
 			{
 				EntFireByHandle(handle, "SetDamageFilter", "", 0.9, null, null);
-            	EntFireByHandle(handle, "SetHealth", "-1", 2.0, null, null);
+				EntFireByHandle(handle, "SetHealth", "-1", 2.0, null, null);
 			}
 		}
 		local g_round = Entities.FindByName(null, "round_end");
@@ -7341,17 +8174,20 @@ function Trigger_Hold_End()
 
 		Show_Credits_Passed();
 
-		EntFire("music", "RunScriptCode", "SetMusic(Sound_Win);", 0.00);
+		EntFire("music01", "RunScriptCode", "SetMusic(Sound_Win);", 0.00);
 		EntFire("Nuke_fade", "Fade", "", 0.00);
 		EntFire("zamok_ct", "RunScriptCode", "Stop()", 0);
 
 		SetStage(4);
+
+		Stage_Beat_ZM_Time = Time();
 	}
 }
 //EXTREME
 {
 	function Trigger_New_End()
 	{
+		EntFire("item_button_yuffi*", "RunScriptCode", "g_bBlockRope = true", 0.01);
 		if(Stage == 4)
 		{
 			EntFire("Map_TD", "AddOutput", "angles 0 180 0", 4);
@@ -7368,29 +8204,16 @@ function Trigger_Hold_End()
 			EntFire("Map_Shake", "StartShake", "", 40);
 			EntFire("End_Platform_Move", "FireUser1", "", 25);
 
-			EntFire("End_End", "AddOutPut", "OnUser3 map_brush:RunScriptCode:Trigger_Extreme_Win();:0:1", 0);
-			EntFire("End_End", "AddOutPut", "OnUser4 map_brush:RunScriptCode:Trigger_Extreme_Lose();:0:1", 0);
+			// EntFire("End_End", "AddOutPut", "OnUser3 map_brush:RunScriptCode:Trigger_Extreme_Win();:0:1", 0);
+			// EntFire("End_End", "AddOutPut", "OnUser4 map_brush:RunScriptCode:Trigger_Extreme_Lose();:0:1", 0);
 		}
-	}
-
-	function Trigger_Extreme_Win()
-	{
-		local text;
-
-		text = "EXTREME mode was beaten. Thanks for test Cosmov6"
-		ServerChat(Chat_pref + text);
-
-		Winner_array = caller.GetScriptScope().GetWinner();
-
-		SetStage(4);
-	}
-
-	function Trigger_Extreme_Lose()
-	{
-		local text;
-
-		text = "Nice try cringe"
-		ServerChat(Chat_pref + text);
+		else if(Stage == 5)
+		{
+			EntFire("Temp_Reno", "RunScriptCode", "Start();", 0);
+			EntFire("Map_TD", "AddOutput", "angles 0 180 0", 5);
+			EntFire("Map_TD", "AddOutput", "origin -6352 -1104 1876", 5);
+			EntFire("Map_TP_7", "Enable", "", 8);
+		}
 	}
 }
 
@@ -7398,11 +8221,11 @@ function Trigger_New_End_Last()
 {
 	if(Stage == 4)
 	{
-		EntFire("music", "RunScriptCode", "SetMusic(Music_Extreme_4);", 6.00);
+		EntFire("music01", "RunScriptCode", "SetMusic(Music_Extreme_4);", 6.00);
 
 		for(local i = 9, a = 0; i >= 4; i--, a += 0.2)
 		{
-			EntFire("music", "Volume", "" + i, 10.0 + a);
+			EntFire("music01", "Volume", "" + i, 10.0 + a);
 		}
 
 		if(ScoreBass > 0 && ScoreBass % 10 == 0)
@@ -7462,6 +8285,36 @@ function Trigger_After_Last_Nattak()
 		EntFire("Map_TP_4", "Enable", "", 5);
 	}
 }
+
+function Trigger_Win()
+	{
+		local text;
+		if (Stage == 4)
+		{
+			text = "EXTREME mode was beaten. Unlocking INFERNO mode"
+			ServerChat(Chat_pref + text);
+
+			SetStage(5);
+			Stage_Beat_Extreme_Time = Time();
+		}
+		else
+		{
+			text = "Inferno mode was beaten. Thanks for test Cosmo v6"
+			ServerChat(Chat_pref + text);
+			SetStage(3);
+			Stage_Beat_Inferno_Time = Time();
+//			EntFire("End_End", "RunScriptCode", "Start(4.0,0.0)", 0);
+		}
+		Winner_array = caller.GetScriptScope().GetWinner();
+	}
+
+	function Trigger_Lose()
+	{
+		local text;
+
+		text = "Nice try cringe"
+		ServerChat(Chat_pref + text);
+	}
 
 function ShowCreditsText(text, delay = 0.00)
 {
@@ -7771,7 +8624,7 @@ function SetSettingServer()
 
 function SendToConsoleServerPS(sCommand)
 {
-	//EntFire("cmd", "Command", sCommand, 0);
+	EntFire("cmd", "Command", sCommand, 0);
     SendToConsoleServer(sCommand);
 	//EntFire("cmd", "Command", "sm_cvar " + sCommand, 0);
 }
@@ -7968,48 +8821,57 @@ class ItemOwner
 
 	lvl = 0;
 
-	constructor(_name)
-	{
-		this.button = _name;
-		this.name = _name.GetName().slice(_name.GetPreTemplateName().len(),_name.GetName().len());
-		local item_name = this.button.GetName()
+constructor(_name)
+    {
+        this.button = _name;
+        this.name = _name.GetName().slice(_name.GetPreTemplateName().len(),_name.GetName().len());
+        local item_name = this.button.GetName()
 
-		local item_name_array = split(item_name,"_");
-		local n_item_name = item_name_array[item_name_array.len() - 1];
-		local new_item_name = split(n_item_name,"&");
-		this.name_right = new_item_name[0];
-		this.weapon = Entities.FindByName(null, "item_gun_" + this.name_right + "" + this.name);
-		//EntFireByHandle(this.weapon, "ToggleCanBePickedUp", "", 0.01, null, null);
-		EntFire("item_effect_" + this.name_right + "" + this.name, "Start", "", 0.01, null);
+        local item_name_array = split(item_name,"_");
+        local n_item_name = item_name_array[item_name_array.len() - 1];
+        local new_item_name = split(n_item_name,"&");
+        this.name_right = new_item_name[0];
+        this.weapon = Entities.FindByName(null, "item_gun_" + this.name_right + "" + this.name);
+        //EntFireByHandle(this.weapon, "ToggleCanBePickedUp", "", 0.01, null, null);
+        EntFire("item_effect_" + this.name_right + "" + this.name, "Start", "", 0.01, null);
+        if(this.name_right == "poison")
+        {
+            EntFire("item_poison_effect*", "Start", "", 0.01, null);
+        }
+        else if(this.name_right == "phoenix" ||
+        this.name_right == "ammo" ||
+        this.name_right == "potion")
+        {
+            this.allowRegen = false;
+            this.canSilence = false;
+        }
+        else if(this.name_right == "mike")
+        {
+            this.name_right = "Red XIII";
+            this.allowRegen = false;
+            this.type = 1;
+        }
+        else if(this.name_right == "yuffie")
+        {
+            this.name_right = "Yuffie";
+            this.allowRegen = false;
+            this.type = 1;
+        }
 
-		if(this.name_right == "phoenix" ||
-		this.name_right == "ammo" ||
-		this.name_right == "potion")
-		{
-			this.allowRegen = false;
-			this.canSilence = false;
-		}
-		else if(ITEM_GLOW)
-		{
-			this.glow_weapon = Entities.CreateByClassname("prop_dynamic_glow");
-			this.glow_weapon.__KeyValueFromInt("solid", 0);
-			this.glow_weapon.__KeyValueFromInt("glowenabled", 1);
-			this.glow_weapon.__KeyValueFromInt("glowdist", 1024);
-			this.glow_weapon.__KeyValueFromInt("glowstyle", 0);
-        	this.glow_weapon.__KeyValueFromInt("rendermode", 6);
+        if(ITEM_GLOW)
+        {
+            this.glow_weapon = Entities.CreateByClassname("prop_dynamic_glow");
+            this.glow_weapon.__KeyValueFromInt("solid", 0);
+            this.glow_weapon.__KeyValueFromInt("glowenabled", 1);
+            this.glow_weapon.__KeyValueFromInt("glowdist", 1024);
+            this.glow_weapon.__KeyValueFromInt("glowstyle", 0);
+            this.glow_weapon.__KeyValueFromInt("rendermode", 6);
 
-			this.glow_weapon.SetModel(this.weapon.GetModelName());
-			this.glow_weapon.SetOrigin(this.weapon.GetOrigin());
-			this.glow_weapon.SetAngles(this.weapon.GetAngles().x, this.weapon.GetAngles().y, this.weapon.GetAngles().z);
-		}
-
-		if(this.name_right == "mike")
-		{
-			this.name_right = "Red XIII";
-			this.allowRegen = false;
-			this.type = 1;
-		}
-	}
+            this.glow_weapon.SetModel(this.weapon.GetModelName());
+            this.glow_weapon.SetOrigin(this.weapon.GetOrigin());
+            this.glow_weapon.SetAngles(this.weapon.GetAngles().x, this.weapon.GetAngles().y, this.weapon.GetAngles().z);
+        }
+    }
 
 	function NewOwner(_owner)
 	{
@@ -8107,6 +8969,11 @@ class ItemOwner
 			this.maxcount = this.count;
 			this.lvl = _owner.heal_lvl;
 		}
+		else if(this.name_right == "Red XIII")
+		{
+			_owner.Add_speed(0.1, true);
+			EntFireByHandle(SpeedMod, "ModifySpeed", (_owner.ReturnSpeed()).tostring(), 0.1, _owner.handle, _owner.handle);
+		}
 
 		if(this.lvl == 0)
 		{
@@ -8179,6 +9046,12 @@ class ItemOwner
 			EntFireByHandle(this.weapon, "ToggleCanBePickedUp", "", 0, null, null);
 			EntFireByHandle(this.weapon, "ToggleCanBePickedUp", "", 0.5, null, null);
 
+			if(this.name_right == "Red XIII")
+			{
+				MainScript.GetScriptScope().GetPlayerClassByHandle(owner).Add_speed(-0.1, true);
+				EntFireByHandle(SpeedMod, "ModifySpeed", (_owner.ReturnSpeed()).tostring(), 0.1, _owner.handle, _owner.handle);
+			}
+
 			this.owner = null;
 			if(this.lvl != null)
 				this.lvl = 0;
@@ -8196,12 +9069,12 @@ function StartCD(cooldown = 0)
 
 	if(item.type == 2)
 	{
-	  if(item.count == 0)
-	  {
+		if(item.count == 0)
+		{
 		item.cd = "E";
 		item.canUse = false;
 		return;
-	  }
+		}
 	}
 	if(cooldown != 0)
 	{
@@ -8218,8 +9091,8 @@ function StartCD(cooldown = 0)
 	}
 	else
 	{
-	  if(item.type == 1)
-		 item.count++;
+		if(item.type == 1)
+			item.count++;
 		item.canUse = true;
 	}
 }
@@ -8416,15 +9289,32 @@ Item_Preset.push(obj) //phoenix
 //STATS BLOCK//
 ///////////////
 ::RoundPlayed <- 0;
-::Stats <- [];
 
 ::ScoreBass <- 0;
+
+::Map_Start_Time <- null;
+
+::Stage_Beat_Normal_Time <- null;
+::Stage_Beat_Normal_Count <- 0;
+
+::Stage_Beat_Hard_Time <- null;
+::Stage_Beat_Hard_Count <- 0;
+
+::Stage_Beat_ZM_Time <- null;
+::Stage_Beat_ZM_Count <- 0;
+
+::Stage_Beat_Extreme_Time <- null;
+::Stage_Beat_Extreme_Count <- 0;
+
+::Stage_Beat_Inferno_Time <- null;
+::Stage_Beat_Inferno_Count <- 0;
+
 
 ///////////////
 //////Skin/////
 ///////////////
 ::CT_MODEL <- "models/player/custom_player/legacy/ctm_sas_variantf.mdl";
-::CT_VIP_MODEL <- "models/player/custom_player/legacy/gxp/ffvii_remake/tifa/tifa_v1.mdl";
+::CT_VIP_MODEL <- "models/player/custom_player/legacy/gxp/cosmo/tifa/tifa_v1.mdl";
 ::T_VIP_MODEL <- "models/player/custom_player/microrost/sephiroth/sephiroth.mdl";
 ::CHICKEN_MODEL <- "models/chicken/chicken.mdl";
 
@@ -8453,4 +9343,13 @@ function PreCacheModels()
 			self.PrecacheModel(Pet_Preset[i].model_path);
 		}
 	}
+}
+
+function FastFix()
+{
+    local crates = Entities.CreateByClassname("prop_dynamic");
+    crates.SetModel("models/kmodels/cosmo/props/cs_office/crates_indoor.mdl");
+    crates.SetOrigin(Vector(559, -3921, 135));
+    crates.SetAngles(0, 210, 0);
+    crates.__KeyValueFromString("solid","6");
 }

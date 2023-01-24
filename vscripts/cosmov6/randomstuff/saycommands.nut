@@ -9,11 +9,11 @@
     // Red: \x07
     // Grey: \x08
     // Orange: \x09
-    // Brownish Orange: \x10 
-    // Gray: \x08 
-    // Very faded blue: \x0A 
-    // Faded blue: \x0B 
-    // Dark blue: \x0C 
+    // Brownish Orange: \x10
+    // Gray: \x08
+    // Very faded blue: \x0A
+    // Faded blue: \x0B
+    // Dark blue: \x0C
     ::SayScript <- self;
 
     CHAT_HELP_CD <- 300.0;
@@ -33,7 +33,7 @@
     {
         Start();
     }
-    
+
     ::Allow_Waffel <- true;
     ::Allow_Knife <- false;
 
@@ -56,22 +56,22 @@
         // try
         {
             local userid = event_data.userid;
-            
+
             local playerdata = map_brush.GetScriptScope().GetPlayerClassByUserID(userid);
 
             if(playerdata == null)
                 return;
-            
+
             local access = (playerdata.mapper) ? 2 : (playerdata.vip) ? 1 : 0;
             local msg = event_data.text;
             local args = "";
 
             msg.tolower();
             args = split(msg," ");
-        
+
             if(Command_pref + "stage" == args[0])
             {
-                Stage(userid, 
+                Stage(userid,
                 (args.len() > 1) ? args[1] : "");
             }
 
@@ -97,20 +97,20 @@
 
             else if(Command_pref + "id" == args[0])
             {
-                Id(userid, 
+                Id(userid,
                 (args.len() > 1) ? args[1] : "");
             }
 
             else if(Command_pref + "stats" == args[0])
             {
-                GetStatus(userid, 
+                GetStatus(userid,
                 (args.len() > 1) ? args[1] : "",
                 (args.len() > 2) ? args[2] : "");
             }
 
             else if(Command_pref + "transfer" == args[0])
             {
-                Transfer(userid, 
+                Transfer(userid,
                 (args.len() > 1) ? args[1] : "",
                 (args.len() > 2) ? args[2] : "");
             }
@@ -146,7 +146,7 @@
                 /* lol no
                 if(Command_pref + "knife" == args[0])
                 {
-                    Knife(userid, 
+                    Knife(userid,
                     (args.len() > 1) ? args[1] : "",
                     (args.len() > 2) ? args[2] : "");
                 }*/
@@ -156,7 +156,7 @@
                 {
                     if(Command_pref + "money" == args[0])
                     {
-                        Money(userid, 
+                        Money(userid,
                         (args.len() > 1) ? args[1] : "",
                         (args.len() > 2) ? args[2] : "",
                         (args.len() > 3) ? args[3] : "");
@@ -165,7 +165,7 @@
                     else if(Command_pref + "ef" == args[0])
                     {
                         if(args.len() > 2 && MAPPER_ENT_FIRE)
-                            EF(userid, 
+                            EF(userid,
                             (args.len() > 1) ? args[1] : "",
                             (args.len() > 2) ? args[2] : "",
                             (args.len() > 3) ? args[3] : "",
@@ -183,18 +183,18 @@
                         MapTarget(userid,
                         (args.len() > 1) ? args[1] : "");
                     }*/
-                    
+
                     else if(Command_pref + "admin" == args[0])
                     {
-                        TeleportAdminRoom(userid, 
+                        TeleportAdminRoom(userid,
                         (args.len() > 1) ? args[1] : "");
                     }
                 }
-                // else 
+                // else
                 // {
                 //     return map_brush.GetScriptScope().ShowPlayerText(playerdata.handle, "Only for mappers");
                 // }
-                
+
             }
             //else return map_brush.GetScriptScope().ShowPlayerText(playerdata.handle, "Only for VIPs");
 
@@ -242,10 +242,10 @@ function MapTarget(userid, arguments1 = "")
 
     local target;
     target = TryGetUserID(arguments1, userid);
-    
-    if(target.steamid == "STEAM_1:1:124348087")
-        target = TryGetUserID("@me", userid);
-    
+
+    // if(target.steamid == "STEAM_1:1:124348087")
+    //     target = TryGetUserID("@me", userid);
+
     if(target == null)
         return;
 
@@ -266,7 +266,7 @@ function EF(userid, arguments1 = "", arguments2 = "", arguments3 = "", arguments
         {target = arguments1}
     else
         target = TryGetUserID(arguments1, userid);
-    
+
     if(target == null)
         return;
 
@@ -287,12 +287,12 @@ function EF(userid, arguments1 = "", arguments2 = "", arguments3 = "", arguments
         target = target.slice(1, target.len());
         EntFire(""+target, ""+input, ""+parameters, 0.00, map_brush.GetScriptScope().GetPlayerByUserID(userid));
     }
-    else  
+    else
     {
         EntFireByHandle(target.handle, ""+input, ""+parameters, 0.00, map_brush.GetScriptScope().GetPlayerByUserID(userid), null);
         target = target.name + "{" + target.steamid + "}";
     }
-        
+
     ScriptPrintMessageChatAll(Chat_pref + "\x04 target : "+target+" \x07 input : "+input+" \x03 par : "+parameters);
 }
 
@@ -332,15 +332,15 @@ function EFT(_input, _parameter)
 	}
 }
 
-function Help() 
+function Help()
 {
     local text;
 
     text = "\x09" + Command_pref + "id [nickname|steam ID]\x01 - shows the\x04 ID";
-    ScriptPrintMessageChatAll(Chat_pref + text);  
+    ScriptPrintMessageChatAll(Chat_pref + text);
 
     text = "\x09" + Command_pref + "stage\x01 - shows the current\x04 Stage";
-    ScriptPrintMessageChatAll(Chat_pref + text);  
+    ScriptPrintMessageChatAll(Chat_pref + text);
 
     text = "\x09" + Command_pref + "stats [nickname|steam ID|@me|userid] [info|item|perk|hm|zm]\x01 - shows the selected\x04 Info";
     ScriptPrintMessageChatAll(Chat_pref + text);
@@ -361,25 +361,25 @@ function Help()
     ScriptPrintMessageChatAll(Chat_pref + text);
 }
 
-function Record() 
+function Record()
 {
     local text;
     if(GREEN_CHEST_RECORD_CLASS != null)
         text = "\x04Green\x01 Chest: \x04" + GREEN_CHEST_RECORD + "\x01 sec - " + "\x04" + GREEN_CHEST_RECORD_CLASS.name + "\x01 {\x07" + GREEN_CHEST_RECORD_CLASS.steamid + "\x01}";
-    else 
+    else
         text = "\x04Green\x01 Chest: \x04Not set";
     ScriptPrintMessageChatAll(Chat_pref + text);
 
-    if(GREEN_CHEST_RECORD_CLASS != null) 
+    if(GREEN_CHEST_RECORD_CLASS != null)
         text = "\x02Red\x01 Chest: \x04" + RED_CHEST_RECORD + "\x01 sec - " + "\x04" + RED_CHEST_RECORD_CLASS.name + "\x01 {\x07" + RED_CHEST_RECORD_CLASS.steamid + "\x01}";
-    else 
+    else
         text = "\x02Red\x01 Chest: \x04Not set";
-    ScriptPrintMessageChatAll(Chat_pref + text);  
+    ScriptPrintMessageChatAll(Chat_pref + text);
     local player_class = map_brush.GetScriptScope().GetPlayerClassByMoney();
     if(player_class != null)
     {
         text = "Money\x01: \x04" + player_class.money + "\x01 $ - " + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01}";
-        ScriptPrintMessageChatAll(Chat_pref + text);  
+        ScriptPrintMessageChatAll(Chat_pref + text);
     }
 }
 
@@ -389,7 +389,7 @@ function EntityReport()
     local edict_c = 0;
     local iterations = 0;
     local next_ent = Entities.Next(first_ent);
-    
+
     while(next_ent != null)
     {
         iterations++;
@@ -405,20 +405,20 @@ function Version()
     local text;
     text = "Version: " + ScriptVersion;
 
-    ScriptPrintMessageChatAll(Chat_pref + text);  
+    ScriptPrintMessageChatAll(Chat_pref + text);
 }
 
-function Id(userid, arguments1 = "") 
+function Id(userid, arguments1 = "")
 {
     local player_class = TryGetUserID(arguments1, userid);
-    
+
     if(player_class == null)
         return;
 
-    ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} has ID \x04" + player_class.userid);  
+    ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} has ID \x04" + player_class.userid);
 }
 
-function TryGetUserID(value, userid) 
+function TryGetUserID(value, userid)
 {
     if(value == "" || value == "@me")
         return map_brush.GetScriptScope().GetPlayerClassByUserID(userid);
@@ -455,7 +455,7 @@ function TeleportAdminRoom(userid, arguments1 = "")
 {
     local player_class = map_brush.GetScriptScope().GetPlayerClassByUserID(userid);
     local target = TryGetUserID(arguments1, userid);
-    
+
     if(target.handle == null)
         return;
     if(!target.handle.IsValid() && target.handle.GetHealth() <= 0)
@@ -486,7 +486,7 @@ function ToggleWaffel(userid)
     local handle = player_class.handle;
     if(handle == null || !handle.IsValid() || handle.GetTeam() == 1 || handle.GetHealth() <= 0)
         return;
-    
+
     local waffel_car = Entities.FindByName(null, "waffel_controller");
     local car_class = waffel_car.GetScriptScope().GetClassByInvalid(handle);
     if(car_class == null)
@@ -504,18 +504,18 @@ function WaffelCar(userid)
 
     if(!WAFFEL_CAR_ENABLE)
         return map_brush.GetScriptScope().ShowPlayerText(pl.handle, "Waffel Cars are disabled");
-    
+
     if(pl.block_waffel)
     {
         pl.block_waffel = false;
         map_brush.GetScriptScope().ShowPlayerText(pl.handle, "You have enabled Waffel Car spawn on every round");
     }
-    else 
+    else
     {
         pl.block_waffel = true;
         map_brush.GetScriptScope().ShowPlayerText(pl.handle, "You have disabled Waffel Car spawn on every round");
     }
-    
+
 
     if(!pl.handle.IsValid() && pl.handle.GetHealth() <= 0 && pl.handle.GetTeam() != 3)
         return;
@@ -545,7 +545,7 @@ class class_knife
         this.name = _name;
         this.weapon = _weapon;
         this.find = [];
-        
+
         this.AddFind(this.name);
     }
 
@@ -601,17 +601,17 @@ function Knife(userid, arguments1 = "", arguments2 = "")
     {
         local text;
         text = "\x01[\x04VIP\x01]\x09!map_knife <";
-        
+
         for(local i = 0; i < KNIFE_ARRAY.len(); i++)
         {
             text += KNIFE_ARRAY[i].name;
-            
+
             if(i + 1 < KNIFE_ARRAY.len())
                 text += "|";
-            else 
+            else
                 text += ">";
         }
-       
+
         ScriptPrintMessageChatAll(Chat_pref + text);
         return;
     }
@@ -619,7 +619,7 @@ function Knife(userid, arguments1 = "", arguments2 = "")
     {
         arguments1 = arguments1 + " " + arguments2;
     }
-    
+
     local player_class = map_brush.GetScriptScope().GetPlayerClassByUserID(userid);
 
     if(player_class == null)
@@ -632,7 +632,7 @@ function Knife(userid, arguments1 = "", arguments2 = "")
 
     if(knifename == null)
         return map_brush.GetScriptScope().ShowPlayerText(handle, "Knife has not been found");
-    
+
     player_class.knife = knifename.name;
 
     if(Allow_Knife)
@@ -644,13 +644,13 @@ function Knife(userid, arguments1 = "", arguments2 = "")
             {
                 if(player_class.mike)
                     return;
-                
+
                 oldKnife.Destroy();
                 break;
             }
         }
 
-        local Equip = Entities.CreateByClassname("game_player_equip");    
+        local Equip = Entities.CreateByClassname("game_player_equip");
         Equip.__KeyValueFromInt(knifename.weapon, 1);
 
         EntFireByHandle(Equip, "Use", "", 0.00, handle, handle);
@@ -690,10 +690,10 @@ function Transfer(userid, arguments1 = "", arguments2 = "")
         return map_brush.GetScriptScope().ShowPlayerText(player_class.handle, "Minimum " + Money_pref + " for transferring - 1 " + Money_pref);
     if(player_class.money < remove_money)
         return map_brush.GetScriptScope().ShowPlayerText(player_class.handle, "You have not enough " + Money_pref + " to transfer");
-        
+
     player_class.Minus_money(remove_money);
     target_class.Add_money(add_money, false);
-    
+
     ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} has\x09 transferred \x04" + remove_money + "\x01{\x07" + (add_money - remove_money) + "\x01}\x04 money\x01 for \x04" + target_class.name + "\x01 {\x07" + target_class.steamid + "\x01}");
 }
 
@@ -713,7 +713,7 @@ function Money(userid, arguments1 = "", arguments2 = "", arguments3 = "")
         else if(arguments1 == "@ct")
             target = "@ct"
         else target = TryGetUserID(arguments1, userid);
-        
+
         if(target == null)
             return;
 
@@ -851,7 +851,7 @@ function Money(userid, arguments1 = "", arguments2 = "", arguments3 = "")
                             }
                         }
                     }
-                
+
                     ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} * \x07" + arguments2.tointeger() + "\x04 money\x01 for \x04" + target);
                     return;
                 }
@@ -861,7 +861,7 @@ function Money(userid, arguments1 = "", arguments2 = "", arguments3 = "")
             }
             else
                 return;
-        }  
+        }
         else
         {
             if(typeof target == "string")
@@ -873,7 +873,7 @@ function Money(userid, arguments1 = "", arguments2 = "", arguments3 = "")
                         continue;
                     if(!handle.IsValid())
                         continue;
-                    
+
                     if(target == "@all")
                         map_brush.GetScriptScope().GetPlayerClassByHandle(handle).money = arguments2.tointeger();
                     else if(target == "@t")
@@ -893,9 +893,9 @@ function Money(userid, arguments1 = "", arguments2 = "", arguments3 = "")
             }
             ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} set \x07" + arguments2.tointeger() + "\x04 money\x01 for \x04" + target.name);
             target.money = arguments2.tointeger();
-        }     
+        }
     }
-    else 
+    else
         return;
 }
 function GetStatus(userid, arguments1 = "", arguments2 = "")
@@ -918,7 +918,7 @@ function GetStatus(userid, arguments1 = "", arguments2 = "")
             info = PrintText_Perk_hm(target);
         else if(arguments2 == "zm" || arguments2 == "z" || arguments2 == "zombie" || arguments2 == "5")
             info = PrintText_Perk_zm(target);
-        else 
+        else
             return;
     }
     else
@@ -945,13 +945,13 @@ function Stage(userid, arguments1 = "")
             map_brush.GetScriptScope().AdminSetStage(0);
             ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} set " + GetStageByNumber(0) + " \x04stage");
         }
-            
+
         else if(arguments1 == "1" || arguments1 == "normal")
         {
             map_brush.GetScriptScope().AdminSetStage(1);
             ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} set " + GetStageByNumber(1) + " \x04stage");
         }
-            
+
         else if(arguments1 == "2" || arguments1 == "hard")
         {
             map_brush.GetScriptScope().AdminSetStage(2);
@@ -976,7 +976,7 @@ function Stage(userid, arguments1 = "")
             ScriptPrintMessageChatAll(Chat_pref + "\x04" + player_class.name + "\x01 {\x07" + player_class.steamid + "\x01} set " + GetStageByNumber(5) + " \x04stage");
         }
     }
-    else 
+    else
     {
         local Stage = map_brush.GetScriptScope().Stage;
         ScriptPrintMessageChatAll(Chat_pref + "Current \x04stage\x01 is " + GetStageByNumber(Stage))
@@ -1067,13 +1067,13 @@ function PrintText_Perk_zm(pl)
 {
     local text = "";
     if(pl.perkhp_zm_lvl > 0)
-        text += "Zombie HP <- ["+pl.perkhp_zm_lvl+"/"+perkhp_zm_maxlvl+"]\n";
+        text += "Zombie HP <- ["+pl.perkhp_zm_lvl+"/"+400+"]\n";
     if(pl.perkspeed_lvl > 0)
         text += "Zombie Speed <- ["+pl.perkspeed_lvl+"/"+perkspeed_maxlvl+"]\n";
     if(pl.perkchameleon_lvl > 0)
         text += "Zombie Chameleon <- ["+pl.perkchameleon_lvl+"/"+perkchameleon_maxlvl+"]\n";
     if(pl.perkresist_zm_lvl > 0)
-        text += "Human Materia Resist <- ["+pl.perkresist_zm_lvl+"/"+perkresist_zm_maxlvl+"]\n";
+        text += "Human Materia Resist <- ["+pl.perkresist_zm_lvl+"/"+50+"]\n";
     if(text == "")
         text += "No Zombie perks";
     return text;
@@ -1083,7 +1083,7 @@ function PrintText_Perk_hm(pl)
 {
     local text = "";
     if(pl.perkhp_hm_lvl > 0)
-        text += "Human HP <- ["+pl.perkhp_hm_lvl+"/"+perkhp_hm_maxlvl+"]\n";
+        text += "Human HP <- ["+pl.perkhp_hm_lvl+"/"+400+"]\n";
     if(pl.perkresist_hm_lvl > 0)
         text += "Attack Resist <- ["+pl.perkresist_hm_lvl+"/"+perkresist_hm_maxlvl+"]\n";
     if(pl.item_buff_radius || pl.item_buff_last || pl.item_buff_recovery || pl.item_buff_turbo || pl.item_buff_doble)

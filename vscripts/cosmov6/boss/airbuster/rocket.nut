@@ -33,7 +33,7 @@ function OnPostSpawn()
         if(h.GetHealth() <= 0)
             continue;
 
-        if(h.GetTeam() == 1)
+        if(h.GetTeam() != 3)
             continue;
 
         array.push(h);
@@ -109,6 +109,5 @@ function InSightArray(start,target)
     if(InSight(start,target,Hit_Box_U))
         bool = false;
 
-    if(bool)return true;
-    return false;
+    return bool;
 }

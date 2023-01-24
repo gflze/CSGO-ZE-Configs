@@ -10,11 +10,12 @@ ignore <- false;
 
 effect <- 1
 effectname <-[
-    "explosion_c4_500",//256
-    "explosion_basic",]//1
+    
+    "custom_particle_238",//256
+    "custom_particle_228",]//1
 
 //                                                (место положение, радиус, урон)
-//ent_fire explosion runscriptcode "CreateExplosion(Vector(200,0,20),256,100,0  )"
+//ent_fire explosion runscriptcode "CreateExplosion(caller.GetOrigin(),256,1500,1)"
 function CreateExplosion(iorigin,iradius,idamage,iignore = false,ifilter = 2)
 {
     self.SetOrigin(iorigin - Vector(0, 0, 45));

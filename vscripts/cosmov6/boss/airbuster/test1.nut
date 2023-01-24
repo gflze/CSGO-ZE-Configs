@@ -9,24 +9,8 @@
 //      Main settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 
-InArena_Radius <- 600;
-NearBoss_Radius <- 450;
-
 ticking <- false;
 tickrate <- 0.1;
-
-cd_use_CAN <- true;
-tickrate_use <- 0;
-
-cd_use <- 8.5;
-cd_use_d <- cd_use / 17;
-bCringe <- false;
-
-function SetCDUse(i)
-{
-    cd_use = 0.00 + i;
-    cd_use_d = i / 17;
-}
 
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
 //      Status
@@ -38,24 +22,14 @@ Status <- "";
 //      HP settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
-    HP <- 5;
-    HP_INIT <- 5;
+    HP <- 0;
+    HP_INIT <- 0;
     HP_BARS <- 16;
 
-    HP_U <- 10; //ГОЛОВА
-    HP_H <- 30; //РУКИ
-    HP_C <- 20; //Тело
-    HP_L <- 40; //Ноги :D
-
-    HP_U_TOTAL <- 0;
-    HP_H_TOTAL <- 0;
-    HP_C_TOTAL <- 0;
-    HP_L_TOTAL <- 0;
-
-    U_BROKEN <- false;
-    H_BROKEN <- false;
-    C_BROKEN <- false;
-    L_BROKEN <- false;
+    HP_U <- 10;
+    HP_H <- 30;
+    HP_C <- 20;
+    HP_L <- 40;
 
     function SetHP(i)
     {
@@ -80,11 +54,6 @@ Status <- "";
         HP_U = M_HP * (HP_U / 100.0);
         HP_L = M_HP * (HP_L / 100.0);
         HP_C = M_HP * (HP_C / 100.0);
-
-        HP_U_TOTAL = HP_U;
-        HP_H_TOTAL = HP_H;
-        HP_C_TOTAL = HP_C;
-        HP_L_TOTAL = HP_L;
     }
 
     function AddHP(i)
@@ -94,57 +63,27 @@ Status <- "";
             i = -i * HP_INIT;
         }
 
-        if (HP_H > 0)
-        {
-            HP_H += i * 0.3;
-        }
-        if (HP_U > 0)
-        {
-            HP_U += i * 0.1;
-        }
-        if (HP_L > 0)
-        {
-            HP_L += i * 0.4;
-        }
-        if (HP_C > 0)
-        {
-            HP_C += i * 0.2;
-        }
-
         while(HP + i >= HP_INIT)
         {
             HP_BARS++;
             i -= HP_INIT;
         }
 
-        if(HP_BARS <= 16)
-        {
-            local id = 16 - HP_BARS;
-            EntFire("Special_HealthTexture", "SetTextureIndex", "" + id, 0.00);
-        }
-        else EntFire("Special_HealthTexture", "SetTextureIndex", "0", 0.00);
+        // if(HP_BARS <= 16)
+        // {
+        //     local id = 16 - HP_BARS;
+        //     EntFire("Special_HealthTexture", "SetTextureIndex", "" + id, 0.00);
+        // }
+        // else EntFire("Special_HealthTexture", "SetTextureIndex", "0", 0.00);
 
         HP += i;
     }
 
     function ItemDamage(i)
     {
-
-        if(i == 500)
-        {
-            if(bCringe)
-                return;
-            bCringe = true;
-            EntFireByHandle(self, "RunScriptCode", "bCringe = false;", 1, null, null);
-        }
         if(i < 0)
         {
             i = -i * HP_INIT;
-        }
-
-        if (ShieldArray.len() > 0)
-        {
-            i *= 0.8
         }
 
         SubtractHP(i);
@@ -154,23 +93,17 @@ Status <- "";
     {
         SubtractHP(80);
 
-        if(Stanblock)
-			return;
+        NadeCount++
+        NadeTickRate += NadeTime;
 
         if(!Stanned)
         {
-            NadeCount++
-            NadeTickRate += NadeTime;
             if(NadeCount >= NadeNeed)
                 SetStanned();
         }
     }
-
-    Shoot_OneMoney <- 15;
-    Shoot_OneMoney = 1.00 / Shoot_OneMoney;
     function ShootDamage(ID)
     {
-        MainScript.GetScriptScope().GetPlayerClassByHandle(activator).ShootTick(Shoot_OneMoney);
         switch (ID)
         {
             case 0:
@@ -189,102 +122,40 @@ Status <- "";
             SubtractHP_Low(1);
             break;
         }
+
+        SubtractHP(1);
     }
 
-    function SubtractHP_Head(i)//голова
+    function SubtractHP_Head(i)
     {
         if(Stanned)i *= StanDamage;
 
-        if(HP_U > 1)
+        if(HP_U > 0)
             HP_U -= i;
-        else if (!U_BROKEN)
-        {
-            U_BROKEN = true;
-            allow_rocket =  false;
-            allow_heal  =   false;
-            local use_index = -1;
-            use_index = InArray("Rocket", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Heal", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-        }
-        SubtractHP(i);
     }
 
-    function SubtractHP_Chest(i)//тело
+    function SubtractHP_Chest(i)
     {
         if(Stanned)i *= StanDamage;
 
-        if(HP_C > 1)
+        if(HP_C > 0)
             HP_C -= i;
-        else if (!C_BROKEN)
-        {
-            C_BROKEN = true;
-            allow_shield =  false;
-            allow_laser  =  false;
-            local use_index = -1;
-            use_index = InArray("Laser", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Shield", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-        }
-        SubtractHP(i);
     }
 
-    function SubtractHP_Hand(i)//руки
+    function SubtractHP_Hand(i)
     {
         if(Stanned)i *= StanDamage;
 
-        if(HP_H > 1)
+        if(HP_H > 0)
             HP_H -= i;
-        else if(!H_BROKEN)
-        {
-            H_BROKEN = true;
-            allow_confuse = false;
-            allow_ice = false;
-            allow_punch = false;
-            allow_wind = false;
-            local use_index = -1;
-            use_index = InArray("Confuse", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Ice", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Punch", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Wind", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-        }
-        SubtractHP(i);
     }
 
-    function SubtractHP_Low(i)//ноги
+    function SubtractHP_Low(i)
     {
         if(Stanned)i *= StanDamage;
 
-        if(HP_L > 1)
+        if(HP_L > 0)
             HP_L -= i;
-        else if(!L_BROKEN)
-        {
-            L_BROKEN = true;
-            allow_flame = false;
-            allow_mine = false;
-            local use_index = -1;
-            use_index = InArray("Flame", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-            use_index = InArray("Mine", use_array);
-            if(use_index != -1)
-            use_array.remove(use_index)
-        }
-        SubtractHP(i);
     }
 
     function SubtractHP(i)
@@ -295,126 +166,45 @@ Status <- "";
 
     function BossDead()
     {
-        local item_target = Entities.FindByName(null, "map_item_beam_target");
-        EntFireByHandle(item_target, "ClearParent", "", 0, null, null);
 
-        EntFire("airbuster_move_physbox", "DisableMotion", "", 0);
-        SetAnimation(Stanned_Anim);
-        EntFire("AirBuster_Model", "FireUser4", "", 1);
-        EntFire("explosion", "RunScriptCode", "CreateExplosion(activator.GetOrigin(),256,100)",3,Model);
-        EntFire("map_sound_boss_dead", "PlaySound", "", 0);
-        EntFire("Airbuster*", "Kill", "", 3.2);
-
-        if(ShieldArray.len() > 0)
-        {
-            local time = 0;
-            local timeadd = (2.0 / ShieldArray.len());
-
-            for(local i = 0; i < ShieldArray.len(); i++)
-            {
-                EntFireByHandle(ShieldArray[i].hbox, "Break", "", time, null, null);
-                EntFireByHandle(ShieldArray[i].model, "RunScriptCode", "Kill(0.5)", time, null, null);
-                time += timeadd;
-            }
-
-            ShieldArray.clear();
-        }
     }
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
 //      Stun settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
-    Stanblock           <- true;
     Stanned             <- false;
     StanTime            <- 5;
-    StanDamage          <- 2;
+    StanDamage          <- 5;
 
     NadeCount <- 0;
-    NadeNeed <- 20;
+    NadeNeed <- 10;
     NadeShow <- 20.0;
 
     NadeShow = NadeNeed * (NadeShow / 100);
 
     NadeTickRate <- 0;
-    NadeTime <- 3;
+    NadeTime <- 5;
 
     Stanned_Anim <- "stagger";
     UnStanned_Anim <- "dmgburst";
 
     function SetStanned()
     {
-        EntFire("AirBuster_Stager_Effect","Start","",0);
-        EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
         SetPlayBackRate(0,2.5);
         SetAnimation(Stanned_Anim);
 
-        NadeTickRate = StanTime;
+        NadeTickRate += StanTime;
         NadeCount = 0;
         Stanned = true;
-
-        cd_use_CAN = false;
-        EntFireByHandle(self, "RunScriptCode", "cd_use_CAN = true;", StanTime, null, null);
     }
 
     function SetUnStanned()
     {
-        EntFire("AirBuster_Stager_Effect","Stop","",0);
-        EntFire("AirBuster_Move_Physbox","EnableMotion","",1);
         SetPlayBackRate(1);
         SetAnimation(UnStanned_Anim);
         Stanned = false;
     }
-}
-
-function ItemEffect_Ice(time)
-{
-
-    if(time <= 0)
-        return;
-    cd_use_CAN = false;
-
-    local ice_temp = Entities.FindByName(null, "map_ice_temp_01");
-    ice_temp.SetOrigin(Model.GetOrigin() + Vector(0, 0, 150))
-    EntFireByHandle(ice_temp, "ForceSpawn", "", 0.00, null, null);
-
-    local name = Time().tointeger();
-
-    EntFire("map_ice_model_01", "SetParent", "!activator", 0, Model);
-
-    EntFire("map_ice_model_01", "RunScriptCode", "Spawn(0.5)", 0, null);
-
-    EntFire("map_ice_model_01", "AddOutPut", "targetname map_ice_model_01"+name, 0, null);
-    EntFire("map_ice_model_01"+name, "RunScriptCode", "Kill(" + (time * 0.9) + ")", time * 0.2, null);
-
-    EntFireByHandle(self, "RunScriptCode", "SPEED_FORWARD = 0.3;", 0, null, null);
-    EntFireByHandle(self, "RunScriptCode", "SPEED_TURNING = 0.3;", 0, null, null);
-
-    EntFireByHandle(Model, "Color", "0 255 0", 0.00, null, null);
-
-    EntFireByHandle(Model, "Color", "255 255 255", time, null, null);
-    EntFireByHandle(self, "RunScriptCode", "SPEED_FORWARD = 1.0;", time, null, null);
-    EntFireByHandle(self, "RunScriptCode", "SPEED_TURNING = 1.0;", time, null, null);
-    EntFireByHandle(self, "RunScriptCode", "cd_use_CAN = true;", time, null, null);
-}
-
-function ItemEffect_Electro(time)
-{
-    if(time <= 0)
-        return;
-    cd_use_CAN = false;
-
-    EntFire("AirBuster_Stager_Effect","Start","",0);
-    EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
-    SetPlayBackRate(0,2.5);
-    SetAnimation(Stanned_Anim);
-
-    EntFire("AirBuster_Stager_Effect","Stop","",time);
-    EntFire("AirBuster_Move_Physbox","EnableMotion","",time+1);
-    EntFireByHandle(self, "RunScriptCode", "SetPlayBackRate(1);", time, null, null);
-    EntFireByHandle(self, "RunScriptCode", "SetAnimation(UnStanned_Anim);", time, null, null);
-
-    EntFireByHandle(self, "RunScriptCode", "cd_use_CAN = true;", time, null, null);
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
 //      Attack settings
@@ -430,7 +220,6 @@ function ItemEffect_Electro(time)
 
         function Cast_Punch()
         {
-            CompareDir();
             SetAnimation(Punch_Anim);
             SetPlayBackRate(2);
             EntFireByHandle(self, "RunScriptCode", "Cast_Punch_Next();", 0.8, null, null);
@@ -457,7 +246,7 @@ function ItemEffect_Electro(time)
         {
             local hp = Handle.GetHealth() - Punch_Damage;
 
-            if(hp < 1)
+            if(hp <= 0)
             {
                 EntFireByHandle(Handle, "SetHealth", "-1", 0.00, null, null);
                 return;
@@ -492,7 +281,7 @@ function ItemEffect_Electro(time)
         Shield_FullRotate <- 4.0;
         //Shield_Count <- [4, 6, 8, 16];
         Shield_Count <- [16];
-        Shield_Health <- 60.0;
+        Shield_Health <- 100.0;
 
         Shield_Rot <- Entities.FindByName(null, "AirBuster_Shield_Rotate");
         EntFireByHandle(Shield_Rot, "AddOutPut", "maxspeed " + (360.0 / Shield_FullRotate), 0.00, null, null);
@@ -617,15 +406,6 @@ function ItemEffect_Electro(time)
                 EntFireByHandle(self, "RunScriptCode", "Rocket_Maker.SpawnEntityAtLocation(Vector(" + origin.x + "," + origin.y + "," + origin.z + "), Vector(" + angles.x + "," + angles.y + "," + angles.z + "));", Rocket_Delay * i, null, null);
             }
         }
-
-        function Cast_Rocket_Spam()
-        {
-            if(!ticking)
-                return;
-
-            Cast_Mine_Next();
-            EntFireByHandle(self, "RunScriptCode", "Cast_Rocket_Spam()", 5, null, null);
-        }
     }
     //LASER
     {
@@ -646,8 +426,6 @@ function ItemEffect_Electro(time)
 
         function Cast_Laser_C()
         {
-            CompareDir();
-            EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
             SetAnimation(Laser_C_Anim);
             EntFireByHandle(self, "RunScriptCode", "Cast_Laser_C_Next();", 1, null, null);
         }
@@ -657,21 +435,21 @@ function ItemEffect_Electro(time)
 
             if(RandomInt(0, 1))
             {
-                EntFire("AirBuster_Model","Setparent","AirBuster_Rotate_R",0);
-                EntFire("AirBuster_Rotate_R","Open","",0.);
-                EntFire("AirBuster_Move_Physbox","EnableMotion","",3.4);
+                Rotate(45, 0.2, 1.5, 0);
+                Rotate(90, 1.7, 3, 1);
+                Rotate(45, 3.2, 4, 0);
             }
             else
             {
-                EntFire("AirBuster_Model","Setparent","AirBuster_Rotate_L",0);
-                EntFire("AirBuster_Rotate_L","Open","",0);
-                EntFire("AirBuster_Move_Physbox","EnableMotion","",3.4);
+                Rotate(45, 0.2, 1.5, 1);
+                Rotate(90, 1.7, 3, 0);
+                Rotate(45, 3.2, 4, 1);
             }
         }
     }
     //WIND
     {
-        Wind_Damage <- 40;
+        Wind_Damage <- 20;
         Wind_FullDamage <- 316;
         Wind_Power <- 726;
         Wind_Radius <- 800;
@@ -735,7 +513,7 @@ function ItemEffect_Electro(time)
             local damage = Wind_Damage - Wind_Damage * resist;
             local hp = Handle.GetHealth() - damage;
 
-            if(hp < 1)
+            if(hp <= 0)
             {
                 EntFireByHandle(Handle, "SetHealth", "-1", 0.00, null, null);
                 return;
@@ -747,42 +525,13 @@ function ItemEffect_Electro(time)
             vec.Norm();
 
             local push = Vector((vec.x * -Wind_Power), (vec.y * -Wind_Power), (300));
-            if (Handle.GetVelocity().z >50)
-            {
-                push = Vector(push.x, push.y, 0);
-            }
             Handle.SetVelocity(push);
-
-            EntFire("AirBuster_Wind_Effect", "Start", "", 0);
-            EntFire("AirBuster_Wind_Effect", "DestroyImmediately", "", 0.9);
         }
     }
     //FLAME
     {
         Flang_Flame_Anim <- "attack_machine";
 
-        function Cast_Flame()
-        {
-            switch  (RandomInt(0,2))
-                {
-                    case 0:
-                    {
-                        EntFireByHandle(self, "RunScriptCode", "Cast_Flang_Flame()", 0, null, null);
-                        break;
-                    }
-                    case 1:
-                    {
-                        EntFireByHandle(self, "RunScriptCode", "Cast_Flang_Flame()", 0, null, null);
-                        break;
-                    }
-                    case 2:
-                    {
-                        EntFireByHandle(self, "RunScriptCode", "Cast_Low_Flame()", 0, null, null);
-                        break;
-                    }
-
-                }
-        }
         function Cast_Flang_Flame()
         {
             SetAnimation(Flang_Flame_Anim);
@@ -802,27 +551,15 @@ function ItemEffect_Electro(time)
 
         Flame_Rotate_Anim <- "attack_grenade";
 
-        doorchek <- false;
-
         function Cast_Rotate_Flame()
         {
-            EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
             SetAnimation(Flame_Rotate_Anim);
             SetPlayBackRate(0.3, 1.0);
             SetPlayBackRate(1, 3.0);
             ToggleLower(2);
 
-            EntFire("AirBuster_Model","SetParent","AirBuster_Rotate",0);
-            //Rotate(720, 0.5, 4.5);
-            if (doorchek)
-            {
-                EntFire("AirBuster_Rotate","Open","",0);
-            }
-            else
-            {
-                EntFire("AirBuster_Rotate","close","",0);
-            }
-            doorchek = !doorchek
+            Rotate(720, 0.5, 4.5);
+
             ToggleHurtEffect(Flame_R_M, 0.3, 3.5)
             ToggleHurtEffect(Flame_L_M, 0.3, 3.5)
 
@@ -831,15 +568,12 @@ function ItemEffect_Electro(time)
 
             ToggleHurtEffect(Flame_R_B_L, 0.3, 4.5)
             ToggleHurtEffect(Flame_L_B_L, 0.3, 4.5)
-            EntFire("AirBuster_Move_Physbox","EnableMotion","",4.5);
         }
-
 
         Low_Flame_Anim <- "idle";
 
         function Cast_Low_Flame()
         {
-            EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
             SetAnimation(Low_Flame_Anim);
             ToggleLower(5.2);
 
@@ -849,7 +583,6 @@ function ItemEffect_Electro(time)
             ToggleHurtEffect(Flame_R_L, 0.75, 5);
             ToggleHurtEffect(Flame_L_B_L, 1, 5.4);
             ToggleHurtEffect(Flame_R_B_L, 1, 5.4);
-            EntFire("AirBuster_Move_Physbox","EnableMotion","",5.5);
 
         }
     }
@@ -859,7 +592,7 @@ function ItemEffect_Electro(time)
         Mine_Radius <- 150;
         Mine_Interval <- [0.5, 3.2];
 
-        Mine_Maker <- null;
+        Mine_Maker <- Entities.FindByName(null, "AirBuster_Mine_Spawner");
         Mine_Anim <- "attack_rocket";
 
         function Cast_Mine()
@@ -876,8 +609,9 @@ function ItemEffect_Electro(time)
                 if(count > 1)
                     interval = RandomFloat(Mine_Interval[0], Mine_Interval[1])
 
-                    local origin = Model.GetOrigin();
-                    origin += Vector(RandomInt(-Mine_Radius, Mine_Radius), RandomInt(-Mine_Radius, Mine_Radius), 0);
+                local origin = Model.GetOrigin()
+                origin += Vector(RandomInt(-Mine_Radius, Mine_Radius), RandomInt(-Mine_Radius, Mine_Radius), -150);
+
                 EntFireByHandle(self, "RunScriptCode", "Mine_Maker.SpawnEntityAtLocation(Vector(" + origin.x + "," + origin.y + "," + origin.z + "), Vector(0,0,0));", interval, null, null);
             }
         }
@@ -888,63 +622,25 @@ function ItemEffect_Electro(time)
 
         function Cast_Heal()
         {
-            EntFire("AirBuster_Heal_Effect","Start","",0);
-            EntFire("AirBuster_Heal_Effect","Stop","",4);
             SetAnimation(Heal_Anim);
-            AddHP(CountAlive()*50);
+            AddHP(500);
         }
     }
     //CONFUSE
     {
-
         Confuse_Maker <- Entities.FindByName(null, "AirBuster_Confuse_Spawner");
         Confuse_Anim <- "attack_beam";
 
         function Cast_Confuse()
         {
-            CompareDir();
-            EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
-            ToggleHurtEffect(Confuse_R, 2.0, 3.5);
-            ToggleHurtEffect(Confuse_L, 2.0, 3.5);
             SetAnimation(Confuse_Anim);
             EntFireByHandle(self, "RunScriptCode", "Cast_Confuse_Next();", 2.0, null, null);
-            EntFire("AirBuster_Move_Physbox","EnableMotion","",3.4);
         }
 
         function Cast_Confuse_Next()
         {
             local origin = GetAttOrigin("C_VFXMuzzleD_a") + Model.GetLeftVector() * -550 + Vector(0, 0, 5);
             Confuse_Maker.SpawnEntityAtLocation(origin, Vector(0,0,0));
-
-            origin = GetAttOrigin("C_VFXMuzzleD_a") + Model.GetLeftVector() * -1200 + Vector(0, 0, 5);
-            Confuse_Maker.SpawnEntityAtLocation(origin, Vector(0,0,0));
-        }
-    }
-
-     //Ice
-    {
-
-        Ice_Maker <- Entities.FindByName(null, "AirBuster_Ice_Air_Spawner");
-        Ice_Anim <- "attack_beam";
-
-        function Cast_Ice()
-        {
-            CompareDir();
-            EntFire("AirBuster_Move_Physbox","DisableMotion","",0);
-            ToggleHurtEffect(Ice_R, 2.05, 3.5);
-            ToggleHurtEffect(Ice_L, 2.05, 3.5);
-            SetAnimation(Ice_Anim);
-            EntFireByHandle(self, "RunScriptCode", "Cast_Ice_Next();", 2.0, null, null);
-            EntFire("AirBuster_Move_Physbox","EnableMotion","",3.4);
-        }
-
-        function Cast_Ice_Next()
-        {
-            local origin = GetAttOrigin("C_VFXMuzzleD_a") + Model.GetLeftVector() * -550 + Vector(0, 0, 5);
-            Ice_Maker.SpawnEntityAtLocation(origin, Vector(0,0,0));
-
-            origin = GetAttOrigin("C_VFXMuzzleD_a") + Model.GetLeftVector() * -1200 + Vector(0, 0, 5);
-            Ice_Maker.SpawnEntityAtLocation(origin, Vector(0,0,0));
         }
     }
 }
@@ -1017,350 +713,29 @@ function ItemEffect_Electro(time)
     Flame_L_B_L <- null;
     Laser_C <- null;
     Laser_L <- null;
-    Confuse_R <- null;
-    Confuse_L <- null;
-    Ice_R <- null;
-    Ice_L <- null;
 }
-
-    allow_punch         <- true;        //стандарт
-    allow_shield        <- true;        //тело
-    allow_rocket        <- true;        //голова
-    allow_laser         <- true;        //тело
-    allow_wind          <- true;        //стандарт
-    allow_flame         <- true;        //ноги
-    allow_mine          <- true;        //ноги
-    allow_heal          <- true;        //голова
-    allow_confuse       <- true;        //руки
-    allow_ice           <- true;
-
-// ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      MOVING NPC SCRIPT - BY LUFFAREN (STEAM_1:1:22521282)  \\
-// ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
-
-
-//TICKRATE 		<- 	0.10;
-
-TARGET_DISTANCE <- 	5000;
-
-RETARGET_TIME 	<- 	8.00;
-
-SPEED_FORWARD 	<- 	1.00;
-
-SPEED_TURNING 	<- 	1.00;
-
-MIN_SPEED		<- 	2;
-
-MAX_STOP_TIME	<- 	10.00;
-
-p <- null;
-tf <- null;
-ts <- null;
-ttime <- 0.00;
-//ticking <- false;
-counter1 <- 0.00;
-lastpos <- self.GetOrigin();
-
-
-function Movement()
-{
-	// if(GetDistance(self.GetOrigin(),lastpos) < MIN_SPEED)
-	// 	counter1 += 0.10;
-	// else counter1 = 0.00;
-	// if(counter1 > MAX_STOP_TIME)
-	// {
-	// 	EntFireByHandle(ts,"Deactivate","",0.00,null,null);
-	// 	EntFireByHandle(ts,"AddOutput","force 4000",0.01,null,null);
-	// 	EntFireByHandle(ts,"Activate","",0.02,null,null);
-	// }
-	lastpos = self.GetOrigin();
-	EntFireByHandle(tf,"Deactivate","",0.00,null,null);
-	EntFireByHandle(ts,"Deactivate","",0.00,null,null);
-	if(p == null ||
-    !p.IsValid() ||
-    p.GetHealth() < 1 ||
-    p.GetTeam() != 3 ||
-    ttime >= RETARGET_TIME)
-    {
-        return SearchTarget();
-    }
-	ttime += tickrate;
-    local tdist = GetDistance2D(self.GetOrigin(),p.GetOrigin());
-	local tdistz = (p.GetOrigin().z-self.GetOrigin().z);
-    if (tdist > 75)
-    {
-        EntFireByHandle(tf,"Activate","",0.02,null,null);
-        EntFireByHandle(ts,"Activate","",0.02,null,null);
-        local sa = self.GetAngles().y;
-        local ta = GetTargetYaw(self.GetOrigin(),p.GetOrigin());
-        local ang = abs((sa-ta+360)%360);
-        if(ang>=180)EntFireByHandle(ts,"AddOutput","angles 0 270 0",0.00,null,null);
-        else EntFireByHandle(ts,"AddOutput","angles 0 90 0",0.00,null,null);
-        local angdif = (sa-ta-180);
-        while(angdif>360){angdif-=180;}
-        while(angdif< -180){angdif+=360;}
-        angdif=abs(angdif);
-        EntFireByHandle(tf,"AddOutput","force "+(3000*SPEED_FORWARD).tostring(),0.00,null,null);
-        EntFireByHandle(ts,"AddOutput","force "+((3*SPEED_TURNING)*angdif).tostring(),0.00,null,null);
-    }
-    else
-    {
-        tickrate_use += 0.03;
-    }
-}
-
-function SearchTarget()
-{
-    ttime = 0.00;
-    if(Global_Target != null && Global_Target.IsValid() && Global_Target.GetHealth() > 0 && Global_Target.GetTeam() == 3)
-    {
-        p = Global_Target;
-        return;
-    }
-
-    local array = [];
-    local h = null;
-    while(null != (h = Entities.FindByClassname(h, "player")))
-    {
-        if(h != null)
-        {
-            if(h.IsValid() && h.GetHealth() > 0)
-            {
-                if(h.GetTeam() == 3)
-                {
-                    local luck = MainScript.GetScriptScope().GetPlayerClassByHandle(h)
-                    if(luck != null)
-                    {
-                        luck = luck.perkluck_lvl;
-                        if(luck > 0)
-                        {
-                            if(RandomInt(1, 100) < luck * perkluck_luckperlvl)
-                            {
-                                continue;
-                            }
-                        }
-                    }
-                    array.push(h);
-                }
-            }
-        }
-    }
-
-    p = null;
-
-    if (array.len() == 0)
-    {
-        return;
-    }
-    if (array.len() == 1)
-    {
-        p = array[0];
-        return;
-    }
-
-    // if (GetChance(60))
-    // {
-    //     local items = MainScript.GetScriptScope().ITEM_OWNER.slice();
-
-    //     local removearray = [];
-
-    //     foreach (index, item in items)
-    //     {
-    //         if (item.owner == null ||
-    //         !item.owner.IsValid() ||
-    //         item.owner.GetTeam() != 3 ||
-    //         item.owner.GetHealth() < 1)
-    //         {
-    //             removearray.push(index);
-    //             continue;
-    //         }
-    //     }
-
-    //     removearray.reverse();
-    //     foreach (item in removearray)
-    //     {
-    //         items.remove(item);
-    //     }
-    //     removearray.clear();
-
-    //     foreach (index, item in items)
-    //     {
-    //         if (item.name_right == "electro")
-    //         {
-    //             if (GetChance(50))
-    //             {
-    //                 p = item.owner;
-    //                 return;
-    //             }
-    //             else
-    //             {
-    //                 removearray.push(index);
-    //                 continue;
-    //             }
-    //         }
-    //     }
-
-    //     foreach (index, item in items)
-    //     {
-    //         if (item.name_right == "heal")
-    //         {
-    //             if (GetChance(40))
-    //             {
-    //                 p = item.owner;
-    //                 return;
-    //             }
-    //             else
-    //             {
-    //                 removearray.push(index);
-    //                 continue;
-    //             }
-    //         }
-    //     }
-
-    //     foreach (index, item in items)
-    //     {
-    //         if (item.name_right == "ultimate")
-    //         {
-    //             if (GetChance(40))
-    //             {
-    //                 p = item.owner;
-    //                 return;
-    //             }
-    //             else
-    //             {
-    //                 removearray.push(index);
-    //                 continue;
-    //             }
-    //         }
-    //     }
-
-    //     foreach (index, item in items)
-    //     {
-    //         if (item.name_right == "gravity")
-    //         {
-    //             if (GetChance(80))
-    //             {
-    //                 removearray.push(index);
-    //                 continue;
-    //             }
-    //         }
-    //     }
-    //     removearray.reverse();
-    //     foreach (item in removearray)
-    //     {
-    //         items.remove(item);
-    //     }
-
-    //     if (items.len() > 0)
-    //     {
-    //         p = items[RandomInt(0, items.len() - 1)].owner;
-
-    //         if (p != null)
-    //         {
-    //             return;
-    //         }
-    //     }
-    // }
-    p = array[RandomInt(0, array.len() - 1)];
-}
-
-function GetTargetYaw(start,target)
-{
-	local yaw = 0.00;
-	local v = Vector(start.x-target.x,start.y-target.y,start.z-target.z);
-	local vl = sqrt(v.x*v.x+v.y*v.y);
-	yaw = 180*acos(v.x/vl)/3.14159;
-	if(v.y<0)
-		yaw=-yaw;
-	return yaw;
-}
-
-function SetThrusterTs()
-{
-    ts=caller;
-}
-
-function SetThrusterTf()
-{
-    tf=caller;
-}
-
-
-function GetDistance(v1,v2)
-{
-    return sqrt((v1.x-v2.x)*(v1.x-v2.x)+(v1.y-v2.y)*(v1.y-v2.y)+(v1.z-v2.z)*(v1.z-v2.z));
-}
-
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
 //      Main
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
-function PreStart()
-{
-    EntFire("AirBuster_Top_Move", "FireUser1", "", 10);
-    EntFire("Boss_Dicks_Move", "Close", "", 10);
-    EntFire("Boss_Push", "Kill", "", 10);
-    EntFire("Credits_Game_Text", "AddOutput", "message AirBuster", 0);
-    EntFire("Credits_Game_Text", "Display", "", 10);
-    EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-1250,5152,326),Vector(-60,180,0),6,Vector(-854,5152,486),Vector(15,180,0),3,4)", 11);
-    EntFire("Camera_old", "RunScriptCode", "SetOverLay(Overlay)", 11);
-    EntFire("Camera_old", "RunScriptCode", "SetOverLay()", 24);
-    //o1, a1, time1, o2, a2, time2, flytime
-}
-Default_Anim <- "walk";
-function Start()
-{
-    EntFire("AirBuster_Nade", "Enable", "", 0);
-    EntFireByHandle(self, "RunScriptCode", "Cast_Rocket_Spam()", 150, null, null);
-    EntFire("Name_Texture", "AddOutPut", "target AirBuster_Name_Bar", 0);
-    EntFire("Timer_Texture", "AddOutPut", "target AirBuster_Timer_Bar", 0);
-    EntFire("Special_HealthTexture", "AddOutPut", "target AirBuster_HP_Bar", 0);
-    tf = Entities.FindByName(null, "AirBuster_thruster_forward");
-    ts = Entities.FindByName(null, "AirBuster_thruster_side");
-
-    Model = Entities.FindByName(null,"AirBuster_Model");
-
-    Init();
-    ticking = true;
-    MainScript.GetScriptScope().Active_Boss = "AirBuster";
-
-    local item_target = Entities.FindByName(null, "map_item_beam_target");
-    item_target.SetOrigin(Model.GetOrigin());
-
-    EntFireByHandle(item_target, "SetParent", "!activator", 0, Model, Model);
-    Tick();
-    EntFireByHandle(self, "RunScriptCode", "StunUnlock()", RandomInt(30,50), null, null);
-    SetDefaultAnimation(Default_Anim);
-}
-
-function StunUnlock()
-{
-    Stanblock = false;
-    ScriptPrintMessageChatAll(Chat_pref + "The boss is weak, you can stagger him now!");
-}
-
-function Init()
+    function OnPostSpawn()
     {
-        Model.__KeyValueFromInt("rendermode", 1);
+        Start();
+    }
+
+    function Start()
+    {
+        Init();
+        SetTestAtt(0);
+
+        ticking = true;
+        MainScript.GetScriptScope().Active_Boss = "AirBuster";
+        Tick();
+    }
+
+    function Init()
+    {
         local ent;
-
-        Mine_Maker = Entities.FindByName(null, "AirBuster_Mine_Spawner");
-
-        ent = Entities.FindByName(null, "AirBuster_Ice_R_Effect");
-        FakeParentArray.push(fakeparent(ent, "R_VFXMuzzleW_a", Vector(0, 0, 0), Vector(-80, -6, 0)));
-        Ice_R = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Ice_R_Hurt"));
-
-        ent = Entities.FindByName(null, "AirBuster_Ice_L_Effect");
-        FakeParentArray.push(fakeparent(ent, "L_VFXMuzzleW_a", Vector(0, 0, 0), Vector(-80, -6, 0)));
-        Ice_L = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Ice_L_Hurt"));
-
-        ent = Entities.FindByName(null, "AirBuster_Confuse_R_Effect");
-        FakeParentArray.push(fakeparent(ent, "R_VFXMuzzleW_a", Vector(0, 0, 0), Vector(-80, -6, 0)));
-        Confuse_R = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Confuse_R_Hurt"));
-
-        ent = Entities.FindByName(null, "AirBuster_Confuse_L_Effect");
-        FakeParentArray.push(fakeparent(ent, "L_VFXMuzzleW_a", Vector(0, 0, 0), Vector(-80, -6, 0)));
-        Confuse_L = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Confuse_L_Hurt"));
 
         ent = Entities.FindByName(null, "AirBuster_Attack_Fire_Effect_a");
         FakeParentArray.push(fakeparent(ent, "R_VFXMuzzleQ_a", Vector(0, 0, 0), Vector(-80, -6, 0)));
@@ -1392,7 +767,7 @@ function Init()
 
         ent = Entities.FindByName(null, "AirBuster_Attack_Fire_Effect_h");
         FakeParentArray.push(fakeparent(ent, "L_VFXMuzzleA_a", Vector(0, 0, 0), Vector(-25, 0, 0)));
-        Flame_L_F_L = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Attack_Fire_Hurt_h"));
+        Flame_L_F_L = hurtandpart(ent, Entities.FindByName(null, "AirBuster_Attack_Fire_Hurt_h"));;
 
         ent = Entities.FindByName(null, "AirBuster_Attack_Fire_Effect_i");
         FakeParentArray.push(fakeparent(ent, "L_VFXMuzzleC_a", Vector(0, 0, 0), Vector(-25, 0, 0)));
@@ -1429,10 +804,10 @@ function Init()
         Hit_Box_C = Entities.FindByName(null, "AirBuster_Hbox_C");
         FakeParentArray.push(fakeparent(Hit_Box_C, "C_VFXMuzzleA_a", Vector(0, 0, 0), Vector(-60, 30, 0)));
 
-//        ent = Entities.FindByName(null, "AirBuster_Nade");
-//        FakeParentArray.push(fakeparent(ent, "C_VFXMuzzleD_a", Vector(0, 0, 0), Vector(0, 200, 0)));
+        ent = Entities.FindByName(null, "AirBuster_Nade");
+        FakeParentArray.push(fakeparent(ent, "C_VFXMuzzleD_a", Vector(0, 0, 0), Vector(0, 200, 0)));
 
-        SetHP(600);
+        SetHP(80);
 
         EntFireByHandle(Hit_Box_L, "FireUser1", "", 0, null, null);
         EntFireByHandle(Hit_Box_H_L, "FireUser1", "", 0, null, null);
@@ -1444,10 +819,6 @@ function Init()
         EntFireByHandle(Electro_L.hurt, "Enable", "", 0, null, null);
         // ent = Entities.FindByName(null, "AirBuster_Attachment_Attack_Fire_d");
         // SetAttachment(ent);
-        EntFire("AirBuster_HP_Bar", "ShowSprite", "", 0.01);
-        EntFire("AirBuster_Name_Bar", "ShowSprite", "", 0.01);
-        EntFire("AirBuster_Timer_Bar", "ShowSprite", "", 0.01);
-        EntFire("AirBuster_Hbox*", "SetDamageFilter", "filter_humans", 0);
     }
 
     function Tick()
@@ -1455,18 +826,17 @@ function Init()
         if(!ticking)
             return;
 
-        //Debug();
+        Debug();
 
         FakeParent();
-        UpDateCasttime();
-        UpDateHP();
-        UpDateStatus();
 
-        TickUse();
+        UpDateHP();
+
         StanTick();
 
+        UpDateStatus();
+
         ShowBossStatus();
-        Movement();
 
         EntFireByHandle(self, "RunScriptCode", "Tick();", tickrate, null, null);
     }
@@ -1525,7 +895,7 @@ function Init()
 
     function UpDateHP()
     {
-        if(HP < 1)
+        if(HP <= 0)
         {
             HP += HP_INIT;
             HP_BARS--;
@@ -1581,17 +951,14 @@ function Init()
             return;
 
         local id;
-        if (!Stanned)
+        for(local a = 0; a <= 16; a++)
         {
-            for(local a = 0; a <= 16; a++)
-            {
-                id = (a + 1) * cd_use_d;
+            id = (a + 1) * cd_use_d;
 
-                if(id >= tickrate_use)
-                {
-                    EntFire("timer_texture", "SetTextureIndex", "" + (a-1), 0.00);
-                    break;
-                }
+            if(id >= tickrate_use)
+            {
+                EntFire("timer_texture", "SetTextureIndex", "" + (a-1), 0.00);
+                break;
             }
         }
     }
@@ -1615,10 +982,6 @@ function Init()
         {
             message += "◇";
         }
-        message += "\n\nCore A: " + GetProccentHP(HP_U, HP_U_TOTAL) + "%";
-        message += "\nCore B: " + GetProccentHP(HP_H, HP_H_TOTAL) + "%";
-        message += "\nCore C: " + GetProccentHP(HP_C, HP_C_TOTAL) + "%";
-        message += "\nCore D: " + GetProccentHP(HP_L, HP_L_TOTAL) + "%";
 
         if(!Stanned)
         {
@@ -1630,16 +993,10 @@ function Init()
         }
         else
         {
-            message += "\nStanTime : " + (NadeTickRate).tointeger()  ;
+        message += "\nStanTime : " + (NadeTickRate).tointeger()  ;
         }
 
         ScriptPrintMessageCenterAll(message);
-    }
-
-    function GetProccentHP(iValue, iMax)
-    {
-        local iProccent = (iValue * 1.0 / iMax * 100).tointeger();
-        return iProccent;
     }
 
     function ShowBossDeadStatus()
@@ -1659,236 +1016,6 @@ function Init()
 //      Support Function
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
-    function TickUse()
-    {
-        if(!cd_use_CAN)
-            return;
-        if(tickrate_use + tickrate >= cd_use)
-        {
-            tickrate_use = 0;
-            Use();
-        }
-        else tickrate_use += tickrate;
-    }
-
-    use_array <- [];
-
-    function Use()
-    {
-        if(use_array.len() <= 0)
-        {
-            if(allow_punch)
-                use_array.push("Punch");
-
-            if(allow_shield)
-                use_array.push("Shield");
-
-            if(allow_rocket)
-                use_array.push("Rocket");
-
-            if(allow_laser)
-                use_array.push("Laser_C");
-
-            if(allow_wind)
-                use_array.push("Wind");
-
-            if(allow_flame)
-                use_array.push("Flame");
-
-            if(allow_mine)
-                use_array.push("Mine");
-
-            if(allow_heal)
-                use_array.push("Heal");
-
-            if(allow_confuse)
-                use_array.push("Confuse");
-
-            if(allow_ice)
-                use_array.push("Ice");
-        }
-        local use_index = -1;
-
-        // rocket - ауе демедж+
-
-        // laser_c - смертельный демедж+
-
-        // wind - пуш мили+
-        // flame - огнемет мили+
-
-        // punch - мили аттака пушем+
-        // mine - мина под собой
-
-        // ice - по центру лучше всего юзать для макс импакта
-
-        // shield - сейв+
-        // heal - сейв+
-        // confuse - сейв+
-
-        if (GetChance(85))
-        {
-            local iInArena = InArena();
-            local iCountAlive = CountAlive();
-            local iNearBoss = NearBoss();
-
-            if(HP_BARS <= 5 || NadeCount > NadeShow)
-            {
-                if(use_index == -1)
-                    use_index = InArray("Shield", use_array);
-            }
-
-            if(HP_BARS <= 12 || NadeCount > NadeShow)
-            {
-                if(use_index == -1)
-                    use_index = InArray("Heal", use_array);
-            }
-
-            if (NadeCount > NadeShow)
-            {
-                if(use_index == -1)
-                    use_index = InArray("Confuse", use_array);
-            }
-
-            if(p != null &&
-            p.IsValid() &&
-            p.GetHealth() > 0 &&
-            p.GetTeam() == 3 &&
-            RETARGET_TIME > ttime)
-            {
-                local distance = GetDistance2D(p.GetCenter(), self.GetOrigin());
-                if (distance < 250)
-                {
-                    if(use_index == -1)
-                    {
-                        use_index = InArray("Punch", use_array);
-                        ttime -= 3.0;
-                    }
-                }
-                else if (GetChance(70))
-                {
-                    if(use_index == -1)
-                    {
-                        use_index = InArray("Laser_C", use_array);
-                        ttime -= 3.0;
-                    }
-                }
-            }
-
-            if (iInArena > (iCountAlive / 4) && GetChance(60))
-            {
-                if(use_index == -1)
-                    use_index = InArray("Rocket", use_array);
-            }
-
-            if (iNearBoss > (iCountAlive / 4) && GetChance(70))
-            {
-                if(use_index == -1)
-                    use_index = InArray("Wind", use_array);
-
-                if(use_index == -1)
-                    use_index = InArray("Flame", use_array);
-
-                if(use_index == -1)
-                    use_index = InArray("Ice", use_array);
-            }
-        }
-
-        if (use_index == -1)
-        {
-            use_index = RandomInt(0, use_array.len() - 1);
-        }
-
-        EntFireByHandle(self, "RunScriptCode", "Cast_"+use_array[use_index]+"();", 0, null, null);
-
-        use_array.remove(use_index);
-    }
-
-    function InArray(value, array)
-    {
-        for(local i = 0; i < array.len(); i++)
-        {
-            if(array[i] == value)
-                return i;
-        }
-        return -1;
-    }
-
-    function CompareDir()
-    {
-        if(p != null &&
-        p.IsValid() &&
-        p.GetHealth() > 0 &&
-        p.GetTeam() == 3)
-        {
-            local vec = p.GetCenter() - self.GetOrigin();
-            vec.Norm();
-            vec = Vector(vec.x, vec.y, 0);
-            self.SetForwardVector(vec);
-        }
-    }
-
-    function CountAlive(TEAM = 3)
-    {
-        local handle = null;
-        local counter = 0;
-        while(null != (handle = Entities.FindByClassname(handle,"player")))
-        {
-            if(handle.GetTeam() == TEAM && handle.GetHealth() > 0)
-                counter++;
-        }
-        return counter;
-    }
-
-    function MidleHp(TEAM = 3)
-    {
-        local handle = null;
-        local counter = 0;
-        local hp = 0;
-        while(null != (handle = Entities.FindByClassname(handle,"player")))
-        {
-            if(handle.GetTeam() == TEAM && handle.GetHealth() > 0)
-            {
-                hp += handle.GetHealth();
-                counter++;
-            }
-        }
-        return hp / counter;
-    }
-
-    function InArena(TEAM = 3)
-    {
-        local handle = null;
-        local counter = 0;
-
-        while (null != (handle = Entities.FindInSphere(handle , Model.GetOrigin(), InArena_Radius)))
-        {
-            if(handle.GetTeam() == TEAM && handle.GetHealth() > 0)counter++;
-        }
-        return counter;
-    }
-
-    function OutArena(TEAM = 3)return CountAlive(TEAM) - InArena(TEAM);
-
-    function NearBoss(TEAM = 3)
-    {
-        local handle = null;
-        local counter = 0;
-
-        while (null != (handle = Entities.FindInSphere(handle , Model.GetOrigin(), NearBoss_Radius)))
-        {
-            if(handle.GetTeam() == TEAM && handle.GetHealth() > 0)counter++;
-        }
-        return counter;
-    }
-
-    function GetChance(value)
-    {
-        if(RandomInt(0, 100) <= value)
-            return true;
-        return false;
-    }
-
-
     function Rotate(radian = 360, timestart = 0, timeend = 1, side = RandomInt(0, 1))
     {
         if(side == 0)
@@ -1906,13 +1033,11 @@ function Init()
 
     function ToggleLower(off)
     {
-//        for(local i = 1; i < 76; i++)
-//        {
-//            EntFireByHandle(self, "RunScriptCode", "ModelSetZ(" + (-i * 0.02) + ")", (i * 0.01), null, null);
-//            EntFireByHandle(self, "RunScriptCode", "ModelSetZ(" + (i * 0.02) + ")", off + (i * 0.05), null, null);
-//        }
-        EntFire("AirBuster_Move","Open","",0);
-        EntFire("AirBuster_Move","Close","",off);
+        for(local i = 1; i < 76; i++)
+        {
+            EntFireByHandle(self, "RunScriptCode", "ModelSetZ(" + (-i * 0.02) + ")", (i * 0.01), null, null);
+            EntFireByHandle(self, "RunScriptCode", "ModelSetZ(" + (i * 0.02) + ")", off + (i * 0.05), null, null);
+        }
     }
 
     function ModelSetZ(i)Model.SetOrigin(Model.GetOrigin() + Vector(0, 0, i));
