@@ -31,10 +31,10 @@ function Tick()
                 {
                     local spos = self.GetOrigin();
                     local apos = handle.GetOrigin();
-                    
+
                     if(GetDistance2D(spos,apos) <= dist)
                     {
-                        if(!p.mike)
+                        if(!g_bBossFight && !p.mike)
                         {
                             if(lvl > 1)
                             {
@@ -61,7 +61,7 @@ function Tick()
             {
                 local spos = self.GetOrigin();
                 local apos = handle.GetOrigin();
-                
+
                 if(GetDistance2D(spos,apos) <= dist)
                 {
                     handle.SetHealth(handle.GetMaxHealth());
@@ -69,7 +69,7 @@ function Tick()
                     if(!p.inradius)
                     {
                         p.inradius = true;
-                        if(!p.mike)
+                        if(!g_bBossFight && !p.mike)
                         {
                             if(lvl > 1)
                             {
@@ -85,7 +85,7 @@ function Tick()
                 else if(p.inradius)
                 {
                     p.inradius = false;
-                    if(!p.mike)
+                    if(!g_bBossFight && !p.mike)
                     {
                         if(lvl > 1)
                         {
@@ -104,17 +104,17 @@ function Tick()
     EntFireByHandle(self, "RunScriptCode", "Tick(); ", 0.05, null, null);
 }
 
-function Debug() 
+function Debug()
 {
     local text = "";
-    foreach(p in PLAYERS)   
+    foreach(p in PLAYERS)
     {
         local handle = p.handle;
         if(handle.IsValid() && handle.GetHealth() > 0)
         {
             text += handle + " " + p.inradius + "\n"
         }
-    } 
+    }
     ScriptPrintMessageCenterAll(text);
 }
 
@@ -122,7 +122,7 @@ function Debug()
 function Touch()
 {
     local player_class = MainScript.GetScriptScope().GetPlayerClassByHandle(activator);
-    if(player_class.mike)
+    if(player_class.mike || player_class.yuffi)
         PLAYERS.push(player(activator, true));
     else
         PLAYERS.push(player(activator, false));

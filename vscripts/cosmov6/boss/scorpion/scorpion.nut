@@ -43,7 +43,7 @@ EntFireByHandle(self, "RunScriptCode", "Init();", 0.01, null, null);
 function Camera()
 {
     EntFire("scorpion_knife", "addoutput", "angles 0 180", 1);
-      EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-5764,2150,1900),Vector(10,45,10),0.5,Vector(-4846,2428,1652),Vector(0,0,0),1,4)", 0);
+    EntFire("Camera_old", "RunScriptCode", "SpawnCameras(Vector(-5764,2150,1900),Vector(10,45,10),0.5,Vector(-4846,2428,1652),Vector(0,0,0),1,4)", 0);
     //o1, a1, time1, o2, a2, time2, flytime
 }
 
@@ -58,7 +58,7 @@ function Init()
 function Start()
 {
     GenerateBestInfectors();
-    
+
     g_bTake = false;
     Tick();
 }
@@ -66,6 +66,23 @@ function Start()
 function PickUp()
 {
     g_bTake = true;
+    g_bBossFight = true;
+
+    local handle;
+    foreach(p in PLAYERS)
+    {
+        handle = p.handle;
+
+        if(!handle.IsValid() ||
+        handle.GetHealth() < 1 ||
+        handle.GetTeam() != 3 ||
+        p.mike ||
+        p.yuffi)
+        {
+            continue;
+        }
+        EntFireByHandle(handle, "SetDamageFilter", "filter_no_zombie", 0, null, null);
+    }
 }
 
 function Tick()
@@ -83,12 +100,12 @@ function Tick()
             g_hTeleported.SetOrigin(g_oTeleported.origin);
             g_hTeleported.SetAngles(g_oTeleported.ax, g_oTeleported.ay, g_oTeleported.az);
         }
-        
+
         g_hTeleported = GetBestInfector();
 
         if(g_hTeleported == null)
             return End();
-        
+
         g_oTeleported = class_pos(g_hTeleported.GetOrigin(), g_hTeleported.GetAngles());
 
         g_hTeleported.SetOrigin(g_vPos_Gargantua_PickUp.origin);
@@ -110,15 +127,24 @@ function End()
     if(g_bEnd)
         return;
     g_bEnd = true;
-    
+    g_bBossFight = false;
+
     local handle;
-    while((handle = Entities.FindByClassname(handle, "player")) != null)
+    foreach(p in PLAYERS)
     {
-        if(!handle.IsValid() || handle.GetHealth() <= 0)
+        handle = p.handle;
+
+        if(!handle.IsValid() ||
+        handle.GetHealth() < 1 ||
+        handle.GetTeam() != 3 ||
+        p.mike ||
+        p.yuffi)
+        {
             continue;
-        else
-            EntFireByHandle(handle, "SetDamageFilter", "", 0, null, null); 
+        }
+        EntFireByHandle(handle, "SetDamageFilter", "", 0, null, null);
     }
+
 	EntFire("Mine_Scorpion_ZM_TP", "Enable", "", 5);
 	EntFire("map_brush", "RunScriptCode", "Mine_Door4();", 5);
 }
@@ -134,15 +160,15 @@ function GenerateBestInfectors()
         if(handle == null || !handle.IsValid()  || handle.GetTeam() != 2){continue;}
         ARRAY_BEST_INFECTORS.push(p);
     }
-    
+
     ARRAY_BEST_INFECTORS.sort(Infector_SortFunction);
 }
 
 
-function Infector_SortFunction(first, second) 
+function Infector_SortFunction(first, second)
 {
-    if(first.infect > second.infect){return 1;}
-    if(first.infect < second.infect){return -1;}
+    if(first.infect > second.infect){return -1;}
+    if(first.infect < second.infect){return 1;}
     return 0;
 }
 
@@ -150,18 +176,18 @@ function GetBestInfector()
 {
     local i = ARRAY_BEST_INFECTORS.len() - 1;
     local infector = null;
-    
+
     for(; i >= 0; i--)
     {
         local handle = ARRAY_BEST_INFECTORS[i].handle;
 
         if(handle == null || !handle.IsValid()  || handle.GetTeam() != 2){continue;}
-        
+
         infector = handle;
         ARRAY_BEST_INFECTORS.remove(i);
 
         break;
     }
-    
+
     return infector;
 }

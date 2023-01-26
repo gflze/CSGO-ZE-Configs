@@ -89,12 +89,12 @@ function Init()
 function PickUp()
 {
 	SetOwner();
-	SetHP(250);
+	SetHP(350);
 
 	g_bTicking = true;
 	Tick();
 	EntFire("Mine_Scorpion_ZM_TP", "Enable", "", 130);
-	EntFire("Scorpion_Nade", "Enable", "", 130);
+	EntFire("Scorpion_Nade", "Enable", "", 10);
 }
 
 function TickPickUp()

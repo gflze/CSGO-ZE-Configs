@@ -1,6 +1,6 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "28.12.2022 - 15:27";
+::ScriptVersion <- "25.01.2023 - 22:51";
 Stage <- -1;
 WARMUP_TIME <- 30.0;
 ::ITEM_GLOW <- false; 			// set false to disable this
@@ -33,13 +33,17 @@ WARMUP_TIME <- 30.0;
 ::EVENT_EXTRACHEST <- false;
 ::EVENT_EXTRACHEST_COUNT <- [2, 4];
 
+
+::g_bBossFight <- false;
 function MapStart()
 {
+	g_bBossFight = false;
+
 	if(client_ent == null || client_ent != null && !client_ent.IsValid())
-    {
-        client_ent = Entities.FindByClassname(null, "point_clientcommand");
-        if(client_ent == null){client_ent = Entities.CreateByClassname("point_clientcommand");}
-    }
+	{
+		client_ent = Entities.FindByClassname(null, "point_clientcommand");
+		if(client_ent == null){client_ent = Entities.CreateByClassname("point_clientcommand");}
+	}
 	if(eventjump == null || eventjump != null && !eventjump.IsValid())
 	{
 		eventjump = Entities.FindByName(null, "pl_jump");
@@ -592,6 +596,7 @@ function MapFullRestart()
 			p.setPerks = false;
 			p.pet = null;
 			p.mike = null;
+			p.yuffi = null;
 			p.slow = false;
 			p.antidebuff = false;
 			p.petstatus = null;
@@ -1106,6 +1111,7 @@ class Player
 
 	poison_status = false;
 	mike = null;
+	yuffi = null;
 	pet = null;
 	petstatus = null;
 
@@ -2146,7 +2152,11 @@ function BuyItemNomore(handle)
 
 function BuyItem()
 {
-	if(activator.GetTeam() != 3 || GetItemByOwner(activator) != null)
+	local item = GetItemByOwner(activator);
+	if(activator.GetTeam() != 3 ||
+	item != null ||
+	item.name_right != "Yuffie" ||
+	item.name_right != "Red XIII")
 		return Fade_Red(activator);
 
 	local name = caller.GetName();
@@ -5455,6 +5465,8 @@ function CheckItem(pl)
 				item_name = " Phoenix down ";
 			if(item_owner.name_right == "Red XIII")
 				item_name = " Red XIII ";
+			if(item_owner.name_right == "Yuffie")
+				item_name = " Yuffie ";
 			ScriptPrintMessageChatAll("***\x04 "+pl.name+"\x01 {\x07"+pl.steamid+"\x01} died and dropped"+item_name+" "+((lvl==3) ? RED : (lvl==2) ? YELLOW : GREEN)+""+((lvl != null) ? lvl : 0)+"\x01 level ***")
 		}
 	}
@@ -7264,7 +7276,7 @@ function Trigger_Hard_Mine() //вход на 2 лвле
 {
 	local text;
 
-	text = "The gates в ебеня will open in 15 seconds"
+	text = "The gates will open in 15 seconds"
 	ServerChat(Chat_pref + text);
 
 	text = "5 SECONDS LEFT"
@@ -7289,7 +7301,7 @@ function Mine_Door2()
 	{
 		local text;
 
-		text = "Дверь откроется через 15 секунд"
+		text = "The gates will open in 15 seconds"
 		ServerChat(Chat_pref + text, 0);
 
 		EntFire("Mine_Door2_1", "Open", "", 15);
@@ -7316,10 +7328,10 @@ function Mine_Door3()
 	{
 		local text;
 
-		text = "Дверь откроется через 25 секунд"
+		text = "The gates will open in 25 seconds"
 		ServerChat(Chat_pref + text, 0);
 
-		text = "Удерживайте зомби пока двери не зароются"
+		text = "Hold this position until the door closes"
 		ServerChat(Chat_pref + text, 25);
 
 		EntFire("Temp_Scorpion", "ForceSpawn", "", 0);
@@ -7345,7 +7357,7 @@ function Mine_Door3()
 	{
 		local text;
 
-		text = "Дверь откроется через 25 секунд"
+		text = "The gates will open in 25 seconds"
 		ServerChat(Chat_pref + text, 0);
 		EntFire("Mine_Side_Door_Down", "open", "", 0);
 		EntFire("Mine_Side_Door_Up", "open", "", 0);
@@ -7449,7 +7461,7 @@ function Mine_Door4() //большие ворота
 	//Mine_Door3
 	if(Stage == 2)
 	{
-		text = "Двери скоро откроются... Ждите..."
+		text = "Doors will open soon... wait..."
 		ServerChat(Chat_pref + text, 0);
 
 		EntFire("Mine_Door4", "Open", "", 5);
@@ -9351,5 +9363,12 @@ function FastFix()
     crates.SetModel("models/kmodels/cosmo/props/cs_office/crates_indoor.mdl");
     crates.SetOrigin(Vector(559, -3921, 135));
     crates.SetAngles(0, 210, 0);
+    crates.__KeyValueFromString("solid","6");
+
+	 crates = Entities.CreateByClassname("prop_dynamic");
+    crates.SetModel("models/kmodels/cosmo/props_wasteland/rockcliff01c.mdl");
+    crates.SetOrigin(Vector(-980, -3607, 1128));
+    crates.SetAngles(0, 38, 0);
+	 crates.__KeyValueFromString("targetname","6");
     crates.__KeyValueFromString("solid","6");
 }

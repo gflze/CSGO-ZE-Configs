@@ -369,7 +369,7 @@ function DeadStart()
     EntFire("Reno_Phys", "Enable", "", 1);
     EntFire("Reno_Nade", "Enable", "", 1);
     EntFire("Reno_Final_Rock_Model_*", "Enable", "", 1);
-    EntFire("Reno_Rock_Movelinear", "Open", "", 1);
+    EntFire("Reno_Rock_Movelinear", "Open", "", 4);
     EntFireByHandle(self, "RunScriptCode", "NewAttack();", 3, null, null);
     EntFireByHandle(self, "RunScriptCode", "bChek = true;", 20, null, null);
     PlaySound((RandomInt(0,1) ? Sound_ScheneMove1 : Sound_ScheneMove2), 1, 2, 0);

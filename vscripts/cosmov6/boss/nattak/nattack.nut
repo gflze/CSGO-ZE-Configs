@@ -165,7 +165,7 @@ Status              <- "";
 
         EntFire("Gi_Nattak_Model", "FireUser2", "", 0);
 
-        EntFire("Gi_Nattak_Nova*", "Kill", "", 0);
+        EntFire("Nattak_Nova*", "Kill", "", 0);
         EntFire("Gi_Nattak_Dark*", "Kill", "", 0);
         EntFire("Gi_Nattak_Fire*", "Kill", "", 0);
         EntFire("Gi_Nattak_Wind*", "Kill", "", 0);
