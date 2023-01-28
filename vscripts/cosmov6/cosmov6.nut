@@ -1,6 +1,6 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "25.01.2023 - 22:51";
+::ScriptVersion <- "27.01.2023 - 17:48";
 Stage <- -1;
 WARMUP_TIME <- 30.0;
 ::ITEM_GLOW <- false; 			// set false to disable this
@@ -33,10 +33,25 @@ WARMUP_TIME <- 30.0;
 ::EVENT_EXTRACHEST <- false;
 ::EVENT_EXTRACHEST_COUNT <- [2, 4];
 
+::g_iRoundStart_Time <- 0;
 
 ::g_bBossFight <- false;
+::g_hFadeItem <- null;
+
+::STARTMONEY <- 50;
+
 function MapStart()
 {
+	g_iRoundStart_Time = Time();
+
+	g_hFadeItem = Entities.CreateByClassname("env_fade");
+	g_hFadeItem.__KeyValueFromString("duration", "0.5");
+	g_hFadeItem.__KeyValueFromString("holdtime", "0.5");
+	g_hFadeItem.__KeyValueFromInt("renderamt", 255);
+	g_hFadeItem.__KeyValueFromInt("spawnflags", 7);
+	g_hFadeItem.__KeyValueFromString("targetname", "7");
+	g_hFadeItem.__KeyValueFromVector("rendercolor", Vector(100, 255, 100));
+
 	g_bBossFight = false;
 
 	if(client_ent == null || client_ent != null && !client_ent.IsValid())
@@ -96,12 +111,12 @@ function MapStart()
 	once_check = true;
 	LoopPlayerCheck();
 
-	EntFire("map_tone ", "FireUser4", "", 0);
+	//EntFire("map_tone", "FireUser4", "", 0);
 	if (Stage > 3)
 	{
-		EntFire("map_tone ", "SetBloomScale", "2", 0.1);
-		EntFire("map_tone ", "SetAutoExposureMax", "2.5", 0.1);
-		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 0.1);
+		//EntFire("map_tone", "SetBloomScale", "2", 0.1);
+		//EntFire("map_tone", "SetAutoExposureMax", "2.5", 0.1);
+		//EntFire("map_tone", "SetAutoExposureMin", "0.9", 0.1);
 	}
 
 	self.PrecacheModel("models/kmodels/cosmo/props/cs_office/crates_indoor.mdl");
@@ -581,6 +596,74 @@ function MapReset()
 	EntFireByHandle(self, "RunScriptCode", "MapFullRestart();", 1.5, null, null);
 }
 
+function SpawnTrigger_Touch()
+{
+	if (g_iRoundStart_Time + 30 < Time())
+	{
+		return;
+	}
+	if (activator == null ||
+	!activator.IsValid() ||
+	(activator.GetTeam() == 2 &&
+	activator.GetHealth() > 300))
+	{
+		return;
+	}
+	local p = GetPlayerClassByHandle(activator);
+	if (p == null)
+	{
+		return;
+	}
+
+	local hp = 100 + p.perkhp_hm_lvl * perkhp_hm_hpperlvl;
+	activator.SetHealth(hp);
+	activator.SetMaxHealth(hp);
+
+	EntFireByHandle(SpeedMod, "ModifySpeed", "1.0", 0, activator, activator);
+	// EntFireByHandle(handle, "AddOutput", "rendermode 0", 0, handle, handle);
+	// EntFireByHandle(handle, "AddOutput", "renderamt 255", 0.05, handle, handle);
+	activator.__KeyValueFromVector("color", Vector(255, 255, 255));
+	activator.__KeyValueFromInt("rendermode", 0);
+	activator.__KeyValueFromInt("renderamt", 255);
+
+	/* lol no
+	if(p.knife != null)
+	{
+		Entities.FindByName(null, "pl_say").GetScriptScope().Knife(p.userid, p.knife);
+	}*/
+
+	if(WAFFEL_CAR_ENABLE)
+	{
+		if(!p.block_waffel)
+			CheckForCar(p);
+	}
+
+	if(p.ctskin != null)
+	{
+		activator.SetModel(p.ctskin);
+	}
+	// if(p.vip)
+	// {
+	//    CreatePet(activator,1);
+	// }
+	if(DODJE_ENABLE)
+	{
+		if(IsPidaras(p.steamid))
+		{
+			if(RandomInt(0,4) == 4)
+			{
+				local message = "#SFUI_FileVerification_BlockedFiles_WithParam";
+				if(PIDARAS_COUNT == 1)
+					message = "#SFUI_QMM_ERROR_VacBanned";
+
+				EntFireByHandle(client_ent, "Command", "disconnect " + message, RandomFloat(0.0,1.0), activator, null);
+
+				PIDARAS_COUNT++;
+			}
+		}
+	}
+}
+
 function MapFullRestart()
 {
 	local best_infects = 1;
@@ -619,59 +702,9 @@ function MapFullRestart()
 
 			p.speed_default = 1.0;
 			p.speed = 1.0;
-
-			if(p.handle != null && p.handle.IsValid() && p.handle.GetHealth() > 0)
-			{
-				local hp = 100 + p.perkhp_hm_lvl * perkhp_hm_hpperlvl;
-				p.handle.SetHealth(hp);
-				p.handle.SetMaxHealth(hp);
-
-				EntFireByHandle(SpeedMod, "ModifySpeed", "1.0", 0, p.handle, p.handle);
-				// EntFireByHandle(handle, "AddOutput", "rendermode 0", 0, handle, handle);
-				// EntFireByHandle(handle, "AddOutput", "renderamt 255", 0.05, handle, handle);
-				p.handle.__KeyValueFromVector("color", Vector(255, 255, 255));
-				p.handle.__KeyValueFromInt("rendermode", 0);
-				p.handle.__KeyValueFromInt("renderamt", 255);
-
-				/* lol no
-				if(p.knife != null)
-				{
-					Entities.FindByName(null, "pl_say").GetScriptScope().Knife(p.userid, p.knife);
-				}*/
-
-				if(WAFFEL_CAR_ENABLE)
-				{
-					if(!p.block_waffel)
-						CheckForCar(p);
-				}
-
-				if(p.ctskin != null)
-				{
-					p.handle.SetModel(p.ctskin);
-				}
-				// if(p.vip)
-				// {
-				//    CreatePet(p.handle,1);
-				// }
-				if(DODJE_ENABLE)
-				{
-					if(IsPidaras(p.steamid))
-					{
-						if(RandomInt(0,4) == 4)
-						{
-							local message = "#SFUI_FileVerification_BlockedFiles_WithParam";
-							if(PIDARAS_COUNT == 1)
-								message = "#SFUI_QMM_ERROR_VacBanned";
-
-							EntFireByHandle(client_ent, "Command", "disconnect " + message, RandomFloat(0.0,1.0), p.handle, null);
-
-							PIDARAS_COUNT++;
-						}
-					}
-				}
-			}
 		}
 	}
+
 	local handle;
 	if(best_infects_class != null)
 	{
@@ -823,7 +856,28 @@ function SetVipSkin()
 
 function SetStage(i)
 {
-	Stage = i;
+	Stage = i.tointeger();
+	switch (Stage)
+	{
+		case 1:
+			STARTMONEY = 500
+			break;
+		case 2:
+			STARTMONEY = 100;
+			break;
+		case 3:
+			STARTMONEY = 150;
+			break;
+		case 4:
+			STARTMONEY = 200;
+			break;
+		case 5:
+			STARTMONEY = 250;
+			break;
+		default:
+			STARTMONEY = 50;
+			break;
+	}
 	BeatStage();
 }
 
@@ -1506,9 +1560,11 @@ class Player
 	}
 	constructor(_userid,_name,_steamid)
 	{
-		userid = _userid;
-		name = _name;
-		steamid = _steamid;
+		this.userid = _userid;
+		this.name = _name;
+		this.steamid = _steamid;
+
+		this.money = STARTMONEY;
 	}
 	function SetMapper()
 	{
@@ -2152,12 +2208,21 @@ function BuyItemNomore(handle)
 
 function BuyItem()
 {
-	local item = GetItemByOwner(activator);
-	if(activator.GetTeam() != 3 ||
-	item != null ||
-	item.name_right != "Yuffie" ||
-	item.name_right != "Red XIII")
+	if (activator.GetTeam() != 3)
+	{
 		return Fade_Red(activator);
+	}
+
+	foreach(p in ITEM_OWNER)
+	{
+		if(p.owner == activator)
+		{
+			if (p.name_right != "Red XIII" && p.name_right != "Yuffie")
+			{
+				return Fade_Red(activator);
+			}
+		}
+	}
 
 	local name = caller.GetName();
 	local pl = GetPlayerClassByHandle(activator);
@@ -6412,6 +6477,9 @@ function PlayerHurt()
 
 	local a = GetPlayerClassByUserID(attacker);
 
+	if(a == null)
+		return;
+
 	if(a.handle == null || !a.handle.IsValid())
 		return;
 
@@ -7531,9 +7599,9 @@ function Trigger_Cave_Third()
 
 	EntFire("Hold6_Move", "Open", "", 15);
 
-	EntFire("map_tone ", "SetBloomScale", "5", 0);
-	EntFire("map_tone ", "SetAutoExposureMax", "2.5", 0);
-	EntFire("map_tone ", "SetAutoExposureMin", "0.9", 0);
+	//EntFire("map_tone", "SetBloomScale", "5", 0);
+	//EntFire("map_tone", "SetAutoExposureMax", "2.5", 0);
+	//EntFire("map_tone", "SetAutoExposureMin", "0.9", 0);
 
 	if(Stage == 4 || Stage == 5)
 	{
@@ -7782,15 +7850,15 @@ function Trigger_After_Boss_Skip_Second()
 
 	if (Stage > 3)
 	{
-		EntFire("map_tone ", "SetBloomScale", "4", 30 + time1);
-		EntFire("map_tone ", "SetAutoExposureMax", "3.5", 30 + time1);
-		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 30 + time1);
+		//EntFire("map_tone", "SetBloomScale", "4", 30 + time1);
+		//EntFire("map_tone", "SetAutoExposureMax", "3.5", 30 + time1);
+		//EntFire("map_tone", "SetAutoExposureMin", "0.9", 30 + time1);
 	}
 	else
 	{
-		EntFire("map_tone ", "SetBloomScale", "2", 30 + time1);
-		EntFire("map_tone ", "SetAutoExposureMax", "2.5", 30 + time1);
-		EntFire("map_tone ", "SetAutoExposureMin", "0.9", 30 + time1);
+		//EntFire("map_tone", "SetBloomScale", "2", 30 + time1);
+		//EntFire("map_tone", "SetAutoExposureMax", "2.5", 30 + time1);
+		//EntFire("map_tone", "SetAutoExposureMin", "0.9", 30 + time1);
 	}
 
 	EntFire("Map_TD", "AddOutput", "angles 7 -145 0", 15);
@@ -7819,8 +7887,8 @@ function Trigger_After_Boss_Skip_Second()
 	EntFire("Hold6_Move", "Open", "", 25 + time1);
 
 	EntFire("explosion", "RunScriptCode", "CreateExplosion(Vector(-3120,958,525),228,100)", 35.5 + time1);
-	EntFire("Hold6_Rock", "Disable", "", 35.51 + time1);
-	EntFire("Hold6_Rock_wall", "Toggle", "", 35.51 + time1);
+	EntFire("Hold6_Rock", "Disable", "", 32.51 + time1);
+	EntFire("Hold6_Rock_wall", "Toggle", "", 32.51 + time1);
 }
 
 
@@ -9104,7 +9172,17 @@ function StartCD(cooldown = 0)
 	else
 	{
 		if(item.type == 1)
+		{
 			item.count++;
+			if ((item.name_right == "Red XIII" || item.name_right == "Yuffie") &&
+			item.owner != null &&
+			item.owner.IsValid() &&
+			item.owner.GetHealth() > 0 &&
+			item.owner.GetTeam() == 3)
+			{
+				EntFireByHandle(g_hFadeItem, "Fade", "", 0, item.owner, item.owner);
+			}
+		}
 		item.canUse = true;
 	}
 }
@@ -9123,7 +9201,17 @@ function StartCounter(counter)
 	else
 	{
 		if(item.type == 3)
+		{
 			item.count++;
+			if (item.maxcount > 1 &&
+			item.owner != null &&
+			item.owner.IsValid() &&
+			item.owner.GetHealth() > 0 &&
+			item.owner.GetTeam() == 3)
+			{
+				EntFireByHandle(g_hFadeItem, "Fade", "", 0, item.owner, item.owner);
+			}
+		}
 	}
 }
 
@@ -9363,12 +9451,5 @@ function FastFix()
     crates.SetModel("models/kmodels/cosmo/props/cs_office/crates_indoor.mdl");
     crates.SetOrigin(Vector(559, -3921, 135));
     crates.SetAngles(0, 210, 0);
-    crates.__KeyValueFromString("solid","6");
-
-	 crates = Entities.CreateByClassname("prop_dynamic");
-    crates.SetModel("models/kmodels/cosmo/props_wasteland/rockcliff01c.mdl");
-    crates.SetOrigin(Vector(-980, -3607, 1128));
-    crates.SetAngles(0, 38, 0);
-	 crates.__KeyValueFromString("targetname","6");
     crates.__KeyValueFromString("solid","6");
 }

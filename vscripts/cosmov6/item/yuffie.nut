@@ -103,6 +103,8 @@ function Tick()
                 g_bFlyTime += 0.05;
             }
         }
+        EntFireByHandle(g_hText, "SetText", "HP: " + Hbox.GetHealth(), 0, Owner, Owner);
+        EntFireByHandle(g_hText, "Display", "", 0, Owner, Owner);
         //printDebug();
         EntFireByHandle(self, "RunScriptCode", "Tick();", 0.05, null, null);
     }
@@ -444,6 +446,13 @@ function SetSkinParametr()
     EntFireByHandle(Hbox, "SetDamageFilter", "filter_zombies", 0, null, null);
     EntFireByHandle(Owner, "SetDamageFilter", "filter_no_zombie", 0, null, null);
     EntFireByHandle(self, "Activate", "", 0, Owner, Owner);
+
+    g_hText = Entities.CreateByClassname("game_text");
+    g_hText.__KeyValueFromFloat("x", 0.05);
+    g_hText.__KeyValueFromFloat("y", 0.93);
+    g_hText.__KeyValueFromVector("color", Vector(255, 128, 0));
+    g_hText.__KeyValueFromFloat("holdtime", 0.2);
+    g_hText.__KeyValueFromInt("channel", 1);
 }
 
 function printDebug()
@@ -475,6 +484,7 @@ function printDebug()
 Model <- null;
 Hbox <- null;
 Knife <- null;
+g_hText <- null;
 g_hEye <- null;
 
 function SetHandle()
@@ -525,6 +535,6 @@ function GVO(vec,_x,_y,_z){return Vector(vec.x+_x,vec.y+_y,vec.z+_z);}
 ::GetDistance3D <- function(v1, v2){return sqrt((v1.x-v2.x)*(v1.x-v2.x)+(v1.y-v2.y)*(v1.y-v2.y)+(v1.z-v2.z)*(v1.z-v2.z));}
 
 function OnPostSpawn()
-{ 
+{
     EntFireByHandle(MainScript, "RunScriptCode", "ITEM_OWNER.push(ItemOwner(caller))", 0.05, self, self);
 }

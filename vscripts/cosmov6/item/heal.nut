@@ -138,7 +138,7 @@ function EndTouch()
             {
                 if(PLAYERS[i].inradius)
                 {
-                    if(!PLAYERS[i].mike)
+                    if(!g_bBossFight && !PLAYERS[i].mike)
                     {
                         if(lvl > 1)
                         {
@@ -163,7 +163,7 @@ function PrintArray()
     {
         for (local i = 0; i < PLAYERS.len(); i++)
         {
-           printl(PLAYERS[i]);
+            printl(PLAYERS[i]);
         }
     }
     else
@@ -174,6 +174,9 @@ function PrintArray()
 
 function Enable()
 {
+    EntFire("item_hbox_mike*", "SetHealth", "300", 0, null);
+    EntFire("item_hbox_yuffie*", "SetHealth", "225", 0, null);
+
     ticking = true;
     Tick();
     self.ConnectOutput("OnStartTouch", "Touch");

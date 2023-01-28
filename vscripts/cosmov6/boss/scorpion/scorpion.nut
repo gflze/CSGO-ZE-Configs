@@ -73,7 +73,8 @@ function PickUp()
     {
         handle = p.handle;
 
-        if(!handle.IsValid() ||
+        if(handle == null ||
+        !handle.IsValid() ||
         handle.GetHealth() < 1 ||
         handle.GetTeam() != 3 ||
         p.mike ||
@@ -134,7 +135,8 @@ function End()
     {
         handle = p.handle;
 
-        if(!handle.IsValid() ||
+        if(handle == null ||
+        !handle.IsValid() ||
         handle.GetHealth() < 1 ||
         handle.GetTeam() != 3 ||
         p.mike ||
