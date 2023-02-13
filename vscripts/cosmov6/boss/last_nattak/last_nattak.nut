@@ -1,16 +1,16 @@
 /*
 ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
 	Gi Nattack script by Kotya[STEAM_1:1:124348087]
-	test branch update 09.06.2021 
+	test branch update 09.06.2021
 ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 */
 
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Main settings    
+//      Main settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
 	NearBoss_Radius <- 350;
-	
+
 	ticking <- false;
 	tickrate <- 0.1;
 
@@ -29,11 +29,11 @@
 	}
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Status   
+//      Status
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 Status              <- "";
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      HP settings    
+//      HP settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
 	HP <- 0;
@@ -108,19 +108,18 @@ Status              <- "";
 
 	function NadeDamage()
 	{
-		SubtractHP(80);
+		SubtractHP(20);
+		// if(Stanblock)
+		// 	return;
 
-		if(Stanblock)
-			return;
+		// if(!Stanned)
+        // {
+        //     NadeCount++
+        //     NadeTickRate += NadeTime;
 
-		if(!Stanned)
-        {
-            NadeCount++
-            NadeTickRate += NadeTime;
-
-            if(NadeCount >= NadeNeed)
-                SetStanned();
-        }
+        //     if(NadeCount >= NadeNeed)
+        //         SetStanned();
+        // }
 	}
 
 
@@ -136,10 +135,10 @@ Status              <- "";
             return;
         cd_use_CAN = false;
 
-		local ice_temp = Entities.FindByName(null, "map_ice_temp_01"); 
+		local ice_temp = Entities.FindByName(null, "map_ice_temp_01");
         ice_temp.SetOrigin(Model.GetOrigin() + Vector(0, 0, 150))
         EntFireByHandle(ice_temp, "ForceSpawn", "", 0.00, null, null);
-        
+
         local name = Time().tointeger();
 
         EntFire("map_ice_model_01", "SetParent", "!activator", 0, Model);
@@ -169,8 +168,9 @@ Status              <- "";
 		EntFire("EndNattak_Phys", "Break", "", 0);
 
 		EntFire("EndNattak_Hurt", "Kill", "", 0);
-		
+
 		EntFire("EndNattak_Wind*", "Kill", "", 0);
+		EntFire("EndNattak_Nade", "Kill", "", 0);
 
 		EntFire("map_sound_boss_dead", "PlaySound", "", 0);
 
@@ -191,7 +191,7 @@ Status              <- "";
 	}
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Stun settings    
+//      Stun settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
 	Stanblock           <- true;
@@ -237,7 +237,7 @@ Status              <- "";
 
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Attack settings    
+//      Attack settings
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
 	//HEAL
@@ -431,18 +431,18 @@ Status              <- "";
 		EntFire("Timer_Texture", "AddOutPut", "target EndNattak_Timer_Bar", 0);
 		EntFire("Special_HealthTexture", "AddOutPut", "target EndNattak_HP_Bar", 0);
 
-		FireDickMaker = Entities.FindByName(null,"EndNattak_Firedicks_Maker");
+		FireDickMaker = Entities.FindByName(null,"EndNattakFiredicks_Maker");
 		Model = Entities.FindByName(null,"EndNattak_Model");
-		Shield_Maker = Entities.FindByName(null, "EndNattak_Shield_Spawner");
+		Shield_Maker = Entities.FindByName(null, "EndNattakShield_Spawner");
 		Shield_Rot = Entities.FindByName(null, "EndNattak_Shield_Rotate");
 
 		EntFireByHandle(Shield_Rot, "AddOutPut", "maxspeed " + (360.0 / Shield_FullRotate), 0.00, null, null);
 		EntFireByHandle(Shield_Rot, "Start", "", 0.05, null, null);
 
-		local item_target = Entities.FindByName(null, "map_item_beam_target");
-        item_target.SetOrigin(Model.GetOrigin());
-        EntFireByHandle(item_target, "SetParent", "!activator", 0, Model, Model);
-		
+		// local item_target = Entities.FindByName(null, "map_item_beam_target");
+        // item_target.SetOrigin(Model.GetOrigin());
+        // EntFireByHandle(item_target, "SetParent", "!activator", 0, Model, Model);
+
 		EntFireByHandle(self, "RunScriptCode", "InitEnd()", 2.00, null, null);
 	}
 
@@ -457,7 +457,7 @@ Status              <- "";
 
 		EntFire("Gi_Nattak_Smex", "PlaySound", "", 0.5);
 
-		EntFire("Gi_Nattak_Nade", "Enable", "", 0);
+		EntFire("EndNattak_Nade", "Enable", "", 0);
 		EntFire("EndNattak_Phys", "SetDamageFilter", "filter_humans", 0);
 
 		Start();
@@ -471,6 +471,7 @@ Status              <- "";
 		MainScript.GetScriptScope().Active_Boss = "NattakLast";
 
 		Tick();
+		EndNattak_Nade
 	}
 
 	function Tick()
@@ -485,7 +486,7 @@ Status              <- "";
 		UpDateHP();
 
 		ShowBossStatus();
-		
+
 		//DrawTriggers();
 
 		EntFireByHandle(self, "RunScriptCode", "Tick()", tickrate, null, null);
@@ -504,7 +505,7 @@ Status              <- "";
 		else tickrate_use += tickrate;
 	}
 
-	
+
 	use_array <- [];
 
 	function Use()
@@ -516,14 +517,14 @@ Status              <- "";
 
 			if(allow_poison)
 				cancast_poison = true;
-			
+
 			if(allow_shield)
 				cancast_shield = true;
 		}
 
 		if(cancast_heal)
 			use_array.push("Heal");
-		
+
 		if(cancast_poison)
 			use_array.push("Poison");
 
@@ -553,7 +554,7 @@ Status              <- "";
 		if(HP_BARS <= 0)
 		{
 			ticking = false;
-			ShowBossDeadStatus(); 
+			ShowBossDeadStatus();
 
 			BossDead();
 
@@ -573,7 +574,7 @@ Status              <- "";
 				{
 					SetUnStanned();
 				}
-					
+
 				NadeCount = 0;
 				NadeTickRate = 0;
 			}
@@ -637,9 +638,9 @@ Status              <- "";
 		}
 		else
 		{
-			message += "\nStanTime : " + (NadeTickRate).tointeger()  ; 
+			message += "\nStanTime : " + (NadeTickRate).tointeger()  ;
 		}
-		
+
 		ScriptPrintMessageCenterAll(message);
 	}
 
@@ -670,7 +671,7 @@ Status              <- "";
 
 }
 // ▞▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▚
-//      Support Function 
+//      Support Function
 // ▚▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▞
 {
 	Idle_Anim <- "idle";

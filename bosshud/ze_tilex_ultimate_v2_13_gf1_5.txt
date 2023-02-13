@@ -1,10 +1,5 @@
 "math_counter"
 {
-	"config"
-	{
-		"MultBoss"		"1"
-	}
-
 	"0"
 	{
 		"HP_counter"	"lastboss_hpcounter"

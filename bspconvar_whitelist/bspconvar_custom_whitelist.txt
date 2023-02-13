@@ -396,7 +396,7 @@
 	{
 		sv_disable_radar								0
 	}
-	"ze_last_man_standing_p2"
+	"ze_last_man_standing_p3"
 	{
 		zr_infect_mzombie_ratio							1
 	}
@@ -439,6 +439,11 @@
 	"ze_stalker_ultimate_v4_9"
 	{
 		sv_disable_radar								0
+	}
+	"ze_surf_beachescape_camper_mako"
+	{
+		zr_infect_mzombie_ratio							1
+		zr_class_modify									1
 	}
 	"ze_surf_ffxiv_beachescape_camper_isengard_laser_mako"
 	{

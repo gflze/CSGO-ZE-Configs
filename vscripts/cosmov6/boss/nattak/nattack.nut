@@ -11,7 +11,7 @@
 {
     CenterArea <- Vector(-1888, 5120, 276);
     InArena_Radius <- 704;
-    NearBoss_Radius <- 250;
+    NearBoss_Radius <- 450;
 
     smart_system        <- false;
 
@@ -159,13 +159,13 @@ Status              <- "";
         local item_target = Entities.FindByName(null, "map_item_beam_target");
         EntFireByHandle(item_target, "ClearParent", "", 0, null, null);
 
-        EntFire("Boss_Timer_Bar", "Kill", "", 0);
-        EntFire("Boss_Name_Bar", "Kill", "", 0);
-        EntFire("Boss_HP_Bar", "Kill", "", 0);
+        EntFire("Gi_Nattak_Timer_Bar", "Kill", "", 0);
+        EntFire("Gi_Nattak_Name_Bar", "Kill", "", 0);
+        EntFire("Gi_Nattak_HP_Bar", "Kill", "", 0);
 
         EntFire("Gi_Nattak_Model", "FireUser2", "", 0);
 
-        EntFire("Gi_Nattak_Nova*", "Kill", "", 0);
+        EntFire("Nattak_Nova*", "Kill", "", 0);
         EntFire("Gi_Nattak_Dark*", "Kill", "", 0);
         EntFire("Gi_Nattak_Fire*", "Kill", "", 0);
         EntFire("Gi_Nattak_Wind*", "Kill", "", 0);
@@ -538,6 +538,7 @@ Status              <- "";
         FireNova_Maker <- null;
         function Cast_FireNova()
         {
+            printl("Test_____FireNove");
             last_attack = "FireNova";
 
             ScriptPrintMessageChatAll(Scan_pref + "\x07Gi Nattak\x01 is using\x02 Fire Nova");
@@ -726,7 +727,7 @@ Status              <- "";
         EntFire("Gi_Nattak_Hurt", "SetParent", "Gi_Nattak_Model", 0);
         EntFire("Gi_Nattak_Nade", "SetParent", "Gi_Nattak_Model", 0);
         EntFire("Gi_Nattak_Phys", "SetParent", "Gi_Nattak_Model", 0);
-        EntFire("Boss_HP_Bar", "SetParent", "Gi_Nattak_Model", 0);
+        EntFire("Gi_Nattak_HP_Bar", "SetParent", "Gi_Nattak_Model", 0);
         EntFire("Gi_Nattak_Silence_Effect", "SetParent", "Gi_Nattak_Model", 0);
         EntFire("Gi_Nattak_Heal_Effect", "SetParent", "Gi_Nattak_Model", 0);
         EntFire("Gi_Nattak_Wind_Effect", "SetParent", "Gi_Nattak_Model", 0);
@@ -746,12 +747,12 @@ Status              <- "";
         EntFire("Gi_Nattak_Nade_Explode", "SetParent", "Gi_Nattak_Model", 0);
 
         EntFire("Name_Texture", "SetTextureIndex", ""+1, 0.2);
-        EntFire("Name_Texture", "AddOutPut", "target Boss_Name_Bar", 0);
-        EntFire("Timer_Texture", "AddOutPut", "target Boss_Timer_Bar", 0);
-        EntFire("Special_HealthTexture", "AddOutPut", "target Boss_HP_Bar", 0);
+        EntFire("Name_Texture", "AddOutPut", "target Gi_Nattak_Name_Bar", 0);
+        EntFire("Timer_Texture", "AddOutPut", "target Gi_Nattak_Timer_Bar", 0);
+        EntFire("Special_HealthTexture", "AddOutPut", "target Gi_Nattak_HP_Bar", 0);
 
         Model = Entities.FindByName(null,"Gi_Nattak_Model");
-        FireNova_Maker = Entities.FindByName(null, "Gi_Nattak_Nova_Maker");
+        FireNova_Maker = Entities.FindByName(null, "Nattak_Nova_Maker");
         Shield_Maker = Entities.FindByName(null, "Gi_Nattak_Shield_Spawner");
         Shield_Rot = Entities.FindByName(null, "Gi_Nattak_Shield_Rotate");
         EntFireByHandle(Shield_Rot, "AddOutPut", "maxspeed " + (360.0 / Shield_FullRotate), 0.00, null, null);
@@ -764,10 +765,9 @@ Status              <- "";
 
     function InitEnd()
     {
-        EntFire("Boss_HP_Bar", "ShowSprite", "", 0.01);
-        EntFire("Boss_Name_Bar", "ShowSprite", "", 0.01);
-        EntFire("Boss_Timer_Bar", "ShowSprite", "", 0.01);
-
+        EntFire("Gi_Nattak_HP_Bar", "ShowSprite", "", 0.01);
+        EntFire("Gi_Nattak_Name_Bar", "ShowSprite", "", 0.01);
+        EntFire("Gi_Nattak_Timer_Bar", "ShowSprite", "", 0.01);
         EntFire("Gi_Nattak_Background_Fire", "Start", "", 0);
         EntFire("Gi_Nattak_Model", "SetParent", "GI_Nattak_Rot1", 0.01);
         EntFire("Gi_Nattak_Model", "ClearParent", "", 0);
@@ -784,7 +784,7 @@ Status              <- "";
         ticking = true;
 
         EntFireByHandle(self, "RunScriptCode", "Cast_FireNova_Spam()", 120, null, null);
-        EntFireByHandle(self, "RunScriptCode", "StunUnlock()", 30, null, null);
+        EntFireByHandle(self, "RunScriptCode", "StunUnlock()", RandomInt(40,60), null, null);
         MainScript.GetScriptScope().Active_Boss = "NattakCave";
 
         Tick();
@@ -823,7 +823,7 @@ Status              <- "";
             minion_use = RandomInt(minion_useDef[0], minion_useDef[1]);
 
             if(smart_system)
-                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(15, 40), null, null);
+                EntFireByHandle(self, "RunScriptCode", "PushGravity()", RandomInt(15, 30), null, null);
             else
                 allow_gravity = true;
 
@@ -852,7 +852,7 @@ Status              <- "";
             allow_superattack = true;
 
             Shield_Health = 75.0;
-            SetHP(1100);
+            SetHP(1200);
 
             SetCDUse(11.0);
         }
@@ -988,7 +988,7 @@ Status              <- "";
         local use_index = -1;
 
         //COMBO USE
-        if(last_attack != null && GetChance(75))
+        if(last_attack != null && GetChance(60))
         {
             if(last_attack == "Silence")
             {
@@ -1033,16 +1033,28 @@ Status              <- "";
             local iInArena = InArena();
             local iCountAlive = CountAlive();
 
-            if(HP_BARS <= 5)
+            if(HP_BARS <= 2 && GetChance(75))
             {
                 if(use_index == -1)
-                    use_index = InArray("Shield", use_array);
+                    use_index = InArray("Ultima", use_array);
             }
 
-            if(HP_BARS <= 12)
+            if (NadeCount > NadeShow)
+            {
+                if(use_index == -1)
+                    use_index = InArray("Silence", use_array);
+            }
+
+            if(HP_BARS <= 12 || NadeCount > NadeShow)
             {
                 if(use_index == -1)
                     use_index = InArray("Heal", use_array);
+            }
+
+            if(HP_BARS <= 5 || NadeCount > NadeShow)
+            {
+                if(use_index == -1)
+                    use_index = InArray("Shield", use_array);
             }
 
             if(iInArena > (iCountAlive / 4) && GetChance(60))

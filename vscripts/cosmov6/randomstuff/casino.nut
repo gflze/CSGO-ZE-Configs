@@ -18,14 +18,14 @@ class Bet
     }
     function GetWinmoney()
     {
-        if(color == -1) return this.bet + this.bet * 7;
-        else return this.bet + this.bet * 0.35;
+        if(color == -1) return this.bet + this.bet * 10;
+        else return this.bet + this.bet * 0.5;
     }
 }
-int_array <- [0,32,15,19,4,21,2,25,17,34,
-        6,27,13,36,11,30,8,23,10,5,
-        24,16,33,1,20,14,31,9,22,18,
-        29,7,28,12,35,3,26];
+int_array <- [0,32,15,19,4,/*-1,*/21,2,25,17,34,
+        6,27,/*-1,*/13,36,11,30,8,23,/*-1,*/10,5,
+        24,16,33,1,/*-1,*/20,14,31,9,22,18,
+        29,7,28,12,/*-1,*/35,3,26];
 int <- 0;
 alloy_bet <- true;
 Rolling <- false;
@@ -76,7 +76,7 @@ function ConnectToGame(i)
         Start = true;
         EntFireByHandle(self, "RunScriptCode", "StartRoll();", 5, activator, activator);
     }
-    
+
     EntFireByHandle(self, "RunScriptCode", "Info();", 0, activator, activator);
 }
 
@@ -95,7 +95,7 @@ function StartRoll()
 
     EntFire("sound_casino", "PlaySound", "", 0, null);
 
-    rolltimer = Time(); 
+    rolltimer = Time();
     Rolling = true;
     local time = RandomInt(RollTime[0],RollTime[1]);
     EntFireByHandle(self, "RunScriptCode", "Roll();", 0.5, null, null);
@@ -149,20 +149,23 @@ function SetColor()
     if(int == 0)textb = int_array[int_array.len()-1]
     else textb = int_array[int - 1]
 
-    if(textb == 0)EntFireByHandle(EntityGroup[1], "SetMaterialVar", "0", 0, null, null);
+    if(textb == -1)EntFireByHandle(EntityGroup[1], "SetMaterialVar", "3", 0, null, null);
+    else if(textb == 0)EntFireByHandle(EntityGroup[1], "SetMaterialVar", "0", 0, null, null);
     else if(textb % 2 == 0)EntFireByHandle(EntityGroup[1], "SetMaterialVar", "1", 0, null, null);
     else EntFireByHandle(EntityGroup[1], "SetMaterialVar", "2", 0, null, null);
 
 
     textm = int_array[int];
-    if(textm == 0)EntFireByHandle(EntityGroup[0], "SetMaterialVar", "0", 0, null, null);
+    if(textm == -1)EntFireByHandle(EntityGroup[0], "SetMaterialVar", "3", 0, null, null);
+    else if(textm == 0)EntFireByHandle(EntityGroup[0], "SetMaterialVar", "0", 0, null, null);
     else if(textm % 2 == 0)EntFireByHandle(EntityGroup[0], "SetMaterialVar", "1", 0, null, null);
     else EntFireByHandle(EntityGroup[0], "SetMaterialVar", "2", 0, null, null);
 
     if(int == int_array.len()-1)textf = int_array[0]
     else textf = int_array[int + 1]
 
-    if(textf == 0)EntFireByHandle(EntityGroup[2], "SetMaterialVar", "0", 0, null, null);
+    if(textf == -1)EntFireByHandle(EntityGroup[2], "SetMaterialVar", "3", 0, null, null);
+    else if(textf == 0)EntFireByHandle(EntityGroup[2], "SetMaterialVar", "0", 0, null, null);
     else if(textf % 2 == 0)EntFireByHandle(EntityGroup[2], "SetMaterialVar", "1", 0, null, null);
     else EntFireByHandle(EntityGroup[2], "SetMaterialVar", "2", 0, null, null);
 }
@@ -171,7 +174,12 @@ function GetWinners()
 {
     local winColor = 0
     local bonus = Colorbonus[1];
-    if(int_array[int] == 0)
+    if(int_array[int] == -1)
+    {
+        winColor = 2
+        ScriptPrintMessageChatAll(Casino_pref + "No one win");
+    }
+    else if(int_array[int] == 0)
     {
         bonus = Colorbonus[0];
         winColor = -1
@@ -196,7 +204,16 @@ function GetWinners()
                 cash -= money;
                 ShowText("You Win\n" + p.bet * bonus + Money_pref, p.handle);
             }
-            else ShowText("You Lose\n" + p.bet + Money_pref, p.handle);
+            else
+            {
+                local money = p.bet;
+                if (winColor == 2)
+                {
+                    money += 10;
+                    map_brush.GetScriptScope().GetPlayerClassByHandle(p.handle).Minus_money(10);
+                }
+                ShowText("You Lose\n" + money + Money_pref, p.handle);
+            }
         }
     }
     EntFireByHandle(self, "RunScriptCode", "Reset();", 5, null, null);

@@ -1,0 +1,36 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"BahamutHealth_Counter"
+		"CustomText"		"Bahamut"
+	}
+	
+	"1"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"BridgeSephirothHitbox"
+		"CustomText"	"Sephiroth"
+	}
+	
+	"2"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"BridgeBahamutHitbox"
+		"CustomText"	"Bahamut"
+	}
+	
+	"3"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"EX2LaserHitbox"
+		"CustomText"	"Sephiroth"
+	}
+	
+	"4"
+	{
+		"Type"		"breakable"
+		"BreakableName"	"MonsterHitbox"
+		"CustomText"	"Guard Scorpion"
+	}
+}

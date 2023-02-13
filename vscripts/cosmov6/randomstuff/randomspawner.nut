@@ -1,5 +1,75 @@
 //Main
 {
+function DebugDrawAllItems()
+{
+    local holdtime = 1000;
+    local textent;
+
+    local distance = 64;
+    local distance_x = 16;
+
+    local vecAngles;
+    local vecOrigin; 
+    local vecDirForward;
+    local vecDirLeft;
+    local vecDirUp;
+
+    foreach (itempos in ItemOrigin)
+    {
+        if (typeof(itempos) == "Vector")
+        {
+            itempos = FullPos(itempos, Vector(0, 0, 0));
+        }
+
+        vecOrigin = itempos.origin ;
+        vecAngles = itempos.angles;
+        vecDirForward = AnglesToDir(vecAngles);
+        vecDirLeft = vecDirForward.Cross(Vector(0, 0, 1));
+        vecDirUp =  vecDirForward.Cross(vecDirLeft);
+
+        textent = Entities.CreateByClassname("point_worldtext");
+
+        textent.__KeyValueFromString("textsize", "7");
+        textent.__KeyValueFromString("color", "255 255 255");
+        textent.__KeyValueFromString("message", format("O: %i %i %i A: %i %i %i", vecOrigin.x, vecOrigin.y, vecOrigin.z, vecAngles.x, vecAngles.y, vecAngles.z));
+        
+        textent.SetOrigin(vecOrigin);
+        textent.SetForwardVector(Vector(1, 0, 0));
+
+        DebugDrawCircle(vecOrigin, Vector(255, 255, 255), 32, 16, true, holdtime)
+
+        DebugDrawLine(vecOrigin, vecOrigin + vecDirForward * distance, 255, 0, 0, true, holdtime);
+        DebugDrawLine(vecOrigin + vecDirForward * distance, vecOrigin + vecDirForward * distance * 0.5 + vecDirLeft * distance_x, 255, 0, 0, true, holdtime);
+        DebugDrawLine(vecOrigin + vecDirForward * distance, vecOrigin + vecDirForward * distance * 0.5 + vecDirLeft * -distance_x, 255, 0, 0, true, holdtime);
+    }
+}
+
+function DebugDrawCircle(Vector_Center, Vector_RGB, radius, parts, zTest, duration) //0 -32 80
+{
+    local u = 0.0;
+    local vec_end = [];
+    local parts_l = parts;
+    local radius = radius;
+    local a = PI / parts * 2;
+    while(parts_l > 0)
+    {
+        local vec = Vector(Vector_Center.x+cos(u)*radius, Vector_Center.y+sin(u)*radius, Vector_Center.z);
+        vec_end.push(vec);
+        u += a;
+        parts_l--;
+    }
+    for(local i = 0; i < vec_end.len(); i++)
+    {
+        if(i < vec_end.len()-1){DebugDrawLine(vec_end[i], vec_end[i+1], Vector_RGB.x, Vector_RGB.y, Vector_RGB.z, zTest, duration);}
+        else{DebugDrawLine(vec_end[i], vec_end[0], Vector_RGB.x, Vector_RGB.y, Vector_RGB.z, zTest, duration);}
+    }
+}
+
+function AnglesToDir(angles)
+{
+    self.SetAngles(angles.x,angles.y,angles.z);
+    return self.GetForwardVector();
+}
     class FullPos
     {
         constructor(_origin, _angles)
@@ -95,6 +165,12 @@
 
         if(stage == 1)
         {
+            ItemOrigin.extend(ItemOrigin_OldMine);
+            ItemOrigin.extend(ItemOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_OldMine);
+            ChestOrigin.extend(ChestOrigin_AfterBar);
+            ChestOrigin.extend(ChestOrigin_OldMine);
             SpawnItems(9);
             SpawnUltima();
 
@@ -102,6 +178,10 @@
         } 
         else if(stage == 2)
         {
+            ItemOrigin.extend(ItemOrigin_Mine);
+            ItemOrigin.extend(ItemOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_AfterBar);
+            ChestOrigin.extend(ChestOrigin_AfterBar);
             SpawnItems(8);
             SpawnUltima();
 
@@ -116,6 +196,12 @@
         }
         else if(stage == 4)
         {
+            ItemOrigin.extend(ItemOrigin_OldMine);
+            ItemOrigin.extend(ItemOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_OldMine);
+            ChestOrigin.extend(ChestOrigin_AfterBar);
+            ChestOrigin.extend(ChestOrigin_OldMine);
             SpawnItems(7);
             SpawnUltima();
 
@@ -123,6 +209,13 @@
         }
         else if(stage == 5)
         {
+            ItemOrigin.extend(ItemOrigin_Mine);
+            ItemOrigin.extend(ItemOrigin_OldMine);
+            ItemOrigin.extend(ItemOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_AfterBar);
+            UltimaOrigin.extend(UltimaOrigin_OldMine);
+            ChestOrigin.extend(ChestOrigin_AfterBar);
+            ChestOrigin.extend(ChestOrigin_OldMine);
             SpawnItems(6);
             SpawnUltima();
 
@@ -175,16 +268,22 @@
 
     UltimaRandomSpawn <- RandomSpawn();
 
-    UltimaOrigin <-[
-    //Vector(-4234,-4159,2381),
+    UltimaOrigin_OldMine <- [
+        //Vector(-4234,-4159,2381), //ебаная крыша, нужно фиксить залаз, прежде чем вернуть
+        Vector(-1377,1183,280),
+        Vector(162,5961,666),
+    ];
+
+    UltimaOrigin_AfterBar <-[
+        Vector(-6841,-1720,1653), //под мостом
+        Vector(-2140,-2299,1902), //Крыша с в5
+    ];
+
+    UltimaOrigin <-[    
     Vector(-651,-1405,1381),
-    Vector(-1377,1183,280),
-    Vector(-6841,-1720,1653),
-    Vector(-2140,-2299,1902),
     Vector(1023,-3718,583),
     Vector(-1995,-928,1886),
-    Vector(162,5961,666),
-    ]
+    ];
 }
 //Items
 {
@@ -244,11 +343,57 @@
         }
     }
 
+    ItemOrigin_AfterBar <- [
+        FullPos(Vector(-2188,-1931,1758),Vector(0,0,0)), 
+        FullPos(Vector(-2607,-950,1604),Vector(0,270,0)),
+        FullPos(Vector(-3136,-961,1981),Vector(0,0,0)),
+        FullPos(Vector(-3240,-2176,1809),Vector(0,0,0)),
+        FullPos(Vector(-2256,-2624,1707),Vector(0,0,0)),
+        FullPos(Vector(-2523,-3055,1891),Vector(0,70,0)),
+        FullPos(Vector(-2994,-3567,2034),Vector(0,0,0)),
+        FullPos(Vector(-3759,-3087,1780),Vector(0,0,0)),
+        FullPos(Vector(-3507,-4095,2058),Vector(0,0,0)),
+        FullPos(Vector(-4238,-4274,2038),Vector(0,0,0)),
+        FullPos(Vector(-4436,-3658,2002),Vector(0,0,0)),
+        FullPos(Vector(-7255,-3463,2007),Vector(0,0,0)),
+        FullPos(Vector(-8077,-1707,1821),Vector(0,0,0)),
+        FullPos(Vector(-7906,-213,1855),Vector(0,0,0)),
+        FullPos(Vector(-6444,-216,2116),Vector(0,0,0)),
+        FullPos(Vector(-6712,-2256,2055),Vector(0,0,0)),
+        FullPos(Vector(-5630,-649,2218),Vector(0,0,0)),
+        FullPos(Vector(-5930,-1308,2027),Vector(0,0,0)),
+        FullPos(Vector(-5344,-1560,1931),Vector(0,0,0)),
+        FullPos(Vector(-3304,-1882,1709),Vector(0,90,0)),
+        FullPos(Vector(-4360,-4247,2145),Vector(0,270,0)),  
+        FullPos(Vector(-7018,-498,2259),Vector(0,0,0)),
+        FullPos(Vector(-2198,-3598,1862),Vector(0,0,0)),  
+    ];
+
+    ItemOrigin_Mine <- [
+        FullPos(Vector(-6766,3083,1886),Vector(0,0,0)),  
+        FullPos(Vector(-7961,647,1910),Vector(0,90,0)),  
+        FullPos(Vector(-4956,742,1888),Vector(0,180,0)), 
+        FullPos(Vector(-5753,27,1888),Vector(0,0,0)),  
+    ];
+
+    ItemOrigin_OldMine <- [
+       FullPos(Vector(-2627,1555,550),Vector(0,0,0)),
+       FullPos(Vector(-3693,-1276,598),Vector(0,90,0)),
+       FullPos(Vector(-1218,2569,299),Vector(0,0,0)),
+       FullPos(Vector(-4750,-877,1862),Vector(0,0,0)),
+       FullPos(Vector(-4824,-1110,512),Vector(0,0,0)),
+       FullPos(Vector(-3725,764,526),Vector(0,0,0)),
+       FullPos(Vector(-2317,1350,348),Vector(0,0,0)),
+       FullPos(Vector(-2373,1723,104),Vector(0,0,0)),
+       FullPos(Vector(-2258,3092,232),Vector(0,0,0)),
+       FullPos(Vector(-405,4617,519),Vector(0,0,0)),
+       FullPos(Vector(-271,5451,280),Vector(0,0,0)),
+       FullPos(Vector(-1265,307,301),Vector(0,0,0)),
+       FullPos(Vector(-675,3456,739),Vector(0,270,0)),
+    ];
+
     ItemOrigin <-
     [
-        FullPos(Vector(-3136,-961,1981),Vector(0,0,0)),
-        FullPos(Vector(-3507,-4095,2058),Vector(0,0,0)),
-        FullPos(Vector(-2627,1555,550),Vector(0,0,0)),
         FullPos(Vector(-1973,-986,1100),Vector(0,0,0)),
         FullPos(Vector(-956,-3311,1322),Vector(0,0,0)),
         FullPos(Vector(-1407,-3299,1235),Vector(0,0,0)),
@@ -261,18 +406,12 @@
         FullPos(Vector(-1777,-1552,1449),Vector(0,0,0)),
         FullPos(Vector(-1023,-3662,1307),Vector(0,0,0)),
         FullPos(Vector(-43,-2068,546),Vector(0,0,0)),
-        FullPos(Vector(192,-2358,281),Vector(0,0,0)),
-        FullPos(Vector(-2188,-1931,1758),Vector(0,0,0)),
-        FullPos(Vector(-3304,-1882,1709),Vector(0,90,0)),
-        FullPos(Vector(-4238,-4274,2038),Vector(0,0,0)),
-        FullPos(Vector(-5930,-1308,2027),Vector(0,0,0)),
-        FullPos(Vector(-3693,-1276,598),Vector(0,90,0)),
-        FullPos(Vector(-1218,2569,299),Vector(0,0,0)),
+        FullPos(Vector(192,-2358,281),Vector(0,0,0)),      
         FullPos(Vector(6712,-4488,688),Vector(0,180,0)),
         FullPos(Vector(5445,-3034,242),Vector(0,0,0)),
         FullPos(Vector(4896,-4600,707),Vector(0,0,0)),
         FullPos(Vector(3978,-3671,120),Vector(0,90,0)),
-        FullPos(Vector(3546,-2966,587),Vector(0,90,0)),
+        FullPos(Vector(3257,-2997,597),Vector(0,90,0)),
         FullPos(Vector(3246,-4610,543),Vector(0,0,0)),
         FullPos(Vector(2448,-2419,762),Vector(0,90,0)),
         FullPos(Vector(1723,-3632,619),Vector(0,0,0)),
@@ -301,42 +440,15 @@
         FullPos(Vector(-1752,-552,1335),Vector(0,180,0)),
         FullPos(Vector(-2418,-1471,1417),Vector(0,0,0)),
         FullPos(Vector(-1597,-946,1067),Vector(0,0,0)),
-        FullPos(Vector(-2510,-1471,1091),Vector(0,0,0)),
-        FullPos(Vector(-2607,-950,1604),Vector(0,270,0)),
-        FullPos(Vector(-3240,-2176,1809),Vector(0,0,0)),
-        FullPos(Vector(-2256,-2624,1707),Vector(0,0,0)),
-        FullPos(Vector(-2523,-3055,1891),Vector(0,70,0)),
-        FullPos(Vector(-2198,-3598,1862),Vector(0,0,0)),
-        FullPos(Vector(-2994,-3567,2034),Vector(0,0,0)),
-        FullPos(Vector(-3759,-3087,1780),Vector(0,0,0)),
-        FullPos(Vector(-4436,-3658,2002),Vector(0,0,0)),
-        FullPos(Vector(-4360,-4247,2145),Vector(0,270,0)),
-        FullPos(Vector(-7255,-3463,2007),Vector(0,0,0)),
-        FullPos(Vector(-6712,-2256,2055),Vector(0,0,0)),
-        FullPos(Vector(-6444,-216,2116),Vector(0,0,0)),
-        FullPos(Vector(-7018,-498,2259),Vector(0,0,0)),
-        FullPos(Vector(-7906,-213,1855),Vector(0,0,0)),
-        FullPos(Vector(-5344,-1560,1931),Vector(0,0,0)),
-        FullPos(Vector(-5630,-649,2218),Vector(0,0,0)),
-        FullPos(Vector(-4750,-877,1862),Vector(0,0,0)),
-        FullPos(Vector(-4824,-1110,512),Vector(0,0,0)),
-        FullPos(Vector(-3725,764,526),Vector(0,0,0)),
-        FullPos(Vector(-2317,1350,348),Vector(0,0,0)),
-        FullPos(Vector(-2373,1723,104),Vector(0,0,0)),
-        FullPos(Vector(-2258,3092,232),Vector(0,0,0)),
-        FullPos(Vector(-405,4617,519),Vector(0,0,0)),
-        FullPos(Vector(-271,5451,280),Vector(0,0,0)),
+        FullPos(Vector(-2510,-1471,1091),Vector(0,0,0)),       
         FullPos(Vector(6986,-646,1181),Vector(0,0,0)),
         FullPos(Vector(4934,-3756,357),Vector(0,0,0)),
         FullPos(Vector(2678,-3885,410),Vector(0,180,0)),
         FullPos(Vector(-1990,-2859,1492),Vector(0,0,0)),
         FullPos(Vector(5078,-825,1055),Vector(0,0,0)),
-        FullPos(Vector(2905,-1133,783),Vector(0,0,0)),
-        FullPos(Vector(-1265,307,301),Vector(0,0,0)),
-        FullPos(Vector(-8077,-1707,1821),Vector(0,0,0)),
+        FullPos(Vector(2905,-1133,783),Vector(0,0,0)), 
         FullPos(Vector(-551,-4686,1117),Vector(0,0,0)),
         FullPos(Vector(4975,-4609,373),Vector(0,0,0)),
-        FullPos(Vector(-675,3456,739),Vector(0,270,0)),
     ];
 }
 //Chest
@@ -414,10 +526,49 @@
         }
     }
 
+ ChestOrigin_NewMine <- [
+        FullPos(Vector(-5385,6,1845-21),Vector(0,0,0)),
+        FullPos(Vector(-7966,1877,1867-21),Vector(0,0,0)),
+        FullPos(Vector(-7810,645,1739-21),Vector(0,231,0)),
+        FullPos(Vector(-6117,860,2101-21),Vector(0,156,0)),
+    ];
+
+    ChestOrigin_OldMine <- [
+        FullPos(Vector(-2406,-383,254-21),Vector(0,0,0)),
+        FullPos(Vector(-1072,1369,277-21),Vector(0,0,0)),
+        FullPos(Vector(755,5347,586),Vector(0,0,0)),
+        FullPos(Vector(542,5054,598),Vector(0,323,0)),
+        FullPos(Vector(-1264,1703,419),Vector(0,180,0)),
+        FullPos(Vector(-2775,622,492),Vector(0,180,0)),
+        FullPos(Vector(-4360,-945,1602),Vector(0,35,0)),
+    ];
+
+    ChestOrigin_AfterBar <- [
+        FullPos(Vector(-3169,-3404,2130-21),Vector(0,175,0)),
+        FullPos(Vector(-8272,-1745,1692-21),Vector(0,90,0)),
+        FullPos(Vector(-5448,-663,2176),Vector(0,90,0)),
+        FullPos(Vector(-5210,-1508,1880),Vector(0,90,0)),
+        FullPos(Vector(-5841,-1323,1880),Vector(0,90,0)),
+        FullPos(Vector(-7167,-419,1824),Vector(0,0,0)),
+        FullPos(Vector(-8228,-2025,1773),Vector(0,0,0)),
+        FullPos(Vector(-7690,-2839,1705),Vector(0,0,0)),
+        FullPos(Vector(-7299,-3465,1824),Vector(0,180,0)),
+        FullPos(Vector(-3728,-4200,1820),Vector(0,355,0)),
+        FullPos(Vector(-3390,-934,1936),Vector(0,175,0)),
+        FullPos(Vector(-2925,-3746,1664),Vector(0,90,0)),
+        FullPos(Vector(-2163,-2920,1664),Vector(0,90,0)),
+        FullPos(Vector(-2190,-2133,1664),Vector(0,90,0)),
+        FullPos(Vector(-2117,-1595,1670),Vector(0,180,0)),
+        FullPos(Vector(-2582,-1489,1183),Vector(0,180,0)),
+    ];
+
     ChestOrigin <-
     [
-        FullPos(Vector(-3390,-934,1936),Vector(0,175,0)),
-        FullPos(Vector(-3728,-4200,1820),Vector(0,355,0)),
+        FullPos(Vector(5373,-3786,93-21),Vector(0,265,0)),
+        FullPos(Vector(2719,-4436,349-21),Vector(0,265,0)),
+        FullPos(Vector(2955,-2953,349-21),Vector(0,265,0)),
+        FullPos(Vector(4358,-4313,93-21),Vector(0,265,0)),
+        FullPos(Vector(2739,-1806,486-21),Vector(0,265,0)),
         FullPos(Vector(-646,-1252,1022),Vector(0,265,0)),
         FullPos(Vector(5248,525,924),Vector(0,163.5,0)),
         FullPos(Vector(-1249,-190,1042),Vector(0,90,0)),
@@ -425,8 +576,6 @@
         FullPos(Vector(-2459,-3031,1183),Vector(0,270,0)),
         FullPos(Vector(6254,-3564,72),Vector(0,180,0)),
         FullPos(Vector(2692,-4550,584),Vector(0,217,0)),
-        FullPos(Vector(542,5054,598),Vector(0,323,0)),
-        FullPos(Vector(755,5347,586),Vector(0,0,0)),
         FullPos(Vector(457,-2420,72),Vector(0,78,0)),
         FullPos(Vector(2414,-3009,701),Vector(0,352,0)),
         FullPos(Vector(5215,-3489,488),Vector(0,90,0)),
@@ -440,35 +589,18 @@
         FullPos(Vector(-2023,-1715,1024),Vector(0,180,0)),
         FullPos(Vector(-2070,-1028,920),Vector(0,90,0)),
         FullPos(Vector(-1990,-1224,1584),Vector(0,180,0)),
-        FullPos(Vector(-2582,-1489,1183),Vector(0,180,0)),
-        FullPos(Vector(-2190,-2133,1664),Vector(0,90,0)),
-        FullPos(Vector(-2163,-2920,1664),Vector(0,90,0)),
-        FullPos(Vector(-7167,-419,1824),Vector(0,0,0)),
-        FullPos(Vector(-7299,-3465,1824),Vector(0,180,0)),
-        FullPos(Vector(-5210,-1508,1880),Vector(0,90,0)),
-        FullPos(Vector(-5448,-663,2176),Vector(0,90,0)),
-        FullPos(Vector(-2775,622,492),Vector(0,180,0)),
-        FullPos(Vector(-1264,1703,419),Vector(0,180,0)),
-        FullPos(Vector(-4360,-945,1602),Vector(0,35,0)),
-        FullPos(Vector(-2925,-3746,1664),Vector(0,90,0)),
-
         FullPos(Vector(6783,-1248,716),Vector(0,0,0)),
         FullPos(Vector(7204,-241,758),Vector(0,0,0)),
         FullPos(Vector(5889,-176,709),Vector(0,0,0)),
         FullPos(Vector(2885,-1548,750),Vector(0,0,0)),
-        FullPos(Vector(-7690,-2839,1705),Vector(0,0,0)),
-        FullPos(Vector(-8228,-2025,1773),Vector(0,0,0)),
-
         FullPos(Vector(-749,-4450,1010),Vector(0,0,0)),
         FullPos(Vector(5631,-2626,72),Vector(0,0,0)),
         FullPos(Vector(5381,-4633,328),Vector(0,90,0)),
         FullPos(Vector(3846,-3489,72),Vector(0,90,0)),
         FullPos(Vector(-1968,-3648,1328),Vector(0,0,0)),
         FullPos(Vector(-2186,-589,1184),Vector(0,0,0)),
-        FullPos(Vector(-5841,-1323,1880),Vector(0,90,0)),
-        FullPos(Vector(-753,-700,1024),Vector(0,90,0)),
-        FullPos(Vector(-2117,-1595,1670),Vector(0,180,0)),
-    ]
+        FullPos(Vector(-753,-700,1024),Vector(0,90,0)),  
+    ];
 }
 //Support
 {

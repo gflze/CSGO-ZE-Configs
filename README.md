@@ -26,7 +26,6 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 {
 	"config" //OPTIONAL
 	{
-		"MultBoss"			"" //Does the map have two breakables/bosses at once? Useful to track 2 bosshp at once. 1 for enable.
 		"HitMarkerOnly"			"" //Only shows HitMarkers + BossDamage Ranking. Useful for maps with built-in BossHud. 1 for enable.
 		"BossBeatenShowTopDamage"	"" //Whether to show the top damagers of boss after it dies. 0 to disable.
 	}

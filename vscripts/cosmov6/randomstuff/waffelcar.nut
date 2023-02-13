@@ -45,7 +45,7 @@ class car
     {
         if(this.text != null)
             this.text.Destroy();
-        
+
         this.text = Entities.CreateByClassname("point_worldtext");
         this.text.__KeyValueFromVector("color", this.textcolor);
         this.text.__KeyValueFromFloat("textsize", this.textscale);
@@ -55,7 +55,7 @@ class car
     {
         this.textmessage = newtext.tostring();
         this.SetTextCreate();
-        
+
         this.text.__KeyValueFromString("message", this.textmessage);
         this.SetTextPos();
     }
@@ -185,7 +185,7 @@ function AddCar()
     local Preset = GetClassByInvalid(activator);
     if(Preset != null)
         return;
-    
+
     local ent = Entities.CreateByClassname("prop_dynamic_glow")
     ent.__KeyValueFromInt("solid", 0);
     ent.__KeyValueFromInt("rendermode", 1);
@@ -216,12 +216,12 @@ function GetPresent(Car_Class)
     }
     else if(Preset == 1)
     {
-        Car_Class.SetSpeed(0.05);
+        Car_Class.SetSpeed(0);
         Car_Class.SetAllowDriver(false);
         Car_Class.SetAllowJump(true);
 
         Car_Class.SetTextMessage("Kotya");
-        
+
         Car_Class.SetGlowColor(Vector(0,40,80), 0);
         Car_Class.SetTextColor(Vector(0,128,255));
         Car_Class.SetColor(Vector(0,128,255));
@@ -234,7 +234,7 @@ function GetPresent(Car_Class)
 
         Car_Class.SetTextMessage("Original Waffel");
         Car_Class.SetTextColor(Vector(255,255,0));
-        Car_Class.SetColor(Vector(255,255,0));    
+        Car_Class.SetColor(Vector(255,255,0));
     }
     else if(Preset == 3)
     {
@@ -244,7 +244,7 @@ function GetPresent(Car_Class)
 
         Car_Class.SetTextMessage("memories");
         Car_Class.SetTextColor(Vector(255,0,0));
-        Car_Class.SetColor(Vector(225,0,0));    
+        Car_Class.SetColor(Vector(225,0,0));
     }
     else if(Preset == 4)
     {
@@ -254,7 +254,7 @@ function GetPresent(Car_Class)
 
         Car_Class.SetTextMessage("Mr. Bump");
         Car_Class.SetTextColor(Vector(255,255,0));
-        Car_Class.SetColor(Vector(255,255,0)); 
+        Car_Class.SetColor(Vector(255,255,0));
     }
     else if(Preset == 5)
     {
@@ -264,7 +264,7 @@ function GetPresent(Car_Class)
 
         Car_Class.SetTextMessage("Champagne");
         Car_Class.SetTextColor(Vector(255,255,0));
-        Car_Class.SetColor(Vector(255,255,0)); 
+        Car_Class.SetColor(Vector(255,255,0));
     }
     else if(Preset == 6)
     {
@@ -274,7 +274,7 @@ function GetPresent(Car_Class)
 
         Car_Class.SetTextMessage("Krinjita");
         Car_Class.SetTextColor(Vector(255,0,255));
-        Car_Class.SetColor(Vector(255,0,255)); 
+        Car_Class.SetColor(Vector(255,0,255));
     }
     else if(Preset == 7)
     {
@@ -282,9 +282,9 @@ function GetPresent(Car_Class)
         Car_Class.SetAllowDriver(true);
         Car_Class.SetAllowJump(true);
 
-        Car_Class.SetTextMessage("Loh ebani");
-        Car_Class.SetTextColor(Vector(255,0,0));
-        Car_Class.SetColor(Vector(255,0,0)); 
+        Car_Class.SetTextMessage("ERF Squad");
+        Car_Class.SetTextColor(Vector(128,0,255));
+        Car_Class.SetColor(Vector(128,0,255));
     }
     else if(Preset == 8)
     {
@@ -501,16 +501,6 @@ function GetPresent(Car_Class)
         Car_Class.SetTextColor(Vector(255,255,255));
         Car_Class.SetColor(Vector(255,255,255));
     }
-    else if(Preset == 29)
-    {
-        Car_Class.SetSpeed(0);
-        Car_Class.SetAllowJump(true);
-        Car_Class.SetAllowDriver(false);
-
-        Car_Class.SetTextMessage("Ambitious");
-        Car_Class.SetTextColor(Vector(255,255,255));
-        Car_Class.SetColor(Vector(255,255,255));
-    }
     else if(Preset == 30)
     {
         Car_Class.SetSpeed(0);
@@ -543,13 +533,115 @@ function GetPresent(Car_Class)
         Car_Class.SetTextColor(Vector(10,10,250));
         Car_Class.SetColor(Vector(128,0,128));
     }
-    
+    else if(Preset == 33)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("Kis Kis");
+
+        Car_Class.SetGlowColor(Vector(0,40,80), 0);
+        Car_Class.SetTextColor(Vector(0,128,255));
+        Car_Class.SetColor(Vector(0,128,255));
+    }
+    else if(Preset == 34)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("zeffc");
+
+        Car_Class.SetTextColor(Vector(128,0,128));
+        Car_Class.SetColor(Vector(128,0,128));
+    }
+    else if(Preset == 35)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("zoy");
+
+        Car_Class.SetTextColor(Vector(0,0,255));
+        Car_Class.SetColor(Vector(0,0,255));
+    }
+    else if(Preset == 36)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("kurumi");
+
+        Car_Class.SetTextColor(Vector(255,35,35));
+        Car_Class.SetColor(Vector(0,30,255));
+    }
+    else if(Preset == 37)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("ERF M1mic");
+
+        Car_Class.SetTextColor(Vector(0,0,255));
+        Car_Class.SetColor(Vector(0,0,255));
+    }
+    else if(Preset == 38)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("God Shadow");
+
+        Car_Class.SetTextColor(Vector(255,0,0));
+        Car_Class.SetColor(Vector(255,0,0));
+    }
+    else if(Preset == 39)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("Wind of Liberty");
+
+        Car_Class.SetTextColor(Vector(173,216,230));
+        Car_Class.SetColor(Vector(173,216,230));
+    }
+    else if(Preset == 40)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("Coders");
+
+        Car_Class.SetTextColor(Vector(0,0,255));
+        Car_Class.SetColor(Vector(0,0,255));
+    }
+    else if(Preset == 41)
+    {
+        Car_Class.SetSpeed(0);
+        Car_Class.SetAllowDriver(false);
+        Car_Class.SetAllowJump(true);
+
+        Car_Class.SetTextMessage("EZZE-003");
+
+        Car_Class.SetTextColor(Vector(251,72,196));
+        Car_Class.SetColor(Vector(251,72,196));
+    }
+
+
+
     if(player_class.block_driver != null)
         Car_Class.SetAllowDriver(((player_class.block_driver) ? false : true));
 
     else if(Car_Class.allowdriver)
         player_class.block_driver = false;
-    else 
+    else
         player_class.block_driver = true;
 
     if(!Car_Class.allowjump)
@@ -575,7 +667,7 @@ function DestroyCar(handle)
             player_class.speed_default = 1.0;
 
             EntFireByHandle(SpeedMod, "ModifySpeed", "1.0", 0, handle, handle);
-            
+
             return;
         }
     }
@@ -585,7 +677,7 @@ function PressDriverButton()
 {
     local car_class = GetClassByButton(caller);
     local driver_class = GetClassByInvalid(activator);
-    
+
     if(driver_class != null || car_class == null)
         return;
 
@@ -642,13 +734,13 @@ function Tick()
     foreach(car_class in g_Array_CheckCar)
 	{
         if(!car_class.driver == null    ||
-            !car_class.driver.IsValid() || 
-            car_class.driver.GetHealth() <= 0.00 || 
+            !car_class.driver.IsValid() ||
+            car_class.driver.GetHealth() <= 0.00 ||
             car_class.driver.GetTeam() != car_class.invalid.GetTeam())
         {
             UnSetDriver(car_class);
         }
-        else 
+        else
         {
             car_class.invalid.SetOrigin(car_class.driver.GetOrigin() + car_class.driver.GetForwardVector() * forwarddist);
             //car_class.model.SetAngles(0, car_class.driver.GetAngles().y, 0);
@@ -669,7 +761,7 @@ function Toggle(car_class)
     {
         car_class.allowdriver = true;
     }
-        
+
     if(car_class.driver != null)
     {
         car_class.DeactivateDriver();
@@ -699,7 +791,7 @@ function Tick_Sound()
     {
         car_class.PlaySound();
     }
-    
+
     EntFireByHandle(self, "RunScriptCode", "Tick_Sound();", tickrate_sound, null, null);
 }
 
