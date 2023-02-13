@@ -1,4 +1,4 @@
-IncludeScript("ze_cruelty_squad/gorbinos_magic_v2");
+IncludeScript("gfl/gorbinos_magic_v2");
 
 WARMUP_TIME <- 30.00;
 if(!("WARMUP_DONE" in this)){  
