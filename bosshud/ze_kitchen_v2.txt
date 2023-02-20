@@ -1,0 +1,19 @@
+"math_counter"
+{
+    "config"
+    {
+        "HitMarkerOnly"     "1"
+    }
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "mikrovlnka_model"
+        "CustomText"        "Microwave"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "fly"
+        "CustomText"        "Fly"
+    }
+}
