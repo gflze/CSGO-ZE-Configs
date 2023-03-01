@@ -445,11 +445,6 @@
 		zr_infect_mzombie_ratio							1
 		zr_class_modify									1
 	}
-	"ze_surf_ffxiv_beachescape_camper_isengard_laser_mako"
-	{
-		zr_infect_mzombie_ratio							1
-		zr_class_modify									1
-	}
 	"ze_temple_of_the_demon_god_v2"
 	{
 		sm_gravity										1
