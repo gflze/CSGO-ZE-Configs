@@ -192,7 +192,6 @@ These are basic CS:GO config files containing cvars/commands that get executed o
 Some common GFL plugin cvars that you may want to adjust are listed below with their functionalities.
 ```
 mce_extend			//Number of extends for the map
-sm_enable_hurt_fix 1		//Enables the trigger_hurt stack damage fix as a quick fix for maps with the bug
 sm_thirdperson_enabled 0	//Disables third person for the map
 triggerpushlagfix_enable 0	//Disables the trigger_push lag fix, some maps don't play well with it
 zr_antiboost_enabled 0		//Disables the antiboost functionality that certain weapons have
