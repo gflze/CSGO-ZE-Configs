@@ -17,7 +17,7 @@ For making any of these configs, you'll want a tool like [VIDE](http://www.riint
 
 ## BossHud
 
-Search for **math_counter**, **func_breakable**, **func_physbox** or **func_physbox_multiplayer** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
+Search for **math_counter**, **func_breakable**, **func_physbox**, **func_physbox_multiplayer**, **prop_physics**, or **prop_dynamic** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
 
 **__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use [this plugin](https://github.com/gflclan-cs-go-ze/bhud-debugger) with a test server to find out.
 
@@ -43,7 +43,7 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 	}
 	"1"
 	{
-		//func_breakable, func_physbox, func_physbox_multiplayer, prop_physics, or prop_dynamic example
+		//other entities example
 		"Type"			"breakable"
 		"BreakableName"		"" //targetname of the func_breakable, func_physbox or func_physbox_multiplayer
 		"CustomText"		"" //custom name to show in the hud
