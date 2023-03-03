@@ -1,4 +1,4 @@
-# GFLClan CS:GO ZE Configs  
+# GFLClan CS:GO ZE Configs
 
 | Sync Status |
 |:-----------:|
@@ -43,7 +43,7 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 	}
 	"1"
 	{
-		//func_breakable, func_physbox or func_physbox_multiplayer example
+		//func_breakable, func_physbox, func_physbox_multiplayer, prop_physics, or prop_dynamic example
 		"Type"			"breakable"
 		"BreakableName"		"" //targetname of the func_breakable, func_physbox or func_physbox_multiplayer
 		"CustomText"		"" //custom name to show in the hud
@@ -151,7 +151,7 @@ ze_map_name.cfg
 
 ## MusicNames
 
-Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config. 
+Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config.
 
 **Note:** You can specify only the file name to identify the music. However, if there are two files of the same name in different directories, you **must** specify the full path to differentiate between the two. See the example in the template below.
 
