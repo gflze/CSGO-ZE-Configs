@@ -1,0 +1,8 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "part5_boss_health"
+        "CustomText"        "Cube"
+    }
+}
