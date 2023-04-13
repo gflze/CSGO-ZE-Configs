@@ -22,7 +22,7 @@
 //    the same stripper+vscript can be used for all 3 maps, just copy and rename the .cfg to the actual mapname(s)
 //---------------------------------------------------------------------------------
 //#####     PUT THIS FILE IN THIS FOLDER ON THE SERVER/HOST:
-//#####          csgo/scripts/vscripts/luffaren/inject_fix.nut
+//#####          csgo/scripts/vscripts/gfl/inject_fix.nut
 //---------------------------------------------------------------------------------
 ::injectfix_man <- null;
 function LuffInjectFixInit()
