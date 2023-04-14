@@ -2,13 +2,19 @@
 // Problem:
 //    players have found an exploit which gives them vscript-access
 //    this could essentially be used to set cvars, cause mayhem, crash servers, etc
-//    the following maps are affected by this issue:
+//    the following luffaren maps were initially affected by this issue:
 //      - ze_pizzatime
 //      - ze_best_korea
 //      - ze_eternal_grove
+//      - ze_drakelord_castle_b3
+//    however, many other maps based their event script systems on these maps, including but not limited to:
+//      - ze_japans_3rd_bombing_v8
+//      - ze_noob_too_easy_v3_3a
+//      - ze_ronald_v2
+//      - ze_touhou_gensokyo_o4
 // 
 // Cause:
-//    this is due to the older eventlistener setup in these^ 3 maps, using EntFire/RunScriptCode to pass events
+//    this is due to the older eventlistener setup in these maps, using EntFire/RunScriptCode to pass events
 //    it can be done via text-injection through means such as:
 //      - chat
 //      - connect
@@ -19,21 +25,19 @@
 // Solution:
 //    this stripper + vscript combo replaces the EntFire/RunScriptCode method with a direct .GetScriptScope() call instead
 //    this completely removes any user-input from being passed via a RunScriptCode-call, making it safe from injection
-//    the same stripper+vscript can be used for all 3 maps, just copy and rename the .cfg to the actual mapname(s)
+//    the same vscript can be used for all maps based on luffs system
 //---------------------------------------------------------------------------------
 //#####     PUT THIS FILE IN THIS FOLDER ON THE SERVER/HOST:
 //#####          csgo/scripts/vscripts/gfl/inject_fix.nut
 //---------------------------------------------------------------------------------
-::injectfix_man <- null;
-function LuffInjectFixInit()
+::injectfix_ent <- null;
+function LuffInjectFixInit(scriptent)
 {
-	if(::injectfix_man==null||!::injectfix_man.IsValid())
+	if(::injectfix_ent==null||!::injectfix_ent.IsValid())
 	{
-		::injectfix_man = Entities.FindByName(null,"mapmanager");			//ze_best_korea + ze_eternal_grove
-		if(::injectfix_man==null||!::injectfix_man.IsValid())
-			::injectfix_man = Entities.FindByName(null,"event_manager");	//ze_pizzatime
+		::injectfix_ent = Entities.FindByName(null,scriptent);
 	}
-	if(::injectfix_man==null||!::injectfix_man.IsValid())					//just nullify all functions just in case
+	if(::injectfix_ent==null||!::injectfix_ent.IsValid())					//just nullify all functions just in case
 	{
 		printl("LuffInjectFixInit ERROR : manager not found - logic might break as a result!");
 		::OnGameEvent_player_say_raw<-function(p){}
@@ -43,12 +47,11 @@ function LuffInjectFixInit()
 		return;
 	}
 	::OnGameEvent_player_say_raw<-function(p){
-		::injectfix_man.GetScriptScope().OnPlayerChat(p.userid,p.text);}
+		::injectfix_ent.GetScriptScope().OnPlayerChat(p.userid,p.text);}
 	::OnGameEvent_player_connect_raw<-function(p){
-		::injectfix_man.GetScriptScope().OnPlayerConnect(p.name,p.userid,p.networkid);}
+		::injectfix_ent.GetScriptScope().OnPlayerConnect(p.name,p.userid,p.networkid);}
 	::OnGameEvent_player_disconnect_raw<-function(p){
-		::injectfix_man.GetScriptScope().OnPlayerDisconnect(p.userid,p.reason,p.name,p.networkid);}
+		::injectfix_ent.GetScriptScope().OnPlayerDisconnect(p.userid,p.reason,p.name,p.networkid);}
 	::OnGameEvent_player_changename_raw<-function(p){
-		::injectfix_man.GetScriptScope().OnPlayerChangeName(p.userid,p.oldname,p.newname);}
+		::injectfix_ent.GetScriptScope().OnPlayerChangeName(p.userid,p.oldname,p.newname);}
 }
-LuffInjectFixInit();
