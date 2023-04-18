@@ -2,7 +2,8 @@
 {
     "config"
     {
-        "HitMarkerOnly"     "1"
+        "HitMarkerOnly"             "1"
+        "BossBeatenShowTopDamage"   "1"
     }
     "0"
     {
