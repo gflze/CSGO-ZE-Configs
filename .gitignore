@@ -1,6 +1,7 @@
 # This serves as an official list of which configs are private and excluded from this repository
 # Please do not ask to receive these for your server, these are not privated by our decision and you'd need to speak to the mappers
 # If you wish to edit one of these configs, bring your changes directly to a server manager
+stripper/ze_djinn_go1.cfg
 stripper/ze_FFXIV_Pharos_Sirius_v1_6.cfg
 stripper/ze_FFXIV_Wanderers_Palace_v5_2.cfg
 stripper/ze_FFXIV_Wanderers_Palace_v6.cfg
