@@ -1,0 +1,58 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Omega2_Hp"
+        "CustomText"        "Omega"
+    }
+    "1"
+    {
+        "HP_counter"        "ADS2_HP"
+        "CustomText"        "ADS"
+    }
+    "2"
+    {
+        "HP_counter"        "Omega_Hp"
+        "CustomText"        "Omega"
+    }
+    "3"
+    {
+        "HP_counter"        "Nael5_HP"
+        "CustomText"        "Nael"
+    }
+    "4"
+    {
+        "HP_counter"        "Phoenix4_HP"
+        "CustomText"        "Phoenix"
+    }
+    "5"
+    {
+        "HP_counter"        "Phoenix5_HP"
+        "CustomText"        "Phoenix"
+    }
+    "6"
+    {
+        "HP_counter"        "ADS_HP"
+        "CustomText"        "ADS"
+    }
+    "7"
+    {
+        "HP_counter"        "Bahamut_HP"
+        "CustomText"        "Bahamut"
+    }
+    "8"
+    {
+        "HP_counter"        "Bahamut2_HP"
+        "CustomText"        "Bahamut"
+    }
+    "9"
+    {
+        "HP_counter"        "Phoenix1_HP"
+        "CustomText"        "Phoenix"
+    }
+    "10"
+    {
+        "HP_counter"        "Nael_HP"
+        "CustomText"        "Nael"
+    }
+}
