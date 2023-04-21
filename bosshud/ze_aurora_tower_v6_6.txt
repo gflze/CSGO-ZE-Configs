@@ -1,0 +1,43 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "BossRoom_Boss_HitCounter"
+        "CustomText"        "Disco Ball"
+    }
+    "1"
+    {
+        "HP_counter"        "ex1_finalpart_bosscoun"
+        "CustomText"        "Moras (Laser)"
+    }
+    "2"
+    {
+        "HP_counter"        "lv4_b3_morascoun"
+        "CustomText"        "Moras"
+    }
+    "3"
+    {
+        "HP_counter"        "lv4_b2_cube3coun"
+        "CustomText"        "Cyan Cube"
+    }
+    "4"
+    {
+        "HP_counter"        "lv4_b2_cube1coun"
+        "CustomText"        "Purple"
+    }
+    "5"
+    {
+        "HP_counter"        "lv4_b2_cube2coun"
+        "CustomText"        "Green"
+    }
+    "6"
+    {
+        "HP_counter"        "lv4_b3_arescoun"
+        "CustomText"        "Ares"
+    }
+    "7"
+    {
+        "HP_counter"        "KingBoss_Mecha_Counter"
+        "CustomText"        "King Mecha"
+    }
+}

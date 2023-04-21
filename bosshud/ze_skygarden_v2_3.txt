@@ -1,0 +1,8 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "boss_hp"
+        "CustomText"        "Green Orb"
+    }
+}
