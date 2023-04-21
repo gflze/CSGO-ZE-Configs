@@ -1,0 +1,18 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "#954C93"
+        "HPbar_counter"     "segments"
+        "HPbar_min"         "0"
+        "HPbar_max"         "14"
+        "HPbar_default"     "14"
+        "HPbar_mode"        "1"
+        "CustomText"        "Sphere"
+    }
+    "1"
+    {
+        "HP_counter"        "choice"
+        "CustomText"        "Choice"
+    }
+}
