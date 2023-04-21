@@ -52,6 +52,10 @@ function Tick()
         PLAYERS.clear();
         return;
     }
+
+    EntFire("item_hbox_mike*", "SetHealth", "300", 0, null);
+    EntFire("item_hbox_yuffie*", "SetHealth", "225", 0, null);
+
     if(PLAYERS.len() > 0)
     {
         foreach(p in PLAYERS)
@@ -174,9 +178,6 @@ function PrintArray()
 
 function Enable()
 {
-    EntFire("item_hbox_mike*", "SetHealth", "300", 0, null);
-    EntFire("item_hbox_yuffie*", "SetHealth", "225", 0, null);
-
     ticking = true;
     Tick();
     self.ConnectOutput("OnStartTouch", "Touch");
