@@ -1,0 +1,9 @@
+"music"
+{
+	"collab/music/goreshit - when i die.mp3"			"goreshit - when i die"
+	"collab/music/grimes - 4am (skeler remix) extended.mp3"			 " Grimes - 4AM (Skeler Remix) extended"
+	"collab/music/suduaya - unity.mp3 - Unity- Suduaya
+	"collab/music/mahadize.mp3"			"Lunatica & Makida & Hypatia -  Mahadize"
+	"collab/music/history of gods.mp3"			 "StarLab & Avalon - History of Gods"
+	"collab/music/uppermost-fuji-obu-glider.mp3"			"Uppermost, Fūji & OBu -  Glider"
+}
