@@ -9,7 +9,7 @@ function DebugDrawAllItems()
     local distance_x = 16;
 
     local vecAngles;
-    local vecOrigin; 
+    local vecOrigin;
     local vecDirForward;
     local vecDirLeft;
     local vecDirUp;
@@ -32,7 +32,7 @@ function DebugDrawAllItems()
         textent.__KeyValueFromString("textsize", "7");
         textent.__KeyValueFromString("color", "255 255 255");
         textent.__KeyValueFromString("message", format("O: %i %i %i A: %i %i %i", vecOrigin.x, vecOrigin.y, vecOrigin.z, vecAngles.x, vecAngles.y, vecAngles.z));
-        
+
         textent.SetOrigin(vecOrigin);
         textent.SetForwardVector(Vector(1, 0, 0));
 
@@ -175,7 +175,7 @@ function AnglesToDir(angles)
             SpawnUltima();
 
             SpawnChest(16);
-        } 
+        }
         else if(stage == 2)
         {
             ItemOrigin.extend(ItemOrigin_Mine);
@@ -221,7 +221,7 @@ function AnglesToDir(angles)
 
             SpawnChest(10, 5, 5);
         }
-        
+
         // for(local i = 0; i < ItemOrigin.len(); i++)
         // {
         //     DebugDrawCircle(ItemOrigin[i].origin, Vector(255,0,0), 64, 16, true, 180);
@@ -234,7 +234,7 @@ function AnglesToDir(angles)
         // {
         //     DebugDrawCircle(ChestOrigin[i].origin, Vector(255,0,0), 64, 16, true, 180);
         // }
-        
+
     }
 }
 //Ultima
@@ -279,7 +279,7 @@ function AnglesToDir(angles)
         Vector(-2140,-2299,1902), //Крыша с в5
     ];
 
-    UltimaOrigin <-[    
+    UltimaOrigin <-[
     Vector(-651,-1405,1381),
     Vector(1023,-3718,583),
     Vector(-1995,-928,1886),
@@ -297,23 +297,39 @@ function AnglesToDir(angles)
         local temp;
         local maker;
         local items_list = [
-            TEMP_BIO, 
-            TEMP_EARTH, 
-            TEMP_ICE, 
-            TEMP_FIRE, 
-            TEMP_SUMMON, 
-            TEMP_ELECTRO, 
-            TEMP_GRAVITY, 
-            TEMP_POISON, 
-            TEMP_WIND, 
+            TEMP_BIO,
+            TEMP_EARTH,
+            TEMP_ICE,
+            TEMP_FIRE,
+            TEMP_SUMMON,
+            TEMP_ELECTRO,
+            TEMP_GRAVITY,
+            TEMP_POISON,
+            TEMP_WIND,
             TEMP_HEAL,];
-
+        if (CLASSIC_MOD)
+        {
+            items_list.remove(items_list.len() - 1);
+        }
+        local heal;
         if (EVENT_EXTRAITEMS)
         {
+            items_list = [
+                TEMP_BIO,
+                TEMP_EARTH,
+                TEMP_ICE,
+                TEMP_FIRE,
+                TEMP_SUMMON,
+                TEMP_ELECTRO,
+                TEMP_GRAVITY,
+                TEMP_POISON,
+                TEMP_WIND,
+                TEMP_HEAL,];
+
             local random = RandomInt(EVENT_EXTRAITEMS_COUNT[0], EVENT_EXTRAITEMS_COUNT[1]);
-            
+
             count += random;
-            
+
             for (local i = 0; i < random; i++)
             {
                 items_list.push(items_list[RandomInt(0, items_list.len()-1)]);
@@ -333,6 +349,21 @@ function AnglesToDir(angles)
         }
 
         local pos
+        if (CLASSIC_MOD)
+        {
+            count--;
+
+            temp = Entities.FindByName(null, TEMP_HEAL);
+            maker = Entities.CreateByClassname("env_entity_maker");
+            maker.__KeyValueFromString("EntityTemplate", TEMP_HEAL)
+
+            pos = ItemRandomSpawn.GetRandomSpawn();
+            //DebugDrawCircle(pos.origin, Vector(255,0,0), 64, 16, true, 180);
+            ItemRandomSpawn.SpawnOnPositionTwo(
+            maker,
+            pos);
+        }
+
         for(local i = 0; i < count; i++)
         {
             pos = ItemRandomSpawn.GetRandomSpawn();
@@ -344,7 +375,7 @@ function AnglesToDir(angles)
     }
 
     ItemOrigin_AfterBar <- [
-        FullPos(Vector(-2188,-1931,1758),Vector(0,0,0)), 
+        FullPos(Vector(-2188,-1931,1758),Vector(0,0,0)),
         FullPos(Vector(-2607,-950,1604),Vector(0,270,0)),
         FullPos(Vector(-3136,-961,1981),Vector(0,0,0)),
         FullPos(Vector(-3240,-2176,1809),Vector(0,0,0)),
@@ -364,16 +395,16 @@ function AnglesToDir(angles)
         FullPos(Vector(-5930,-1308,2027),Vector(0,0,0)),
         FullPos(Vector(-5344,-1560,1931),Vector(0,0,0)),
         FullPos(Vector(-3304,-1882,1709),Vector(0,90,0)),
-        FullPos(Vector(-4360,-4247,2145),Vector(0,270,0)),  
+        FullPos(Vector(-4360,-4247,2145),Vector(0,270,0)),
         FullPos(Vector(-7018,-498,2259),Vector(0,0,0)),
-        FullPos(Vector(-2198,-3598,1862),Vector(0,0,0)),  
+        FullPos(Vector(-2198,-3598,1862),Vector(0,0,0)),
     ];
 
     ItemOrigin_Mine <- [
-        FullPos(Vector(-6766,3083,1886),Vector(0,0,0)),  
-        FullPos(Vector(-7961,647,1910),Vector(0,90,0)),  
-        FullPos(Vector(-4956,742,1888),Vector(0,180,0)), 
-        FullPos(Vector(-5753,27,1888),Vector(0,0,0)),  
+        FullPos(Vector(-6766,3083,1886),Vector(0,0,0)),
+        FullPos(Vector(-7961,647,1910),Vector(0,90,0)),
+        FullPos(Vector(-4956,742,1888),Vector(0,180,0)),
+        FullPos(Vector(-5753,27,1888),Vector(0,0,0)),
     ];
 
     ItemOrigin_OldMine <- [
@@ -406,7 +437,7 @@ function AnglesToDir(angles)
         FullPos(Vector(-1777,-1552,1449),Vector(0,0,0)),
         FullPos(Vector(-1023,-3662,1307),Vector(0,0,0)),
         FullPos(Vector(-43,-2068,546),Vector(0,0,0)),
-        FullPos(Vector(192,-2358,281),Vector(0,0,0)),      
+        FullPos(Vector(192,-2358,281),Vector(0,0,0)),
         FullPos(Vector(6712,-4488,688),Vector(0,180,0)),
         FullPos(Vector(5445,-3034,242),Vector(0,0,0)),
         FullPos(Vector(4896,-4600,707),Vector(0,0,0)),
@@ -440,13 +471,13 @@ function AnglesToDir(angles)
         FullPos(Vector(-1752,-552,1335),Vector(0,180,0)),
         FullPos(Vector(-2418,-1471,1417),Vector(0,0,0)),
         FullPos(Vector(-1597,-946,1067),Vector(0,0,0)),
-        FullPos(Vector(-2510,-1471,1091),Vector(0,0,0)),       
+        FullPos(Vector(-2510,-1471,1091),Vector(0,0,0)),
         FullPos(Vector(6986,-646,1181),Vector(0,0,0)),
         FullPos(Vector(4934,-3756,357),Vector(0,0,0)),
         FullPos(Vector(2678,-3885,410),Vector(0,180,0)),
         FullPos(Vector(-1990,-2859,1492),Vector(0,0,0)),
         FullPos(Vector(5078,-825,1055),Vector(0,0,0)),
-        FullPos(Vector(2905,-1133,783),Vector(0,0,0)), 
+        FullPos(Vector(2905,-1133,783),Vector(0,0,0)),
         FullPos(Vector(-551,-4686,1117),Vector(0,0,0)),
         FullPos(Vector(4975,-4609,373),Vector(0,0,0)),
     ];
@@ -599,7 +630,7 @@ function AnglesToDir(angles)
         FullPos(Vector(3846,-3489,72),Vector(0,90,0)),
         FullPos(Vector(-1968,-3648,1328),Vector(0,0,0)),
         FullPos(Vector(-2186,-589,1184),Vector(0,0,0)),
-        FullPos(Vector(-753,-700,1024),Vector(0,90,0)),  
+        FullPos(Vector(-753,-700,1024),Vector(0,90,0)),
     ];
 }
 //Support

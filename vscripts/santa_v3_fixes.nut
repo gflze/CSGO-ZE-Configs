@@ -6,7 +6,7 @@
 
 //
 //		OFFICIAL ZE_SANTASSINATION_V3 STRIPPER SOLUTION
-//		UPDATED: 2020-08-20 (#9)
+//		UPDATED: 2023-01-21 (#10)
 //		CONTACT: https://steamcommunity.com/id/LuffarenPer/
 //
 //============================================================================\\
@@ -86,7 +86,7 @@ function ClearBossTarget()
 	{
 		worldtext = true;
 		local e = Entities.CreateByClassname("point_worldtext");
-		EntFireByHandle(e,"AddOutput","message LUFFAREN OFFICIAL STRIPPER #9 (2020-08-20)",0.00,null,null);
+		EntFireByHandle(e,"AddOutput","message LUFFAREN OFFICIAL STRIPPER #10 (2023-01-21)",0.00,null,null);
 		EntFireByHandle(e,"AddOutput","textsize 8",0.00,null,null);
 		EntFireByHandle(e,"AddOutput","origin -4605 -7015 -5100",0.00,null,null);
 		EntFireByHandle(e,"AddOutput","angles 0 180 0",0.00,null,null);
@@ -429,5 +429,55 @@ function CleanHealAfterUse()
 		return;
 	EntFireByHandle(par,"Kill","",0.00,null,null);
 }
+
+
+::TriggerCreate2<-function(pos,rot=Vector(),mins=Vector(-32,-32,-32),maxs=Vector(32,32,32),targetname="i_trigger",flags=1)
+{
+    local e = Entities.CreateByClassname("trigger_multiple");
+	e.SetOrigin(pos);
+    e.SetAngles(rot.x,rot.y,rot.z);
+    e.SetSize(mins,maxs);
+    e.__KeyValueFromString("targetname",targetname);
+    e.__KeyValueFromInt("spawnflags",flags);
+    e.__KeyValueFromInt("solid",3);
+    e.__KeyValueFromInt("startdisabled",1);
+    e.__KeyValueFromInt("collisiongroup",10);
+    return e;
+}
+function TruthRocketCheeseFix()
+{
+	local trigger = ::TriggerCreate2(Vector(4400,-12688,-12032),Vector(),Vector(-1072,-1424,-1280),Vector(1072,1424,1280),"trigger_rocketcheesefix",1);
+	trigger.ValidateScriptScope();
+	trigger.GetScriptScope().Tick<-function()
+	{
+		EntFireByHandle(self,"RunScriptCode","Tick();",3.00,null,null);
+		EntFireByHandle(self,"Disable","",0.00,null,null);
+		EntFireByHandle(self,"Enable","",0.10,null,null);
+	}
+	trigger.GetScriptScope().TouchedTrigger<-function()
+	{
+		if(activator==null||!activator.IsValid())return;
+		if(activator.GetTeam()!=3)return;
+		EntFireByHandle(activator,"SetDamageFilter","",0.00,null,null);
+		EntFireByHandle(activator,"SetHealth","-1",0.00,null,null);
+		EntFireByHandle(activator,"SetDamageFilter","",0.05,null,null);
+		EntFireByHandle(activator,"SetHealth","-1",0.06,null,null);
+	}
+	EntFireByHandle(trigger,"AddOutput","OnStartTouch !self:RunScriptCode:TouchedTrigger();:0:-1",0.00,null,null);
+	EntFireByHandle(trigger,"Enable","",0.05,null,null);
+	EntFireByHandle(trigger,"RunScriptCode","Tick();",3.00,null,null);
+}
+TruthRocketCheeseFixScan_found <- false;
+function TruthRocketCheeseFixScan()
+{
+	if(TruthRocketCheeseFixScan_found)return;
+	EntFireByHandle(self,"RunScriptCode","TruthRocketCheeseFixScan();",5.00,null,null);
+	local e = Entities.FindByName(null,"truth_socrates1");
+	if(e==null||!e.IsValid())return;
+	TruthRocketCheeseFixScan_found = true;
+	EntFireByHandle(e,"AddOutput","OnBreak santa_v3_fixes:RunScriptCode:TruthRocketCheeseFix();:45:1",0.00,null,null);
+}
+EntFireByHandle(self,"RunScriptCode","TruthRocketCheeseFixScan();",5.00,null,null);
+
 
 
