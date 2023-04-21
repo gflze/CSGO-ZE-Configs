@@ -10,7 +10,7 @@
 	"zerentian/ff12_stage3_end_2.mp3"                 "進撃の巨人 OST -  Splinter Wolf"
 	"zerentian/ff12_stage3_boss_1.mp3"                 "Girls Frontline OST -  Made in Heaven"
 	"zerentian/ff12_stage3_end.mp3"                 "Sawano Hiroyuki (さわの ひろゆき) & SennaRin （Dragon Raja）- IVORY TOWER"
-	"zerentian/ff12_stage1_end.mp3"                 "FF12 OST -  戦いのドラム(斗争的剧场）"
+	"zerentian/ff12_stage1_end.mp3"                 "FF12 OST -  戦いのドラム"
 	"zerentian/ff12_stage3_boss_2.mp3"                 "FFXV OST -  APOCALYPSIS NOCTIS"
 	"zerentian/ff12_stage2_end.mp3"                 "Team Medical Dragon -  BLUE DRAGON"
 }
