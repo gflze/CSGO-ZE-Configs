@@ -1,0 +1,38 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "st1_boss_counter"
+        "CustomText"        "Blue Crystal"
+    }
+    "1"
+    {
+        "HP_counter"        "st3_boss_counter"
+        "CustomText"        "Yellow Crystal"
+    }
+    "2"
+    {
+        "HP_counter"        "st3_end_beam_counter"
+        "CustomText"        "Yellow Crystal (End)"
+    }
+    "3"
+    {
+        "HP_counter"        "st4_boss_counter"
+        "HPbar_counter"     "st4_boss_counter_sub"
+        "CustomText"        "Red Crystal"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+    }
+    "4"
+    {
+        "HP_counter"        "st5_boss_counter"
+        "HPbar_counter"     "st5_boss_counter_sub"
+        "CustomText"        "White Crystal"
+        "HPbar_min"         "0"
+        "HPbar_max"         "4"
+        "HPbar_default"     "4"
+        "HPbar_mode"        "1"
+    }
+}

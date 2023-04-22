@@ -1,0 +1,79 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Gabranth2_Health"
+        "CustomText"        "Gabranth"
+    }
+    "1"
+    {
+        "HP_counter"        "Gabranth_Health"
+        "CustomText"        "Gabranth"
+    }
+    "2"
+    {
+        "HP_counter"        "Ultima_Health"
+        "HPinit_counter"    "Ultima_HealthInit"
+        "HPbar_counter"     "Ultima_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Esper Ultima"
+    }
+    "3"
+    {
+        "HP_counter"        "Drace2_Health"
+        "HPinit_counter"    "Drace2_HealthInit"
+        "HPbar_counter"     "Drace2_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Judge Drace"
+    }
+    "4"
+    {
+        "HP_counter"        "podir_Health"
+        "HPinit_counter"    "podir_HealthInit"
+        "HPbar_counter"     "podir_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Esper Famfrit"
+    }
+    "5"
+    {
+        "HP_counter"        "Drace_Health"
+        "HPinit_counter"    "Drace_HealthInit"
+        "HPbar_counter"     "Drace_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Judge Drace"
+    }
+    "6"
+    {
+        "HP_counter"        "Adrammelech_Health"
+        "HPinit_counter"    "Adrammelech_HealthInit"
+        "HPbar_counter"     "Adrammelech_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Esper Adrammelech"
+    }
+    "7"
+    {
+        "HP_counter"        "Shemhazai_Health"
+        "HPinit_counter"    "Shemhazai_HealthInit"
+        "HPbar_counter"     "Shemhazai_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Esper Shemhazai"
+    }
+}

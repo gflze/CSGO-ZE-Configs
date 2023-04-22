@@ -216,7 +216,7 @@ function AnglesToDir(angles)
             UltimaOrigin.extend(UltimaOrigin_OldMine);
             ChestOrigin.extend(ChestOrigin_AfterBar);
             ChestOrigin.extend(ChestOrigin_OldMine);
-            SpawnItems(6);
+            SpawnItems(7);
             SpawnUltima();
 
             SpawnChest(10, 5, 5);

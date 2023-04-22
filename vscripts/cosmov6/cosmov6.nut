@@ -1,6 +1,6 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "17.04.2023 - 15:54";
+::ScriptVersion <- "21.04.2023 - 21:43";
 
 Stage <- -1;
 WARMUP_TIME <- 60.0;
@@ -1107,10 +1107,12 @@ perkhp_zm_cost <- 45;
 ::perkhp_zm_hpperlvl <- 4500;
 ::perkhp_zm_maxlvl <- 6; // 30000hp
 
+::MaxHPZombie <- 7500;
+::MaxHPZombie_Classic <- 15000;
+
 perkhp_hm_cost <- 30;
 ::perkhp_hm_maxlvl <- 10; // 300hp
 ::perkhp_hm_hpperlvl <- 25;
-
 
 perkhuckster_cost <- 50;
 ::perkhuckster_maxlvl <- 5; // 25%
@@ -2404,7 +2406,7 @@ function BuyPerk()
 			if(activator.GetTeam() == 2 && activator.GetHealth() >= 600)
 			{
 				activator.SetHealth(activator.GetHealth() + perkhp_zm_hpperlvl);
-				activator.SetMaxHealth(7500 + pl.perkhp_zm_lvl * perkhp_zm_hpperlvl);
+				activator.SetMaxHealth(MaxHPZombie + pl.perkhp_zm_lvl * perkhp_zm_hpperlvl);
 			}
 
 			local text = "You upgraded Zombie HP perk to level "+pl.perkhp_zm_lvl+"\n\nYour balance "+pl.money+Money_pref;
@@ -4091,7 +4093,7 @@ function UltimateHurt(damage,radius,timehp,lvl)
 	Boss_Damage_Item("ultimate", lvl);
 
 	local h = null;
-	local AllZms = CountAlive(2);
+	local AllZms = CountAlive(2) - 1;
 	local UltimaZms = [];
 
 	while(null != (h = Entities.FindByClassnameWithin(h, "player", caller.GetOrigin(), radius)))
@@ -4101,33 +4103,50 @@ function UltimateHurt(damage,radius,timehp,lvl)
 			UltimaZms.push(h);
 		}
 	}
-	if (lvl >= 3)
+	if (UltimaZms.len() < 1)
 	{
-		damage = 99999;
+		return;
 	}
 
-	local ignore = true;
-	for(local i = 0; i < UltimaZms.len(); i++)
+	local ignore = (AllZms <= UltimaZms.len());
+
+	ignore = false;
+
+	local zombie_HP;
+	local proccent_damage;
+	foreach (zombie in UltimaZms)
 	{
-		local hhp = UltimaZms[i].GetHealth();
-		local ph = hhp * damage * 0.01;
-		//local p = GetPlayerClassByHandle(h);
-		local hp = hhp - ph - timehp;
-		if(hp <= 0)
+		if (ignore)
 		{
-			if(ignore)
-			{
-				ignore = false;
-				if(UltimaZms.len() == AllZms)
-				{
-					UltimaZms[i].SetOrigin(Vector(4480, -9984, -400));
-					continue;
-				}
-			}
-			EntFireByHandle(UltimaZms[i], "SetHealth", "-1", 0, null, null);
-			EntFireByHandle(UltimaZms[i], "SetDamageFilter", "", 0.00, null, null);
+			ignore = false;
+			zombie.SetOrigin(Vector(4480, -9984, -400));
+			continue;
 		}
-		else UltimaZms[i].SetHealth(hp);
+
+		if (lvl >= 3)
+		{
+			EntFireByHandle(zombie, "SetHealth", "0", 0, null, null);
+			EntFireByHandle(zombie, "SetDamageFilter", "", 0.00, null, null);
+			continue;
+		}
+
+		zombie_HP = zombie.GetMaxHealth();
+		if (zombie_HP < zombie.GetHealth())
+		{
+			zombie_HP = zombie.GetHealth();
+		}
+
+		proccent_damage = zombie_HP * damage * 0.01;
+		zombie_HP = zombie.GetHealth() - (proccent_damage + timehp);
+
+		if (zombie_HP > 0)
+		{
+			zombie.SetHealth(zombie_HP);
+			continue;
+		}
+
+		EntFireByHandle(zombie, "SetHealth", "0", 0, null, null);
+		EntFireByHandle(zombie, "SetDamageFilter", "", 0.00, null, null);
 	}
 }
 
@@ -6356,17 +6375,16 @@ function ElseCheck()
 								pl.__KeyValueFromInt("rendermode", 1);
 								pl.__KeyValueFromInt("renderamt", (255 - (PLAYERS[i].perkchameleon_lvl * perkchameleon_chameleonperlvl)));
 							}
-							if(PLAYERS[i].perkhp_zm_lvl > 0)
-							{
-								local hp = 7500 + PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
-								if (CLASSIC_MOD)
-								{
-									hp = 15000;
-								}
 
-								pl.SetHealth(hp);
-								pl.SetMaxHealth(hp);
+							local hp = MaxHPZombie + PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
+							if (CLASSIC_MOD)
+							{
+								hp = MaxHPZombie_Classic;
 							}
+
+							pl.SetHealth(hp);
+							pl.SetMaxHealth(hp);
+
 							if(alldone)
 							{
 								local waffel_car = Entities.FindByName(null, "waffel_controller");
@@ -6375,6 +6393,21 @@ function ElseCheck()
 								PLAYERS[i].setPerks = true;
 								PLAYERS[i].invalid = false;
 							}
+						}
+						local MaxHP = MaxHPZombie;
+						if (CLASSIC_MOD)
+						{
+							MaxHP = MaxHPZombie_Classic;
+						}
+						else if(PLAYERS[i].perkhp_zm_lvl > 0)
+						{
+							MaxHP += PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
+						}
+
+						if (pl.GetHealth() > MaxHP)
+						{
+							pl.SetHealth(MaxHP);
+							pl.SetMaxHealth(MaxHP);
 						}
 					}
 				}
@@ -7538,6 +7571,12 @@ function Mine_Door3()
 		text = "The gates will open in 25 seconds"
 		ServerChat(Chat_pref + text, 0);
 
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 20);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 25);
+
 		text = "Hold this position until the door closes"
 		ServerChat(Chat_pref + text, 25);
 
@@ -7564,14 +7603,21 @@ function Mine_Door3()
 	{
 		local text;
 
-		text = "The gates will open in 25 seconds"
+		text = "The gates will open in 20 seconds"
 		ServerChat(Chat_pref + text, 0);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 15);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 20);
+
 		EntFire("Mine_Side_Door_Down", "open", "", 0);
 		EntFire("Mine_Side_Door_Up", "open", "", 0);
 		EntFire("Mine_Vent_Break", "Break", "", 10);
 		EntFire("Mine_Vent_Break_2", "Break", "", 10);
-		EntFire("Mine_Door3", "Open", "", 25);
-		EntFire("Mine_Door1", "Open", "", 25);
+		EntFire("Mine_Door3", "Open", "", 20);
+		EntFire("Mine_Door1", "Open", "", 20);
 		EntFire("Mine_Door5*", "Open", "", 31);
 
 		EntFire("Map_TD", "AddOutput", "origin -6142 732 1868", 39.5);
@@ -7679,25 +7725,6 @@ function Mine_Door4() //большие ворота
 	}
 	if(Stage == 5)
 	{
-		text = "The gates will open in 25 seconds"
-		ServerChat(Chat_pref + text);
-
-		text = "5 SECONDS LEFT"
-		ServerChat(Chat_pref + text, 20);
-
-		text = "FALL BACK"
-		ServerChat(Chat_pref + text, 25);
-
-		EntFire("Mine_Door4", "Open", "", 25);
-		EntFire("Mine_Door4_Ladder", "Open", "", 27);
-	}
-}
-
-function Mine_Door7() //выход на 4 лвл
-{
-	local text;
-	if (Stage == 5)
-	{
 		text = "The gates will open in 15 seconds"
 		ServerChat(Chat_pref + text);
 
@@ -7707,8 +7734,27 @@ function Mine_Door7() //выход на 4 лвл
 		text = "FALL BACK"
 		ServerChat(Chat_pref + text, 15);
 
-		EntFire("Hard_Mine_Door_Down", "Open", "", 15);
-		EntFire("Hard_Mine_Door_Up", "Open", "", 15);
+		EntFire("Mine_Door4", "Open", "", 15);
+		EntFire("Mine_Door4_Ladder", "Open", "", 17);
+	}
+}
+
+function Mine_Door7() //выход на 4 лвл
+{
+	local text;
+	if (Stage == 5)
+	{
+		text = "The gates will open in 10 seconds"
+		ServerChat(Chat_pref + text);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 5);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 10);
+
+		EntFire("Hard_Mine_Door_Down", "Open", "", 10);
+		EntFire("Hard_Mine_Door_Up", "Open", "", 10);
 	}
 	//15
 	//Hard_Mine_Door_Down
