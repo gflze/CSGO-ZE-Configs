@@ -1,0 +1,73 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "boss_1attackhp"
+        "HPbar_counter"     "boss_1shigehp"
+        "HPinit_counter"    "boss_1hp_default"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Boss"
+    }
+    "1"
+    {
+        "HP_counter"        "boss_2attackhp"
+        "HPbar_counter"     "boss_2shigehp"
+        "HPinit_counter"    "boss_2hp_default"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Scorpion"
+    }
+    "2"
+    {
+        "HP_counter"        "boss_3attackhp"
+        "HPbar_counter"     "boss_3shigehp"
+        "HPinit_counter"    "boss_3hp_default"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "The Cop"
+    }
+    "3"
+    {
+        "HP_counter"        "boss_4attackhp"
+        "HPbar_counter"     "boss_4shigehp"
+        "HPinit_counter"    "boss_4hp_default"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Robot Eye"
+    }
+    "4"
+    {
+        "HP_counter"        "boss_5attackhp"
+        "HPbar_counter"     "boss_5shigehp"
+        "HPinit_counter"    "boss_5hp_default"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Robot Eye"
+    }
+    "5"
+    {
+        "HP_counter"        "boss_61hp"
+        "CustomText"        "The Eye (Phase 1)"
+    }
+    "6"
+    {
+        "HP_counter"        "boss_62hp"
+        "CustomText"        "The Eye (Phase 2)"
+    }
+    "7"
+    {
+        "HP_counter"        "boss_63hp"
+        "CustomText"        "The Eye (Final)"
+    }
+}

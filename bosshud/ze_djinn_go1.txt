@@ -1,0 +1,68 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "havan_Health"
+        "HPinit_counter"    "havan_HealthBackup"
+        "HPbar_counter"     "havan_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Havan"
+    }
+    "1"
+    {
+        "HP_counter"        "xyz_havan_Health"
+        "HPinit_counter"    "xyz_havan_HealthBackup"
+        "HPbar_counter"     "xyz_havan_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Giant Havan"
+    }
+    "2"
+    {
+        "HP_counter"        "djinn_Health"
+        "HPinit_counter"    "djinn_HealthBackup"
+        "HPbar_counter"     "djinn_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Grim Reaper"
+    }
+    "3"
+    {
+        "HP_counter"        "phase3_health_main"
+        "HPbar_counter"     "phase3_healthcount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "10"
+        "HPbar_mode"        "1"
+        "CustomText"        "Grim Reaper"
+    }
+    "4"
+    {
+        "HP_counter"        "xz_havan_Health"
+        "HPinit_counter"    "xz_havan_HealthBackup"
+        "HPbar_counter"     "xz_havan_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Giant Havan"
+    }
+    "5"
+    {
+        "HP_counter"        "phase4_Health"
+        "HPinit_counter"    "phase4_HealthBackup"
+        "HPbar_counter"     "phase4_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "10"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Grim Reaper"
+    }
+}

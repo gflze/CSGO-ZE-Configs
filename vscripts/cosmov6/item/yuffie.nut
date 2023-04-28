@@ -116,9 +116,9 @@ function Tick()
 
 function SetDeath()
 {
-    UnFreeze();
     if(Owner != null && Owner.IsValid() && Owner.GetHealth() > 0)
     {
+        UnFreeze();
         EntFireByHandle(self,"Deactivate","",0,null,null);
         EntFireByHandle(Freeze, "ModifySpeed", "1", 0, Owner, Owner);
         EntFireByHandle(Owner, "SetDamageFilter", "", 0.00, null, null);
