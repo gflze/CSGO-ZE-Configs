@@ -3,7 +3,7 @@
 	"0"
 	{
 		"Type"	"breakable"
-		"HP_counter"		"dd_hp"
+		"BreakableName"		"dd_hp"
 		"CustomText"		"Captain Dickbeard"
 	}
 	"1"
