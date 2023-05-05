@@ -1,0 +1,29 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "2fbossmath"
+        "CustomText"        "White Core"
+    }
+    "1"
+    {
+        "HP_counter"        "3fbossmath"
+        "HPbar_counter"     "3fbossmath2"
+        "HPbar_min"         "0"
+        "HPbar_max"         "4"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Black Core"
+    }
+    "3"
+    {
+        "HP_counter"        "4fwhitecorehp"
+        "CustomText"        "White Core (Segments)"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "4fwhitecore"
+        "CustomText"        "White Core"
+    }
+}

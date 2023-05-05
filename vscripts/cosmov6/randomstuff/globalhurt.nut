@@ -1,8 +1,8 @@
 Time_KillZM <- 5;
-Time_KillZM = 0.00 + Time_KillZM; 
+Time_KillZM = 0.00 + Time_KillZM;
 
 Time_GlobalNuke <- 4;
-Time_GlobalNuke = 0.00 + Time_GlobalNuke; 
+Time_GlobalNuke = 0.00 + Time_GlobalNuke;
 
 PrintMessage <- false;
 ZombiesInside <- false;
@@ -20,13 +20,13 @@ function Start(time_nuke, time_zm)
     Time_GlobalNuke = time_nuke;
     Time_KillZM = time_zm;
     DEBUG_GlobalNuke = Time_GlobalNuke;
-    
+
     EntFireByHandle(self, "Disable", "", 0.00, null, null);
-    EntFireByHandle(self, "RunScriptCode", "StartTick();", Time_GlobalNuke, null, null); 
+    EntFireByHandle(self, "RunScriptCode", "StartTick();", Time_GlobalNuke, null, null);
 
     self.ConnectOutput("OnStartTouch", "Touch");
     self.ConnectOutput("OnEndTouch", "EndTouch");
-    
+
     EntFireByHandle(self, "Enable", "", 0.01, null, null);
 
     //Debug();
@@ -97,7 +97,7 @@ function Tick()
 
 function GetWinner()
 {
-    return PLAYERS_GIVE;
+    return PLAYERS_GIVE.slice();
 }
 
 
@@ -107,9 +107,9 @@ function Nuke(Team = 2)
     local g_round = Entities.FindByName(null, "round_end");
     local handle = null;
     local alive = false;
-    
+
     EntFire("zamok_ct", "RunScriptCode", "Stop()", 0);
-    
+
     if(Team == 2)
     {
         while((handle = Entities.FindByClassname(handle, "player")) != null)
@@ -127,12 +127,10 @@ function Nuke(Team = 2)
                 alive = true;
                 PLAYERS_GIVE.push(handle);
                 continue;
-            }  
-
+            }
             EntFireByHandle(handle, "SetDamageFilter", "", 0.9, null, null);
             EntFireByHandle(handle, "SetHealth", "-1", 2.0, null, null);
         }
-
     }
     else
     {
@@ -160,7 +158,7 @@ function Nuke(Team = 2)
         EntFireByHandle(g_round, "EndRound_CounterTerroristsWin", "6", 1.8, null, null);
         MainScript.GetScriptScope().Show_Credits_Passed();
     }
-    else 
+    else
     {
         EntFireByHandle(self, "FireUser4", "", 0.00, null, null);
         EntFireByHandle(g_round, "EndRound_TerroristsWin", "6", 1.8, null, null);
@@ -171,6 +169,13 @@ function Nuke(Team = 2)
 
 function Touch()
 {
+    for (local i = 0; i < PLAYERS.len(); i++)
+    {
+        if(PLAYERS[i] == activator)
+        {
+            return;
+        }
+    }
     PLAYERS.push(activator);
 }
 
@@ -195,30 +200,12 @@ function InArray(handle)
 
 function EndTouch()
 {
-    if(PLAYERS.len() > 0)
+    for (local i = 0; i < PLAYERS.len(); i++)
     {
-        for (local i = 0; i < PLAYERS.len(); i++)
+        if(PLAYERS[i] == activator)
         {
-            if(PLAYERS[i] == activator)
-            {
-                PLAYERS.remove(i);
-                return;
-            }
+            PLAYERS.remove(i);
+            return;
         }
-    }
-}
-
-function PrintArray()
-{
-    if(PLAYERS.len() > 0)
-    {
-        for (local i = 0; i < PLAYERS.len(); i++)
-        {
-           printl(PLAYERS[i]);
-        }
-    }
-    else
-    {
-        printl("CLEAR");
     }
 }
