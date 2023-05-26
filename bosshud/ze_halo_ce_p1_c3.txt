@@ -11,14 +11,20 @@
 		"CustomText"		"Arbiter"
 	}
 	"2"
-	{
-		"Type"				"breakable"
-		"CustomText"		"Shade Turret"
-		"BreakableName"		"skill_boss_shade_hitbox"
-	}
+    {
+        "Type"          "breakable"
+        "CustomText"    "Shade Turret"
+        "BreakableName" "skill_boss_shade_hitbox"
+    }
 	"3"
-	{
-		"HP_counter"		"b_lvl2_counter"
+    {
+        "HP_counter"		"b_lvl2_counter"
 		"CustomText"		"Guardian Elite"
-	}
+    }
+	"4"
+    {
+        "Type"          "breakable"
+        "CustomText"    "Final DropShip"
+        "BreakableName" "lvl2_final_train_2"
+    }
 }
