@@ -1,0 +1,39 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target"
+        "CustomText"        "Barrels"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target1"
+        "CustomText"        "Barrels"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target2"
+        "CustomText"        "Barrels"
+    }
+    "3"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target3"
+        "CustomText"        "Barrels"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target4"
+        "CustomText"        "Barrels"
+    }
+    "5"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "block_rock_1_target5"
+        "CustomText"        "Barrels"
+    }
+}
