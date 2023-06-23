@@ -38,4 +38,10 @@
 		"BreakableName"		"Diablo_Hitbox_3"
 		"CustomText"		"Diablo"
 	}
+	"7"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Kaleda_Hitbox"
+		"CustomText"		"Kaleda"
+	}
 }
