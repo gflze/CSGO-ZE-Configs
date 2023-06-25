@@ -1,7 +1,0 @@
-"math_counter"
-{
-	"0"
-	{
-		"HP_counter"		"st2_boss_hp_counter"
-	}
-}

@@ -1,0 +1,25 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "creta_Health"
+        "HPinit_counter"    "creta_HealthBackup"
+        "HPbar_counter"     "creta_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Creta"
+    }
+    "1"
+    {
+        "HP_counter"        "yzx_braha_Health"
+        "HPinit_counter"    "yzx_braha_HealthBackup"
+        "HPbar_counter"     "yzx_braha_HealthCount"
+        "HPbar_max"         "8"
+        "HPbar_min"         "0"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "2"
+        "CustomText"        "Boss"
+    }
+}

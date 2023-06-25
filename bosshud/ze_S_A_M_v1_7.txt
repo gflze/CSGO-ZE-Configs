@@ -45,7 +45,7 @@
 		"HPbar_max"		"9"
 		"HPbar_default"		"9"
 		"HPbar_mode"		"2"
-		"CustomText"		"Dragon"
+		"CustomText"		"Ice Dragon"
 	}
 	"7"
 	{
@@ -83,5 +83,15 @@
 	{
 		"HP_counter"		"lvl5_finalboss_hp"
 		"CustomText"		"Final Guardian"
+	{
+	"12"
+	}
+		"HP_counter"		"darklaser_hp_1"
+		"Customtext" 		"Dark Guardian 1"
+	}
+	"13"
+	{
+		"HP_counter"		"darklaser_hp_2"
+		"CustomText"		"Dark Guardian 2"
 	}
 }
