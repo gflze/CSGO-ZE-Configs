@@ -432,7 +432,7 @@
 	{
 		sm_gravity										1
 	}
-	"ze_shrek_swamp_v3"
+	"ze_shrek_ultimate_b3"
 	{
 		sv_enablebunnyhopping							1
 	}
