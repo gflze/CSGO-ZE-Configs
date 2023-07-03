@@ -3,9 +3,8 @@
 	"0"
 	{
 		"HP_counter" "boss2_counter"
-		"CustomText" "Elder Samurai"
+		"CustomText" "Yojimbo"
 	}
-	
 	"1"
 	{
 		"HP_counter" "boss1_counter"
