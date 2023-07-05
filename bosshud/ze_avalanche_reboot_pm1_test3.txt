@@ -20,7 +20,7 @@
 		"HPbar_max"		"999999"
 		"HPbar_default"		"10"
 		"HPbar_mode"		"1"
-		"CustomText"		"Synthetic Spider"
+		"CustomText"		"Crab Synth"
 	}
 	"2"
 	{
@@ -36,7 +36,6 @@
 	"3"
 	{
 		"HP_counter"		"bosslvl5_end_counter"
-		"HPbar_mode"		"1"
 		"CustomText"		"Helicopter Minigun"
 	}
 }
