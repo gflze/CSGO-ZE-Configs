@@ -1,0 +1,73 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre0"
+        "CustomText"        "Pillar"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre1"
+        "CustomText"        "Pillar"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre2"
+        "CustomText"        "Pillar"
+    }
+    "3"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre3"
+        "CustomText"        "Pillar"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre4"
+        "CustomText"        "Pillar"
+    }
+    "5"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre5"
+        "CustomText"        "Pillar"
+    }
+    "6"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre6"
+        "CustomText"        "Pillar"
+    }
+    "7"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_end1_ringbre7"
+        "CustomText"        "Pillar"
+    }
+    "8"
+    {
+        "HP_counter"        "boss1_mc1"
+        "HPinit_counter"    "boss1_mc0"
+        "HPbar_counter"     "boss1_mc2"
+        "HPbar_min"         "0"
+        "HPbar_max"         "16"
+        "HPbar_default"     "16"
+        "HPbar_mode"        "1"
+        "CustomText"        "Light & Shadow"
+    }
+    "9"
+    {
+        "HP_counter"        "boss2_mc1"
+        "CustomText"        "Shadow"
+    }
+    "10"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st2_start_bre0"
+        "CustomText"        "White Cube"
+    }
+}
