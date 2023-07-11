@@ -1,0 +1,13 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "neco_arc_health_counter"
+        "CustomText"        "Neco Arc"
+    }
+    "1"
+    {
+        "HP_counter"        "adam_boss_hp_counter"
+        "CustomText"        "Adam"
+    }
+}
