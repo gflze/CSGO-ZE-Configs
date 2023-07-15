@@ -1,0 +1,15 @@
+"math_counter"
+{
+    "0"
+    {
+      	"Type"				"breakable"
+		"BreakableName"		"zangeki_health"
+		"CustomText"		"Zangeki"
+    }
+    "1"
+    {
+       	"Type"				"breakable"
+		"BreakableName"		"boss_health"
+        "CustomText"        "Dragon"
+    }
+}

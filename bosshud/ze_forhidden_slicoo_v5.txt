@@ -1,0 +1,19 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "drg7_hp_2"
+        "HPbar_counter"     "drg7_hp_3"
+        "HPinit_counter"    "drg7_hp_1"
+        "HPbar_min"         "0"
+        "HPbar_max"         "5"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Dragon"
+    }
+    "1"
+    {
+        "HP_counter"        "drg7_atk_start_hp_counter"
+        "CustomText"        "Dragon Barrier"
+    }
+}

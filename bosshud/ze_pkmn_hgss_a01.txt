@@ -1,0 +1,74 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"Pidgeotto_HP"
+		"CustomText"		"Pidgeotto"
+	}
+	"1"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Route_30_Rattata1_Breakable"
+		"CustomText"		"Rattata"
+	}
+	"2"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Route_30_Rattata2_Breakable"
+		"CustomText"		"Rattata"
+	}
+	"3"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Route_30_Rattata3_Breakable_Breakable"
+		"CustomText"		"Rattata"
+	}
+	"4"
+	{
+		"HP_counter"		"Scyther_HP"
+		"CustomText"		"Scyther"
+	}
+	"5"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Mareep_breakable"
+		"CustomText"		"Mareep"
+	}
+	"6"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Goldeen_breakable"
+		"CustomText"		"Goldeen"
+	}
+	"7"
+	{
+		"HP_counter"		"Clefairy_HP"
+		"CustomText"		"Clefairy"
+	}
+	"8"
+	{
+		"HP_counter"		"Milktank_HP"
+		"CustomText"		"Miltank"
+	}
+	"9"
+	{
+		"HP_counter"		"Gengar_HP"
+		"CustomText"		"Gengar"
+	}
+	"10"
+	{
+		"Type"				"breakable"
+		"BreakableName"		"Milktank_MilkDrink_Breakable"
+		"CustomText"		"Milk Box"
+	}
+	"11"
+	{
+		"HP_counter"		"Poliwrath_hp"
+		"CustomText"		"Poliwrath"
+	}
+	"12"
+	{
+		"HP_counter"		"steelix_hp"
+		"CustomText"		"Steelix"
+	}
+}

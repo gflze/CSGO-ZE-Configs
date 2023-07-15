@@ -190,6 +190,9 @@ function AddCar()
     ent.__KeyValueFromInt("solid", 0);
     ent.__KeyValueFromInt("rendermode", 1);
     ent.__KeyValueFromInt("renderamt", 254);
+    ent.__KeyValueFromInt("disableshadows", 1);
+    ent.__KeyValueFromInt("disableflashlight", 1);
+    ent.__KeyValueFromInt("disableshadowdepth", 1);
     ent.SetModel("models/props/coop_kashbah/wheelchair/wheelchair.mdl");
     ent.SetOrigin(activator.GetOrigin() + activator.GetLeftVector() * -5);
     ent.SetAngles(0, activator.GetAngles().y, 0);
@@ -487,7 +490,7 @@ function GetPresent(Car_Class)
         Car_Class.SetAllowJump(true);
         Car_Class.SetAllowDriver(false);
 
-        Car_Class.SetTextMessage("Tilgep");
+        Car_Class.SetTextMessage("tilgep");
         Car_Class.SetTextColor(Vector(255,255,255));
         Car_Class.SetColor(Vector(255,255,255));
     }

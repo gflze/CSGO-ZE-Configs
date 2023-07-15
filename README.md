@@ -1,4 +1,4 @@
-# GFLClan CS:GO ZE Configs  
+# GFLClan CS:GO ZE Configs
 
 | Sync Status |
 |:-----------:|
@@ -17,7 +17,7 @@ For making any of these configs, you'll want a tool like [VIDE](http://www.riint
 
 ## BossHud
 
-Search for **math_counter**, **func_breakable**, **func_physbox** or **func_physbox_multiplayer** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
+Search for **math_counter**, **func_breakable**, **func_physbox**, **func_physbox_multiplayer**, **prop_physics**, or **prop_dynamic** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
 
 **__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use [this plugin](https://github.com/gflclan-cs-go-ze/bhud-debugger) with a test server to find out.
 
@@ -43,7 +43,7 @@ Search for **math_counter**, **func_breakable**, **func_physbox** or **func_phys
 	}
 	"1"
 	{
-		//func_breakable, func_physbox or func_physbox_multiplayer example
+		//other entities example
 		"Type"			"breakable"
 		"BreakableName"		"" //targetname of the func_breakable, func_physbox or func_physbox_multiplayer
 		"CustomText"		"" //custom name to show in the hud
@@ -151,7 +151,7 @@ ze_map_name.cfg
 
 ## MusicNames
 
-Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config. 
+Use the file name or file path of the music with their respective music name and add it as a keyvalue to the config.
 
 **Note:** You can specify only the file name to identify the music. However, if there are two files of the same name in different directories, you **must** specify the full path to differentiate between the two. See the example in the template below.
 
@@ -192,7 +192,6 @@ These are basic CS:GO config files containing cvars/commands that get executed o
 Some common GFL plugin cvars that you may want to adjust are listed below with their functionalities.
 ```
 mce_extend			//Number of extends for the map
-sm_enable_hurt_fix 1		//Enables the trigger_hurt stack damage fix as a quick fix for maps with the bug
 sm_thirdperson_enabled 0	//Disables third person for the map
 triggerpushlagfix_enable 0	//Disables the trigger_push lag fix, some maps don't play well with it
 zr_antiboost_enabled 0		//Disables the antiboost functionality that certain weapons have

@@ -3,18 +3,16 @@
 	"0"
 	{
 		"HP_counter"		"dragonlaserMATHcounter"
-		"CustomText"		"Boss"
+		"CustomText"		"Dragon"
 	}
-	
 	"1"
 	{
 		"HP_counter"		"Donat_boss_hpsum"
-		"CustomText"		"Donut"
+		"CustomText"		"Boobs"
 	}
-	
 	"2"
 	{
 		"HP_counter"		"rtvbossmath2"
-		"CustomText"		"RTV Boss"
+		"CustomText"		"Donut"
 	}
 }

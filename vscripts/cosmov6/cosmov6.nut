@@ -1,8 +1,10 @@
 ::MainScript <- self;
 ::MapName <- GetMapName();
-::ScriptVersion <- "27.01.2023 - 17:48";
+::ScriptVersion <- "21.04.2023 - 21:43";
+
 Stage <- -1;
-WARMUP_TIME <- 30.0;
+WARMUP_TIME <- 60.0;
+
 ::ITEM_GLOW <- false; 			// set false to disable this
 ::MAPPER_ENT_FIRE <- false; 		// set false to disable this
 ::ENT_WATCH_ENABLE <- false; 	// set false to disable this(change entwatch config!)
@@ -17,6 +19,8 @@ WARMUP_TIME <- 30.0;
 ::DODJE_ENABLE <- false;
 
 ::DisableHudHint <- true;
+
+::CLASSIC_MOD <- false;
 
 ::RED_CHEST_RECORD <- 0.00;
 ::RED_CHEST_RECORD_CLASS <- null;
@@ -33,8 +37,6 @@ WARMUP_TIME <- 30.0;
 ::EVENT_EXTRACHEST <- false;
 ::EVENT_EXTRACHEST_COUNT <- [2, 4];
 
-::g_iRoundStart_Time <- 0;
-
 ::g_bBossFight <- false;
 ::g_hFadeItem <- null;
 
@@ -42,7 +44,7 @@ WARMUP_TIME <- 30.0;
 
 function MapStart()
 {
-	g_iRoundStart_Time = Time();
+	Round_Start_Time = Time();
 
 	g_hFadeItem = Entities.CreateByClassname("env_fade");
 	g_hFadeItem.__KeyValueFromString("duration", "0.5");
@@ -135,13 +137,62 @@ function MapStart()
 	}
 	else
 	{
+		StartVote();
 		ShowItems();
 		PrintPerksAll();
 		ShowCredits();
 		RotateSkin();
 		ToggleParticles();
 
-		RandomEvent();
+		if (CLASSIC_MOD)
+		{
+			EntFire("cmd", "Command", "say **CLASSIC SETTINGS**", 2);
+		}
+		else
+		{
+			EntFire("cmd", "Command", "say **DEFAULT SETTINGS**", 2);
+		}
+
+		if (!CLASSIC_MOD)
+		{
+			RandomEvent();
+		}
+		else
+		{
+			EntFire("kojima*", "Kill", "", 0, null);
+
+			EntFire("shop_perk*", "Kill", "", 0, null);
+
+			EntFire("shop_item_particle*", "Kill", "", 0, null);
+
+			EntFire("shop_item_bio", "Kill", "", 0, null);
+			EntFire("shop_item_earth", "Kill", "", 0, null);
+			EntFire("shop_item_electro", "Kill", "", 0, null);
+			EntFire("shop_item_fire", "Kill", "", 0, null);
+			EntFire("shop_item_gravity", "Kill", "", 0, null);
+			EntFire("shop_item_heal", "Kill", "", 0, null);
+			EntFire("shop_item_ice", "Kill", "", 0, null);
+			EntFire("shop_item_poison", "Kill", "", 0, null);
+			EntFire("shop_item_summon", "Kill", "", 0, null);
+			EntFire("shop_item_wind", "Kill", "", 0, null);
+			EntFire("shop_item_ultimate", "Kill", "", 0, null);
+
+			EntFire("info_item_bio", "Kill", "", 0, null);
+			EntFire("info_item_earth", "Kill", "", 0, null);
+			EntFire("info_item_electro", "Kill", "", 0, null);
+			EntFire("info_item_fire", "Kill", "", 0, null);
+			EntFire("info_item_gravity", "Kill", "", 0, null);
+			EntFire("info_item_heal", "Kill", "", 0, null);
+			EntFire("info_item_ice", "Kill", "", 0, null);
+			EntFire("info_item_poison", "Kill", "", 0, null);
+			EntFire("info_item_summon", "Kill", "", 0, null);
+			EntFire("info_item_wind", "Kill", "", 0, null);
+			EntFire("info_item_ultimate", "Kill", "", 0, null);
+
+			EntFire("shop_stock", "Kill", "", 0, null);
+			EntFire("shop_reroll", "Kill", "", 0, null);
+			EntFire("shop_stock", "Kill", "", 0, null);
+		}
 
 		EntFire("Start_tp", "FireUser1", "", 3);
 		EntFire("shop_travel_trigger", "FireUser1", "", 0);
@@ -153,8 +204,8 @@ function MapStart()
 		EntFire("Spawn_Lift", "Open", "", 0);
 		EntFire("Spawn_Lift1", "Open", "", 0);
 
-
 		EntFireByHandle(self, "RunScriptCode", "NewStageGiveMoney();", 0.5, null, null);
+
 		if(Stage == 1)//normal
 		{
 			EntFire("Credits_Game_Text", "AddOutput", "message NORMAL MODE", 9.95);
@@ -376,131 +427,78 @@ function MapStart()
 			OpenSpawn(25);
 		}
 	}
+
 	CountStage();
 	//EntFireByHandle(self, "RunScriptCode", "SavePos();", 5, null, null);
 }
 
-function CountStage()
+Vote_Players <- [];
+Vote_Time <- 10;
+Vote_NeedPlayers <- 0.65;
+
+function StartVote()
 {
-	switch (Stage)
+	EntFire("Classic_Hbox", "SetDamageFilter", "", 0, null);
+	Vote_Players.clear();
+
+	Vote_Tick();
+
+	local i;
+	for (i = 0; i < Vote_Time; i++)
 	{
-		case 1:
-		{
-			Stage_Beat_Normal_Count++;
-			break;
-		}
-		case 2:
-		{
-			Stage_Beat_Hard_Count++;
-			break;
-		}
-		case 3:
-		{
-			Stage_Beat_ZM_Count++;
-			break;
-		}
-		case 4:
-		{
-			Stage_Beat_Extreme_Count++;
-			break;
-		}
-		case 4:
-		{
-			Stage_Beat_Inferno_Count++;
-			break;
-		}
+		EntFireByHandle(self, "RunScriptCode", "Vote_Tick()", 5.00 + i, null, null);
 	}
+	EntFireByHandle(self, "RunScriptCode", "Vote_End()", 6.00 + i, null, null);
 }
-function BeatStage()
+
+function Vote_Add()
 {
-	// local fTime = 120.0;
-	// ::Stage_Beat_Normal_Time = (fTime += RandomInt(0, 180));
-	// ::Stage_Beat_Normal_Count = RandomInt(0, 5);
-
-	// ::Stage_Beat_Hard_Time = (fTime += RandomInt(0, 180));
-	// ::Stage_Beat_Hard_Count = RandomInt(0, 5);
-
-	// ::Stage_Beat_ZM_Time = (fTime += RandomInt(0, 180));
-	// ::Stage_Beat_ZM_Count = RandomInt(0, 5);
-
-	// ::Stage_Beat_Extreme_Time = (fTime += RandomInt(0, 180));
-	// ::Stage_Beat_Extreme_Count = RandomInt(0, 5);
-
-	// ::Stage_Beat_Inferno_Time = (fTime += RandomInt(0, 180));
-	// ::Stage_Beat_Inferno_Count = RandomInt(0, 5);
-
-
-	if (Stage_Beat_Normal_Time != null)
+	foreach (player in Vote_Players)
 	{
-		local Time = Stage_Beat_Normal_Time - Map_Start_Time;
-
-		local text = "Normal mode был пройден за " +((Time / 60) % 60).tointeger() + " минут и " + (Time % 60).tointeger() + " секунд, с " + Stage_Beat_Normal_Count + " попытки";
-		ServerChat(Chat_pref + text)
-	}
-
-	if (Stage_Beat_Hard_Time != null)
-	{
-		local SumTime = Stage_Beat_Hard_Time - Map_Start_Time;
-		local szTime = "";
-		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
-
-		if (Stage_Beat_Normal_Time != null)
+		if (player == activator)
 		{
-			SumTime = Stage_Beat_Hard_Time - Stage_Beat_Normal_Time;
-			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+			return;
 		}
-
-		local text = "Hard mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Hard_Count + " попытки";
-		ServerChat(Chat_pref + text)
 	}
 
-	if (Stage_Beat_ZM_Time != null)
+	Vote_Players.push(activator);
+}
+
+function Vote_Tick()
+{
+	local TottalPlayers = (PLAYERS.len() * Vote_NeedPlayers).tointeger();
+	local VotePlayers = Vote_Players.len();
+
+	local szText = "";
+	if (CLASSIC_MOD)
 	{
-		local SumTime = Stage_Beat_ZM_Time - Map_Start_Time;
-		local szTime = "";
-		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
-
-		if (Stage_Beat_Hard_Time != null)
-		{
-			SumTime = Stage_Beat_ZM_Time - Stage_Beat_Hard_Time;
-			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
-		}
-
-		local text = "ZM mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_ZM_Count + " попытки";
-		ServerChat(Chat_pref + text)
+		szText = format("Default Settings %i/%i", VotePlayers, TottalPlayers);
 	}
-
-	if (Stage_Beat_Extreme_Time != null)
+	else
 	{
-		local SumTime = Stage_Beat_Extreme_Time - Map_Start_Time;
-		local szTime = "";
-		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
-
-		if (Stage_Beat_ZM_Time != null)
-		{
-			SumTime = Stage_Beat_Extreme_Time - Stage_Beat_ZM_Time;
-			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
-		}
-
-		local text = "Extreme mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Extreme_Count + " попытки";
-		ServerChat(Chat_pref + text)
+		szText = format("Classic Settings %i/%i", VotePlayers, TottalPlayers);
 	}
+	EntFire("Classic_text", "AddOutput", "message " + szText, 0, null);
+}
 
-	if (Stage_Beat_Inferno_Time != null)
+function Vote_End()
+{
+	local TottalPlayers = (PLAYERS.len() * Vote_NeedPlayers).tointeger();
+	local VotePlayers = Vote_Players.len();
+	if (VotePlayers == 0)
 	{
-		local SumTime = Stage_Beat_Inferno_Time - Map_Start_Time;
-		local szTime = "";
-		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
-
-		if (Stage_Beat_Extreme_Time != null)
-		{
-			SumTime = Stage_Beat_Inferno_Time - Stage_Beat_Extreme_Time;
-			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
-		}
-
-		local text = "Inferno mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Inferno_Count + " попытки";
-		ServerChat(Chat_pref + text)
+		return;
 	}
+	if (VotePlayers >= TottalPlayers)
+	{
+		CLASSIC_MOD = !CLASSIC_MOD;
+		local g_round = Entities.FindByName(null, "round_end");
+		if(g_round != null && g_round.IsValid())
+		{
+			EntFireByHandle(g_round, "EndRound_Draw", "3", 0, null, null);
+		}
+	}
+	EntFire("Classic_prop", "FireUser1", "", 0, null);
 }
 
 function Warmup_TICK()
@@ -598,7 +596,7 @@ function MapReset()
 
 function SpawnTrigger_Touch()
 {
-	if (g_iRoundStart_Time + 30 < Time())
+	if (Round_Start_Time + 30 < Time())
 	{
 		return;
 	}
@@ -616,6 +614,10 @@ function SpawnTrigger_Touch()
 	}
 
 	local hp = 100 + p.perkhp_hm_lvl * perkhp_hm_hpperlvl;
+	if (CLASSIC_MOD)
+	{
+		hp = 300;
+	}
 	activator.SetHealth(hp);
 	activator.SetMaxHealth(hp);
 
@@ -809,9 +811,8 @@ function NewStageGiveMoney()
 			else
 				p.PassIncome();
 		}
-
-		Winner_array.clear();
 	}
+	Winner_array.clear();
 }
 
 function InArray(array, value)
@@ -856,11 +857,14 @@ function SetVipSkin()
 
 function SetStage(i)
 {
+	BeatStage();
+
 	Stage = i.tointeger();
+
 	switch (Stage)
 	{
 		case 1:
-			STARTMONEY = 500
+			STARTMONEY = 50;
 			break;
 		case 2:
 			STARTMONEY = 100;
@@ -878,7 +882,6 @@ function SetStage(i)
 			STARTMONEY = 50;
 			break;
 	}
-	BeatStage();
 }
 
 function AdminSetStage(i)
@@ -888,10 +891,13 @@ function AdminSetStage(i)
 	{
 		EntFireByHandle(g_round, "EndRound_Draw", "3", 0, null, null);
 	}
+
 	Stage = i;
 }
+
 ///////////////////////////////////////////////////////////
 //events chat commands for admin room
+
 ::PLAYERS <- [];
 PLAYERS_SAVE <- [];
 PL_HANDLE <- [];
@@ -977,7 +983,13 @@ VIP_STEAM_ID <-[
 "STEAM_1:1:42492310",    //Wind of Liberty
 "STEAM_1:0:620260550",    //xz china nickname
 "STEAM_1:0:33069283",    //Datless
+
+"STEAM_1:0:141175718",   //priv ii
+"STEAM_1:1:33241040",    //Frygtlos
+
+"STEAM_1:0:423990492",   //dolo
 ];
+
 INVALID_STEAM_ID <- [
 "STEAM_1:0:56405847 27",    //Vishnya
 "STEAM_1:1:20206338 22",    //HaRyDe
@@ -1095,10 +1107,12 @@ perkhp_zm_cost <- 45;
 ::perkhp_zm_hpperlvl <- 4500;
 ::perkhp_zm_maxlvl <- 6; // 30000hp
 
+::MaxHPZombie <- 7500;
+::MaxHPZombie_Classic <- 15000;
+
 perkhp_hm_cost <- 30;
 ::perkhp_hm_maxlvl <- 10; // 300hp
 ::perkhp_hm_hpperlvl <- 25;
-
 
 perkhuckster_cost <- 50;
 ::perkhuckster_maxlvl <- 5; // 25%
@@ -1116,7 +1130,7 @@ perkspeed_cost <- 100;
 ::perkspeed_maxlvl <- 5; // 16%
 ::perkspeed_speedperlvl <- 3.2;
 
-perkluck_cost <- 100;
+perkluck_cost <- 150;
 ::perkluck_maxlvl <- 5; // 50% dont touch
 ::perkluck_luckperlvl <- 10;
 
@@ -1131,6 +1145,7 @@ perkresist_zm_cost <- 90;
 ::MaxLevel <- 3;
 
 ::Buff_cost <- 200;
+::Buff_Classic_cost <- 500;
 
 item_ammo_cost <- 65;
 item_ammo_count <- 0;
@@ -2391,7 +2406,7 @@ function BuyPerk()
 			if(activator.GetTeam() == 2 && activator.GetHealth() >= 600)
 			{
 				activator.SetHealth(activator.GetHealth() + perkhp_zm_hpperlvl);
-				activator.SetMaxHealth(7500 + pl.perkhp_zm_lvl * perkhp_zm_hpperlvl);
+				activator.SetMaxHealth(MaxHPZombie + pl.perkhp_zm_lvl * perkhp_zm_hpperlvl);
 			}
 
 			local text = "You upgraded Zombie HP perk to level "+pl.perkhp_zm_lvl+"\n\nYour balance "+pl.money+Money_pref;
@@ -2565,6 +2580,11 @@ function BuyBuff()
 	local name = caller.GetName();
 	local pl = GetPlayerClassByHandle(activator);
 	local needmoney = pl.GetNewPrice(Buff_cost);
+	if (CLASSIC_MOD)
+	{
+		needmoney = Buff_Classic_cost;
+	}
+
 	if(name.find("double") != null)
 	{
 		if(pl.money >= needmoney)
@@ -2990,6 +3010,12 @@ function InfoBuff()
 	local pl = GetPlayerClassByHandle(activator);
 	local bufftext = "";
 	local infotext = "";
+	local needmoney = pl.GetNewPrice(Buff_cost);
+	if (CLASSIC_MOD)
+	{
+		needmoney = Buff_Classic_cost;
+	}
+
 	if(pl.item_buff_radius)
 		bufftext += "r Support Materia is 'All'\nReplace for ";
 	else if(pl.item_buff_last)
@@ -3028,7 +3054,7 @@ function InfoBuff()
 		bufftext += "'All'";
 		infotext += "[+]Increases the radius of Materia\n[-]Reduces the power of Materia";
 	}
-	local text = "You"+bufftext+" will cost "+pl.GetNewPrice(Buff_cost)+Money_pref+"\n"+infotext+"\n\nYour balance "+pl.money+Money_pref;
+	local text = "You"+bufftext+" will cost "+needmoney+Money_pref+"\n"+infotext+"\n\nYour balance "+pl.money+Money_pref;
 	ShowShopText(activator, text);
 }
 
@@ -3185,8 +3211,14 @@ function PickUpItem()
 	{
 		lvl = pl.bio_lvl;
 		local item = GetItemPresetByName("bio");
-
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3225,7 +3257,14 @@ function PickUpItem()
 		lvl = pl.ice_lvl;
 		local item = GetItemPresetByName("ice");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3262,7 +3301,14 @@ function PickUpItem()
 		lvl = pl.poison_lvl;
 		local item = GetItemPresetByName("poison");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3300,7 +3346,14 @@ function PickUpItem()
 		lvl = pl.wind_lvl;
 		local item = GetItemPresetByName("wind");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3336,7 +3389,14 @@ function PickUpItem()
 		lvl = pl.summon_lvl;
 		local item = GetItemPresetByName("summon");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3371,7 +3431,14 @@ function PickUpItem()
 		lvl = pl.fire_lvl;
 		local item = GetItemPresetByName("fire");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 		for(local i = 1; i <= lvl;i++)
 		{
 			EntFire("item_star"+i+"_fire"+postfix.name, "Enable", "", 0, null);
@@ -3407,7 +3474,14 @@ function PickUpItem()
 		lvl = pl.electro_lvl;
 		local item = GetItemPresetByName("electro");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3443,7 +3517,14 @@ function PickUpItem()
 		lvl = pl.earth_lvl;
 		local item = GetItemPresetByName("earth");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3478,7 +3559,14 @@ function PickUpItem()
 		lvl = pl.gravity_lvl;
 		local item = GetItemPresetByName("gravity");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3514,7 +3602,14 @@ function PickUpItem()
 		lvl = pl.ultimate_lvl;
 		local item = GetItemPresetByName("ultimate");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3543,7 +3638,14 @@ function PickUpItem()
 		lvl = pl.heal_lvl;
 		local item = GetItemPresetByName("heal");
 
-		if(lvl == 0)lvl++;
+		if (CLASSIC_MOD)
+		{
+			lvl = 3;
+		}
+		if(lvl == 0)
+		{
+			lvl++;
+		}
 
 		for(local i = 1; i <= lvl;i++)
 		{
@@ -3864,6 +3966,10 @@ function UseUltimate()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local damage = item_preset.GetDamage((!pl.item_buff_radius) ? lvl : (lvl <= 1) ? 1 : lvl - 1);
@@ -3987,7 +4093,7 @@ function UltimateHurt(damage,radius,timehp,lvl)
 	Boss_Damage_Item("ultimate", lvl);
 
 	local h = null;
-	local AllZms = CountAlive(2);
+	local AllZms = CountAlive(2) - 1;
 	local UltimaZms = [];
 
 	while(null != (h = Entities.FindByClassnameWithin(h, "player", caller.GetOrigin(), radius)))
@@ -3997,33 +4103,50 @@ function UltimateHurt(damage,radius,timehp,lvl)
 			UltimaZms.push(h);
 		}
 	}
-	if (lvl >= 3)
+	if (UltimaZms.len() < 1)
 	{
-		damage = 99999;
+		return;
 	}
 
-	local ignore = true;
-	for(local i = 0; i < UltimaZms.len(); i++)
+	local ignore = (AllZms <= UltimaZms.len());
+
+	ignore = false;
+
+	local zombie_HP;
+	local proccent_damage;
+	foreach (zombie in UltimaZms)
 	{
-		local hhp = UltimaZms[i].GetHealth();
-		local ph = hhp * damage * 0.01;
-		//local p = GetPlayerClassByHandle(h);
-		local hp = hhp - ph - timehp;
-		if(hp <= 0)
+		if (ignore)
 		{
-			if(ignore)
-			{
-				ignore = false;
-				if(UltimaZms.len() == AllZms)
-				{
-					UltimaZms[i].SetOrigin(Vector(4480, -9984, -400));
-					continue;
-				}
-			}
-			EntFireByHandle(UltimaZms[i], "SetHealth", "-1", 0, null, null);
-			EntFireByHandle(UltimaZms[i], "SetDamageFilter", "", 0.00, null, null);
+			ignore = false;
+			zombie.SetOrigin(Vector(4480, -9984, -400));
+			continue;
 		}
-		else UltimaZms[i].SetHealth(hp);
+
+		if (lvl >= 3)
+		{
+			EntFireByHandle(zombie, "SetHealth", "0", 0, null, null);
+			EntFireByHandle(zombie, "SetDamageFilter", "", 0.00, null, null);
+			continue;
+		}
+
+		zombie_HP = zombie.GetMaxHealth();
+		if (zombie_HP < zombie.GetHealth())
+		{
+			zombie_HP = zombie.GetHealth();
+		}
+
+		proccent_damage = zombie_HP * damage * 0.01;
+		zombie_HP = zombie.GetHealth() - (proccent_damage + timehp);
+
+		if (zombie_HP > 0)
+		{
+			zombie.SetHealth(zombie_HP);
+			continue;
+		}
+
+		EntFireByHandle(zombie, "SetHealth", "0", 0, null, null);
+		EntFireByHandle(zombie, "SetDamageFilter", "", 0.00, null, null);
 	}
 }
 
@@ -4058,7 +4181,10 @@ function UseWind()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local radius = item_preset.GetRadius(lvl);
 	local worktime = item_preset.GetDuration(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4194,7 +4320,10 @@ function UseIce()
 	  lvl--;
 	if(lvl <= 0)
 	  lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local Worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local time = item_preset.GetTime((!pl.item_buff_radius) ? lvl : (lvl <= 1) ? 1 : lvl - 1);
@@ -4335,7 +4464,10 @@ function UseElectro()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4465,7 +4597,10 @@ function UseSummon()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local Worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4583,7 +4718,10 @@ function UseBio()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4718,7 +4856,10 @@ function UsePoison()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local Worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4850,7 +4991,10 @@ function UseEarth()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local worktime = item_preset.GetDuration(lvl);
 	local hp = item_preset.GetDamage(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -4964,7 +5108,10 @@ function UseGravity()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local worktime = item_preset.GetDuration(lvl);
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -5106,7 +5253,10 @@ function UseFire()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local radius = item_preset.GetRadius(lvl);
 	local cd = item_preset.GetCD(lvl);
 	local worktime = item_preset.GetDuration(lvl);
@@ -5245,7 +5395,10 @@ function UseHeal()
 		lvl--;
 	if(lvl <= 0)
 		lvl = 1;
-
+	if (CLASSIC_MOD)
+	{
+		lvl = 3;
+	}
 	local radius = item_preset.GetRadius(lvl);
 	local worktime = item_preset.GetDuration(lvl);
 	local cd = item_preset.GetCD(lvl);
@@ -5931,6 +6084,7 @@ function Boss_Damage_Item(item_name, lvl = 1)
 					damage = -3;
 				else if(lvl == 3)
 					damage = -4;
+				EntFire(temp, "RunScriptCode", "ItemEffect_Ultima()", 0.00);
 				EntFire(temp, "RunScriptCode", "PlaySound(Sound_Shit,1,1,0)", 0.00);
 			}
 			else if(item_name == "earth")
@@ -6221,13 +6375,16 @@ function ElseCheck()
 								pl.__KeyValueFromInt("rendermode", 1);
 								pl.__KeyValueFromInt("renderamt", (255 - (PLAYERS[i].perkchameleon_lvl * perkchameleon_chameleonperlvl)));
 							}
-							if(PLAYERS[i].perkhp_zm_lvl > 0)
-							{
-								local hp = 7500 + PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
 
-								pl.SetHealth(hp);
-								pl.SetMaxHealth(hp);
+							local hp = MaxHPZombie + PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
+							if (CLASSIC_MOD)
+							{
+								hp = MaxHPZombie_Classic;
 							}
+
+							pl.SetHealth(hp);
+							pl.SetMaxHealth(hp);
+
 							if(alldone)
 							{
 								local waffel_car = Entities.FindByName(null, "waffel_controller");
@@ -6236,6 +6393,21 @@ function ElseCheck()
 								PLAYERS[i].setPerks = true;
 								PLAYERS[i].invalid = false;
 							}
+						}
+						local MaxHP = MaxHPZombie;
+						if (CLASSIC_MOD)
+						{
+							MaxHP = MaxHPZombie_Classic;
+						}
+						else if(PLAYERS[i].perkhp_zm_lvl > 0)
+						{
+							MaxHP += PLAYERS[i].perkhp_zm_lvl * perkhp_zm_hpperlvl;
+						}
+
+						if (pl.GetHealth() > MaxHP)
+						{
+							pl.SetHealth(MaxHP);
+							pl.SetMaxHealth(MaxHP);
 						}
 					}
 				}
@@ -6455,7 +6627,7 @@ function PlayerDisconnect()
 	local pl = GetPlayerClassByUserID(userid);
 	if(pl != null)
 	{
-		if(pl.steamid == steamid && pl.steamid != "BOT" && pl.steamid != "none")
+		if(pl.steamid == steamid && pl.steamid != "BOT" && pl.steamid != "Reconnect PLS")
 		{
 			PLAYERS_SAVE.push(pl);
 		}
@@ -7399,6 +7571,12 @@ function Mine_Door3()
 		text = "The gates will open in 25 seconds"
 		ServerChat(Chat_pref + text, 0);
 
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 20);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 25);
+
 		text = "Hold this position until the door closes"
 		ServerChat(Chat_pref + text, 25);
 
@@ -7425,14 +7603,21 @@ function Mine_Door3()
 	{
 		local text;
 
-		text = "The gates will open in 25 seconds"
+		text = "The gates will open in 20 seconds"
 		ServerChat(Chat_pref + text, 0);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 15);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 20);
+
 		EntFire("Mine_Side_Door_Down", "open", "", 0);
 		EntFire("Mine_Side_Door_Up", "open", "", 0);
 		EntFire("Mine_Vent_Break", "Break", "", 10);
 		EntFire("Mine_Vent_Break_2", "Break", "", 10);
-		EntFire("Mine_Door3", "Open", "", 25);
-		EntFire("Mine_Door1", "Open", "", 25);
+		EntFire("Mine_Door3", "Open", "", 20);
+		EntFire("Mine_Door1", "Open", "", 20);
 		EntFire("Mine_Door5*", "Open", "", 31);
 
 		EntFire("Map_TD", "AddOutput", "origin -6142 732 1868", 39.5);
@@ -7501,7 +7686,7 @@ function Trigger_Inferno_Mine() //вход на 4 лвле
 	EntFire("Inferno_Mine_Door_Up", "open", "", 20);
 
 	EntFire("Map_TD", "AddOutput", "angles 0 180 0", 10);
-	EntFire("Map_TD", "AddOutput", "origin -5774 -3668 1889", 10);
+	// EntFire("Map_TD", "AddOutput", "origin -5774 -3668 1889", 10);
 
 	EntFire("temp_mine", "forcespawn", "", 0);
 	EntFire("Mine_Door4_Trigger", "Enable", "", 10);
@@ -7540,25 +7725,6 @@ function Mine_Door4() //большие ворота
 	}
 	if(Stage == 5)
 	{
-		text = "The gates will open in 25 seconds"
-		ServerChat(Chat_pref + text);
-
-		text = "5 SECONDS LEFT"
-		ServerChat(Chat_pref + text, 20);
-
-		text = "FALL BACK"
-		ServerChat(Chat_pref + text, 25);
-
-		EntFire("Mine_Door4", "Open", "", 25);
-		EntFire("Mine_Door4_Ladder", "Open", "", 27);
-	}
-}
-
-function Mine_Door7() //выход на 4 лвл
-{
-	local text;
-	if (Stage == 5)
-	{
 		text = "The gates will open in 15 seconds"
 		ServerChat(Chat_pref + text);
 
@@ -7568,8 +7734,27 @@ function Mine_Door7() //выход на 4 лвл
 		text = "FALL BACK"
 		ServerChat(Chat_pref + text, 15);
 
-		EntFire("Hard_Mine_Door_Down", "Open", "", 15);
-		EntFire("Hard_Mine_Door_Up", "Open", "", 15);
+		EntFire("Mine_Door4", "Open", "", 15);
+		EntFire("Mine_Door4_Ladder", "Open", "", 17);
+	}
+}
+
+function Mine_Door7() //выход на 4 лвл
+{
+	local text;
+	if (Stage == 5)
+	{
+		text = "The gates will open in 10 seconds"
+		ServerChat(Chat_pref + text);
+
+		text = "5 SECONDS LEFT"
+		ServerChat(Chat_pref + text, 5);
+
+		text = "FALL BACK"
+		ServerChat(Chat_pref + text, 10);
+
+		EntFire("Hard_Mine_Door_Down", "Open", "", 10);
+		EntFire("Hard_Mine_Door_Up", "Open", "", 10);
 	}
 	//15
 	//Hard_Mine_Door_Down
@@ -7947,9 +8132,9 @@ function Trigger_After_Boss_Skip_Second()
 		ServerChat(Chat_pref + text);
 
 		Winner_array = caller.GetScriptScope().GetWinner();
-		SetStage(2);
-
 		Stage_Beat_Normal_Time = Time();
+
+		SetStage(2);
 	}
 
 	function Trigger_Normal_Lose()
@@ -8114,10 +8299,9 @@ function Trigger_Hold_End()
 		ServerChat(Chat_pref + text);
 
 		Winner_array = caller.GetScriptScope().GetWinner();
+		Stage_Beat_Hard_Time = Time();
 
 		SetStage(3);
-
-		Stage_Beat_Hard_Time = Time();
 	}
 
 	function Trigger_Hard_Lose()
@@ -8258,9 +8442,8 @@ function Trigger_Hold_End()
 		EntFire("Nuke_fade", "Fade", "", 0.00);
 		EntFire("zamok_ct", "RunScriptCode", "Stop()", 0);
 
-		SetStage(4);
-
 		Stage_Beat_ZM_Time = Time();
+		SetStage(4);
 	}
 }
 //EXTREME
@@ -8374,15 +8557,20 @@ function Trigger_Win()
 			text = "EXTREME mode was beaten. Unlocking INFERNO mode"
 			ServerChat(Chat_pref + text);
 
-			SetStage(5);
 			Stage_Beat_Extreme_Time = Time();
+
+			SetStage(5);
+
 		}
 		else
 		{
 			text = "Inferno mode was beaten. Thanks for test Cosmo v6"
 			ServerChat(Chat_pref + text);
-			SetStage(3);
+
 			Stage_Beat_Inferno_Time = Time();
+
+			SetStage(3);
+
 //			EntFire("End_End", "RunScriptCode", "Start(4.0,0.0)", 0);
 		}
 		Winner_array = caller.GetScriptScope().GetWinner();
@@ -8511,7 +8699,7 @@ function EventInfo()
 
 	//test option
 	//EntFire("client", "command", "Retry", RandomFloat(0.00, 5.00), TEMP_HANDLE)
-	local p = Player(userid,"none","none");
+	local p = Player(userid,"Reconnect PLS","Reconnect PLS");
 	p.handle = TEMP_HANDLE;
 	if(AUTO_RETRY_ENABLE && client_ent != null && client_ent.IsValid()){EntFireByHandle(client_ent, "Command", "retry", 0.00, TEMP_HANDLE, null);}
 	PLAYERS.push(p);
@@ -8970,6 +9158,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.bio_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "ice")
 		{
@@ -8977,6 +9169,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.ice_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "poison")
 		{
@@ -8985,6 +9181,10 @@ constructor(_name)
 			if(this.lvl == 0)
 			{
 				this.lvl++;
+			}
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
 			}
 			this.count = this.lvl + ((_owner.item_buff_doble) ? 2 : 0);
 			this.maxcount = this.count;
@@ -8995,6 +9195,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.wind_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "summon")
 		{
@@ -9002,6 +9206,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.summon_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "fire")
 		{
@@ -9009,6 +9217,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.fire_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "electro")
 		{
@@ -9017,6 +9229,10 @@ constructor(_name)
 			if(this.lvl == 0)
 			{
 				this.lvl++;
+			}
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
 			}
 			this.count = this.lvl + ((_owner.item_buff_doble) ? 2 : 0);
 			this.maxcount = this.count;
@@ -9027,6 +9243,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.earth_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "gravity")
 		{
@@ -9034,6 +9254,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.gravity_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "ultimate")
 		{
@@ -9041,6 +9265,10 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.ultimate_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "heal")
 		{
@@ -9048,10 +9276,14 @@ constructor(_name)
 			this.count = (_owner.item_buff_doble) ? 2 : 1;
 			this.maxcount = this.count;
 			this.lvl = _owner.heal_lvl;
+			if (CLASSIC_MOD)
+			{
+				this.lvl = 3;
+			}
 		}
 		else if(this.name_right == "Red XIII")
 		{
-			_owner.Add_speed(0.1, true);
+			_owner.Add_speed(0.15, true);
 			EntFireByHandle(SpeedMod, "ModifySpeed", (_owner.ReturnSpeed()).tostring(), 0.1, _owner.handle, _owner.handle);
 		}
 
@@ -9392,7 +9624,18 @@ Item_Preset.push(obj) //phoenix
 
 ::ScoreBass <- 0;
 
-::Map_Start_Time <- null;
+::Round_Start_Time <- 0;
+::Round_End_Time <- 0;
+::Map_Start_Time <- 0;
+
+::Stage_Beat_Data <-
+[
+	{name = "Normal", besttime = 0, beat = false, counttobeat = 0}, //Normal
+	{name = "Hard", besttime = 0, beat = false, counttobeat = 0}, //Hard
+	{name = "ZM", besttime = 0, beat = false, counttobeat = 0}, //ZM
+	{name = "Extreme", besttime = 0, beat = false, counttobeat = 0}, //Extreme
+	{name = "Inferno", besttime = 0, beat = false, counttobeat = 0}, //Inferno
+]
 
 ::Stage_Beat_Normal_Time <- null;
 ::Stage_Beat_Normal_Count <- 0;
@@ -9408,6 +9651,142 @@ Item_Preset.push(obj) //phoenix
 
 ::Stage_Beat_Inferno_Time <- null;
 ::Stage_Beat_Inferno_Count <- 0;
+
+// ::Record_Stage_Beat_Data <- [
+
+// ]
+
+// ::Record_Stage_Beat_Normal_Time <- 9999;
+// ::Record_Stage_Beat_Hard_Time <- 9999;
+// ::Record_Stage_Beat_ZM_Time <- 9999;
+// ::Record_Stage_Beat_Extreme_Time <- 9999;
+// ::Record_Stage_Beat_Inferno_Time <- 9999;
+// ::Record_Map_Beat_Time <- 9999;
+
+// ::Record_Link <- "- - - - - -";
+
+function CountStage() //в начале раунда
+{
+	if (Stage >= 1 && Stage <= 5)
+	{
+		if (!Stage_Beat_Data[Stage-1].beat)
+		{
+			Stage_Beat_Data[Stage-1].counttobeat++;
+		}
+	}
+}
+
+function BeatStage() //До установки
+{
+	Round_End_Time = Time();
+
+	local iTime = Round_End_Time - Round_Start_Time;
+	if (Stage >= 1 && Stage <= 5)
+	{
+		if (!Stage_Beat_Data[Stage-1].beat)
+		{
+			Stage_Beat_Data[Stage-1].beat = true;
+			Stage_Beat_Data[Stage-1].besttime = iTime;
+		}
+		else
+		{
+			if (Stage_Beat_Data[Stage-1].besttime > iTime)
+			{
+				Stage_Beat_Data[Stage-1].besttime = iTime;
+			}
+		}
+	}
+	// local fTime = 120.0;
+	// ::Stage_Beat_Normal_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Normal_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Hard_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Hard_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_ZM_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_ZM_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Extreme_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Extreme_Count = RandomInt(0, 5);
+
+	// ::Stage_Beat_Inferno_Time = (fTime += RandomInt(0, 180));
+	// ::Stage_Beat_Inferno_Count = RandomInt(0, 5);
+
+	local text = "Map Start " + ((Map_Start_Time / 60) % 60).tointeger() + " минут и " + (Map_Start_Time % 60).tointeger() + " секунд";
+	ServerChat(Chat_pref + text)
+
+	if (Stage_Beat_Normal_Time != null)
+	{
+		local Time = Stage_Beat_Normal_Time - Map_Start_Time;
+
+		local text = "Normal mode был пройден за " + ((Time / 60) % 60).tointeger() + " минут и " + (Time % 60).tointeger() + " секунд, с " + Stage_Beat_Normal_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Hard_Time != null)
+	{
+		local SumTime = Stage_Beat_Hard_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " + ((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Normal_Time != null)
+		{
+			SumTime = Stage_Beat_Hard_Time - Stage_Beat_Normal_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Hard mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Hard_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_ZM_Time != null)
+	{
+		local SumTime = Stage_Beat_ZM_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Hard_Time != null)
+		{
+			SumTime = Stage_Beat_ZM_Time - Stage_Beat_Hard_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "ZM mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_ZM_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Extreme_Time != null)
+	{
+		local SumTime = Stage_Beat_Extreme_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_ZM_Time != null)
+		{
+			SumTime = Stage_Beat_Extreme_Time - Stage_Beat_ZM_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Extreme mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Extreme_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+
+	if (Stage_Beat_Inferno_Time != null)
+	{
+		local SumTime = Stage_Beat_Inferno_Time - Map_Start_Time;
+		local szTime = "";
+		local szSumTime = "(суммарно за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд)";
+
+		if (Stage_Beat_Extreme_Time != null)
+		{
+			SumTime = Stage_Beat_Inferno_Time - Stage_Beat_Extreme_Time;
+			szTime = "за " +((SumTime / 60) % 60).tointeger() + " минут и " + (SumTime % 60).tointeger() + " секунд";
+		}
+
+		local text = "Inferno mode был пройден " + szTime + "" + szSumTime + ", с " + Stage_Beat_Inferno_Count + " попытки";
+		ServerChat(Chat_pref + text)
+	}
+}
 
 
 ///////////////
