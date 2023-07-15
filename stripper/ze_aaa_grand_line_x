@@ -1,0 +1,12 @@
+modify:
+{
+	match:
+	{	
+		"classname" "logic_script"
+		"targetname" "aaa_magic"
+	}
+	replace:
+	{
+		"vscripts" "gfl/aaa_magic_fix.nut"
+	}
+}
