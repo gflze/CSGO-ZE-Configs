@@ -1,3 +1,9 @@
+//#####################################################################
+//Intended for use with GFL ze_aaa_grand_line_x stripper
+//Fixes script errors
+//Install as csgo/scripts/vscripts/gfl/aaa_magic_fix.nut
+//#####################################################################
+
 // *********** include vs_library stuff
 IncludeScript("vs_lib/vs_library");
 IncludeScript("vs_lib/vs_math");
