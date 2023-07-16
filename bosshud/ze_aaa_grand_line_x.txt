@@ -17,10 +17,11 @@
 		"Type"			"breakable"
 		"BreakableName"		"xanax_pill"
 		"CustomText"		"Xanax"
+	}
 	"3"
 	{
 		"Type"			"breakable"
 		"BreakableName"		"rootmars_phase_2_hitbox"
 		"CustomText"		"Rootmars"
-	}		
+	}
 }
