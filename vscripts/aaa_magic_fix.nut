@@ -1965,8 +1965,8 @@ function paper_airplane_stop(){
 
 function credits_cleanup(){
     lore(3,6);
-    EntFire("zm_tp_credits","Disable","",0,"");
-    EntFire("zm_tp_credits","Kill","",1,"");
+    EntFire("zm_tp_credits","Disable","",19,"");
+    EntFire("zm_tp_credits","Kill","",19.5,"");
     EntFire("zm_credits_cage","Break","",20,"");
     EntFire("theater_doors","Unlock","",5,"");
     EntFire("theater_doors","Open","",10,"");
@@ -2702,16 +2702,16 @@ function spider_materia_listen_stop(){
 //--------------------------------------------------------------------------------------------------------------------\\
 //DICKBEARD HP
 captain_dickbeard_hp<-10000;
-captain_dickbeard_hp_per_ct<-2000;
+captain_dickbeard_hp_per_ct<-2250;
 //ROOTMARS HP
-rootmars_phase_1_hp<-10000;
-rootmars_phase_1_hp_per_ct<-1000;
+rootmars_phase_1_hp<-20000;
+rootmars_phase_1_hp_per_ct<-4000;
 //XANAX HP
 xanax_hp<-50000;
-xanax_hp_per_ct<-2000;
+xanax_hp_per_ct<-4000;
 //ROOTMARS HP
 rootmars_phase_2_hp<-20000;
-rootmars_phase_2_hp_per_ct<-1000;
+rootmars_phase_2_hp_per_ct<-2000;
 //--------------------------------------------------------------------------------------------------------------------\\
 //--------------------------------------------------------------------------------------------------------------------\\
 //--------------------------------------------------------------------------------------------------------------------\\
