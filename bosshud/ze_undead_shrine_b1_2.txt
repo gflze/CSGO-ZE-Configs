@@ -1,0 +1,15 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lvl1_miniboss_npc_hitbox"
+        "CustomText"        "Boss"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "dragon_hitbox"
+        "CustomText"        "Dragon"
+    }
+}
