@@ -1,0 +1,24 @@
+"math_counter"
+{
+	"0"
+	{
+		"HP_counter"		"bosshp1"
+		"HPbar_counter"		"bosshp3"
+		"HPinit_counter"	"bosshp2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"999999"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+	}
+	"1"
+	{
+		"HP_counter"		"s36miniboss_crystal_counter1"
+		"HPbar_counter"		"s36miniboss_crystal_counter3"
+		"HPinit_counter"	"s36miniboss_crystal_counter2"
+		"HPbar_min"		"0"
+		"HPbar_max"		"999999"
+		"HPbar_default"		"10"
+		"HPbar_mode"		"1"
+		"CustomText"		"Crystal"
+	}
+}
