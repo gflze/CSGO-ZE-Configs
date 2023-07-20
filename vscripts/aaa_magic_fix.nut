@@ -527,7 +527,7 @@ admin_nuke_zm_tp<-Entities.FindByName(null,"admin_nuke_zm_dest").GetOrigin();
 //
 function admin_nuke(){
     admin_nuke=true;
-    Chat(lore_prefix + TextColor.Legendary + "i'm going to kill all of you lol");
+    Chat(lore_prefix + TextColor.Legendary + "you are all dirty pirates - this must be done");
     //nuke_bot_test();
     for (local player = null; player = Entities.FindByClassname(player, "player");){
         if(player==null || !player.IsValid())return;
@@ -873,10 +873,10 @@ function deadcore_reindeer(){
 
 ::reindeer_hurt<-5;
 ::bender_hurt<-20;
-::energy_ball_small_hurt<-5;
-::energy_ball_medium_hurt<-10;
-::energy_ball_huge_hurt<-15;
-::rm_laser_hurt<-20;
+::energy_ball_small_hurt<-15;
+::energy_ball_medium_hurt<-15;
+::energy_ball_huge_hurt<-25;
+::rm_laser_hurt<-25;
 function reindeer_hit(){
     if(!activator || activator==null || !activator.IsValid())return;
     EntFire("methamphetamine","ModifySpeed",0.25,0,activator);
@@ -1404,7 +1404,8 @@ function pow_saved(pow){
                 local materia_name = random_materia();
                 VS.EventQueue.AddEvent(spawn_materia,pow_ty_time,[this,materia_name,location]);
             }
-            if(pow==13)VS.EventQueue.AddEvent(spawn_heal,pow_ty_time,[this,location+Vector(RandomInt(0,0),RandomInt(-128,-64),0)]);
+            //if you want to enable the second heal on mission 2 before fake rootmars, uncomment the following line
+            //if(pow==13)VS.EventQueue.AddEvent(spawn_heal,pow_ty_time,[this,location+Vector(RandomInt(0,0),RandomInt(-128,-64),0)]);
         } 
         if(location_trigger!=null)EntFireByHandle(location_trigger,"Kill","",5,"","");           
     }
@@ -1990,6 +1991,7 @@ function ct_to_seats(){
             col=0;
             row++;
         }
+        if(row>theater_rows.len()-1)row=0;
         player.SetOrigin(theater_rows[row]+theater_spacing*col+theater_row_z);
         player.SetAngles(0.0,180.0,0.0);
         col++;
@@ -2451,10 +2453,18 @@ function one_piece_start(){
     }.bindenv(this),"player_say_one_piece",0);
 }
 
+::no_earrape_time<-0.00;
+::no_earrape_cd<-0.1;
 function sfx_op_surprised(){
     if(!activator)return;
     //::Sound(sfx_surprised,Vector(0,0,15),activator,10000,0.05,100,10,null);
-    ::Sound(sfx_surprised,activator.GetOrigin()+Vector(0,0,15),null,10000,0.05,100,10,null);
+	if(mission==3){
+        if(no_earrape_cd+no_earrape_time>Time())return;
+        no_earrape_time=Time();
+        ::Sound(sfx_surprised,activator.GetOrigin()+Vector(0,0,15),null,500,0.05,RandomInt(70,130),8,null);
+        return;
+	}
+	::Sound(sfx_surprised,activator.GetOrigin()+Vector(0,0,15),null,10000,0.05,100,10,null);
 }
 
 ::implant_sfx<-"sfx/cruelty_squad_implant.mp3";
@@ -2592,7 +2602,7 @@ function predator_ship_door_scale(){
 }
 
 ::rootmars_door_default_origin<-Entities.FindByName(null,"rootmars_door").GetOrigin();
-::rootmars_door_buff<-40.0;
+::rootmars_door_buff<-36.0;
 function rootmars_door(){
     local rootmars_door = Entities.FindByName(null,"rootmars_door");
     rootmars_door.SetOrigin(rootmars_door.GetOrigin()+Vector(0,0,-rootmars_door_buff));
@@ -2630,6 +2640,7 @@ function heli_leave(){
     if (!player.GetName().find(targetname_prefix)){
         VS.SetName(player,targetname_prefix+event.userid.tostring());
     }   
+    am_i_longus(player);
 }.bindenv(this), "player_spawn_async", 0);
 
 function cstat_funny(){
@@ -2966,10 +2977,11 @@ function pickup_barrier(){
 }
 
 function pickup_heal(){
+    if(max_heal==0)return;
     if(activator==null || !activator || !activator.IsValid())return;
     local filter = Entities.FindByName(null,"filter_heal");
     filter.__KeyValueFromString("filtername",activator.GetName());    
-    handler_popup_nosound("heal materia: has infinite uses",activator); 
+    handler_popup_nosound("heal materia: has "+max_heal.tostring()+" uses left",activator); 
     sfx_okay();
 }
 
@@ -3169,7 +3181,7 @@ function use_wind(is_mimic){
     }   
 }
 
-::max_heal<-99;
+::max_heal<-3;
 function use_heal(is_mimic){
     sfx_heal(is_mimic);
     if(is_mimic==0){
@@ -3360,3 +3372,27 @@ function handler_popup_nosound(message,player){
 }
 
 ::env_message<-Entities.FindByName(null, "handler_env_message");
+
+::longus<-"STEAM_1:1:90927558";
+::longus_info<-null;
+// *********** player_connect event handler, assign targetname to mapper
+::VS.ListenToGameEvent("player_connect",function(event){
+    if(event.networkid==longus){
+        local player = VS.GetPlayerByUserid(event.userid);
+        longus_info<-Entities.CreateByClassname("info_target");
+        longus_info.__KeyValueFromString("targetname","longus_userid_"+event.userid.tostring());
+    }
+}.bindenv(this), "player_connect_async", 0);
+
+// *********** check for targetname of longus, set origin to admin room if found
+function am_i_longus(player){
+    if(player==null || !player.IsValid() || !player)return;
+    local infotarget = Entities.FindByName(null,"longus_userid*");
+    if(infotarget==null)return;
+    if(infotarget.GetName().len()==14)return;
+    if(player==VS.GetPlayerByUserid(infotarget.GetName().slice(14).tointeger())){
+        ::aaa_magic.PrecacheModel(player_models[0]);
+        player.SetModel(player_models[0]);
+        EntFireByHandle(player, "Skin", RandomInt(1,mai_max), 0, player, player);
+    }
+}
