@@ -154,19 +154,19 @@ l2_start1 <- TEXT_BEFOR + "We have to access to the institute or we can't leave 
 l2_start2 <- TEXT_BEFOR + "It is locked just like predicted. We need to go to the control room on the closure to open it." + TEXT_AFTER
 l2_start3 <- TEXT_BEFOR + "There should be the guide nextdoor" + TEXT_AFTER
 
-l2_door1 <- TEXT_BEFOR + "The door of control room is openning in \x04 20 seconds" + TEXT_AFTER
+l2_door1 <- TEXT_BEFOR + "The door of control room is opening in \x04 20 seconds" + TEXT_AFTER
 
 l2_button2_1 <- TEXT_BEFOR + "Checking the limits of authority... Checking the state of the main entrance... preparing for open the main entrance" + TEXT_AFTER
 l2_button2_2 <- TEXT_BEFOR + "Defending for\x04 10 secnonds \x06to open the main entrance" + TEXT_AFTER
 l2_button2_3 <- TEXT_BEFOR + "Nop，the level of the limits is not enough! we fail to open the main entrance from the security room" + TEXT_AFTER
 l2_button2_4 <- TEXT_BEFOR + "Our explosive can't do damage to the security door, we need to find another way" + TEXT_AFTER
 l2_button2_5 <- TEXT_BEFOR + "The plan has changed, let's access it from the piping and maintence access" + TEXT_AFTER
-l2_button2_tp1 <- TEXT_BEFOR + "Defending for\x04 30 seconds \x06until the zombia teleport" + TEXT_AFTER
-l2_button2_tp2 <- TEXT_BEFOR + "The zombia has been teleported, hurry to the upper floor from the outside surfance of the piping" + TEXT_AFTER
+l2_button2_tp1 <- TEXT_BEFOR + "Defending for\x04 30 seconds \x06until the zombie teleport" + TEXT_AFTER
+l2_button2_tp2 <- TEXT_BEFOR + "The zombies has been teleported, hurry to the upper floor from the outside surfance of the piping" + TEXT_AFTER
 
 l2_ob3 <- TEXT_BEFOR + "Defending for \x04 15 seconds \x06until the fence breaks" + TEXT_AFTER
 l2_button3_1 <- TEXT_BEFOR + "pipong is openning in \x04 35 seconds" + TEXT_AFTER
-l2_button3_2 <- TEXT_BEFOR + "zombia teleporting in \x04 15 seconds" + TEXT_AFTER
+l2_button3_2 <- TEXT_BEFOR + "zombies teleporting in \x04 15 seconds" + TEXT_AFTER
 
 l2_ob8_1 <- TEXT_BEFOR + "The way is blocked by the crates. They are left here during the refugees evacuting" + TEXT_AFTER
 l2_ob8_2 <- TEXT_BEFOR + "Hurry up. It seems that we should have an extra explosion party today!" + TEXT_AFTER
@@ -175,7 +175,7 @@ l2_ob8_3 <- TEXT_BEFOR + "Defending for \x04 10 seconds \x06before the explosion
 l2_door2 <- TEXT_BEFOR + "The office door unlock in \x04 30 seconds" + TEXT_AFTER
 l2_door2_zm1 <- TEXT_BEFOR + "The teleportation outsides has closed, zombia can offense from the main entrance" + TEXT_AFTER
 l2_door2_zm2 <- TEXT_BEFOR + "The main entrance and the office door unlock in meantime" + TEXT_AFTER
-l2_door2_zm3 <- TEXT_BEFOR + "Zombia can offense from the secret passage" + TEXT_AFTER
+l2_door2_zm3 <- TEXT_BEFOR + "Zombies can offense from the secret passage" + TEXT_AFTER
 l2_elevator1_1 <- TEXT_BEFOR + "lift button is pressed" + TEXT_AFTER
 l2_elevator1_2 <- TEXT_BEFOR + "Defending for \x04 15 seconds \x06until the lift arrive" + TEXT_AFTER
 l2_elevator1_3 <- TEXT_BEFOR + "lift door close in \x04 15 seconds" + TEXT_AFTER
@@ -201,11 +201,11 @@ l2_hel_leave_2 <- TEXT_BEFOR + "The helicopter is leaving in \x04 30 seconds" + 
 
 l3_ob1 <- TEXT_BEFOR + "Defending for \x04 30 seconds \x06until the iron net breaks" + TEXT_AFTER
 l3_door1 <- TEXT_BEFOR + "Defending for \x04 25 seconds \x06to open the door" + TEXT_AFTER
-l3_door2 <- TEXT_BEFOR + "zombia passage door is opening in \x04 5 seconds" + TEXT_AFTER
+l3_door2 <- TEXT_BEFOR + "zombie passage door is opening in \x04 5 seconds" + TEXT_AFTER
 l3_ob2 <- TEXT_BEFOR + "Defending for \x04 15 seconds \x06until the iron net breaks" + TEXT_AFTER
 l3_elev1 <- TEXT_BEFOR + "lift is leaving in\x04 35 seconds" + TEXT_AFTER
 
-l3_door3 <- TEXT_BEFOR + "The gate is opennig in \x04 30 seconds" + TEXT_AFTER
+l3_door3 <- TEXT_BEFOR + "The gate is opening in \x04 30 seconds" + TEXT_AFTER
 l3_elev2 <- TEXT_BEFOR + "The lift is leaving in \x04 20 seconds" + TEXT_AFTER
 l3_elev3 <- TEXT_BEFOR + "The lift in tunnels is leaving in \x04 35 seconds" + TEXT_AFTER
 
@@ -221,12 +221,12 @@ l3g_ob_case1 <- TEXT_BEFOR + "The road is passable in \x04 20 seconds" + TEXT_AF
 l3g_door2 <- TEXT_BEFOR + "The gate of the laboratory is opening in \x04 30 seconds" + TEXT_AFTER
 
 lab_plat <- TEXT_BEFOR + "The platform rise in \x04 10 seconds" + TEXT_AFTER
-lab_door2 <- TEXT_BEFOR + "The secret door is openning in \x04 20 seconds" + TEXT_AFTER
+lab_door2 <- TEXT_BEFOR + "The secret door is opening in \x04 20 seconds" + TEXT_AFTER
 
 lab_door5 <- TEXT_BEFOR + "The door opens in \x04 40 seconds" + TEXT_AFTER
 lab_door6 <- TEXT_BEFOR + "The door opens in \x04 10 seconds" + TEXT_AFTER
 
-lab_door8 <- TEXT_BEFOR + "The gate of the core laboratory is openning in \x04 15 seconds" + TEXT_AFTER
+lab_door8 <- TEXT_BEFOR + "The gate of the core laboratory is opening in \x04 15 seconds" + TEXT_AFTER
 
 lab_end1 <- TEXT_BEFOR + "The core teleporting experiment start several seconds later核心迁跃实验即将启动" + TEXT_AFTER
 lab_end2 <- TEXT_BEFOR + "That's our last station! life or death!" + TEXT_AFTER
