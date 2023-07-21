@@ -1,0 +1,21 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"ph_item_balrog_hp"
+		"CustomText"		"Balrog"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"ph_item_goliath_2"
+		"CustomText"		"White Knight"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"ph_item_gandalf_15"
+		"CustomText"		"Gandalf"
+	}
+}
