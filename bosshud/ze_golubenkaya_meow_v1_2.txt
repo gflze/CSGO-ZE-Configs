@@ -1,0 +1,30 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "catnpc_hp"
+        "CustomText"        "Cat"
+    }
+    "1"
+    {
+        "HP_counter"        "kurumi_counter"
+        "HPinit_counter"    "kurumi_hp_backup"
+        "HPbar_counter"     "kurumi_hp_iterations"
+        "HPbar_max"         "5"
+        "HPbar_min"         "0"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Kurumi"
+    }
+    "2"
+    {
+        "HP_counter"        "boss_counter"
+        "HPinit_counter"    "boss_hp_backup"
+        "HPbar_counter"     "boss_hp_iterations"
+        "HPbar_max"         "5"
+        "HPbar_min"         "0"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Boss"
+    }
+}

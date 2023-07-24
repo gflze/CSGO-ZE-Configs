@@ -1,0 +1,81 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"nidoqueen"
+		"CustomText"		"Nidoqueen"
+	}
+	"1"
+	{
+		"HP_counter"		"Regice_HP"
+		"CustomText"		"Regice"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"kirlia"
+		"CustomText"		"Kirlia"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"Crobat"
+		"CustomText"		"Crobat"
+	}
+	"4"
+	{
+		"HP_counter"		"groudonhp"
+		"CustomText"		"Groudon"
+	}
+	"5"
+	{
+		"HP_counter"		"finalkirlia_hp"
+		"CustomText"		"Enraged Kirlia"
+	}
+	"6"
+	{
+		"HP_counter"		"PrimalGroudonHP"
+		"CustomText"		"Primal Groudon"
+	}
+	"7"
+	{
+		"HP_counter"		"skuntankhealth"
+		"CustomText"		"Skuntank"
+	}
+	"8"
+	{
+		"HP_counter"		"puruglyhealth"
+		"CustomText"		"Purugly"
+	}
+	"9"
+	{
+		"HP_counter"		"honchkrowhp"
+		"CustomText"		"Honchkrow"
+	}
+	"10"
+	{
+		"HP_counter"		"crobatcyrushp"
+		"CustomText"		"Crobat"
+	}
+	"11"
+	{
+		"HP_counter"		"weavilehp"
+		"CustomText"		"Weavile"
+	}
+	"12"
+	{
+		"HP_counter"		"griatinahp"
+		"CustomText"		"Giratina"
+	}
+	"13"
+	{
+		"HP_counter"		"crobatfinal2_health"
+		"CustomText"		"Crobat"
+	}
+	"14"
+	{
+		"HP_counter"		"weavilefinalhp"
+		"CustomText"		"Weavile"
+	}
+}
