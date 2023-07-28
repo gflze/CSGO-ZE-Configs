@@ -25,6 +25,6 @@
         "HPbar_min"         "0"
         "HPbar_default"     "5"
         "HPbar_mode"        "1"
-        "CustomText"        "Boss"
+        "CustomText"        "Ninja Cat"
     }
 }
