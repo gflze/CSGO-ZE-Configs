@@ -569,19 +569,49 @@ function PickLastManStanding()
 				break;
 			}
 
-		local hPlayer;
+		local hExit = Entities.FindByName(null, "fuckedoffzombies"), hPlayer;
 
 		while (hPlayer = Entities.FindByClassname(hPlayer, "player"))
-			if (hPlayer != hSoloPlayer)
-				EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+		{
+			if (hPlayer.GetHealth())
+			{
+				if (hPlayer.GetTeam() == 3)
+				{
+					if (hPlayer != hSoloPlayer)
+						EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+				}
+
+				else
+				{
+					hPlayer.SetOrigin(hExit.GetOrigin());
+					hPlayer.SetAngles(0, hExit.GetAngles().y, 0);
+					hPlayer.SetVelocity(Vector());
+				}
+			}
+		}
 
 		hPlayer = null;
 
 		while (hPlayer = Entities.FindByClassname(hPlayer, "cs_bot"))
-			if (hPlayer != hSoloPlayer)
-				EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+		{
+			if (hPlayer.GetHealth())
+			{
+				if (hPlayer.GetTeam() == 3)
+				{
+					if (hPlayer != hSoloPlayer)
+						EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+				}
 
-		local hExits = [], hExit;
+				else
+				{
+					hPlayer.SetOrigin(hExit.GetOrigin());
+					hPlayer.SetAngles(0, hExit.GetAngles().y, 0);
+					hPlayer.SetVelocity(Vector());
+				}
+			}
+		}
+
+		local hExits = []
 
 		while (hExit = Entities.FindByName(hExit, "last_man_standing_tpdest"))
 			hExits.push(hExit);
@@ -600,12 +630,14 @@ function PickLastManStanding()
 		local hPlayer;
 
 		while (hPlayer = Entities.FindByClassname(hPlayer, "player"))
-			EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+			if (hPlayer.GetTeam() == 3 && hPlayer.GetHealth())
+				EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
 
 		hPlayer = null;
 
 		while (hPlayer = Entities.FindByClassname(hPlayer, "cs_bot"))
-			EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+			if (hPlayer.GetTeam() == 3 && hPlayer.GetHealth())
+				EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
 	}
 }
 
