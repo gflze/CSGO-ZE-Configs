@@ -871,8 +871,8 @@ function deadcore_reindeer(){
     })
 }
 
-::reindeer_hurt<-5;
-::bender_hurt<-20;
+::reindeer_hurt<-10;
+::bender_hurt<-25;
 ::energy_ball_small_hurt<-15;
 ::energy_ball_medium_hurt<-15;
 ::energy_ball_huge_hurt<-25;
@@ -1259,7 +1259,10 @@ function dd_vagina(){
     local vagina = Entities.FindByName(null, "dd_attack_vagina");
     local deadcore_platform = 1200;
     local cool_vector = dd_hitbox_cool + Vector(RandomInt(-deadcore_platform/2,deadcore_platform/2),0,488);
-    vagina.SpawnEntityAtLocation(cool_vector, Vector(0,0,0));
+	//disable the vagina because it's not working for whatever reason, can't be arsed to fix
+    //vagina.SpawnEntityAtLocation(cool_vector, Vector(0,0,0));
+    dd_baby();
+    //double baby to compensate
     dd_baby();
 }
 
@@ -1314,6 +1317,8 @@ function pow_spawns(mission){
             local pow_spawn = null;
             local pow_trigger = null;
             local pow_sprite = null;
+			//disable one of the heal spawns after the boss before the xanax... the one on the right side ujel
+			if(pows==16)continue;
             pow_spawn = Entities.FindByName(null,"pow_spawn");
             pow_spawn.SpawnEntityAtLocation(cool_vector,Vector(0,RandomInt(0,360),0));
             pow_trigger = Entities.FindByName(null,"pow_trigger");
@@ -1591,7 +1596,7 @@ small_ball<-Entities.FindByName(null,"maker_energy_ball_small");
 huge_ball<-Entities.FindByName(null,"maker_energy_ball_huge");
 ball_start<-Entities.FindByName(null,"rootmars_phase_1_attack");
 ::rmp1_small_timer<-null;
-::rmp1_small_ball_count<-3;
+::rmp1_small_ball_count<-8;
 function rmp1_small_start(){
     rmp1_small_timer<-VS.Timer(false,0.75,function(){
         Sound("sfx/mslug3_ball_charge_small.mp3",ball_start.GetOrigin(),null,0,0.05,100,10,null);  
@@ -1622,14 +1627,47 @@ function rmp1_small_start(){
     })
 }
 
+::rmp1_extra_count<-8;
+function rmp1_extra(){
+    Sound("sfx/mslug3_ball_charge_small.mp3",ball_start.GetOrigin(),null,0,0.05,100,10,null);  
+    local target = null;
+    local plist = [];
+    for (local player = null; player = Entities.FindByClassname(player, "player");){
+        if(player!=null && player.IsValid() && player.GetTeam()==3 && player.GetHealth()>0){
+            plist.push(player);
+        }
+    }
+    if(plist.len() > 0){
+        for(local i=0; i<rmp1_extra_count;){
+            if(plist.len() == 1){
+                i=rmp1_extra_count;
+                target = plist[0];
+            }
+            else target = plist[RandomInt(0,plist.len()-1)];
+            if(target != null && target.IsValid() && target.GetHealth()>0)
+            {
+                local vector_to = target.GetOrigin();
+                local vector_from = ball_start.GetOrigin();
+                local ball_angles = VS.GetAngle(vector_from, vector_to);
+                small_ball.SpawnEntityAtLocation(vector_from, ball_angles);
+            }
+            i++;
+        }
+    }
+}
 
 ::rmp1_huge_timer<-null;
-::rmp1_huge_skip<-4;
+//keep these two values the same
+::rmp1_huge_skip<-5;
+::rmp1_huge_skip_set<-5;
 function rmp1_huge_start(){
     rmp1_huge_timer<-VS.Timer(false,2.325,function(){
         rmp1_huge_skip--;
         if(rmp1_huge_skip==0){
-            rmp1_huge_skip=4;
+            rmp1_huge_skip=rmp1_huge_skip_set;
+            rmp1_extra();
+            VS.EventQueue.AddEvent(rmp1_extra,0.8,this);
+            VS.EventQueue.AddEvent(rmp1_extra,1.6,this);
             return;
         }
         Sound("sfx/mslug3_ball_charge_huge.mp3",ball_start.GetOrigin(),null,0,0.05,100,10,null);  
@@ -1761,7 +1799,7 @@ function mako_infusion_respawn(){
 }
 
 function thighspider_start(){
-    thighspider_timer<-VS.Timer(false,0.75,function(){
+    thighspider_timer<-VS.Timer(false,0.5,function(){
         if(thighspider_max>thighspider_count){
             local location = rugname_chambers[RandomInt(0,rugname_chambers.len()-1)];
             ::TRAPS.thigh_spider.Spawn(location);
