@@ -111,36 +111,7 @@ function RestartParticle()
 	EntFire("waterfall_3","Start","",5.00,null);
 	EntFire("cliff_push","Stop","",3.00,null);
 	EntFire("cliff_push","Start","",5.00,null);
-	EntFire("heal_eff","DestroyImmediately","",3.00,null);
-	EntFire("heal_eff","Start","",5.00,null);
-   	EntFire("ammo_eff","DestroyImmediately","",3.00,null);
-	EntFire("ammo_eff","Start","",5.00,null);
-	EntFire("zgravity_eff","DestroyImmediately","",3.00,null);
-	EntFire("zgravity_eff","Start","",5.00,null);
-   	EntFire("zheal_eff","DestroyImmediately","",3.00,null);
-	EntFire("zheal_eff","Start","",5.00,null);
-	EntFire("beam_eff","DestroyImmediately","",3.00,null);
-	EntFire("beam_eff","Start","",5.00,null);
-	EntFire("wind_eff","DestroyImmediately","",3.00,null);
-	EntFire("wind_eff","Start","",5.00,null);
-	EntFire("poison_eff","DestroyImmediately","",3.00,null);
-	EntFire("poison_eff","Start","",5.00,null);
-	EntFire("firet_eff","DestroyImmediately","",3.00,null);
-	EntFire("firet_eff","Start","",5.00,null);
-	EntFire("icet_eff","DestroyImmediately","",3.00,null);
-	EntFire("icet_eff","Start","",5.00,null);
-   	EntFire("elect_eff","DestroyImmediately","",3.00,null);
-	EntFire("elect-eff","Start","",5.00,null);
-	EntFire("poisont_eff","DestroyImmediately","",3.00,null);
-	EntFire("poisont_eff","Start","",5.00,null);
-   	EntFire("gravityt_eff","DestroyImmediately","",3.00,null);
-	EntFire("gravityt_eff","Start","",5.00,null);
-	EntFire("eartht_eff","DestroyImmediately","",3.00,null);
-	EntFire("eartht_eff","Start","",5.00,null);
-   	EntFire("watert_eff","DestroyImmediately","",3.00,null);
-	EntFire("watert_eff","Start","",5.00,null);
-	EntFire("pusht_eff","DestroyImmediately","",3.00,null);
-	EntFire("pusht_eff","Start","",5.00,null);
+
 	
 }
 
