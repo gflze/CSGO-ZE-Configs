@@ -1,0 +1,51 @@
+"math_counter"
+{
+    "0"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv4_boss_hitbox"
+        "CustomText"        "Titan"
+    }
+    "1"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv3_boss_hitbox"
+        "CustomText"        "Titan"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv2_npc3_break"
+        "CustomText"        "Titan"
+    }
+    "3"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv2_npc2_break"
+        "CustomText"        "Titan"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv2_npc1_break"
+        "CustomText"        "Titan"
+    }
+    "5"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv1_npc2_break"
+        "CustomText"        "Titan"
+    }
+    "6"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv1_npc3_break"
+        "CustomText"        "Titan"
+    }
+    "7"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "lv1_npc1_break"
+        "CustomText"        "Titan"
+    }
+}
