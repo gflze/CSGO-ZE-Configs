@@ -55,4 +55,19 @@
         "HP_counter"        "Nael_HP"
         "CustomText"        "Nael"
     }
+	"11"
+	{
+		"HP_counter"		"Nael2_Hp_math"
+		"CustomText"		"Nael"
+	}
+	"12"
+	{
+		"HP_counter"		"Bahamut3_HP"
+		"CustomText"		"Bahamut"
+	}
+	"13"
+	{
+		"HP_counter"		"ADS7_HP"
+		"CustomText"		"ADS"
+	}
 }
