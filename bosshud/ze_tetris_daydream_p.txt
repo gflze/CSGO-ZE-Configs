@@ -1,0 +1,23 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "tboss_counter_hp1"
+        "CustomText"        "Eye"
+    }
+    "1"
+    {
+        "HP_counter"        "tboss_counter_hp2"
+        "CustomText"        "Eye"
+    }
+    "2"
+    {
+        "HP_counter"        "tboss_counter_hp3"
+        "CustomText"        "Eye"
+    }
+    "3"
+    {
+        "HP_counter"        "tboss_counter_hp4"
+        "CustomText"        "Eye"
+    }
+}
