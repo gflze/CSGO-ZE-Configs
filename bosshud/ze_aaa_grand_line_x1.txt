@@ -1,0 +1,27 @@
+"math_counter"
+{
+	"0"
+	{
+		"Type"	"breakable"
+		"BreakableName"		"dd_hp"
+		"CustomText"		"Captain Dickbeard"
+	}
+	"1"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"rootmars_phase_1_hitbox"
+		"CustomText"		"Rootmars"
+	}
+	"2"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"xanax_pill"
+		"CustomText"		"Xanax"
+	}
+	"3"
+	{
+		"Type"			"breakable"
+		"BreakableName"		"rootmars_phase_2_hitbox"
+		"CustomText"		"Rootmars"
+	}
+}
