@@ -1,4 +1,8 @@
-//put this vscript in your servers loose vscript folder and update the stripper accordingly to reflect the filepath
+//#####################################################################
+//Patched version intended for use with GFL ze_sisyphus_v1 stripper
+//Implements mapper script fixes
+//Install as csgo/scripts/vscripts/gfl/sisyphus_magic_v1.nut
+//#####################################################################
 
 // *********** include vs_library stuff
 IncludeScript("vs_lib/vs_library");
