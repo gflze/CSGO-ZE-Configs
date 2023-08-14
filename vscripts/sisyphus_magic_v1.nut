@@ -42,22 +42,26 @@ boulder_helper<-Entities.FindByName(null,"boulder_helper");
 
 shot_count<-0.00;
 shot_inverse<-0.00;
-angle_buffer<-Vector(0,0,0);
+angle_buffer<-Vector(0.00,0.00,0.00);
+vector_buffer<-Vector(0.00,0.00,0.00);
 time_buffer<-0.1;
+shot_buff<-1.50;
 
 function boulder(){
     if(!activator || activator==null || !activator.IsValid())return;
     shot_count = shot_count + 1.00;
-    angle_buffer += VS.GetAngle(activator.GetOrigin(), boulder_helper.GetOrigin());
+    vector_buffer += activator.GetOrigin();
     if(boulder_time==0||boulder_time<Time()){ 
         boulder_time=Time()+time_buffer;
-        shot_inverse = 1/shot_count;
-        VS.VectorScale(angle_buffer,shot_inverse,angle_buffer);
+        shot_inverse = 1.00/shot_count;
+        VS.VectorScale(vector_buffer,shot_inverse,vector_buffer);
+        angle_buffer = VS.GetAngle(vector_buffer, boulder_helper.GetOrigin());
         boulder_thruster.SetAngles(angle_buffer.x,angle_buffer.y,angle_buffer.z);
-        boulder_thruster.__KeyValueFromString("force",(boulder_force+0.00/3.00).tostring());
+        //boulder_thruster.__KeyValueFromString("force",(boulder_force+0.00/3.00).tostring());
+        boulder_thruster.__KeyValueFromString("force",((boulder_force*shot_count*shot_buff/ct_count)).tostring());      
         EntFireByHandle(boulder_thruster, "Activate", "", 0, "", "");
         shot_count=0;
-        angle_buffer=Vector(0,0,0);
+        angle_buffer=Vector(0.00,0.00,0.00);
     }
 }
 
