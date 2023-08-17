@@ -1,5 +1,3 @@
-TICK_RATE <- 0.1
-
 // White Knight
 wk_picked <- null;
 wk_cooldown <- [150,6];
