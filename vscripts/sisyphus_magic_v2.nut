@@ -47,21 +47,42 @@ vector_buffer<-Vector(0.00,0.00,0.00);
 time_buffer<-0.1;
 shot_buff<-1.50;
 
+// function boulder(){
+//     if(!activator || activator==null || !activator.IsValid())return;
+//     shot_count = shot_count + 1.00;
+//     vector_buffer += activator.GetOrigin();
+//     if(boulder_time==0||boulder_time<Time()){ 
+//         boulder_time=Time()+time_buffer;
+//         shot_inverse = 1.00/shot_count;
+//         VS.VectorScale(vector_buffer,shot_inverse,vector_buffer);
+//         angle_buffer = VS.GetAngle(vector_buffer, boulder_helper.GetOrigin());
+//         boulder_thruster.SetAngles(angle_buffer.x,angle_buffer.y,angle_buffer.z);
+//         //boulder_thruster.__KeyValueFromString("force",(boulder_force+0.00/3.00).tostring());
+//         boulder_thruster.__KeyValueFromString("force",((boulder_force*shot_count*shot_buff/ct_count)).tostring());      
+//         EntFireByHandle(boulder_thruster, "Activate", "", 0, "", "");
+//         shot_count=0;
+//         angle_buffer=Vector(0.00,0.00,0.00);
+//     }
+// }
+
+// from luffaren, try this out
 function boulder(){
     if(!activator || activator==null || !activator.IsValid())return;
     shot_count = shot_count + 1.00;
-    vector_buffer += activator.GetOrigin();
+        //BORK:angle_buffer += VS.GetAngle(activator.GetOrigin(), boulder_helper.GetOrigin());
+        local ang_buf = (boulder_helper.GetOrigin() - activator.GetOrigin());
+        ang_buf.Norm();
+        angle_buffer += ang_buf;
     if(boulder_time==0||boulder_time<Time()){ 
         boulder_time=Time()+time_buffer;
-        shot_inverse = 1.00/shot_count;
-        VS.VectorScale(vector_buffer,shot_inverse,vector_buffer);
-        angle_buffer = VS.GetAngle(vector_buffer, boulder_helper.GetOrigin());
-        boulder_thruster.SetAngles(angle_buffer.x,angle_buffer.y,angle_buffer.z);
-        //boulder_thruster.__KeyValueFromString("force",(boulder_force+0.00/3.00).tostring());
-        boulder_thruster.__KeyValueFromString("force",((boulder_force*shot_count*shot_buff/ct_count)).tostring());      
+        shot_inverse = 1/shot_count;
+        //BORK:VS.VectorScale(angle_buffer,shot_inverse,angle_buffer);
+        //BORK:boulder_thruster.SetAngles(angle_buffer.x,angle_buffer.y,angle_buffer.z);
+        boulder_thruster.SetForwardVector(angle_buffer);  
+        boulder_thruster.__KeyValueFromString("force",((boulder_force*shot_count/ct_count)).tostring());
         EntFireByHandle(boulder_thruster, "Activate", "", 0, "", "");
         shot_count=0;
-        angle_buffer=Vector(0.00,0.00,0.00);
+        angle_buffer=Vector(0,0,0);
     }
 }
 
@@ -374,7 +395,7 @@ function sisyphus_playlist(){
                 ringer_played.__KeyValueFromString("targetname",ringer_played.GetName()+ringers_alpha[random_ringer].tostring()); 
             }
         }
-        Chat(TextColor.Red + ">>> " + TextColor.Rare + "YOU ARE LISTENING TO " + TextColor.Mythical + "|| GFL 66.6 FM ||" + TextColor.Legendary + "BROUGHT TO YOUR BY GHOSTFAP.COM" + TextColor.Red + " <<<");
+        Chat(TextColor.Red + ">>> " + TextColor.Rare + "YOU ARE LISTENING TO " + TextColor.Mythical + "|| GFL 66.6 FM ||" + TextColor.Legendary + " BROUGHT TO YOUR BY GHOSTFAP.COM" + TextColor.Red + " <<<");
         music_play("music",music_maker.GetOrigin(), ringers[random_ringer].tostring(), 9999, 0, 10, "", 49); 
         VS.EventQueue.AddEvent(music_play,ringers_time[random_ringer],[this,"music",music_maker.GetOrigin(), sisyphus_tunes[random_song].tostring(), 9999, 0, 10, "", 49]);
         VS.EventQueue.AddEvent(sisyphus_playlist,sisyphus_times[random_song]+ringers_time[random_ringer],this);        
@@ -385,14 +406,22 @@ function sisyphus_playlist(){
     VS.EventQueue.AddEvent(sisyphus_playlist,sisyphus_times[random_song],this);
 }
 
-::bounds<-4;
+::bounds<-16;
 ::zm_dest<-null;
+::spawn_x<-13184;
 function zm_tp(){
     if(!activator || activator==null || !activator.IsValid())return;
+    zm_dest=null;
     for (local player = null; player = Entities.FindByClassname(player,"player");){
         if(player.GetTeam()==2&&player.GetHealth()>100){
-            if(zm_dest==null)zm_dest=player.GetOrigin();
-            if(player.GetOrigin().x<zm_dest.x&&player.GetOrigin().z>zm_dest.z)zm_dest=player.GetOrigin();
+            if(player.GetOrigin().x<spawn_x){
+                if(TraceLinePlayersIncluded(player.GetOrigin(),player.GetOrigin()+Vector(0,0,-32),null)==0)continue;
+                if(zm_dest==null)zm_dest=player.GetOrigin();
+                if(zm_dest.x<spawn_x && player.GetOrigin().x<zm_dest.x&&player.GetOrigin().z>zm_dest.z){
+                    zm_dest=player.GetOrigin();
+                }
+            }
+
         }
     }
     // for (local player = null; player = Entities.FindByClassname(player,"cs_bot");){
@@ -402,8 +431,7 @@ function zm_tp(){
     //     }
     // }    
     if(zm_dest==null)return;
-    activator.SetOrigin(Vector(zm_dest.x,RandomInt(-bounds,bounds),zm_dest.z+64));
-    zm_dest=null;
+    activator.SetOrigin(Vector(zm_dest.x,zm_dest.y,zm_dest.z+64));
 }
 
 ::sfx_neco<-"sfx/neco-arc/neco-arc_";
@@ -483,7 +511,7 @@ function red_mist_kill(){
     EntFireByHandle(activator, "SetHealth", 0, 0, "", "");
 }
 
-red_mist_chance<-17;
+red_mist_chance<-31;
 function red_mist_squid_rng(){
     if(RandomInt(0,red_mist_chance)==red_mist_chance)EntFire("temp_red_mist_squid", "ForceSpawn", "", 30, "");
     else{
