@@ -1,0 +1,84 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Stage0_BossGetHP"
+        "HPbar_counter"     "Stage0_Boss_DieHP"
+        "HPinit_counter"    "Stage0_BossBackHP"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+        "CustomText"        "King Bomb"
+    }
+    "1"
+    {
+        "HP_counter"        "Stage1_BossGetHP"
+        "HPbar_counter"     "Stage1_Boss_DieHP"
+        "HPinit_counter"    "Stage1_BossBackHP"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+        "CustomText"        "Exodus"
+    }
+    "2"
+    {
+        "HP_counter"        "Stage-1_BossGetHP"
+        "HPbar_counter"     "Stage-1_Boss_DieHP"
+        "HPinit_counter"    "Stage-1_BossBackHP"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+        "CustomText"        "Bahamut"
+    }
+    "3"
+    {
+        "HP_counter"        "Stage-1_Laser_HP_Counter"
+        "CustomText"        "Exodus"
+    }
+    "4"
+    {
+        "HP_counter"        "Stage3_BossGetHP"
+        "HPbar_counter"     "Stage3_Boss_DieHP"
+        "HPinit_counter"    "Stage3_BossBackHP"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+        "CustomText"        "Bergan"
+    }
+    "5"
+    {
+        "HP_counter"        "Event_Cactus_Counter"
+        "CustomText"        "Cactuar"
+    }
+    "6"
+    {
+        "HP_counter"        "Event_Bahamut_Counter"
+        "CustomText"        "Bahamut"
+    }
+    "7"
+    {
+        "HP_counter"        "Stage4_BossGetHP"
+        "HPbar_counter"     "Stage4_Boss_DieHP"
+        "HPinit_counter"    "Stage4_BossBackHP"
+        "HPbar_min"         "0"
+        "HPbar_max"         "8"
+        "HPbar_default"     "8"
+        "HPbar_mode"        "1"
+        "CustomText"        "Bergan"
+    }
+    "8"
+    {
+        "HP_counter"        "Stage4_Laser_HP_Counter"
+        "CustomText"        "Bergan"
+    }
+    "9"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "Event_zombie_model5_func"
+        "CustomText"        "Zombie Warlock"
+    }
+}
