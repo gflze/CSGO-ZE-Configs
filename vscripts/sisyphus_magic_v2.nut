@@ -182,6 +182,14 @@ function rain_tick(){
     VS.EventQueue.AddEvent(rain_tick,2,this);
 }
 
+::skyboxes<-["sky_csgo_night02","deadcore_sky_9"];
+function random_sky(){
+    local skybox = Entities.FindByName(null,"skybox");
+    if(skybox==null)return;
+    skybox.__KeyValueFromString("SkyboxName",skyboxes[RandomInt(0,skyboxes.len()-1)].tostring());
+    EntFireByHandle(skybox, "Trigger", "", 0, "", "");
+}
+
 /*
 TextColor
 {
@@ -635,4 +643,3 @@ function red_mist_squid_rng(){
 			EntFireByHandle(self,"Kill","",lifetime,null,null);
 		}});
 }
-
