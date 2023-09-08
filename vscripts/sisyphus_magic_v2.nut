@@ -11,10 +11,23 @@ IncludeScript("vs_lib/vs_events");
 IncludeScript("longus/music");
 IncludeScript("longus/sfx");
 
+spam_cd<-1.50;
 lose_z<--14500.0;
+win_x<--15000.0;
 function fall(){  
     if(!activator || activator==null || !activator.IsValid())return;
     if(activator.GetClassname()=="player")EntFireByHandle(activator, "SetHealth", 0, 0.00, null, null);
+}
+
+//failsafe if the trigger_multiple decides to be a COCKSUCKER and NOT WORK
+cocksucker<-false;
+function win(){
+    if(cocksucker)return;
+    if(boulder_helper.GetOrigin().x<win_x){
+        EntFire("nuke","Enable","",0,"");
+        EntFire("level_counter","Add",1,0,"");
+        cocksucker=true;
+    }
 }
 
 function fail(){
@@ -126,6 +139,8 @@ zm_name<-"chaos_";
         EntFireByHandle(player,"Skin",zm_skin,0,"","");
         VS.SetName(player,zm_name + event.userid)
     }    
+    player.ValidateScriptScope();
+    player.GetScriptScope().cooldown<-0.00;
     bot_test();
 }.bindenv(this), "player_spawn_async", 0);
 
@@ -167,6 +182,7 @@ function map_tick(){
     //         ct_count_tick=ct_count_tick+1.00;
     //     }
     // }    
+    win();
     fail();
     if(ct_count!=ct_count_tick)ct_count=ct_count_tick+0.00;
     ct_count_tick=0.00;
@@ -451,35 +467,53 @@ function neco_spam_start(){
     ::VS.ListenToGameEvent( "inspect_weapon", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;
         if(player.GetTeam()==3 || player.GetTeam()==2&&player.GetHealth()<101)sfx_play("sfx",player.GetOrigin(),sfx_neco+RandomInt(0,sfx_neco_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
         if(player.GetTeam()==2&&player.GetHealth()>101)sfx_play("sfx",player.GetOrigin(),sfx_chaos+RandomInt(0,sfx_chaos_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
     }.bindenv(this),"inspect_weapon_async",0);
     ::VS.ListenToGameEvent( "weapon_reload", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;        
         if(player.GetTeam()==3 || player.GetTeam()==2&&player.GetHealth()<101)sfx_play("sfx",player.GetOrigin(),sfx_neco+RandomInt(0,sfx_neco_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
     }.bindenv(this),"weapon_reload_async",0);    
     ::VS.ListenToGameEvent( "player_death", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;        
         if(player.GetTeam()==3)sfx_play("sfx",player.GetOrigin(),sfx_neco+RandomInt(0,sfx_neco_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
         if(player.GetTeam()==2&&player.GetHealth()>101)sfx_play("sfx",player.GetOrigin(),sfx_chaos+RandomInt(0,sfx_chaos_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
     }.bindenv(this),"player_death_async",0);
     ::VS.ListenToGameEvent( "weapon_zoom", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;        
         if(player.GetTeam()==3)sfx_play("sfx",player.GetOrigin(),sfx_neco+RandomInt(0,sfx_neco_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
         if(player.GetTeam()==2&&player.GetHealth()>101)sfx_play("sfx",player.GetOrigin(),sfx_chaos+RandomInt(0,sfx_chaos_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
     }.bindenv(this),"weapon_zoom_async",0);
     ::VS.ListenToGameEvent( "silencer_detach", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;        
         if(player.GetTeam()==3)sfx_play("sfx",player.GetOrigin(),sfx_neco+RandomInt(0,sfx_neco_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
         if(player.GetTeam()==2&&player.GetHealth()>101)sfx_play("sfx",player.GetOrigin(),sfx_chaos+RandomInt(0,sfx_chaos_count).tostring()+".wav", 5000, 0, 10, player.GetName(), 48);
     }.bindenv(this),"silencer_detach_async",0);
     ::VS.ListenToGameEvent( "player_say", function(event){
         local player = VS.GetPlayerByUserid(event.userid);
         if (player==null || !player.IsValid())return;
+        player.ValidateScriptScope();
+        if(player.GetScriptScope().cooldown>Time())return;
+        player.GetScriptScope().cooldown<-Time()+spam_cd;        
         local txt = event.text.tolower();
         foreach(word in neco_words){
             if(txt!=word)continue;
