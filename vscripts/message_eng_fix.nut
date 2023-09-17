@@ -112,11 +112,11 @@ l1_element_room_2 <- TEXT_BEFOR + "The button in security room can be used to op
 l1_element_room_3 <- TEXT_BEFOR + "It seems to be the element laboratory next door. Maybe we can use the sudden power surge of it to unlock the gates" + TEXT_AFTER
 l1_element_room_4 <- TEXT_BEFOR + "The door of laboratory is opened, hurry up" + TEXT_AFTER
 
-l1_element_room_door1 <- TEXT_BEFOR + "The door of laboratory is openning in \x04 35 seconds" + TEXT_AFTER
-l1_element_room_door1_1 <- TEXT_BEFOR + "The door of laboratory is openning in \x04 10 seconds" + TEXT_AFTER
-l1_element_room_door1_back <- TEXT_BEFOR + "The door of laboratory is openning in \x04 25 seconds" + TEXT_AFTER
+l1_element_room_door1 <- TEXT_BEFOR + "The door of laboratory is opening in \x04 35 seconds" + TEXT_AFTER
+l1_element_room_door1_1 <- TEXT_BEFOR + "The door of laboratory is opening in \x04 10 seconds" + TEXT_AFTER
+l1_element_room_door1_back <- TEXT_BEFOR + "The door of laboratory is opening in \x04 25 seconds" + TEXT_AFTER
 
-l1_door2 <- TEXT_BEFOR + "The wire mesh door is openning in \x04 20 seconds" + TEXT_AFTER
+l1_door2 <- TEXT_BEFOR + "The wire mesh door is opening in \x04 20 seconds" + TEXT_AFTER
 
 l1_ob1_1 <- TEXT_BEFOR + "The road is blocked with concrete. Use the explosive!" + TEXT_AFTER
 l1_ob1_2 <- TEXT_BEFOR + "The explosive is ready. Please be far from it" + TEXT_AFTER
@@ -130,9 +130,9 @@ l1_ob2 <- TEXT_BEFOR + "Defending for extra \x04 15 seconds \x06before the explo
 
 l1_elevator1 <- TEXT_BEFOR + "Defending for \x04 15 seconds \x06until the lift arriving" + TEXT_AFTER
 l1_elevator1_door <- TEXT_BEFOR + "The lift door will close in \x04 5 seconds" + TEXT_AFTER
-l1_door5 <- TEXT_BEFOR + "Pay attention to the zombia way in \x04 5 seconds" + TEXT_AFTER
+l1_door5 <- TEXT_BEFOR + "Pay attention to the zombie way in \x04 5 seconds" + TEXT_AFTER
 
-l1_door6_door7 <- TEXT_BEFOR + "Defending for \x04 25 seconds \x06until the rollong shutter door opens" + TEXT_AFTER
+l1_door6_door7 <- TEXT_BEFOR + "Defending for \x04 25 seconds \x06until the rolling shutter door opens" + TEXT_AFTER
 
 l1_ob3_1 <- TEXT_BEFOR + "We have arrived in the back door, which seems to be fragile. Let's prepare for a explosion party now!" + TEXT_AFTER
 l1_ob3_2 <- TEXT_BEFOR + "Defending for \x04 8 seconds \x06until the explosion" + TEXT_AFTER
@@ -165,7 +165,7 @@ l2_button2_tp1 <- TEXT_BEFOR + "Defending for\x04 30 seconds \x06until the zombi
 l2_button2_tp2 <- TEXT_BEFOR + "The zombies has been teleported, hurry to the upper floor from the outside surfance of the piping" + TEXT_AFTER
 
 l2_ob3 <- TEXT_BEFOR + "Defending for \x04 15 seconds \x06until the fence breaks" + TEXT_AFTER
-l2_button3_1 <- TEXT_BEFOR + "pipong is openning in \x04 35 seconds" + TEXT_AFTER
+l2_button3_1 <- TEXT_BEFOR + "pipong is opening in \x04 35 seconds" + TEXT_AFTER
 l2_button3_2 <- TEXT_BEFOR + "zombies teleporting in \x04 15 seconds" + TEXT_AFTER
 
 l2_ob8_1 <- TEXT_BEFOR + "The way is blocked by the crates. They are left here during the refugees evacuting" + TEXT_AFTER

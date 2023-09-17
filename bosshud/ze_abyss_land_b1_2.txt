@@ -1,0 +1,13 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Boss_PhaseCounter"
+        "CustomText"        "Phase"
+    }
+    "1"
+    {
+        "HP_counter"        "Boss_HpCounter"
+        "CustomText"        "Boss"
+    }
+}
