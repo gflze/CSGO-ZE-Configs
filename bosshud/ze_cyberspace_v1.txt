@@ -32,14 +32,12 @@
     }
     "5"
     {
-        "Type"              "breakable"
-        "BreakableName"     "c3_boss_counter"
+        "HP_counter"        "c3_boss_counter"
         "CustomText"        "Core"
     }
     "6"
     {
-        "Type"              "breakable"
-        "BreakableName"     "c3_end_boss_counter"
+        "HP_counter"        "c3_end_boss_counter"
         "CustomText"        "Protect System"
     }
 }
