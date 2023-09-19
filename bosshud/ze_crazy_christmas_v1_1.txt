@@ -1,0 +1,25 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "xmas_golem_counter"
+        "HPinit_counter"    "xmas_golem_backup"
+        "HPbar_counter"     "xmas_golem_iterations"
+        "HPbar_max"         "5"
+        "HPbar_min"         "0"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Golem"
+    }
+    "1"
+    {
+        "HP_counter"        "santa_hp"
+        "HPinit_counter"    "santa_hp_backup"
+        "HPbar_counter"     "santa_hp_iterations"
+        "HPbar_max"         "5"
+        "HPbar_min"         "0"
+        "HPbar_default"     "5"
+        "HPbar_mode"        "1"
+        "CustomText"        "Santa"
+    }
+}
