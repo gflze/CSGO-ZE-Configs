@@ -114,8 +114,17 @@ function Think()
 
 	if (bDidZombiesSpawnOnStage5)
 		foreach (hPlayer in hPlayers)
-			if (hPlayer.GetTeam() == 2 && hPlayer.GetHealth() > 900  && hPlayer.GetName().find("zombie_") != 0)
-				hPlayer.SetHealth(900);
+			if (hPlayer.GetTeam() == 2)
+			{
+				if (hPlayer.GetName().find("zombie_") == 0)
+				{
+					if (hPlayer.GetHealth() > 1200)
+						hPlayer.SetHealth(1200);
+				}
+
+				else if (hPlayer.GetHealth() > 900)
+					hPlayer.SetHealth(900);
+			}
 
 	return -1;
 }
