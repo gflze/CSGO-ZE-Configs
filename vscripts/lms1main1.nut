@@ -629,7 +629,6 @@ function PickLastManStanding()
 		PrintStatsText(null, "No valid players were found, no one gets the solo!");
 
 		foreach (hPlayer in hPlayers)
-		{
 			if (hPlayer.GetHealth())
 			{
 				if (hPlayer.GetTeam() == 3)
@@ -642,7 +641,6 @@ function PickLastManStanding()
 					hPlayer.SetVelocity(Vector());
 				}
 			}
-		}
 	}
 }
 
