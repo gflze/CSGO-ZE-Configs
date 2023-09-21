@@ -523,6 +523,8 @@ function PickLastManStanding()
 
 	StopTrackingZombieDamage();
 
+	local hExit = Entities.FindByName(null, "fuckedoffzombies");
+
 	if (iPotentialSoloersLength)
 	{
 		local SoloPlayerInfo = {};
@@ -593,8 +595,6 @@ function PickLastManStanding()
 				break;
 			}
 
-		local hExit = Entities.FindByName(null, "fuckedoffzombies");
-
 		foreach (hPlayer in hPlayers)
 			if (hPlayer.GetHealth())
 			{
@@ -629,8 +629,20 @@ function PickLastManStanding()
 		PrintStatsText(null, "No valid players were found, no one gets the solo!");
 
 		foreach (hPlayer in hPlayers)
-			if (hPlayer.GetTeam() == 3 && hPlayer.GetHealth())
-				EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+		{
+			if (hPlayer.GetHealth())
+			{
+				if (hPlayer.GetTeam() == 3)
+					EntFireByHandle(hPlayer, "SetHealth", "0", -1, null, null);
+
+				else
+				{
+					hPlayer.SetOrigin(hExit.GetOrigin());
+					hPlayer.SetAngles(0, hExit.GetAngles().y, 0);
+					hPlayer.SetVelocity(Vector());
+				}
+			}
+		}
 	}
 }
 
