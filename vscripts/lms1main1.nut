@@ -316,6 +316,8 @@ function PlayerInfo(EventData)
 
 function PlayerDisconnect(EventData)
 {
+	RemoveDisconnectPlayer();
+
 	EntFireByHandle(self, "CallScriptFunction", "RemoveDisconnectPlayer", -1, null, null);
 
 	local iUserID = EventData.userid;
