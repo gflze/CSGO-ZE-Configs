@@ -436,6 +436,10 @@
 	{
 		sv_enablebunnyhopping							1
 	}
+	"ze_slackerino_mapperino_v4"
+	{
+		sv_enablebunnyhopping							1
+	}
 	"ze_stalker_ultimate_v4_9"
 	{
 		sv_disable_radar								0

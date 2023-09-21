@@ -1,0 +1,78 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "Special_Health"
+        "HPinit_counter"    "Special_HealthInit"
+        "HPbar_counter"     "Special_HealthCount"
+        "HPbar_min"         "0"
+        "HPbar_max"         "16"
+        "HPbar_default"     "0"
+        "HPbar_mode"        "2"
+        "CustomText"        "Boss"
+    }
+    "1"
+    {
+        "HP_counter"        "Stage_13_End_Boss_Counter"
+        "CustomText"        "Hydro"
+    }
+    "2"
+    {
+        "HP_counter"        "Fat_Nigger_Counter"
+        "CustomText"        "Zalera"
+    }
+    "3"
+    {
+        "HP_counter"        "Stage_4_End_Guard_Counter"
+        "CustomText"        "Gabranth"
+    }
+    "4"
+    {
+        "HP_counter"        "Famfrit_Holy_Summon_Counter"
+        "CustomText"        "Zargabaath"
+    }
+    "5"
+    {
+        "HP_counter"        "Famfrit_Fire_Summon_Counter"
+        "CustomText"        "Bergan"
+    }
+    "6"
+    {
+        "HP_counter"        "Stage_24_End_Famfrit_Counter"
+        "CustomText"        "Famfrit"
+    }
+    "7"
+    {
+        "HP_counter"        "Stage_13_End_Boss_Counter"
+        "CustomText"        "Hydro"
+    }
+    "8"
+    {
+        "HP_counter"        "Famfrit_Total_Contamination_Counter"
+        "CustomText"        "Contamination Attack"
+    }
+    "9"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "Hashmel_Heal_Breakable"
+        "CustomText"        "Rock Wall"
+    }
+    "10"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "Hashmel_Supernova_Breakable"
+        "CustomText"        "Supernova"
+    }
+    "11"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "Hashmel_Tower_Break_Left"
+        "CustomText"        "Hashmel Tower (Left)"
+    }
+    "12"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "Hashmel_Tower_Break_Right"
+        "CustomText"        "Hashmel Tower (Right)"
+    }
+}
