@@ -1,0 +1,73 @@
+"math_counter"
+{
+    "0"
+    {
+        "HP_counter"        "nrk_level5_hp_per"
+        "HPinit_counter"    "nrk_level5_hp_default"
+        "HPbar_counter"     "nrk_level5_hp_num"
+        "HPbar_min"         "0"
+        "HPbar_max"         "1"
+        "HPbar_default"     "1"
+        "HPbar_mode"        "1"
+        "CustomText"        "Dragon"
+    }
+    "1"
+    {
+        "HP_counter"        "hp_per"
+        "HPinit_counter"    "hp_default"
+        "HPbar_counter"     "hp_num"
+        "HPbar_min"         "0"
+        "HPbar_max"         "6"
+        "HPbar_default"     "6"
+        "HPbar_mode"        "1"
+        "CustomText"        "Dragon"
+    }
+    "2"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "TD1_door_1_1_1_1_1"
+        "CustomText"        "Bottom Crystal"
+    }
+    "3"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "TD1_door_1_1_1"
+        "CustomText"        "Left Crystal"
+    }
+    "4"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "TD1_door_1"
+        "CustomText"        "Middle Right Crystal"
+    }
+    "5"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "TD1_door_1_1"
+        "CustomText"        "Middle Left Crystal"
+    }
+    "6"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "TD1_door_1_1_1_1"
+        "CustomText"        "Door Crystal"
+    }
+    "7"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "1_boss_snow_door2_break"
+        "CustomText"        "Dragon"
+    }
+    "8"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "1_door_6_breakable"
+        "CustomText"        "Cube"
+    }
+    "9"
+    {
+        "Type"              "breakable"
+        "BreakableName"     "st1_final_door"
+        "CustomText"        "Door"
+    }
+}
