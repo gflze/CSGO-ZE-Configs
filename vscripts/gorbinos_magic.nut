@@ -1236,17 +1236,22 @@ function taxes(player){
 
 ::event_proxy<-null;
 ::spawn_proxy<-null;
-function shit_fixer(player){
-    if(event_proxy==null){
-        ::event_proxy <- Entities.CreateByClassname("info_game_event_proxy");
-        ::event_proxy.__KeyValueFromString("event_name", "player_connect");
+function shit_fixer(){
+	for(local motherfucker = null; motherfucker = Entities.FindByClassname(motherfucker,"player");){
+		local motherfucker_extended = ToExtendedPlayer(motherfucker);
+		if(motherfucker_extended==null || !motherfucker_extended.IsValid() || motherfucker_extended.userid==-1 || motherfucker_extended.userid==null){
+		    if(event_proxy==null){
+		        ::event_proxy <- Entities.CreateByClassname("info_game_event_proxy");
+		        ::event_proxy.__KeyValueFromString("event_name", "player_connect");
+		    }
+		    if(spawn_proxy==null){
+		        ::spawn_proxy <- Entities.CreateByClassname("info_game_event_proxy");
+		        ::spawn_proxy.__KeyValueFromString("event_name", "player_spawn");
+		    }    
+		    EntFireByHandle(event_proxy, "GenerateGameEvent", "", 0, motherfucker, null);
+            //EntFireByHandle(spawn_proxy, "GenerateGameEvent", "", 0, player, null);
+		}
     }
-    if(spawn_proxy==null){
-        ::spawn_proxy <- Entities.CreateByClassname("info_game_event_proxy");
-        ::spawn_proxy.__KeyValueFromString("event_name", "player_spawn");
-    }    
-    EntFireByHandle(event_proxy, "GenerateGameEvent", "", 0, player, null);
-    //EntFireByHandle(spawn_proxy, "GenerateGameEvent", "", 0, player, null);
 }
 
 ::player_prefix<-"cocksucker_";
@@ -1254,7 +1259,7 @@ function shit_fixer(player){
 ::VS.ListenToGameEvent("player_spawn",function(event){
     local player = VS.GetPlayerByUserid(event.userid);
     if (!player || !player.IsValid()){
-        VS.EventQueue.AddEvent(shit_fixer,10,[this,player]);
+        VS.EventQueue.AddEvent(shit_fixer,10,this);
         return;
     }
     //set player variables before checking shit
