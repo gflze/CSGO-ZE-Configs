@@ -1419,7 +1419,7 @@ function am_i_longus(){
 ::self_destruction<-"cruelty_squad/noises/self_destruction.mp3";
 //sfx_sd_timer<-0.0;
 //sfx_sd_time<-5.246;
-::zm_speed<-1.13;
+::zm_speed<-1.00;
 ::human_speed<-1;
 ::rtv_buff<-1.5;
 ::mission_failed<-false;
