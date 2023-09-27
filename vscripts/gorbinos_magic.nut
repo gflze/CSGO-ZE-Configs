@@ -997,7 +997,7 @@ mutant_pain_4<-"cruelty_squad/noises/mutant_pain_4.mp3";
 pain_sfx_timer<-0.0;
 pain_sfx_time<-0.0;
 ::pain_sfx_nuke<-false;
-::crusguy_hp<-150;
+::crusguy_hp<-200;
 ::human_heal<-Entities.FindByName(null,"human_heal");
 ::human_heal_tick<--10;
 ::human_heal_buff<-1;
