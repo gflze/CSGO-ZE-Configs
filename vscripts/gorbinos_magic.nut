@@ -1350,7 +1350,7 @@ function check_models(){
             //if(!player.GetName().find("creep"))EntFireByHandle(player,"AddOutput","targetname creep_" + ext_player.userid.tostring(),0.05,"",""); 
         }
         if(player.GetTeam()==3){
-			if(player.GetModelName().find("fumo"))return;
+			if(player.GetModelName().find("fumo"))continue;
             if(player.GetModelName()!=crusguy)player.SetModel(crusguy);
             //if(!player.GetName().find("crusguy"))EntFireByHandle(player,"AddOutput","targetname crusguy_" + ext_player.userid.tostring(),0.05,"",""); 
         }
