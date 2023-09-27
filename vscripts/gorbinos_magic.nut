@@ -2743,7 +2743,7 @@ function civilian_autism(){
         civ_count++;
     }
     if(!autism)return;
-    EntFire("gorbinos_magic","RunScriptCode","civilian_autism();",1,"");
+    EntFire("gorbinos_magic","RunScriptCode","civilian_autism();",3,"");
 }
 
 function stop_autism(){
