@@ -997,7 +997,7 @@ mutant_pain_4<-"cruelty_squad/noises/mutant_pain_4.mp3";
 pain_sfx_timer<-0.0;
 pain_sfx_time<-0.0;
 ::pain_sfx_nuke<-false;
-::crusguy_hp<-150;
+::crusguy_hp<-200;
 ::human_heal<-Entities.FindByName(null,"human_heal");
 ::human_heal_tick<--10;
 ::human_heal_buff<-1;
@@ -1350,6 +1350,7 @@ function check_models(){
             //if(!player.GetName().find("creep"))EntFireByHandle(player,"AddOutput","targetname creep_" + ext_player.userid.tostring(),0.05,"",""); 
         }
         if(player.GetTeam()==3){
+			if(player.GetModelName().find("fumo"))continue;
             if(player.GetModelName()!=crusguy)player.SetModel(crusguy);
             //if(!player.GetName().find("crusguy"))EntFireByHandle(player,"AddOutput","targetname crusguy_" + ext_player.userid.tostring(),0.05,"",""); 
         }
@@ -1419,7 +1420,7 @@ function am_i_longus(){
 ::self_destruction<-"cruelty_squad/noises/self_destruction.mp3";
 //sfx_sd_timer<-0.0;
 //sfx_sd_time<-5.246;
-::zm_speed<-1.13;
+::zm_speed<-1.00;
 ::human_speed<-1;
 ::rtv_buff<-1.5;
 ::mission_failed<-false;
@@ -2743,7 +2744,7 @@ function civilian_autism(){
         civ_count++;
     }
     if(!autism)return;
-    EntFire("gorbinos_magic","RunScriptCode","civilian_autism();",1,"");
+    EntFire("gorbinos_magic","RunScriptCode","civilian_autism();",3,"");
 }
 
 function stop_autism(){
