@@ -1,6 +1,6 @@
 //#####################################################################
-//Patched version intended for use with GFL ze_sisyphus_v1 stripper
-//Implements mapper script fixes
+//Patched version intended for use with GFL ze_cruelty_squad_v1_12 stripper
+//Fixes player spawn fixup at mapload breaking on live servers
 //Install as csgo/scripts/vscripts/gfl/gorbinos_magic.nut
 //#####################################################################
 
