@@ -2,10 +2,10 @@
 
 | Sync Status |
 |:-----------:|
-| [![Sync Files To Main Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflclan-cs-go-ze/ZE-Configs/actions) |
+| [![Sync Files To Main Server](https://github.com/gflze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflze/ZE-Configs/actions) |
 
 
-A collection of the BossHud, entWatch, SaveLevel, MusicName and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflclan-cs-go-ze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
+A collection of the BossHud, entWatch, SaveLevel, MusicName and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
 
 Everything in this repository is auto-synced to our main/test servers on a new commit/push.
 
@@ -19,7 +19,7 @@ For making any of these configs, you'll want a tool like [VIDE](http://www.riint
 
 Search for **math_counter**, **func_breakable**, **func_physbox**, **func_physbox_multiplayer**, **prop_physics**, or **prop_dynamic** entities as a starting point when creating these. For each boss you're going to want a new block, make sure the blocks are numbered correctly if you're copy/pasting them. The format is available below.
 
-**__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use [this plugin](https://github.com/gflclan-cs-go-ze/bhud-debugger) with a test server to find out.
+**__IMPORTANT:__** If you want to make sure you are using the right boss entity, you can use [this plugin](https://github.com/gflze/bhud-debugger) with a test server to find out.
 
 ```
 "math_counter"
