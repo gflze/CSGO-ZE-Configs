@@ -1,6 +1,6 @@
 # The best
 
-name: Sync Files To Main Server
+name: Sync Files To CS:GO Server
 
 on:
   push:

@@ -2,12 +2,12 @@
 
 | Sync Status |
 |:-----------:|
-| [![Sync Files To Main Server](https://github.com/gflze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflze/ZE-Configs/actions) [![Sync Files To Test Server](https://github.com/gflze/ZE-Configs/actions/workflows/ci-master-test.yml/badge.svg)](https://github.com/gflze/ZE-Configs/actions) |
+| [![Sync Files To CS:GO Server](https://github.com/gflze/ZE-Configs/actions/workflows/ci-master-main.yml/badge.svg)](https://github.com/gflze/ZE-Configs/actions) |
 
 
 A collection of the BossHud, entWatch, SaveLevel, MusicName and stripper configs used on GFL's CS:GO ZE server, please be aware that [some private configs](https://github.com/gflze/ZE-Configs/blob/master/.gitignore#L1) are not included in this repository.
 
-Everything in this repository is auto-synced to our main/test servers on a new commit/push.
+Everything in this repository is auto-synced to our CS:GO server on a new commit/push.
 
 # How to Contribute
 
