@@ -1,18 +1,29 @@
 BossHud:
-- bosshud/*
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'bosshud/*'
 
 entWatch:
-- entwatch/*
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'entwatch/*'
 
 MusicName:
-- musicname/*
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'musicname/*'
 
 SaveLevel:
-- savelevel/*
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'savelevel/*'
 
 Stripper:
-- stripper/*
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'stripper/*'
 
 ZombieReloaded:
-- zombiereloaded/*
-
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 'zombiereloaded/*'
